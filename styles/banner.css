@@ -1,0 +1,125 @@
+.banner{
+    background: url(../img/Banner.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10em;
+}
+
+.banner2{
+    background: url(../img/Banner2.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10em;
+}
+
+.banner__titulo{
+    font-size: 78px;
+    padding-bottom: 0.5em;
+    font-family: var(--fonte-secundaria);
+    color: white;
+}
+
+.banner__titulo--negrito{
+    font-family: var(--fonte-titulo);
+    text-transform: uppercase;
+    color: var(--cor-titulo)
+}
+
+.banner__texto{
+    font-size: 24px;
+    padding-top: 2px;
+    color: var(--cor-texto);
+}
+
+.banner__botao{
+    cursor: pointer;
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-terciaria);
+    color: var(--cor-secundaria);
+    border: 0;
+    margin-top: 3em;
+    padding: 1em 1.2em;
+    border-radius: 16px;
+    font-size: 16px;
+}
+
+.banner__botao:hover{
+    background-color: var(--rosa-salmao);
+}
+
+.banner__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+@media (max-width: 1280px){
+    .banner{
+        padding: 10em 5em;
+    }
+}
+
+@media (max-width: 1120px){
+    .banner{
+        justify-content: center;
+    }
+}
+
+@media (max-width: 680px){
+    .banner__titulo{
+        font-size: 50px;
+    }
+
+    .banner__texto{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 500px){
+    .banner{
+        padding: 10em 3em;
+    }
+
+    .banner__titulo{
+        font-size: 40px;
+    }
+
+    .banner__texto{
+        font-size: 18px;
+    }
+
+    .banner__botao{
+        font-size: 14px;
+        margin-top: 2em;
+    }
+}
+
+@media (max-width: 365px){
+    .banner{
+        padding: 10em 2em;
+    }
+}
+
+@media (max-width: 500px){
+    .banner{
+        padding: 12em 2em;
+    } 
+
+    .banner__titulo{
+        font-size: 32px;
+    }
+
+    .banner__texto{
+        font-size: 16px;
+    }
+}

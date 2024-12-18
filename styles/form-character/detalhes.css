@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700&display=swap');
+
+.container__detalhes{
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.inputBox{
+    position: relative;
+    width: 100%;
+}
+
+.inputBox input, .inputBox textarea{
+    width: calc(100% - 20px);
+    padding: 12px 10px 10px 10px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: var(--cor-de-fundo);
+    border-radius: 5px;
+    outline: none;
+    color: #fff;
+    font-size: 1em;
+    transform: 0.5s;
+}
+
+.inputBox span{
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+    transition: 0.5s;
+    top: 6px;
+}
+
+.inputBox input::placeholder{
+    color: transparent
+}
+
+.inputBox input:not(:placeholder-shown) ~ span, .inputBox input:focus ~ span, .inputBox textarea:valid ~ span, .inputBox textarea:focus ~ span{
+    color: var(--cor-de-fundo);
+    background: #CC0000;
+    transform: translateX(10px) translateY(-12px);
+    font-size: 0.65em;
+    padding: 1px 5px;
+    border-radius: 2px;
+    letter-spacing: 0.2em;
+}
+
+.inputBox input:not(:placeholder-shown), .inputBox input:focus, .inputBox textarea:valid, .inputBox textarea:focus{
+    border: 1px solid #CC0000;
+}
+
+.inputBox input::-webkit-inner-spin-button, .personagem__input input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inputBox input::-moz-number-spin-box, .personagem__input input::-moz-number-spin-box{
+    -moz-appearance: none;
+    margin: 0;
+}
+
+.box--nome__ocupacao{
+    width: 100%;
+    display: flex;
+    gap: 12px
+}
+
+.box--idade__nacionalidade{
+    width: 60rem;
+    display: flex;
+    gap: 12px;
+}
+
+.box--imagem{
+    width: 100%;
+    display: flex;
+}
+
+.uploadImage{
+    border: dashed rgba(255,255,255,0.25) 1px;
+    padding: 12px 10px 10px 10px;
+    margin-left: 21px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: none;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.5s ease;
+    width: 5%;
+    text-align: center;
+}
+
+.uploadImage:hover{
+    border-color: #CC0000;
+    color: #cc0000;
+    opacity: 0.8;
+}
+
+input[name="pg-imagem"]{
+    width: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#input-imagem-pg{
+    width: calc(95% - 20px);
+}
+
+input[name="pg-nome"], input[name="pg-ocupacao"]{
+    width: calc(100%-20px);
+}
+
+input[name="pg-idade"]{
+    width: 10rem;
+}
+
+input[name="pg-nacionalidade"]{
+    width: calc(47rem - 6px);
+}
+
+.inputBox textarea{
+    height: 5em;
+    resize: none;
+}
+
+.inputBox textarea::-webkit-scrollbar, .boxVantagens::-webkit-scrollbar{
+    width: 6px;
+    background-color: rgb(40, 40, 40);
+    border-radius: 6px;
+}
+
+.inputBox textarea::-webkit-scrollbar-thumb, .boxVantagens::-webkit-scrollbar-thumb{
+    background-color: #494949;
+    border-radius: 8px;
+}
+
+.inputSegredos textarea::-webkit-scrollbar{
+    width: 0;
+}
+
+#step-group-5 .step--titulo{
+    font-weight: 700;
+    text-align: center;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+#step-group-5  .step--titulo:after,#step-group-5  .step--titulo:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #c50000;
+    border-top: 1px solid #c50000;
+    height: 5px;
+    background-color:var(--cor-de-fundo);
+}
+
+.tabela__segredos{
+    margin-top: 30px;
+    background: rgb(41, 41, 41);
+    border-radius: 8px;
+}
+
+.tabela__segredos table{
+    border-collapse: collapse;
+}
+
+.tabela__segredos .tabela__conteudo{
+    max-height: 20rem;
+    min-height: 20rem;
+    overflow-y: auto;
+}
+
+.tabela__conteudo::-webkit-scrollbar{
+    width: 6px;
+    background-color: rgb(40, 40, 40);
+    border-radius: 6px;
+}
+
+.tabela__conteudo::-webkit-scrollbar-thumb{
+    background-color: #494949;
+    border-radius: 8px;
+    padding-top: 10px;   
+}
+
+.tabela__segredos .tabela__topo{
+    padding: 1rem;
+}
+
+.tabela__segredos .tabela__topo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+input[type="file"]{
+    display: none;
+}
+
+.tabela__segredos .tabela__topo button{
+    background: #FF033E;
+    border-radius: 10px;
+    color: #fff;
+    font-size: .8rem;
+    padding: .5rem 1rem;
+    border: 1px solid #ff033e;
+    cursor: pointer;
+}
+
+.tabela__segredos .tabela__topo button:hover{
+    background: #C60C30;
+    border: 1px solid #C60C30;
+}
+
+.tabela__segredos thead tr{
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.tabela__segredos thead td{
+    font-weight: 700;
+}
+
+.tabela__segredos tbody tr{
+    border-top: 1px dashed #494949;
+}
+
+.tabela__segredos td{
+    padding: .5rem 1rem;
+    font-size: .9rem;
+    color: #eeeeee;
+}
+
+.tabela__segredos tbody td{
+    padding-top: .7rem;
+}
+
+.createCharacter{
+    text-align: center;
+    align-self: center;
+}
+
+.modal::backdrop{
+    background: black;
+    opacity: .6;
+}
+
+.modal{
+    position: fixed;
+    padding: 60px 40px 60px 40px;
+    background: rgb(52, 52, 52);
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.015);
+    font-family: 'Poppins', sans-serif;
+    border: none;
+}
+
+.modal h2{
+    color: whitesmoke;
+    margin-bottom: 45px;
+    line-height: 1.5em;
+    font-weight: 500;
+    padding-left: 10px;
+    border-left: 5px solid #AA0000;
+}
+
+.modal .inputSegredos{
+    position: relative;
+    width: 300px;
+    height: 46px;
+    margin-bottom: 35px;
+    font-weight: 300;
+}
+
+.modal .inputSegredos:last-child{
+    margin-bottom: 0;
+}
+
+.modal .inputSegredos input, .modal .inputSegredos select, .modal .inputSegredos textarea{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border: 1px solid whitesmoke;
+    background: transparent;
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 16px;
+    color: whitesmoke;
+    font-weight: 300;
+}
+
+.modal .inputSegredos span{
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    padding: 15px 10px 10px 10px;
+    display: inline-block;
+    font-size: 16px;
+    color: whitesmoke;
+    font-weight: 300;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.inputSegredos input::placeholder{
+    color: transparent;
+}
+
+.modal .inputSegredos input:focus ~ span, .modal .inputSegredos input:not(:placeholder-shown) ~ span, .modal .inputSegredos select ~ span,
+.modal .inputSegredos textarea:focus ~ span, .modal .inputSegredos textarea:valid ~ span{
+    transform: translateX(-10px) translateY(-32px);
+    font-size: 12px;
+}
+
+.modal .inputSegredos textarea{
+    resize: none;
+    font-size: 14px;
+    height: 10em;
+}
+
+#modalNarrativa, #modalAnotacoes, #modalGanchos{
+    height: 18.2em;
+}
+
+#modalNarrativa .inputSegredos:last-child, #modalAnotacoes .inputSegredos:last-child, #modalGanchos .inputSegredos:last-child{
+    margin-top: 8em;
+}
+
+#mensagemErroNarrativa, #mensagemErroAnotacoes, #mensagemErroGanchos{
+    transform: translateY(11.5em);
+}
+
+.modal .inputSegredos input[type="submit"], .modal button{
+    background: #FF033E;
+    color: rgb(52, 52, 52);
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.modal .inputSegredos input[type="submit"]:hover, .modal button:hover{
+    background: #C40233;
+}
+
+.modal-active{
+    overflow: hidden;
+}
+
+.icone-fechar{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    color: whitesmoke;
+}
+
+.icone-fechar ion-icon{
+    cursor: pointer;
+    font-size: 30px;
+}
+
+#modalProgressao .progressao__item:nth-child(3){
+    font-size: 32px;
+}
+
+.modal p{
+    color: red;
+    transform: translateY(22px);
+    font-size: 13px;
+    pointer-events: none;
+}
+
+.modal .select-box option{
+    background-color: var(--cor-de-fundo);
+}
+
+.modal .select-box{
+    appearance: none;
+}
+
+.modal .icon-select{
+    width: 50px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.icon-select .fa-chevron-down{
+    font-size: 16px;
+    color: whitesmoke;
+}
+
+.form--error{
+    width: 100%;
+    text-align: center;
+    color: red;
+    padding-top: 10px;
+    font-size: .9em;
+    font-weight: 200;
+}

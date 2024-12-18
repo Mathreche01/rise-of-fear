@@ -1,0 +1,121 @@
+@import url('./form-character/detalhes.css');
+@import url('./form-character/arquetipo.css');
+@import url('./form-character/desvantagens.css');
+@import url('./form-character/vantagens.css');
+@import url('./form-character/atributos.css');
+
+.progress-bar{
+    margin: 25px 0;
+    padding: 0;
+    overflow: hidden;
+    counter-reset: step;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.progress-bar li{
+    list-style-type: none;
+    width: 100%;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+}
+
+.progress-bar li:before{
+    position: relative;
+    z-index: 2;
+    content: counter(step);
+    counter-increment: step;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 1.2rem;
+    display: block;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+    background-color: #191919;
+    margin: 0 auto 10px auto;
+    color: #f5f5f5;
+}
+
+.progress-bar li:after{
+    content: " ";
+    width: 100%;
+    height: 6px;
+    background: #191919;
+    position: absolute;
+    left: 0;
+    top: 17px;
+    z-index: 1;
+}
+
+.progress-bar li.active::after, .progress-bar li.active::before{
+    background: linear-gradient(to right, #AA0000 20%, #D2122E 40%, #D2122E 60%, #BA0021 80%);
+    background-size: 200% auto;
+    animation: effect 1s linear infinite;
+    -webkit-animation: effect 1s linear infinite;
+    color: #111111;
+}
+
+@keyframes effect{
+    to {
+        background-position: -200% center;
+    }
+}
+
+.step-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.step-group{
+    width: 60rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
+    margin: 3em 0;
+}
+
+#step-group-2, #step-group-3, #step-group-4, #step-group-5{
+    display: none;
+}
+
+.step-group:nth-child(2){
+    width: 80rem;
+}
+
+.step-group:nth-child(3), .step-group:nth-child(4){
+    width: 68em;
+    font-size: 18px;
+}
+
+#step-group-3 p:nth-child(2), #step-group-4 p:nth-child(2){
+    padding: 30px 0;
+}
+
+#step-group-5{
+    font-size: 18px;
+}
+
+#step-group-5 p{
+    padding: 30px 0;
+}
+
+#step-group-3 span, #step-group-4 span, #step-group-5 .span--negrito{
+    font-weight: 900;
+    margin-bottom: 30px;
+}

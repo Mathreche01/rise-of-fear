@@ -1,0 +1,477 @@
+<main class="div-form">
+    <ul class="progress-bar">
+        <li id="step1" class="active">Arquétipo</li>
+        <li id="step2">Atributos</li>
+        <li id="step3">Vantagens</li>
+        <li id="step4">Desvantagens</li>
+        <li id="step5">Detalhes</li>
+    </ul>
+    <div class="step-box">
+        <div class="step-group" id="step-group-1">
+            <div class="group-text">
+            <p>Um Arquétipo fornece ao jogador um conjunto específico de opções de personagem, que o ajudam a definir um papel único em torno de um conceito específico.</p>
+            <p>Os Arquétipos abaixo retram modelos de seres cientes das inconsistências do mundo. Ocorrências horríveis fizeram com que o personagem acordasse do estado de sonho autoimposto em que a maioria da humanidade vive atualmente.</p>
+            <span>Características obrigatórias disponibilizadas por arquétipos serão adicionadas automaticamente à sua ficha de personagem. Informações adicionais poderão ser preenchidas nas abas subsequentes ou após o término da criação.</span>
+            </div>
+            <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" placeholder="Buscar" oninput="buscaArquetipo()" data-busca>
+            </div>
+            <ul class="accordion">
+                <li>
+                    <input type="checkbox" name="accordion" id="primeiro">
+                    <label class="accordion__title" for="primeiro">O Acadêmico</label>
+                    <div class="accordion-content">
+                        <p>O Acadêmico estuda o mundo a partir da sua mesa. Tudo está interconectado via regras 
+                            lógicas de causalidade, mas ele suspeita que algo deve estar errado. As peças se recusam 
+                            a se encaixar nos padrões confiáveis e previsíveis dos modelos científicos comuns. E pior, 
+                            forças obscuras silenciam campos de pesquisa novos e alternativos. Aqueles que questionam as fundações científicas e essa visão de mundo racional arriscam a desgraça e a 
+                            destruição de sua pesquisa, reputação e rendimentos. Ele se atreve a procurar a verdade?</p>
+                        <button onclick="selecionaArquetipo('O Acadêmico')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="segundo">
+                    <label class="accordion__title" for="segundo">A Agente</label>
+                    <div class="accordion-content">
+                        <p>A agente faz o que for necessário para proteger e servir os melhores interesses de seu empregador. 
+                            As pessoas são simplesmente recursos a serem usados, abusados e gastos. Qualquer um que esteja 
+                            no caminho deve ser removido. Ela reúne e analisa informações em velocidade quase impossível. 
+                            Ameaças exigem respostas rápidas, e às vezes não há boas escolhas. O trabalho da Agente significa 
+                            aceitar grandes custos, geralmente na forma de perigos, mas também uma dívida crescente com 
+                            aqueles sacrificados pelo bem maior. Quando esse fardo finalmente se torna pesado demais, as saídas 
+                            para a Agente provavelmente já se fecharam e o “bem” e o “mal” perderam todo seu significado.
+                        </p>
+                        <button onclick="selecionaArquetipo('A Agente')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="terceiro">
+                    <label class="accordion__title" for="terceiro">O Amaldiçoado</label>
+                    <div class="accordion-content">
+                        <p>O Amaldiçoado está vivendo no limite do tempo. Ele pode ser a vítima infeliz de uma 
+                            doença fatal ou o alvo da ira de uma força superior. No entanto, geralmente o Amaldiçoado selou o seu próprio destino vendendo sua alma por fama e fortuna. Agora seu tempo 
+                            está quase no fim e o Amaldiçoado percebeu que a vida em si é a coisa mais valiosa que 
+                            ele possui. Nenhum preço é demais alto para o Amaldiçoado atrasar seu destino, mesmo 
+                            que isso signifique sacrificar os outros.
+                        </p>
+                        <button onclick="selecionaArquetipo('O Amaldiçoado', 'Condenado')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="quarto">
+                    <label class="accordion__title" for="quarto">A Arruinada</label>
+                    <div class="accordion-content">
+                        <p>A Arruinada olhou para o abismo e escapou com sua mente em frangalhos. Ela pode ser uma sem-teto que 
+                            inconscientemente realiza rituais para deuses esquecidos, a paciente mental que foi cobaia de medicamentos experimentais, ou a pecadora que foi fisicamente arrastada para o inferno e ainda assim conseguiu de alguma forma escapar de volta para a terra dos vivos. A Arruinada encara as coisas e vê através 
+                            da Ilusão de formas que outras pessoas não conseguem fazem. Em troca de seus traumas irreparáveis, 
+                            ela recebeu percepções únicas sobre a Verdade. A questão é, até que ponto ela poderá confiar em seus 
+                            próprios sentidos?
+                        </p>
+                        <button onclick="selecionaArquetipo('A Arruinada', 'Arruinado')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="quinto">
+                    <label class="accordion__title" for="quinto">O Artista</label>
+                    <div class="accordion-content">
+                        <p>O Artista existe apenas para criar, entregar-se, de corpo e alma, às artes. Eles expressam esse desejo através de muitos 
+                            meios. Uma pintura hipnótica, uma música que aprisiona o público num puro êxtase, um livro que fascina seus 
+                            leitores, ou a carne esculpida de uma modelo estão todos ao alcance do Artista. Os Artistas têm a capacidade de falar 
+                            com as almas dos outros, convidando-os para a sua própria, mas essa habilidade sempre tem um preço. O preço é 
+                            pago pelos próprios Artistas, seja sua sanidade ou força.
+                        </p>
+                        <button onclick="selecionaArquetipo('O Artista')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="sexto">
+                    <label class="accordion__title" for="sexto">O Atravessador</label>
+                    <div class="accordion-content">
+                        <p>O Atravessador tem todos os contatos e os usa para ganhar dinheiro rápido. Drogas, armas, 
+                            lutas ilegais, antiguidades, carros, apartamentos — o Atravessador pode conseguir o que você 
+                            precisar. Mas tudo que ele vende tem algo por trás. Uma vez que o Atravessador fisgue você, ele 
+                            nunca te deixará livre.<br/> 
+                            Enquanto houver dinheiro envolvido, o Atravessador não se importa com os riscos, e quanto 
+                            mais bem-sucedido ele é, mais inimigos ele faz ao longo do caminho. No submundo, sempre há 
+                            pessoas vorazes te observando, esperando pelo momento certo, e dispostas a pisar por cima de 
+                            você para tomar o seu lugar.
+                        </p>
+                        <button onclick="selecionaArquetipo('O Atravessador')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="setimo">
+                    <label class="accordion__title" for="setimo">O Brinquedo</label>
+                    <div class="accordion-content">
+                        <p>Nas sombras, o Brinquedo está preparado aguardando. O Brinquedo se esforça 
+                            para se libertar, para ser humano de novo, assumir o controle de sua própria vida 
+                            enquanto outros se esforçam para possuí-lo. Ele viveu uma vida de submissão 
+                            como um pária, um prisioneiro, uma aberração ou um troféu. Sentimentos de 
+                            vazio e tragédia residem dentro dele, assim como sonhos de esperança, amor e 
+                            felicidade — sonhos que são destruídos vez após vez.
+                        </p>
+                        <button onclick="selecionaArquetipo('O Brinquedo', 'Desejado')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="oitavo">
+                    <label class="accordion__title" for="oitavo">A Carreirista</label>
+                    <div class="accordion-content">
+                        <p>A Carreirista é o típico puxa-saco traiçoeiro. A maioria fica presa em um escritório de cubículo, realizando 
+                            as mesmas tarefas mundanas dia após dia, enquanto os impiedosos sobem pouco a pouco na hierarquia 
+                            corporativa. Potencialmente, a Carreirista também pode gerenciar a sua própria empresa, lutando pela 
+                            sobrevivência contra os gigantes corporativos. Em um mundo onde não existem limites quando se trata de 
+                            avançar na carreira, para ter sucesso é preciso estar disposto a fazer tudo que for necessário.
+                        </p>
+                        <button onclick="selecionaArquetipo('A Carreirista')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="nono">
+                    <label class="accordion__title" for="nono">O Cientista</label>
+                    <div class="accordion-content">
+                        <p>O cientista explora o desconhecido na esperança de encontrar respostas para as questões da vida e do universo. A 
+                            pesquisa geralmente leva a experimentos perigosos, onde o tecido separando nossa dimensão das outras é temporariamente jogado de lado. Na psicologia, medicina, física, química e várias paraciências, essas experiências 
+                            muitas vezes levam a consequências terríveis. Eles podem chamá-lo de louco, mas ele sabe que falam isso porque 
+                            eles se recusam a enxergar a Verdade.
+                        </p>
+                        <button onclick="selecionaArquetipo('O Cientista')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="decimo">
+                    <label class="accordion__title" for="decimo">O Criminoso</label>
+                    <div class="accordion-content">
+                        <p>Mafiosos, membros de gangues, ladrões, traficantes de drogas e assassinos são todos movidos por duas coisas: sua busca por dinheiro e toda a merda que eles aguentaram nas suas 
+                            vidas. Por uns poucos, a criminalidade garante uma vida de luxo. Mas para a maioria, eles 
+                            só conseguem um vislumbre da riqueza antes que alguém maior e pior tome tudo deles. 
+                            Aqui vale a lei do mais forte.
+                        </p>
+                        <button onclick="selecionaArquetipo('O Criminoso')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="decimo-primeiro">
+                    <label class="accordion__title" for="decimo-primeiro">A Descendente</label>
+                    <div class="accordion-content">
+                        <p>Sangue, alma e herança pesam bastante nos ombros da Descendente. Ela é a prole 
+                            de um ancestral mítico, de uma linhagem familiar morta, de um deus perdido, 
+                            escolhida por um culto sombrio ou talvez a herdeira de algum poder desconhecido. 
+                            É o passado que assombra a Descendente — os Pecados dos Pais. Podem ser pactos 
+                            sombrios, servidão a demônios ou uma criação cheia de abuso e violência que ainda te assombra. Não importa aonde a Descendente vai ou se esconde, seu passado 
+                            eventualmente a encontra.
+                        </p>
+                        <button onclick="selecionaArquetipo('A Descendente')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="decimo-segundo">
+                    <label class="accordion__title" for="decimo-segundo">O Detetive</label>
+                    <div class="accordion-content">
+                        <p>Seja o detetive particular desiludido em seu escritório cheio de fumaça de cigarro 
+                            ou o investigador durão da unidade de homicídios, o Detetive é motivado por sua 
+                            necessidade desesperada de encontrar respostas. Enquanto isso, suas famílias 
+                            se despedaçam, seus os amigos o abandonam, e ele cai em uma espiral de escuridão e vício. A sua “nobre” busca o leva a caminhos solitários e perigosos que 
+                            não deveriam ser trilhados.
+                        </p>
+                        <button onclick="selecionaArquetipo('O Detetive')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="decimo-terceiro">
+                    <label class="accordion__title" for="decimo-terceiro">A Enganadora</label>
+                    <div class="accordion-content">
+                        <p>Você estava apaixonada. Você finalmente conheceu o Srta. Perfeitinha. Seu futuro estava garantido, o casamento foi 
+                            planejado e todos achavam que vocês eram perfeitos um para o outro. Então, um dia, sua amada desapareceu junto 
+                            com sua conta bancária e todas as suas joias. Você foi outro alvo da Enganadora.
+                            Enganadores são pessoas manipuladoras que enganam os outros para conseguirem a confiança deles e então arrancar dinheiro ou serviços deles. Eles são mestres em esconder suas verdadeiras intenções e sentimentos, e podem se 
+                            tornar a pessoa que suas vítimas mais desejam. Enganadores deixam um rastro de inimigos amargurados pelo seu 
+                            caminho. Quando o passado os alcança, muitas vezes acaba em tragédia.
+                        </p>
+                        <button onclick="selecionaArquetipo('A Enganadora')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="decimo-quarto">
+                    <label class="accordion__title" for="decimo-quarto">A Indagadora</label>
+                    <div class="accordion-content">
+                        <p>As Indagadoras são exploradoras dos mitos urbanos modernos, antigos e esquecidos. Eles são blogueiros, hackers e contadores de 
+                            histórias da Era Moderna. Na Internet, vozes sem rosto sussurram sobre mentiras e conspirações. Em estações de metrô abandonadas, alguém deixa mensagens em graffiti aparentemente sem sentido. Se você cavar fundo o suficiente, você encontrará a Verdade, 
+                            mas a maioria de nós não consegue enxergar através da espessa névoa da desinformação e nos perdemos irremediavelmente na 
+                            tempestade da propaganda, da pornografia e do entretenimento irracional. A Indagadora sabe como usar a Internet para revelar os 
+                            segredos debaixo das pedras que não deveriam ter sido reviradas. Para a Indagadora, nenhum preço é grande demais para encontrar a Verdade e expô-la para consumo público.
+                        </p>
+                        <button onclick="selecionaArquetipo('A Indagadora')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="decimo-quinto">
+                    <label class="accordion__title" for="decimo-quinto">O Nômade</label>
+                    <div class="accordion-content">
+                        <p>O Nômade nunca fica em um lugar tempo suficiente para se sentir em casa. A estrada é a sua casa. Pode ser um desejo incontrolável de 
+                            nunca criar raízes, ou uma reação a perseguidores sempre em seu encalço. O Nômade aprendeu a viver com o que couber na mochila 
+                            ou no porta-malas do carro. O que é importante para os outros não tem sentido para o Nômade, que nunca se apega a nada. Os outros 
+                            vagabundos e párias são seus amigos e aliados. Ele busca refúgio em motéis decadentes, vagões de carga, casas abandonadas e outros 
+                            abrigos improvisados. A eterna pergunta para aqueles que o encontram é: do que você está fugindo?
+                        </p>
+                        <button onclick="selecionaArquetipo('O Nômade')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="decimo-sexto">
+                    <label class="accordion__title" for="decimo-sexto">A Ocultista</label>
+                    <div class="accordion-content">
+                        <p>A Ocultista procura as respostas para os mistérios da vida através das teorias ocultas. Tomos antigos, líderes de seitas malucas e fóruns obscuros da internet que falam de diferentes dimensões, 
+                            rituais mágicos, criaturas do outro mundo e poderes que podem transformar homens em deuses. 
+                            A Ocultista descobriu informações suficientes para começar a experimentar com estas forças, 
+                            mas não o suficiente para ter qualquer grau de controle. Magia sempre tem um preço alto, e a 
+                            conta da Ocultista está chegando.
+                        </p>
+                        <button onclick="selecionaArquetipo('A Ocultista')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="decimo-setimo">
+                    <label class="accordion__title" for="decimo-setimo">A Profetisa</label>
+                    <div class="accordion-content">
+                        <p>A fé e a religião concedem poder, seja você um padre, pastor, imã, rabino ou outro líder 
+                            de seita. A Profetisa pode ter escolhido servir o deus dela, mas também pode ter sido um 
+                            caminho que ela foi forçada a caminhar pela sua família ou congregação desde cedo. 
+                            Estar dentro de uma associação religiosa garante acesso à comunidade e um senso 
+                            de propósito maior. No entanto, as sombras lançadas pela luz do Divino muitas vezes 
+                            escondem abusos de poder, ocultismo, doutrinas pervertidas, casamentos forçados e 
+                            a adoração de falsos deuses.
+                        </p>
+                        <button onclick="selecionaArquetipo('A Profetisa')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="decimo-oitavo">
+                    <label class="accordion__title" for="decimo-oitavo">A Ronin</label>
+                    <div class="accordion-content">
+                        <p>A Ronin sempre se equilibra na borda de um poço sem fundo. Quando você está sem opções, 
+                            contrate a Ronin para resolver o problema. Ela realiza qualquer tarefa onde compaixão e 
+                            moralidade são riscos, e onde erros significam prisão, morte ou pior. A Ronin nunca confia em 
+                            ninguém. Os empregadores de ontem são os alvos potenciais de amanhã. Uma vez que a caçada da Ronin tenha começado, não há escapatória para suas presas.
+                        </p>
+                        <button onclick="selecionaArquetipo('A Ronin')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="decimo-nono">
+                    <label class="accordion__title" for="decimo-nono">O Veterano</label>
+                    <div class="accordion-content">
+                        <p>O Veterano viu a morte de perto. Ele passou a maior parte de sua vida em combate, com 
+                            uma arma na mão e adrenalina nas veias. Ele pode ter sido um soldado de infantaria 
+                            rastejando numa trincheira no Afeganistão, um policial de elite realizando missões 
+                            frequentes contra criminosos fortemente armados, ou um civil de um país devastado pela 
+                            guerra que se tornou refugiado e ainda é torturado pelas memórias do conflito.
+                        </p>
+                        <button onclick="selecionaArquetipo('O Veterano')">Selecionar</button>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="vigesimo">
+                    <label class="accordion__title" for="vigesimo">A Vingadora</label>
+                    <div class="accordion-content">
+                        <p>A Vingadora foi privada de algo querido, seja isso amor, trabalho, família, humanidade, honra, 
+                            memórias ou objetivos de vida. Independentemente do que foi retirado dela, sua perda só pode 
+                            ser paga com sangue. A única coisa que resta é a vingança, e a Vingadora não pretende deixar 
+                            nada ou ninguém entrar em seu caminho, independentemente das consequências.
+                        </p>
+                        <button onclick="selecionaArquetipo('A Vingadora', 'Juramento de Vingança')">Selecionar</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="step-group" id="step-group-2">
+            <div class="box-atributos">
+            <div class="atributos__texto">
+                <p>Há dez atributos, cada um com Movimentos associados. Os 
+                    Atributos modificam as rolagens de Movimentos e Vantagens do 
+                    jogador. Atributos e seus Movimentos são <b>passivos</b> (ativados 
+                    automaticamente quando as condições são atendidas) ou <b>ativos</b>
+                    (ativados por um personagem executando uma ação específica).</p>
+                <p>Atributos passivos são usados para resistir às influências externas e internas. Os Movimentos de jogador associados com atributos passivos são ativados quando o personagem é ameaçado. 
+                    Ao criar seu personagem, distribua os valores de ajuste de +2, +1 e 0 para os Atributos passivos.</p>
+                <span>Há três Atributos passivos: <b>Fortitude</b>, <b>Vontade</b> e <b>Reflexos</b>.</span>
+                <p>Atributos ativos são usados quando um personagem age de forma 
+                    proativa. Os Movimentos de jogador associados com Atributos 
+                    ativos são ativados quando um protagonista executa uma ação específica 
+                    na história. Ao criar seu personagem, distribua os valores de ajuste de +3, +2, +1, +1, 0, -1 e -2 para os Atributos ativos.</p>
+                <span>Há sete Atributos ativos: <b>Razão</b>, <b>Intuição</b>, <b>Percepção</b>, <b>Firmeza</b>, <b>Violência</b>, <b>Carisma</b> e <b>Alma</b>.</span>
+                <button onclick="selecionaAtributos()">Selecionar</button>
+            </div>
+            <div class="container__atributos">
+                <input required class="atributos" type="number" value="1" name="fortitude" title="Fortitude">
+                <label class="label-fortitude">Fortitude</label>
+                <span class="span-fortitude">Suportar Lesão</span>
+                <input required class="atributos" type="number" value="1" name="vontade" title="Vontade">
+                <label class="label-vontade">Vontade</label>
+                <span class="span-vontade">Manter o Controle</span>
+                <input required class="atributos" type="number" value="1" name="reflexos" title="Reflexos">
+                <label class="label-reflexos">Reflexos</label>
+                <span class="span-reflexos">Evitar Dano</span>
+                <input required class="atributos" type="number" value="1" name="intuicao" title="Intuição">
+                <label class="label-intuicao">Intuição</label>
+                <span class="span-intuicao">Ler uma Pessoa</span>
+                <input required class="atributos" type="number" value="1" name="violencia" title="Violência">
+                <label class="label-violencia">Violência</label>
+                <span class="span-violencia">Engajar em Combate</span>
+                <input required class="atributos" type="number" value="1" name="carisma" title="Carisma">
+                <label class="label-carisma">Carisma</label>
+                <span class="span-carisma">Inflenciar Alguém</span>
+                <input required class="atributos" type="number" value="1" name="alma" title="Alma">
+                <label class="label-alma">Alma</label>
+                <span class="span-alma">Ver Através da Ilusão</span>
+                <input required class="atributos" type="number" value="1" name="firmeza" title="Firmeza">
+                <label class="label-firmeza">Firmeza</label>
+                <span class="span-firmeza">Agir sob Pressão</span>
+                <input required class="atributos" type="number" value="1" name="razao" title="Razão">
+                <label class="label-razao">Razão</label>
+                <span class="span-razao">Investigar</span>
+                <input required class="atributos" type="number" value="1" name="percepcao" title="Percepção">
+                <label class="label-percepcao">Percepção</label>
+                <span class="span-percepcao">Observar Situação</span>
+            </div>
+        </div>
+        </div>
+        <div class="step-group" id="step-group-3">
+            <p>Vantagens são forças, habilidades raras, poderes sobrenaturais, 
+                e recursos valiosos que o personagem pode usar na história para 
+                ganhar trunfos e realizar coisas que os outros não conseguem.</p>
+            <p>Vantagens são Movimentos que fornecem ao personagem bônus 
+                permanentes em rolagens de um tipo específico, ampliam o alcance de um Movimento básico, ou 
+                fornecem ao jogador a oportunidade de realizar ações especiais que ninguém mais poderia.</p>
+            <span>Cada personagem começa o jogo com três vantagens, determinadas a partir de uma lista limitada por seu arquétipo. Clique no ícone referente à vantagem desejada para selecioná-la.</span>
+            <div class="vantagem__container">
+            </div>
+            <div class="vantagem__botao">
+            <button onclick="selecionaVantagens()">Selecionar</button>
+            <h4 class="vantagem--erro"></h4>
+            </div>
+        </div>
+        <div class="step-group" id="step-group-4">
+            <p>Desvantagens podem ser as falhas pessoais do personagem,
+                traços negativos de personalidade, condições adversas ou ameaças externas na forma de indivíduos, instituições, criaturas e/
+                ou poderes sobrenaturais.</p>
+            <p> Desvantagens são Movimentos rolados pelos jogadores, mas ao contrário dos
+                Movimentos básicos do jogador, eles fornecem ao Mestre da Campanha oportunidades para afetar os personagens mais tarde na história.</p>
+            <span>Cada personagem começa o jogo com duas desvantagens, podendo algumas serem determinadas previamente por seu arquétipo de personagem. Clique no ícone referente à desvantagem desejada para selecioná-la.</span>
+            <div class="desvantagem__container swiper">
+                <div class="swiper-wrapper"></div>
+                <div class="swiper-button-next swiper-navBtn"></div>
+                <div class="swiper-button-prev swiper-navBtn"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="vantagem__botao">
+            <button onclick="selecionaDesvantagens()">Selecionar</button>
+            <h4 class="desvantagem--erro"></h4>
+            </div>
+        </div>
+        <div class="step-group" id="step-group-5">
+            <h2 class="step--titulo">Traços do Personagem</h2>
+            <p>Cada personagem tem um passado, que moldou a pessoa que ele é hoje. Eventos traumáticos, segredos enterrados e encontros com o sobrenatura despertaram dúvidas de que as coisas podem não ser o que parecem. Através da dor, medo, culpa, e loucura, esses eventos forjaram a personalidade do personagem e forneceram a ele pontos fortes e fracos.</p>
+            <span class="span--negrito">Preencha os campos abaixos com informações relativas aos detalhes pessoais de seu personagem.</span>
+            <div class="container__detalhes">
+                <div class="box--imagem">
+                    <div class="inputBox" id="input-imagem-pg">
+                    <input required type="url" name="pg-imagem" id="pg-imagem" placeholder="placeholder" onkeydown="limpaTexto()">
+                    <span>Imagem</span>
+                    </div>
+                    <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" onchange="defineImagem()">
+                    <label for="input-file" class="uploadImage"><i class="fa-solid fa-arrow-up-from-bracket"></i></label>
+                </div>
+                <div class="box--nome__ocupacao">
+                    <div class="inputBox" id="input-nome-pg">
+                    <input required type="text" name="pg-nome" id="pg-nome" onkeydown="limpaTexto()" placeholder="placeholder">
+                    <span>Nome</span>
+                    </div>
+                    <div class="inputBox" id="input-ocupacao-pg">
+                    <input required type="text" name="pg-ocupacao" id="pg-ocupacao" onkeydown="limpaTexto()" placeholder="placeholder">
+                    <span>Ocupação</span>
+                    </div>
+                </div>
+                <div class="box--idade__nacionalidade">
+                    <div class="inputBox" id="input-idade-pg">
+                    <input required type="number" value="0" name="pg-idade" id="pg-idade"  onkeydown="limpaTexto()" placeholder="placeholder">
+                    <span>Idade</span>
+                    </div>
+                    <div class="inputBox" id="input-nacionalidade-pg">
+                    <input required type="text" name="pg-nacionalidade" id="pg-nacionalidade" onkeydown="limpaTexto()" placeholder="placeholder">
+                    <span>Nacionalidade</span>
+                    </div>
+                </div>
+                <div class="inputBox">
+                <textarea required name="pg-historia" id="pg-historia" onkeydown="limpaTexto()"></textarea>
+                <span>Narrativa</span>
+                </div>
+            </div>
+            <h2 class="step--titulo">Segredos Sombrios</h2>
+            <p>Segredos Sombrios são eventos do passado dos personagens, que os assombram e ameaçam em toda a sua história. São janelas para episódios traumáticos, místicos, ou carregados de culpa no passado do personagem. Cada personagem deve ter <b>um ou mais</b> Segredos Sombrios.</b></p>
+            <span class="span--negrito">Ao escolher um segredo sombrio, decida em que grau seu personagem está ciente sobre ele, assim como um passeio pessoal que emergiu disso.</span>
+            <div class="tabela__segredos">
+                <div class="tabela__topo">
+                    <h4>Segredos Sombrios</h2>
+                    <button onclick="abrirSegredo()">Adicionar</button>
+                </div>
+                <div class="tabela__conteudo">
+                    <table width="100%">
+                        <thead>
+                            <tr>
+                                <td>Segredo Sombrio</td>
+                                <td>Motivação Pessoal</td>
+                            </tr>
+                        </thead>
+                        <tbody class="tabela__corpo">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <dialog class="modal" id="modal">
+                <span class="icone-fechar">
+                    <ion-icon name="close" onclick="fechaSegredo()"></ion-icon>
+                </span>
+                <h2>Adicionar Segredo</h2>
+                    <div class="inputSegredos">
+                        <select class="select-box">
+                            <option value="Conhecimento Proibido">Conhecimento Proibido</option>
+                            <option value="Culpado de Crime">Culpado de Crime</option>
+                            <option value="Desaparecimento Misterioso">Desaparecimento Misterioso</option>
+                            <option value ="Doença Mental">Doença Mental</option>
+                            <option value="Escolhido">Escolhido</option>
+                            <option value="Experiência com Ocultismo">Experiência com Ocultismo</option>
+                            <option value="Guardião">Guardião</option>
+                            <option value="Herdeiro">Herdeiro</option>
+                            <option value="Maldição">Maldição</option>
+                            <option value="Pacto com Forças Sombrias">Pacto com Forças Sombrias</option>
+                            <option value="Regressante do Outro Lado">Regressante do Outro Lado</option>
+                            <option value="Responsável por Experimentos Médicos">Responsável por Experimentos Médicos</option>
+                            <option value="Segredo de Família">Segredo de Família</option>
+                            <option value="Sem Raízes">Sem Raízes</option>
+                            <option value="Visitações">Visitações</option>
+                            <option value="Vítima de Crime">Vítima de Crime</option>
+                            <option value="Vítima de Experimentos Médicos">Vítima de Experimentos Médicos</option>
+                        </select>
+                        <div class="icon-select">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <span>Segredo Sombrio</span>
+                    </div>
+                    <div class="inputSegredos">
+                        <input type="text" id="motivoSegredo" onkeydown="limpaTexto()" placeholder="placeholder">
+                        <span>Motivação Pessoal</span>
+                        <p class="erro--segredo"></p>
+                    </div>
+                    <div class="inputSegredos">
+                        <input type="submit" value="Criar" onclick="criaSegredo()">
+                    </div>
+            </dialog>
+            <div class="formulario__botao">
+            <button class="createCharacter" onclick="criaFicha()">Finalizar</button>
+            <h5 class="form--error"></h5>
+            </div>
+        </div>
+    </div>
+</main>

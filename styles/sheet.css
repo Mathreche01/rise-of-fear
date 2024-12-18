@@ -1,0 +1,1294 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+.ficha__conteudo{
+    background: url('../img/Banner4.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column; 
+}
+
+.ficha{
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.ficha__detalhes{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    border-radius: 20px;
+}
+
+.ficha__relacoes--lista .relacao{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.relacao .relacao-rating{
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    border-left: 1px dashed rgb(60,60,60);
+    padding: 8px 0 8px 10px;
+}
+
+.relacao .relacao-rating input, .ferimento__item input, .estabilidade__secao input{
+    position: relative;
+    width: 20px;
+    height: 14px;
+    display: flex;
+    justify-content: center;
+    appearance: none;
+    -webkit-appearance: none;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#modalProgressao input{
+    position: relative;
+    width: 18px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    appearance: none;
+    -webkit-appearance: none;
+    align-items: center;
+    cursor: pointer;
+}
+
+.relacao .relacao-rating input::before, .ferimento__item input::before, .estabilidade__secao input::before{
+    content: '◇';
+    position: absolute;
+    font-family: 'Dai Banna SIL',    serif;
+    font-size: 20px;
+    left: 4px;
+}
+
+#modalProgressao input::before{
+    content: '';
+    background-image: url('../img/square-outline.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 22px;
+    height: 22px;
+    filter: brightness(0) invert(1);
+}
+
+#modalProgressao input:checked ~ input::before, #modalProgressao input:checked::before{
+    content: '';
+    background-image: url('../img/checkbox-outline.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 22px;
+    height: 22px;
+    filter: brightness(0) invert(1);
+}
+
+.relacoes__topo{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Dai Banna SIL', serif;
+}
+
+.relacao__grau{
+    transform: translateX(110%) translateY(20%);
+    color: rgb(90, 90, 90);
+    font-weight: 600;
+}
+
+.ficha__segredos h4{
+    width: 68%;
+    text-align: center;
+    color: rgb(90, 90, 90);
+    font-weight: 600;
+}
+
+.fa-xmark{
+    pointer-events: none;
+}
+
+.relacao{
+    position: relative;
+    border-bottom: 1px dashed rgb(60,60,60);
+}
+
+.ficha__relacoes--lista .relacao:last-child, .ficha__relacoes--lista .segredo-item:last-child, .estabilidade__secao:first-child,
+#lista-ganchos li:first-child, .ferimentos__graves--lista .lista__item:last-child, .ferimentos__criticos--lista .lista__item:last-child{
+    border: none;
+}
+
+.relacao b{
+    position: relative;
+    width: 180px;
+    padding: 8px 0;
+    border-right: 1px dashed rgb(60,60,60);
+}
+
+.segredo-texto{
+    font-size: 100px;
+}
+
+.relacao p{
+    width: 100px;
+    text-align: center;
+}
+
+.modificadores{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    color: rgb(90, 90, 90);
+    font-weight: 600;
+}
+
+.modificadores p{
+    padding: 10px 0 0 12px;
+    margin-right: 4px;
+}
+
+.relacao .relacao-rating input:hover ~ input::before, .relacao .relacao-rating input:hover::before,
+.relacao .relacao-rating input:checked ~ input::before, .relacao .relacao-rating input:checked::before,
+.ferimento__item input:checked ~ input::before, .ferimento__item input:checked::before,
+.estabilidade__secao input:checked ~ input::before, .estabilidade__secao input:checked::before{
+    content: '◈'
+}
+
+.ficha__coluna1, .ficha__coluna2, .ficha__coluna3{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 2em 2em 2em;
+}
+
+.ficha__coluna2{
+    gap: 50px;
+}
+
+.ficha__segredos .ficha__relacoes--lista{
+    height: 70px;
+}
+
+.segredo-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 16px;
+    border-bottom: 1px dashed rgb(60,60,60);
+}
+
+.segredo-item b{
+    padding: 10px 10px 8px 0;
+    width: 30%;
+    border-right: 1px dashed rgb(60,60,60);
+}
+
+.segredo-item p{
+    width: 70%;
+    text-align: center;
+}
+
+#lista-ganchos li{
+    list-style: none;
+    font-size: 15px;
+    padding: 12px 8px 8px 30px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    border-top: 1px dashed rgb(60,60,60);
+}
+
+#lista-ganchos li span{
+    content: '/f00d';
+    position: absolute;
+    right: 0;
+    top: 4px;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    color: #555;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+#lista-ganchos li span:hover{
+    background: #edeef015;
+}
+
+#lista-ganchos li::before{
+    content: '';
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background-image: url('../img/unchecked.png');
+    background-size: cover;
+    background-position: center;
+    top: 10px;
+    left: 5px;
+}
+
+.segredo-item b{
+    position: relative;
+}
+
+.relacao ion-icon, .segredo-item b ion-icon{
+    color: red;
+    position: absolute;
+    right: 3px;
+    cursor: pointer;
+}
+
+.ferimento__item{
+    padding: 8px 5px 2px 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px dashed rgb(60,60,60);
+}
+
+.ferimento__item input{
+    margin-right: 35px;
+}
+
+.ferimento__item p{
+    margin-left: 10px;
+}
+
+.ferimentos__graves--topo, .ferimentos__criticos--topo, .ficha__itens h4{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 18px;
+    font-family: 'Dai Banna SIL', serif;
+    color: rgb(90, 90, 90);
+    font-weight: 600;
+    margin: 8px 0 4px 0;
+    border-bottom: 2px solid rgb(60,60,60);
+}
+
+#listaEquipamentoEspecial td:nth-child(2), #listaEquipamentoCorpo td:nth-child(4), #listaEquipamentoDistancia td:nth-child(4){
+    text-align: left !important;
+}
+
+#listaEquipamentoDistancia td:nth-child(6){
+    border-left: 1px dashed rgb(60, 60, 60);
+}
+
+.ferimentos__graves--topo span, .ferimentos__criticos--topo span{
+    font-size: 12px;
+}
+
+#lista-ganchos li.checked{
+    color: #777;
+    text-decoration: line-through;
+}
+
+#lista-ganchos li.checked::before{
+    background-image: url('../img/checked.png');
+}
+
+.ferimento__item:last-child{
+    border: none;
+}
+
+.ficha__relacoes--lista, .lista__ferimentos{
+    border-left: 2px dotted rgb(60,60,60);
+    border-bottom: 2px dotted rgb(60,60,60);
+    padding-left: 10px;
+    height: 132px;
+    overflow-y: scroll;
+}
+
+.ficha__relacoes--lista::-webkit-scrollbar, .lista__ferimentos::-webkit-scrollbar{
+    width: 0;
+}
+
+.ficha__relacoes--lista b{
+    font-weight: 600;
+}
+
+.ficha__detalhes .ficha__info{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+
+.ficha__imagem img{
+    width: 210px;
+    height: 202px;
+    border: 2px dotted rgb(60,60,60)
+}
+
+.ficha__info h3, .ficha__imagem h3{
+    background-color: black;
+    width: fit-content;
+    padding: 10px;
+    transform: translateY(2px);
+    font-family: 'Dai Banna SIL', serif;
+}
+
+.ficha__personagem{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 32px;
+}
+
+.ficha__detalhes .ficha__info p{
+    padding: 10px 0 0 7px;
+    font-size: 17px;
+}
+
+.ficha__info{
+    border-bottom: 2px dotted rgb(60,60,60);
+}
+
+.ficha__info h3::before, .ficha__imagem h3::before{
+    content: "⬥";
+    padding-right: 5px;
+}
+
+.ficha__info h3::after, .ficha__imagem h3::after{
+    content: "⬥";
+    padding-left: 5px;
+}
+
+
+.ficha__atributos{
+    align-self: center;
+    width: 37.7em;
+    position: relative;
+    background: url("../img/Frame2.png") no-repeat;
+    background-position: center;
+    background-size: contain;
+    font-family: 'Dai Banna SIL', serif;
+    color: whitesmoke;
+    pointer-events: none;
+    font-size: 20px;
+    font-weight: 600;
+    height: 35em;
+}
+
+.ficha__atributos label{
+    position: absolute;
+    font-size: 20px;
+}
+
+.ficha__atributos span{
+    position: absolute;
+    font-size: 16px;
+}
+
+.intuicao-titulo{
+    top: 338px;
+    left: 483px;
+}
+
+.intuicao-descricao{
+    top: 359px;
+    left: 466px;
+}
+
+#intuicao{
+    top: 282px;
+    left: 509px;
+}
+
+.violencia-titulo{
+    top: 484px;
+    left: 481px;
+}
+
+.violencia-descricao{
+    top: 505px;
+    left: 453px;
+}
+
+#modalAtributos .container__atributos{
+    color: white;
+    transform: translateY(-2em);
+}
+
+#modalAtributos{
+    width: 25em;
+}
+
+#mensagemErroAtributos{
+    position: absolute;
+    top: 91%;
+}
+
+#violencia{
+    top: 425px;
+    left: 509px;
+}
+
+.reflexos-titulo{
+    top: 197px;
+    left: 485px;
+}
+
+.reflexos-descricao{
+    top: 217px;
+    left: 481px;
+}
+
+#reflexos{
+    top: 135px;
+    left: 509px;
+}
+
+.razao-titulo{
+    top: 338px;
+    left: 210px;
+}
+
+.razao-descricao{
+    top: 359px;
+    left: 201px;
+}
+
+#razao{
+    top: 282px;
+    left: 226px;
+}
+
+.firmeza-titulo{
+    top: 480px;
+    left: 201px;
+}
+
+.firmeza-descricao{
+    top: 501px;
+    left: 179px;
+}
+
+#firmeza{
+    top: 425px;
+    left: 226px;
+}
+
+.carisma-titulo{
+    top: 558px;
+    left: 344px;
+}
+
+.carisma-descricao{
+    top: 579px;
+    left: 317px;
+}
+
+#carisma{
+    top: 499px;
+    left: 368px;
+}
+
+.alma-titulo{
+    top: 697px;
+    left: 356px;
+}
+
+.alma-descricao{
+    top: 718px;
+    left: 310px;
+}
+
+#alma{
+    top: 643px;
+    left: 368px;
+}
+
+.fortitude-titulo{
+    top: 198px;
+    left: 196px;
+}
+
+.fortitude-descricao{
+    top: 219px;
+    left: 184px;
+}
+
+#fortitude{
+    top: 135px;
+    left: 226px;
+}
+
+.percepcao-titulo{
+    top: 408px;
+    left: 336px;
+}
+
+.percepcao-descricao{
+    top: 429px;
+    left: 317px;
+}
+
+#percepcao{
+    top: 354px;
+    left: 368px;
+}
+
+.vontade-titulo{
+    top: 125px;
+    left: 342px;
+}
+
+.vontade-descricao{
+    top: 146px;
+    left: 317px;
+}
+
+#vontade{
+    top: 63px;
+    left: 368px;
+}
+
+.atributo{
+    position: absolute;
+    font-size: 24px;
+    pointer-events: all;
+    cursor: pointer;
+    color: white;
+    width: 20px;
+    text-align: center;
+}
+
+
+.ficha__itens thead{
+    padding: 10px;
+    font-family: 'Dai Banna SIL', serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: rgb(60,60,60);
+    text-align: center;
+}
+
+.ficha__itens thead td{
+    border-right: 1px dashed rgb(60,60,60);
+    border-bottom: 1px dashed rgb(60,60,60);
+}
+
+#personagemHistoria, #personagemNotas{
+    white-space: wrap;
+    overflow-wrap: break-word;
+}
+
+.ficha__itens tbody td{
+    font-family: 'Dai Banna SIL', serif;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    font-size: 15px;
+    border-right: 1px dashed rgb(60,60,60);
+    border-top: 1px dashed rgb(60,60,60);
+}
+
+.ficha__itens tbody tr:first-child td{
+    border-top: none;
+}
+
+.ficha__itens input, .vantagem__inputs input{
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0 1px;
+    padding: 0;
+}
+
+.ficha__itens input::before, .vantagem__inputs input::before{
+    content: '\2d54';
+}
+
+.ficha__itens input:checked ~ input::before, .ficha__itens input:checked::before,
+ .vantagem__inputs input:checked ~ input::before, .vantagem__inputs input:checked::before{
+    content: 'ⵙ';
+}
+
+
+.vantagem__inputs{
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.vantagem__inputs--lista{
+    display: flex;
+    flex-direction: row-reverse;
+    font-weight: 300;
+}
+
+.itens-municao{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    border: none !important;
+}
+
+.ficha__itens thead td:last-child, .ficha__itens tbody td:last-child{
+    border-right: none;
+}
+
+.ficha__vantagem{
+    margin: 20px 30px 0 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #fff;
+    cursor: pointer;
+}
+
+.ficha__vantagem--titulo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ficha__vantagem--titulo h4{
+    font-size: 18px;
+}
+
+.ficha__vantagem--descricao p{
+    padding-top: 1rem;
+    line-height: 1.2;
+    font-size: 16px;
+}
+
+.lista__vantagens{
+    margin-top: 10px;
+
+}
+
+.lista__vantagens li{
+    list-style: none;
+    cursor: pointer;
+}
+
+.lista__vantagens li .vantagem__accordion{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vantagem__accordion .vantagem__titulo{
+    font-size: 18px;
+    font-weight: 500;
+    color: #595959;
+    transition: .5s ease;
+    pointer-events: none;
+}
+
+.vantagem__accordion .arrow{
+    font-size: 20px;
+    color: #595959;
+    transition: .5s ease;
+    pointer-events: none;
+}
+
+.lista__vantagens li .vantagem__linha{
+    display: block;
+    height: 2px;
+    width: 100%;
+    margin: 6px 0;
+    background: rgba(172, 170, 170, 0.1);
+    transition: .5s ease;
+}
+
+.lista__vantagens li.showAnswer .arrow{
+    transform: rotate(-180deg);
+}
+
+.lista__vantagens li:hover .vantagem__accordion .vantagem__titulo, .lista__vantagens li.showAnswer .vantagem__accordion .vantagem__titulo,
+.lista__vantagens li:hover .vantagem__accordion .arrow, .lista__vantagens li.showAnswer .vantagem__accordion .arrow{
+    color: #c8102E;
+} 
+
+.lista__vantagens li:hover .vantagem__linha, .lista__vantagens li.showAnswer .vantagem__linha{
+    background: #c8102E;
+}
+
+.lista__vantagens li p{
+    margin: 10px 0;
+    color: whitesmoke;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.1;
+}
+
+.lista__vantagens strong{
+    font-weight: 600;
+}
+
+.lista__vantagens li .vantagem__conteudo span{
+    font-weight: 800;
+}
+
+.vantagem__conteudo{
+    display: none;
+}
+
+.lista__vantagens li.showAnswer .vantagem__conteudo{
+    display: block;
+}
+
+.lista__vantagens li.showAnswer .vantagem__conteudo b{
+    color: #E32636;
+}
+
+.vantagem__resultados{
+    border-top: 1px #c8102E dashed;
+    border-bottom: 1px #c8102E dashed;
+    margin-bottom: 10px;
+}
+
+.vantagem__opcoes{
+    margin-left: 10px;
+}
+
+.titulo__opcoes{
+    font-weight: 600;
+}
+
+.grau-estabilidade{
+    display: flex;
+    flex-direction: row;
+    padding-top: 1px;
+}
+
+.estabilidade__secao{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-top: 1px dashed rgb(60,60,60);
+}
+
+.descricao-estabilidade strong{
+    font-weight: 800;
+}
+
+.secao__estabilidades{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.descricao-estabilidade p{
+    padding-top: 2px;
+}
+
+.ficha__linha1, .ficha__linha2{
+    display: flex;
+    flex-direction: row;
+}
+
+.ficha__linha2 .ficha__info{
+    width: 33%;
+    margin: 0 2em 3em 2em;
+}
+
+.ficha__linha2 .lista__ferimentos{
+    border-right: 2px dotted rgb(60,60,60);
+    border-top: 2px dotted rgb(60,60,60);;
+}
+
+.lista__narrativa p, .lista__observacoes p{
+    padding: 10px 10px 10px 5px;
+    text-align: justify;
+}
+
+.dado__item{
+    margin: 8px 8px 8px 8px;
+    text-align: center;
+}
+
+.dado__item span{
+    cursor: pointer;
+    color: #86888a;
+    font-size: 12px;
+    transition: all .3s ease-in;
+}
+
+.dado__item span:hover{
+    text-decoration: underline;
+    color: #c8102E;
+}
+
+.dado__box{
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.26);
+    border-radius: 20px;
+    border: #444 groove 2px;
+    transition: .5s ease-in-out;
+    width: 120px;
+    height: 80px;
+}
+
+.dado__box span{
+    font-size: 12px;
+    color: var(--cinza);
+    font-weight: 300;
+    text-decoration: none !important;
+}
+
+.dado__box span:hover{
+    color: var(--cinza);
+}
+
+.dado__box h4{
+    font-weight: 600;
+    transition: .5s ease-in-out;
+}
+
+.dado__box i{
+    font-size: 40px;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
+
+.dado__box:hover{
+    border-color: #c8102E;
+}
+
+.dado__box:hover i, .dado__box:hover h4{
+    color: #c8102E;
+    border-color: #c8102E;
+    font-weight: 800;
+}
+
+.ficha__dados{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ficha__topo{
+    margin: 1em 2em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.progress{
+    cursor: pointer;
+    margin-right: 1em;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #fff;
+    background: #444 linear-gradient(to right, transparent 50%, #D2122E 0);
+}
+
+.progress h3{
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    font-family: 'Dai Banna SIL',    serif;
+    transform: translate(-50%, -50%);
+    font-size: 1.3em;
+    z-index: 1;
+    font-weight: 500;
+}
+
+.progress::before{
+    content: '';
+    display: block;
+    height: 100%;
+    margin-left: 50%;
+    transform-origin: left;
+    border-radius: 0 100% 100% 0/50%;
+    background: #D2122E;
+    transform: rotate(calc((var(--i) - 50) * 0.01turn));
+}
+
+.progress.less::before{
+    background: #444;
+    transform: rotate(calc((var(--i)) * 0.01turn));
+}
+
+.progress::after{
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: #222;
+}
+
+.relacoes__topo .fa-pen-to-square, .ficha__imagem .fa-pen-to-square{
+    cursor: pointer;
+    color: #FF033E;
+}
+
+#modalInfo{
+    height: 23em;
+    overflow-y: hidden;
+}
+
+#modalInfo::-webkit-scrollbar{
+    width: 0;
+}
+
+#modalInfo .inputSegredos:first-child{
+    margin-top: 20px;
+}
+
+.ficha__imagem{
+    position: relative;
+}
+
+.ficha__atributos label{
+    pointer-events: all;
+}
+
+.ficha__atributos .fa-pencil{
+    display: none;
+    font-size: 12px;
+    margin-left: 5px;
+    margin-bottom: 2px;
+    cursor: pointer;
+    pointer-events: all;
+    color: #c8102E;
+}
+
+.ficha__atributos label:hover .fa-pencil{
+    display: inline;
+}
+
+#modalProgressao{
+    width: 40em;
+    color: white;
+    transform: none;
+}
+
+#modalProgressao .inputSegredos{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+}
+
+#modalProgressao h5{
+    font-weight: 800;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#modalProgressao h6{
+    padding-top: 10px;
+}
+
+#modalProgressao p{
+    color: white;
+    transform: none;
+    margin-left: 5px;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+#modalProgressao button{
+    align-self: center;
+    padding: 10px 20px;
+    width: 300px;
+    border-radius: 4px;
+    margin-top: 3em;
+}
+
+#modalProgressao .progressao__texto{
+    margin-left: 5px;
+    margin-top: 16px;
+}
+
+#modalProgressao .progressao__box{
+    margin-top: -12px;
+}
+
+#modalProgressao .erro--segredo{
+    position: absolute;
+    font-size: 13px;
+    color: red;
+    transform: translateY(5.8em);
+    font-weight: 300;
+}
+
+.progressao__item{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 10px;
+}
+
+#modalProgressao{
+    text-align: justify;
+}
+
+#modalVantagens .search-box, #modalDesvantagens .search-box{
+    color: white;
+}
+
+#modalVantagens, #modalDesvantagens{
+    height: 60%;
+    width: 30em;
+    overflow-y: hidden;
+}
+
+#modalVantagens p, #modalDesvantagens p{
+    transform: none;
+}
+
+#modalVantagens .lista__vantagens, #modalDesvantagens .lista__vantagens{
+    margin: 20px;
+}
+
+#modalVantagens .vantagem__conteudo span, #modalDesvantagens .vantagem__conteudo span{
+    color: white;
+}
+
+#modalVantagens .erro--segredo, #modalDesvantagens .erro--segredo{
+    position: absolute;
+    transform: translateY(14em);
+}
+
+.boxVantagens{
+    height: 18em;
+    width: 100%;
+    background: rgb(41,41,41);
+    border-radius: 6px;
+    overflow-y: scroll;
+}
+
+#modalVantagens .inputSegredos input, #modalDesvantagens .inputSegredos input{
+    margin: 1em 0 2em 0;
+}
+
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.relacoes__topo button{
+    position: absolute;
+    top: 11px;
+    left: var(--titulo-largura)
+}
+
+.ficha__imagem button{
+    position: absolute;
+    top: 8px;
+    left: var(--titulo-largura)
+}
+
+
+#mensagemErroRelacao, #mensagemErroSegredos, #mensagemErroEquipamento, #mensagemErroFerimentos, #mensagemErroDadosNome, #mensagemErroInfoIdade{
+    transform: translateY(55px);
+}
+
+#mensagemErroDadosRolagem, #mensagemErroInfoNome, #mensagemErroInfoOcupacao, #mensagemErroInfoNacionalidade, #mensagemErroInfoImagem{
+    transform: translateY(50px);
+}
+
+#infoImagem{
+    width: 86%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.modalOverflow::-webkit-scrollbar{
+    width: 0;
+}
+
+.modalOverflow{
+    height: 15em;
+    margin-bottom: 2em;
+    overflow-y: scroll;
+}
+
+.inputSegredos{
+    position: relative;
+}
+
+.inputSegredos .uploadImage{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    height: calc(100% - 13px);
+    padding: 12px 0 0 0;
+    border: 1px dashed whitesmoke;
+    border-left: none;
+    width: 14%;
+    right: 0;
+    color: whitesmoke;
+}
+
+.inputSegredos .uploadImage:hover{
+    color: lightgray;
+    border-color: lightgray;
+}
+
+@media screen and (max-width: 1286px) {
+    .ficha__linha1, .ficha__linha2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ficha__coluna1, .ficha__coluna2, .ficha__coluna3{
+        width: 90%;
+    }
+
+    .ficha__linha2 .ficha__info{
+        width: 90%;
+    }
+}
+
+.popup{
+    position: fixed;
+    left: 50%;
+}
+
+.view-modal{
+    top: 50%;
+    color: #7d2ae8;
+    font-size: 18px;
+    padding: 10px 25px;
+    background: #fff;
+    transform: translate(-50%, -50%);
+}
+
+.popup{
+    background: #302f2f;
+    padding: 25px;
+    border-radius: 15px;
+    top: -150%;
+    max-width: 380px;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+    transform: translate(-50%, -50%) scale(1.2);
+    transition: top 0s 0.2s ease-in-out,
+                opacity 0.2s 0s ease-in-out,
+                transform 0.2s 0s ease-in-out;
+}
+
+.popup.show{
+    top: 50%;
+    opacity: 1;
+    pointer-events: auto;
+    transform:translate(-50%, -50%) scale(1);
+    transition: top 0s 0s ease-in-out,
+                opacity 0.2s 0s ease-in-out,
+                transform 0.2s 0s ease-in-out;
+}
+
+.popup :is(header, .icons, .field){
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.popup header{
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ebedf9;
+}
+
+.popup header span{
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.popup header .close, .icons a{
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.popup header .close{
+    color: #575454;
+    font-size: 17px;
+    background: #939396;
+    height: 33px;
+    width: 33px;
+    cursor: pointer;
+}
+  
+.popup header .close:hover{
+    background: #afaeae;
+}
+
+.popup .content{
+    margin: 20px 0;
+}
+  
+
+.popup .content p{
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.popup .content p:first-child{
+    font-size: 24px;
+    padding-bottom: 10px;
+}
+
+.popup .content p:last-child{
+    font-weight: 300;
+    color: #b9b9b9;
+}
+
+.popup b{
+    font-weight: 800;
+}
+
+.inputSegredos input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inputSegredos input::-moz-number-spin-box{
+    -moz-appearance: none;
+    margin: 0;
+}
+
+#modalProgressao .completeGroup p{
+    text-decoration: line-through;
+    color: gray;
+}
+
+.ferimento__item p ion-icon{
+    color: var(--cinza);
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.ficha__itens table tbody td:last-child{
+    vertical-align: middle;
+}
+
+.ficha__itens ion-icon{
+    color: red;
+    right: 3px;
+    cursor: pointer;
+}
+

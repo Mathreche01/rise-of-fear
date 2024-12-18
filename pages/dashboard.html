@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Rise of Fear</title>
+    <link rel="stylesheet" href="../reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dai+Banna+SIL:wght@400;600&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../img/Icon.PNG" type="image/x-icon">
+</head>
+<body>
+    <header class="cabecalho">
+        <img src="../img/Logo.png" class="cabecalho__imagem" alt="Logo de Rise of Fear">
+        <div class="cabecalho__container">
+          <button class="cabecalho__botao botao__config"><i class="icone__config"></i>Configurações</button>
+          <button class="cabecalho__botao botao__sair"><i class="icone__sair"></i>Sair</button>
+        </div>
+        <button class="cabecalho__menu"><ion-icon name="menu-outline"></ion-icon></button>
+    </header>
+
+    <section class="et-hero-tabs">
+        <div class="et-hero-tabs-container">
+          <a class="et-hero-tab" onclick="mudaPagina('./dashboard.html', '0')" id="dashboardButton">Início</a>
+          <a class="et-hero-tab" onclick="mudaPagina('./campanhas.html', '100%')">Campanhas</a>
+          <a class="et-hero-tab" onclick="mudaPagina('./personagens.html', '200%')">Personagens</a>
+          <a class="et-hero-tab" onclick="mudaPagina('./cenario.html', '300%')">Cenário</a>
+          <a class="et-hero-tab" onclick="mudaPagina('./regras.html', '400%')">Regras</a>
+          <span class="et-hero-tab-slider"></span>
+        </div>
+    </section>
+
+    <main id="conteudo">
+    <div class="cabecalho__dashboard">
+    </div>
+    <div class="box-info">
+        <div style="background: linear-gradient(45deg, #FF5370, #ff869a)" class="box-info-single">
+            <div class="info-text">
+                <h3>Campanhas Criadas</h3>
+                <p>30</p>
+            </div>
+            <i class="fa-solid fa-book"></i>
+        </div>
+        <div style="background: linear-gradient(45deg, #4099ff, #73b4ff)" class="box-info-single">
+            <div class="info-text">
+                <h3>Personagens Criados</h3>
+                <p id="dashboardPersonagensCriados">0</p>
+            </div>
+            <i class="fa-solid fa-person"></i>
+        </div>
+        <div style="background: linear-gradient(45deg, #2ed8b6, #59e0c5)" class="box-info-single">
+            <div class="info-text">
+                <h3>Encontros Finalizados</h3>
+                <p>30</p>
+            </div>
+            <i class="fa-solid fa-shield"></i>
+        </div>
+        <div style="background: linear-gradient(45deg, #ffb94e, #ffc874)" class="box-info-single">
+            <div class="info-text">
+                <h3>Missões Concluídas</h3>
+                <p>30</p>
+            </div>
+            <i class="fa-solid fa-flag"></i>
+        </div>
+    </div>
+
+    <section class="dashboard-line">
+    <div class="box-container">
+        <h3 class="box-title">Minhas Campanhas</h3>
+        <div class="campaign-container">
+            <div class="campaign-single">
+                <div class="card-image"></div>
+                <div class="card-text">
+                <h3>Rise of Fear</h3>
+                <span class="date">Iniciada em 21/07/2023</span>
+                <p>Mestre: Matheus Reche</p>
+                </div>
+                <div class="card-button">
+                    <a href="#">Acessar Painel</a>
+                </div>
+            </div>
+            <div class="campaign-single">
+                <div class="card-image"></div>
+                <div class="card-text">
+                <h3>Rise of Fear</h3>
+                <span class="date">Iniciada em 21/07/2023</span>
+                <p>Mestre: Matheus Reche</p>
+                </div>
+                <div class="card-button">
+                    <a href="#">Acessar Painel</a>
+                </div>
+            </div>
+            <div class="campaign-single">
+                <div class="card-image"></div>
+                <div class="card-text">
+                <h3>Rise of Fear</h3>
+                <span class="date">Iniciada em 21/07/2023</span>
+                <p>Mestre: Matheus Reche</p>
+                </div>
+                <div class="card-button">
+                    <a href="#">Acessar Painel</a>
+                </div>
+            </div>
+            <a class="campaign-add" href="#">
+                <i class="fa-solid fa-circle-plus add-icon"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="feed">
+        <h3 class="box-title">Notificações</h3>
+        <div class="feed-single">
+            <div class="feed-text">
+                <div class="circle-icon"><i class="fa-solid fa-bell"></i></div>
+                <span>Novo encontro iniciado.</span>
+            </div>
+            <div class="feed-time">
+                <h3>há 30 minutos</h3>
+            </div>
+        </div>
+        <div class="feed-single">
+            <div class="feed-text">
+                <div class="circle-icon"><i class="fa-solid fa-bell"></i></div>
+                <span>Novo encontro iniciado.</span>
+            </div>
+            <div class="feed-time">
+                <h3>há 30 minutos</h3>
+            </div>
+        </div>
+        <div class="feed-single">
+            <div class="feed-text">
+                <div class="circle-icon"><i class="fa-solid fa-bell"></i></div>
+                <span>Novo encontro iniciado.</span>
+            </div>
+            <div class="feed-time">
+                <h3>há 30 minutos</h3>
+            </div>
+        </div>
+        <div class="feed-single">
+            <div class="feed-text">
+                <div class="circle-icon"><i class="fa-solid fa-bell"></i></div>
+                <span>Novo encontro iniciado.</span>
+            </div>
+            <div class="feed-time">
+                <h3>há 30 minutos</h3>
+            </div>
+        </div>
+        <div class="feed-single">
+            <div class="feed-text">
+                <div class="circle-icon"><i class="fa-solid fa-bell"></i></div>
+                <span>Novo encontro iniciado.</span>
+            </div>
+            <div class="feed-time">
+                <h3>há 30 minutos</h3>
+            </div>
+        </div>
+        <div class="feed-single">
+            <div class="feed-text">
+                <div class="circle-icon"><i class="fa-solid fa-bell"></i></div>
+                <span>Novo encontro iniciado.</span>
+            </div>
+            <div class="feed-time">
+                <h3>há 30 minutos</h3>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section class="dashboard-line">
+        <div class="box-container-character">
+            <div class="box-top">
+            <h3 class="box-title">Meus Personagens</h3>
+            <button onclick="mudaPagina('./create-character.html', '200%')"><i class="fa-solid fa-plus add-element"></i></button>
+            </div>
+            <div class="character-container">
+                <div class="character-card">
+                    <div class="card-content">
+                        <div class="character-image">
+                            <img src="../img/Portrait.jpg"alt="Imagem de personagem">
+                        </div> 
+                        <div class="name-class">
+                            <span class="character-name">Edward Clint</span>
+                            <span class="character-class">O Artista</span>
+                            <span class="creation-date">Registrado em 21/07/2023</span>
+                        </div>
+                        <div class="character-button">
+                            <button class="viewSheet">Ver Ficha</button>
+                            <button class="removeCharacter">Remover</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <div class="card-content">
+                        <div class="character-image">
+                            <img src="../img/Portrait.jpg"alt="Imagem de personagem">
+                        </div> 
+                        <div class="name-class">
+                            <span class="character-name">Edward Clint</span>
+                            <span class="character-class">O Artista</span>
+                            <span class="creation-date">Registrado em 21/07/2023</span>
+                        </div>
+                        <div class="character-button">
+                            <button class="viewSheet">Ver Ficha</button>
+                            <button class="removeCharacter">Remover</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <div class="card-content">
+                        <div class="character-image">
+                            <img src="../img/Portrait.jpg"alt="Imagem de personagem">
+                        </div> 
+                        <div class="name-class">
+                            <span class="character-name">Edward Clint</span>
+                            <span class="character-class">O Artista</span>
+                            <span class="creation-date">Registrado em 21/07/2023</span>
+                        </div>
+                        <div class="character-button">
+                            <button class="viewSheet">Ver Ficha</button>
+                            <button class="removeCharacter">Remover</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-container">
+            <div class="box-top">
+            <h3 class="box-title">Dados Personalizados</h3>
+            <button><i class="fa-solid fa-plus add-element"></i></button>
+            </div>
+            <div class="container-dices">
+                <div class="single-dice">
+                    <div class="dice-content">
+                    <i class="fi fi-ss-dice-d8 custom-dices"></i>
+                    <p>Rolagem</p>
+                    <h3>Dano Adaga</h3>
+                    </div>
+                    <button class="dice-roll">Lançar Dado</button>
+                </div>
+                <div class="single-dice">
+                    <div class="dice-content">
+                    <i class="fi fi-ss-dice-d10 custom-dices"></i>
+                    <p>Rolagem</p>
+                    <h3>Dano Adaga</h3>
+                    </div>
+                    <button class="dice-roll">Lançar Dado</button>
+                </div>
+                <div class="single-dice">
+                    <div class="dice-content">
+                    <i class="fi fi-ss-dice-d12 custom-dices"></i>
+                    <p>Rolagem</p>
+                    <h3>Dano Adaga</h3>
+                    </div>
+                    <button class="dice-roll">Lançar Dado</button>
+                </div>
+                <div class="single-dice">
+                    <div class="dice-content">
+                    <i class="fi fi-ss-dice-d20 custom-dices"></i>
+                    <p>Rolagem</p>
+                    <h3>Dano Adaga</h3>
+                    </div>
+                    <button class="dice-roll">Lançar Dado</button>
+                </div>
+                <div class="single-dice">
+                    <div class="dice-content">
+                    <i class="fi fi-ss-dice-d6 custom-dices"></i>
+                    <p>Rolagem</p>
+                    <h3>Dano Adaga</h3>
+                    </div>
+                    <button class="dice-roll">Lançar Dado</button>
+                </div>
+                <div class="single-dice">
+                    <div class="dice-content">
+                    <i class="fi fi-ss-dice-d4 custom-dices"></i>
+                    <p>Rolagem</p>
+                    <h3>Dano Adaga</h3>
+                    </div>
+                    <button class="dice-roll">Lançar Dado</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <script type="module" src="../app/mudaNome.js"></script>
+    <script src="../app/criaPersonagem.js"></script>
+    <script src="../app/formularioPersonagem.js"></script>
+    <script src="../app/changePage.js"></script>
+    <script src="../app/vantagens.js"></script>
+    <script src="../app/desvantagens.js"></script>
+    <script src="../app/funcoesFicha.js"></script>
+    <script src="../app/vantagensDetalhadas.js"></script>
+    <script src="../app/desvantagensDetalhadas.js"></script>
+    <script src="../app/equipamento.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/js/all.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</body>
+</html>

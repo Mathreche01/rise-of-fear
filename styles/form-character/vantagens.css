@@ -1,0 +1,119 @@
+.vantagem__botao, .formulario__botao{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.vantagem__botao button, .createCharacter{
+    cursor: pointer;
+    margin-top: 1.5em;
+    padding: 1em;
+    border-radius: 4px;
+    background: linear-gradient(45deg,#FF033E, #BA0021);
+    font-weight: 300;
+    width: 300px;
+    align-self: center;
+}
+
+.vantagem__botao button:hover, .createCharacter:hover{
+    opacity: 0.9;
+}
+
+.vantagem__container, .desvantagem__container{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 2em;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.vantagem__container .vantagem__box, .desvantagem__container .vantagem__box{
+    position: relative;
+    width: 400px;
+    height: 100px;
+    background: rgb(41, 41, 41);
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.025);
+}
+
+.vantagem__box::before{
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 100%;
+    background: #FF033E;
+    transition: 0.5s ease-in-out;
+}
+
+.vantagem__card input[type="checkbox"]:checked + .vantagem__box::before{
+   width: 100%;
+}
+
+.vantagem__container input[type="checkbox"], .desvantagem__container input[type="checkbox"]{
+    display: none; 
+}
+
+.vantagem__container .vantagem__box .vantagem__conteudo, .desvantagem__container .vantagem__box .vantagem__conteudo{
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.vantagem--erro, .desvantagem--erro{
+    align-self: center;
+    font-size: 15px;
+    padding-top: 15px;
+    font-weight: 200;
+    color: red;
+}
+
+.vantagem__texto{
+    margin-bottom: 30px;
+}
+
+.vantagem__container .vantagem__box .vantagem__conteudo .vantagem__icone, .desvantagem__container .vantagem__box .vantagem__conteudo .vantagem__icone{
+    position: relative;
+    min-width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icone-v{
+    cursor: pointer;
+    font-size: 2.5em;
+    color: #ff033e; 
+    transition: 0.5s ease-in-out;
+}
+
+.vantagem__card input[type="checkbox"]:checked + .vantagem__box .vantagem__conteudo .vantagem__icone .icone-v{
+    color: rgb(41, 41, 41) 
+}
+
+.vantagem__texto span{
+    font-size: 12px;
+    color: #fff;
+    transition: 0.5 ease-in-out;
+}
+
+.vantagem__container .vantagem__box .vantagem__conteudo .vantagem__texto h3, .desvantagem__container .vantagem__box .vantagem__conteudo .vantagem__texto h3{
+    margin-top: 30px;
+    font-weight: 500;
+    color: #ff033e;
+    transition: 0.5 ease-in-out;
+}
+
+.vantagem__container .vantagem__box .vantagem__conteudo .vantagem__texto p, .desvantagem__container .vantagem__box .vantagem__conteudo .vantagem__texto p{
+    padding-top: 5px;
+    margin-right: 10px;
+    font-size: 0.7em;
+    color: #999;
+    transition: 0.5 ease-in-out;
+}
+
+.vantagem__card input[type="checkbox"]:checked + .vantagem__box .vantagem__conteudo .vantagem__texto h3,
+.vantagem__card input[type="checkbox"]:checked + .vantagem__box .vantagem__conteudo .vantagem__texto span,
+.vantagem__card input[type="checkbox"]:checked + .vantagem__box .vantagem__conteudo .vantagem__texto p{
+    color: rgb(41, 41, 41) ;
+}

@@ -1,0 +1,244 @@
+.personagens__titulo{
+    display: flex;
+    font-size: 24px;
+    margin: 1.2em;
+}
+
+.personagens__titulo strong{
+    font-weight: 800;
+    margin-right: 0.2em;
+}
+
+.personagens__cabecalho{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.add-character{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    margin: 0.8em 5em 0 0;
+    background: #198754;
+    height: 100%;
+    padding: 1em 1.5em;
+    border-radius: 0.8rem;
+    cursor: pointer;
+}
+
+.add-character:hover{
+    transition: .5s ease;
+    background: #146c43;
+}
+
+.add-text{
+    padding-left: .5em;
+}
+
+.add-icon{
+    font-size: 22px;
+    top: 20px
+}
+
+.personagens__container{
+    margin: 3em 3em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.personagem__card{
+    position: relative;
+    width: 350px;
+    height: 190px;
+    background: #fff;
+    transition: 0.5s;
+    margin: 2em
+}
+
+.personagem__card:hover{
+    height: 450px;
+}
+
+.personagem__card .lines{
+    position: absolute;
+    inset: 0;
+    background: #000;
+    overflow: hidden;
+}
+
+.personagem__card .lines::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 120px;
+    background: linear-gradient(transparent, #DA0037, #DA0037, #DA0037, transparent);
+    animation: animate 4s linear infinite;
+}
+
+@keyframes animate {
+    0%{
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100%{
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.personagem__card .lines::after{
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: #292929;
+}
+
+.personagem__card .imgBx{
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    background: #000;
+    transition: 0.5s;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.personagem__card:hover .imgBx{
+    width: 250px;
+    height: 250px;
+}
+
+.personagem__card .imgBx::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 150px;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(transparent, #EEEEEE, #EEEEEE, #EEEEEE, transparent);
+    animation: animate2 6s linear infinite;
+}
+
+@keyframes animate2{
+    0%{
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+    100%{
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+}
+
+.personagem__card .imgBx::after{
+    content: '';
+    position: absolute;
+    background: #292929;
+    inset: 3px;
+}
+
+.personagem__card .imgBx img{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    filter: grayscale(1);
+}
+
+.personagem__card .imgBx img:hover{
+    transition: 1.5s ease;
+    filter: none;
+}
+
+.personagem__card .personagem__card--conteudo{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.personagem__card .personagem__card--conteudo .personagem__detalhes{
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    transition: 0.5s;
+    transform: translateY(145px);
+}
+
+.personagem__card:hover .personagem__card--conteudo .personagem__detalhes{
+    transform: translateY(0px);
+}
+
+.personagem__card .personagem__card--conteudo .personagem__detalhes h2{
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #DA0037;
+    line-height: 1.2em;
+}
+
+.personagem__card .personagem__card--conteudo .personagem__detalhes h2 span{
+    font-size: 0.75em;
+    font-weight: 500;
+    color: #fff;
+}
+
+.personagem__card .personagem__card--conteudo .personagem__detalhes .personagem__dados{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.personagem__card .personagem__card--conteudo .personagem__detalhes .personagem__dados h3{
+    font-size: 1em;
+    color: #DA0037;
+    line-height: 1.2em;
+    font-weight: 600;
+}
+
+.personagem__card .personagem__card--conteudo .personagem__detalhes .personagem__dados h3 span{
+    font-size: 0.85em;
+    font-weight: 400;
+    color: #fff;
+}
+
+.personagem__card .personagem__card--conteudo .personagem__detalhes .personagem__botoes{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.personagem__card .personagem__card--conteudo .personagem__detalhes .personagem__botoes button{
+    padding: 10px 30px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 500;
+    background: #fff;
+    color: #222;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.personagem__card .personagem__card--conteudo .personagem__detalhes .personagem__botoes button:nth-child(2){
+    background: #DA0037;
+}
+
+.personagem__card .personagem__card--conteudo .personagem__detalhes .personagem__botoes button:hover{
+    opacity: 1;
+}

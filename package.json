@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@flaticon/flaticon-uicons": "^2.2.0",
+    "@react-native-firebase/app": "^18.1.0",
+    "@react-native-firebase/auth": "^18.1.0",
+    "axios": "^1.4.0"
+  }
+}

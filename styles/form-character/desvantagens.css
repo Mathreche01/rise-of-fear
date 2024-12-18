@@ -1,0 +1,48 @@
+.desvantagem__container .vantagem__card p{
+    padding-right: 10px;
+}
+
+
+.swiper {
+    width: 100%;
+    height: 20em;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: visible;
+}
+
+.swiper-navBtn {
+    color: #CE2029;
+    height: 40px;
+    width: 40px;
+    background: rgb(54, 53, 53);
+    border-radius: 50%;
+}
+
+.swiper-navBtn::before, .swiper-navBtn::after{
+    font-size: 18px;
+}
+
+.swiper-pagination{
+    transform: translateY(30px);
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #CE2029;
+    opacity: 1;
+}
+
+.swiper-button-prev{
+    transform: translate(-30px, -6px);
+    overflow-x: visible;
+}
+
+.swiper-button-next{
+    transform: translate(30px, -8px);
+    overflow-x: visible;
+}
+
+.swiper-slide {
+    height: 100px !important;
+    margin-top: 10px;
+}

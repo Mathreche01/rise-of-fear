@@ -1,0 +1,112 @@
+.cabecalho{
+    padding: 0 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--cor-divisoria);
+}
+
+.cabecalho__imagem{
+    height: 70px;
+    width: 8rem;
+}
+
+.cabecalho__container{
+    display: flex;
+}
+
+.cabecalho__botao{
+    cursor: pointer;
+    padding: 0 1.8em;
+    font-size: 18px;
+    font-family: var(--fonte-principal);
+    color: var(--cor-secundaria);
+    background-color: var(--cor-de-fundo);
+    margin: 0;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.cabecalho__menu{
+    display: none;
+}
+
+.botao__config .icone__config{
+    height: 25px;
+    width: 25px;
+    background-image: url("../img/Config.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.botao__sair .icone__sair{
+    height: 25px;
+    width: 25px;
+    background-image: url("../img/Logout.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.botao__entrar .icone__entrar{
+    height: 25px;
+    width: 25px;
+    background-image: url("../img/Login.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.botao__registrar .icone__registrar{
+    height: 25px;
+    width: 25px;
+    background-image: url("../img/Registrar.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+@media (max-width: 600px){
+    .cabecalho__menu{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 40px;
+        margin-right: .5rem;
+    }
+
+
+    .cabecalho{
+        position: relative;
+    }
+
+    .cabecalho__container{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        z-index: 0;
+        bottom: 0;
+        left: 0;
+        height: 0;
+        overflow: hidden;
+        transform: translateY(100%);
+        transition: .4s;
+        z-index: 999;
+    }
+
+    .cabecalho__botao{
+        padding: 10px 0;
+    }
+
+    .cabecalho__container.active{
+        height: auto;
+        border-bottom: 1px solid var(--cor-divisoria);
+        border-top: 1px solid var(--cor-divisoria);
+    }
+
+}

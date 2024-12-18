@@ -1,0 +1,108 @@
+.search-box{
+    margin: 2em 0 1em 0;
+    height: 45px;
+    width: 100%;
+}
+
+.search-box .fa-magnifying-glass{
+    position: absolute;
+    transform: translateY(13px) translateX(13px);
+    font-size: 20px;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.search-box input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background-color: rgb(41, 41, 41);
+    padding: 0 15px 0 45px;
+}
+
+.group-text{
+    width: 100%;
+    font-size: 18px;
+    line-height: 1.2em;
+    font-weight: 300;
+}
+
+.group-text p:nth-child(2){
+    padding: 1em 0;
+}
+
+.group-text span{
+    font-weight: 900;
+}
+
+.accordion{
+    width: 100%;
+}
+
+.accordion li{
+    list-style: none;
+    width: calc(100% - 20px);
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgb(41, 41, 41);
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15);
+}
+
+.accordion li label{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.accordion li label::before{
+    content: '+';
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #BA0021;
+}
+
+.accordion input[type="checkbox"]{
+    display: none;
+}
+
+.accordion-content button{
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: linear-gradient(45deg,#FF033E, #BA0021);
+    border-radius: 6px;
+    font-weight: 300;
+    color: white;
+}
+
+.accordion-content button:hover, .atributos__texto button:hover{
+    opacity: 0.9;
+}
+
+.accordion .accordion-content{
+    color: #777;
+    padding: 0 10px;
+    line-height: 26px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s, padding 0.5s;
+}
+
+.accordion input[type="checkbox"]:checked + label + .accordion-content{
+    max-height: 400px;
+    padding: 10px 10px 20px;
+}
+
+.accordion input[type="checkbox"]:checked + label::before{
+    content: "-"
+}

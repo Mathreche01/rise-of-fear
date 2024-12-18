@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rise of Fear - Fichas</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="./img/Icon.PNG" type="image/x-icon">
+  </head>
+  <body>
+  <header class="cabecalho">
+      <img src="img/Logo.png" class="cabecalho__imagem" alt="Logo de Rise of Fear">
+      <div class="cabecalho__container">
+        <button class="cabecalho__botao botao__registrar"><i class="icone__registrar"></i>Registrar-se</button>
+        <button class="cabecalho__botao botao__entrar"><i class="icone__entrar"></i>Entrar</button>
+      </div>
+      <button class="cabecalho__menu"><ion-icon name="menu-outline"></ion-icon></button>
+  </header>
+
+  <section class="banner">
+
+      <div class="alert hide">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span class="msg"></span>
+        <div class="close-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+      </div>
+
+      <div class="banner__container">
+          <h1 class="banner__titulo">Rise of <b class="banner__titulo--negrito">Fear</b></h1>
+          <p class="banner__texto">Enfrente o horror ancestral.</p>
+          <p class="banner__texto">Clique abaixo para iniciar uma nova jornada!</p>
+          <button class="banner__botao">Criar uma conta</button>
+      </div>
+
+    <div class="wrapper">
+        <span class="icon-close">
+            <ion-icon name="close"></ion-icon>
+        </span>
+        
+        <div class="form-box login">
+            <h2>Entrar</h2>
+            <form action="#">
+              <div class="crate">
+                  <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" required id="loginEmail" data-login>
+                    <label data-label>Email</label>
+                    <span class="mensagem-erro"></span>
+                  </div>
+              </div>
+              <div class="crate">
+                  <div class="input-box">
+                    <span class="icon"><ion-icon name="key"></ion-icon></span>
+                    <input type="password" required id="loginPassword" data-login>
+                    <label data-label>Senha</label>
+                    <span class="mensagem-erro"></span>
+                  </div>
+              </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox" id="remember-me">Manter Ativo</label>
+                    <a id="recoverPassword">Esqueceu a senha?</a>
+                </div>
+                <button type="submit" class="btn" id="login">Entrar</button>
+                <div class="error--message">
+                  <span class="mensagem-erro" data-erro-login></span>
+                </div>
+                <div class="login-register">
+                    <p>Não tem uma conta? <a class="register-link">Registre-se!</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-box recover">
+          <h2>Recuperação</h2>
+          <form action="#">
+            <div class="crate">
+                <p>Enviaremos as instruções de redefinição de senha ao e-mail associado.</p>
+                <div class="input-box">
+                  <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                  <input type="email" required id="recoverEmail" data-recover>
+                  <label data-label>Email</label>
+                  <span class="mensagem-erro"></span>
+                </div>
+              </div>
+              <button type="submit" class="btn" id="recover">Enviar</button>
+              <div class="error--message">
+                <span class="mensagem-erro" data-erro-recover></span>
+              </div>
+              <div class="login-register">
+                <p><i class="fa-solid fa-arrow-left-long"></i> Retornar ao <a class="login-link">login</a></p>
+            </div>
+          </form>
+      </div>
+
+        <div class="form-box register">
+            <h2>Registrar</h2>
+            <form action="#">
+              <div class="crate">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></ion-icon></span>
+                    <input type="text" id="username" required data-registro minlength="3" maxlength="18">
+                    <label data-label>Nome</label>
+                    <span class="mensagem-erro"></span>
+                </div>
+              </div>
+              <div class="crate">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" id="email" required data-registro minlength="4">
+                    <label data-label>Email</label>
+                    <span class="mensagem-erro"></span>
+                </div>
+              </div>
+              <div class="crate">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="key"></ion-icon></span>
+                    <input type="password" id="password" required data-registro minlength="8">
+                    <label data-label>Senha</label>
+                    <span class="mensagem-erro"></span>
+                </div>
+              </div>
+              <div class="remember-forgot">
+                  <label><input type="checkbox" id="terms" required data-registro>Concordo com os termos e condições</label>
+              </div>
+              <button type="submit" class="btn" id="signUp">Registrar</button>
+              <div class="error--message">
+              <span class="mensagem-erro" data-termos></span>
+              </div>
+              <div class="login-register">
+                  <p>Já tem uma conta? <a class="login-link">Entre aqui!</a></p>
+              </div>
+            </form>
+        </div>
+    </div>
+  
+  </section>
+
+  <h2 class="divisoria__titulo">O Projeto</h2>
+
+  <section class="card">
+    <div class="card__conteudo">
+      <div class="card__imagem">
+        <img src="img/Card.jpg" alt="Imagem do Card">
+      </div>
+      <div class="card__texto">
+        <h3 class="card__titulo">Fobia, terror e martírio</h3>
+        <h4 class="card__subtitulo">Entre a Lucidez e a Loucura</h4>
+        <p class="card__paragrafo">Crias da Noite. Invocadas pelo temor indubitável de seres tão frágeis e martirizados. Suas histórias foram ocultas aos olhos dos comuns. Seu passado foi velado pelo horror. Sabe-se lá quais são os segredos inconcebíveis que a névoa esconde. A esperança se acanha diante de uma fé que já se esvaiu, uma fantasia que desvaneceu. O sonho chegou ao fim, mas o que há além da escuridão e da loucura?</p>
+        <a href="https://rise-of-fear.fandom.com/pt-br/wiki/Rise_Of_Fear_Wiki" class="card__botao banner__botao">Saiba mais</a>
+      </div>
+    </div>
+  </section>
+
+  <h2 class="divisoria__titulo">Recursos</h2>
+
+  <section class="container">
+    <div class="container__card">
+      <div class="container__icon">
+        <ion-icon name="dice-sharp"></ion-icon>
+      </div>
+      <div class="container__conteudo">
+        <h2>Dados Virtuais</h2>
+        <p>Esqueceu seus dados? Sem problemas. Use jogadas clássicas ou configure dados personalizados para atribuir maior praticidade à sua experiência. Crie atalhos para as suas rolagens favoritas ou integre-as diretamente em suas fichas de personagem!</p>
+      </div>
+    </div>
+    <div class="container__card">
+      <div class="container__icon">
+        <ion-icon name="person-circle-sharp"></ion-icon>
+      </div>
+      <div class="container__conteudo">
+        <h2>Fichas Preenchíveis</h2>
+        <p>Personalize suas próprias fichas de jogador e dê vida a personagens únicos através do sistema de Kult: Divindade Perdida. Construa modelos físicos e digitais apenas preenchendo alguns módulos. Não requer nenhum conhecimento prévio de desenvolvimento!</p>
+      </div>
+    </div>
+    <div class="container__card">
+      <div class="container__icon">
+        <ion-icon name="earth-sharp"></ion-icon>
+      </div>
+      <div class="container__conteudo">
+        <h2>Cenário Integrado</h2>
+        <p>Conte com o apoio visual de documentos virtuais e eventos em tempo real que tornarão a sua experiência em jogo mais dinâmica. Integre o espaço fictício de sua campanha ao mundo físico através de recursos fornecidos pelo mapa. Realismo e imersão para a sua aventura!</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__section about">
+          <h2>Sobre</h2>
+          <p>Rise of Fear é um jogo de interpretação de papéis, de horror e mistério, ambientado em um cenário investigativo construído por meio do sistema de Kult: Divindade Perdida.</p>
+          <ul class="footer__social">
+            <li><a href="#"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-twitch" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+        <div class="footer__section quickLinks">
+          <h2>Acesso Rápido</h2>
+          <ul>
+            <li><a href="#">Recursos</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Ajuda</a></li>
+            <li><a href="#">Wiki</a></li>
+          </ul>
+        </div>
+        <div class="footer__section contact">
+          <h2>Contato</h2>
+          <ul class="info">
+            <li>
+              <span><i class="fa-solid fa-map-marker" aria-hidden="true"></i></span>
+              <span>Campo Grande - MS, Brasil</span>
+            </li>
+            <li>
+              <span><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+              <span><a href="tel:+55999698017">+55 (67) 99969-8017</a></span>
+            </li>
+            <li>
+              <span><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+              <span><a href="mailto:riseoffear@gmail.com">riseoffear@gmail.com</a></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </footer>
+  <div class="copyrightText">
+    <p>Copyright © 2024 Rise of Fear. Todos os Direitos Reservados.</p>
+  </div>
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/js/all.min.js'></script>
+  <script src="app/signIn.js" type="module"></script>
+  <script src="app/valida-formulario.js" type="module"></script>
+  <script src="app/register-login.js" type="module"></script>
+  <script src="app/criaPersonagem.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</html>

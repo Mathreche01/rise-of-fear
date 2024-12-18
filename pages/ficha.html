@@ -1,0 +1,812 @@
+<section class="ficha__conteudo">
+<div class="ficha">
+    <div class="ficha__topo">
+        <div class="progress" onclick="abreModal('progressao')">
+            <h3 id="personagemXP">0</h3>
+        </div>
+    </div>
+    <div class="ficha__linha1">
+        <div class="ficha__coluna1">
+            <div class="ficha__detalhes">
+                <div>
+                <div class="ficha__imagem">
+                    <h3>Aparência</h3>
+                    <button style="--titulo-largura: 127px"><i onclick="abreModal('info')" class="fa-solid fa-pen-to-square"></i></button>
+                    <img id="personagemImagem">
+                </div>
+                </div>
+                <div class="ficha__personagem">
+                <div class="ficha__info">
+                    <h3>Nome</h3>
+                    <p id="personagemNome"></p>
+                </div>
+                <div class="ficha__info">
+                    <h3>Arquétipo</h3>
+                    <p id="personagemArquetipo"></p>
+                </div>
+                <div class="ficha__info">
+                    <h3>Ocupação</h3>
+                    <p id="personagemOcupacao"></p>
+                </div>
+                <div class="ficha__info">
+                    <h3>Nacionalidade</h3>
+                    <p id="personagemNacionalidade"></p>
+                </div>
+                <div class="ficha__info">
+                    <h3>Idade</h3>
+                    <div class="ficha__info--texto">
+                    <p id="personagemIdade"></p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="ficha__info ficha__relacoes" style="border: none">
+                <div class="relacoes__topo">
+                <h3>Relações</h3>
+                <button style="--titulo-largura: 118px"><i onclick="abreModal('relacoes')" class="fa-solid fa-pen-to-square"></i></button>
+                <h4 class="relacao__grau">Grau</h4>
+                <div class="modificadores">
+                    <p>0</p>
+                    <p>+1</p>
+                    <p>+2</p>
+                </div>
+                </div>
+                <div class="ficha__relacoes--lista"></div>
+            </div>
+            <div class="ficha__info ficha__segredos" style="border: none">
+                <div class="relacoes__topo">
+                <h3>Segredos Sombrios</h3>
+                <button style="--titulo-largura: 182px"><i onclick="abreModal('segredos')" class="fa-solid fa-pen-to-square"></i></button>
+                <h4 class="segredos__motivacoes">Motivações Pessoais</h4>
+                </div>
+                <div class="ficha__relacoes--lista" id="listaSegredos"></div>
+            </div>
+            <div class="ficha__info ficha__ganchos" style="border: none">
+                <div class="relacoes__topo">
+                <h3>Ganchos Dramáticos</h3>
+                <button style="--titulo-largura: 190px"><i onclick="abreModal('ganchos')" class="fa-solid fa-pen-to-square"></i></button>
+                </div>
+                <div class="ficha__relacoes--lista" style="height: 6.7em;">
+                    <ul id="lista-ganchos" onclick="atualizaGanchos(event)"></ul>
+                </div>
+            </div>
+            <div class="ficha__info ficha__ferimentos" style="border: none">
+                <div class="relacoes__topo">
+                <h3>Ferimentos</h3>
+                <button style="--titulo-largura: 135px"><i onclick="abreModal('ferimentos')" class="fa-solid fa-pen-to-square"></i></button>
+                </div>
+                <div class="lista__ferimentos">
+                    <div class="ferimentos__graves">
+                        <div class="ferimentos__graves--topo">
+                        <h4>Ferimentos Graves <span>(-1 constante)</span></h4>
+                        <h4>Estabilizado</h4>
+                        </div>
+                        <ul class="ferimentos__graves--lista"></ul>
+                    </div>
+                    <div class="ferimentos__criticos">
+                        <div class="ferimentos__criticos--topo">
+                        <h4>Ferimentos Críticos <span>(-1 constante)</span></h4>
+                        <h4>Estabilizado</h4>
+                        </div>
+                        <ul class="ferimentos__criticos--lista"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ficha__coluna2">
+            <div class="ficha__atributos">
+                <div>
+                    <p class="atributo" id="vontade" onclick="rolarDado(event)">1</p>
+                    <label class="vontade-titulo">Vontade<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                    <span class="vontade-descricao" >Manter o Controle</span>
+                </div>
+                <div>
+                    <p class="atributo" id="percepcao" onclick="rolarDado(event)">1</p>
+                    <label class="percepcao-titulo">Percepção<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                    <span class="percepcao-descricao">Observar Situação</span>
+                </div>
+                <div>
+                    <p class="atributo" id="fortitude" onclick="rolarDado(event)">1</p>
+                    <label class="fortitude-titulo">Fortitude<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                    <span class="fortitude-descricao">Suportar Lesão</span>
+                </div>
+                <div>
+                    <p class="atributo" id="reflexos" onclick="rolarDado(event)">1</p>
+                    <label class="reflexos-titulo">Reflexos<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                    <span class="reflexos-descricao">Evitar Dano</span>
+                </div>
+                <div>
+                    <p class="atributo" id="alma" onclick="rolarDado(event)">1</p>
+                    <label class="alma-titulo">Alma<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                    <span class="alma-descricao">Ver Através da Ilusão</span>
+                </div>
+                <div>
+                    <p class="atributo" id="violencia" onclick="rolarDado(event)">1</p>
+                    <label class="violencia-titulo">Violência<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                    <span class="violencia-descricao">Engajar em Combate</span>
+                </div>
+                <div>
+                    <p class="atributo" id="razao" onclick="rolarDado(event)">1</p>
+                    <label class="razao-titulo">Razão<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                    <span class="razao-descricao">Investigar</span>
+                </div>
+                <div>
+                    <p class="atributo" id="firmeza" onclick="rolarDado(event)">1</p>
+                    <label class="firmeza-titulo">Firmeza<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                    <span class="firmeza-descricao">Agir sob Pressão</span>
+                </div>
+                <div>
+                    <p class="atributo" id="carisma" onclick="rolarDado(event)">1</p>
+                    <label class="carisma-titulo">Carisma<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                    <span class="carisma-descricao">Inflenciar Alguém</span>
+                </div>
+                <div>
+                    <p class="atributo" id="intuicao" onclick="rolarDado(event)">1</p>
+                    <label class="intuicao-titulo">Intuição<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                    <span class="intuicao-descricao">Ler uma Pessoa</span>
+                </div>
+            </div>
+            <div class="ficha__info ficha__equipamento" style="border: none">
+                <div class="relacoes__topo">
+                <h3>Equipamentos e Armas</h3>
+                <button style="--titulo-largura: 205px"><i onclick="abreModal('equipamento')" class="fa-solid fa-pen-to-square"></i></button>
+                </div>
+                <div class="lista__ferimentos" id="listaEquipamento">
+                <div class="ficha__itens">
+                    <h4>Armas corpo-a-corpo</h4>
+                    <table width="100%" height="100%">
+                        <thead>
+                            <tr>
+                                <td>Nome</td>
+                                <td>Tipo</td>
+                                <td>Distância</td>
+                                <td>Ataques</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody id="listaEquipamentoCorpo"></tbody>
+                    </table>
+                </div>
+                <div class="ficha__itens">
+                    <h4>Armas à distância</h4>
+                    <table width="100%" height="100%">
+                        <thead>
+                            <tr>
+                                <td>Nome</td>
+                                <td>Tipo</td>
+                                <td>Distância</td>
+                                <td>Ataques</td>
+                                <td>Munição</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody id="listaEquipamentoDistancia">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="ficha__itens">
+                    <h4>Armaduras</h4>
+                    <table width="100%" height="100%">
+                        <thead>
+                            <tr>
+                                <td>Nome</td>
+                                <td>Tipo</td>
+                                <td>Valor</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody id="listaArmadura"></tbody>
+                    </table>
+                </div>
+                <div class="ficha__itens">
+                    <h4>Equipamento Especial</h4>
+                    <table width="100%" height="100%">
+                        <thead>
+                            <tr>
+                                <td>Tipo</td>
+                                <td>Regras</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody id="listaEquipamentoEspecial">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="ficha__coluna3">
+            <div class="ficha__info" style="border: none">
+                <div class="relacoes__topo">
+                <h3>Vantagens</h3>
+                <button style="--titulo-largura: 130px"><i onclick="abreModal('vantagens')" class="fa-solid fa-pen-to-square"></i></button>
+                </div>
+                <div class="lista__ferimentos" style="height: 16em">
+                    <ul class="lista__vantagens" id="listaVantagens"></ul>
+                </div>
+            </div>
+            <div class="ficha__info" style="border: none">
+                <div class="relacoes__topo">
+                <h3>Desvantagens</h3>
+                <button style="--titulo-largura: 150px"><i onclick="abreModal('desvantagens')" class="fa-solid fa-pen-to-square"></i></button>
+                </div>
+                <div class="lista__ferimentos" style="height: 16em">
+                    <ul class="lista__vantagens" id="listaDesvantagens"></ul>
+                </div>
+            </div>
+            <div class="ficha__info" style="border: none">
+                <h3>Estabilidade</h3>
+                <div class="lista__ferimentos" style="height: 15.6em">
+                    <div class="estabilidade__secao">
+                        <div class="grau-estabilidade">
+                        <p>Calmo</p>
+                        <input type="radio" name="estabilidade" id="estabilidadeCalmo" onchange="mudaEstabilidade('Calmo')">
+                        </div>
+                    </div>
+                    <div class="estabilidade__secao">
+                        <div class="secao__estabilidades">
+                            <div class="grau-estabilidade">
+                            <p>Apreensivo</p>
+                            <input type="radio" name="estabilidade" id="estabilidadeApreensivo" onchange="mudaEstabilidade('Apreensivo')">
+                            </div>
+                            <div class="grau-estabilidade">
+                            <p>Disperso</p>
+                            <input type="radio" name="estabilidade" id="estabilidadeDisperso" onchange="mudaEstabilidade('Disperso')">
+                            </div>
+                        </div>
+                        <div class="descricao-estabilidade">
+                            <strong>Estresse Moderado:</strong>
+                            <p>-1 nas rolagens de Desvantagem</p>
+                        </div>
+                    </div>
+                    <div class="estabilidade__secao">
+                        <div class="secao__estabilidades">
+                            <div class="grau-estabilidade">
+                            <p>Abalado</p>
+                            <input type="radio" name="estabilidade" id="estabilidadeAbalado" onchange="mudaEstabilidade('Abalado')">
+                            </div>
+                            <div class="grau-estabilidade">
+                            <p>Angustiado</p>
+                            <input type="radio" name="estabilidade" id="estabilidadeAngustiado" onchange="mudaEstabilidade('Angustiado')">
+                            </div>
+                            <div class="grau-estabilidade">
+                            <p>Neurótico</p>
+                            <input type="radio" name="estabilidade" id="estabilidadeNeurótico" onchange="mudaEstabilidade('Neurótico')">
+                            </div>
+                        </div>
+                        <div class="descricao-estabilidade">
+                            <strong>Estresse Sério:</strong>
+                            <p>-1 Manter o Controle</p>
+                            <p>-2 nas rolagens de Desvantagem</p>
+                        </div>
+                    </div>
+                    <div class="estabilidade__secao">
+                        <div class="secao__estabilidades">
+                            <div class="grau-estabilidade">
+                            <p>Agoniado</p>
+                            <input type="radio" name="estabilidade" id="estabilidadeAgoniado" onchange="mudaEstabilidade('Agoniado')">
+                            </div>
+                            <div class="grau-estabilidade">
+                            <p>Irracional</p>
+                            <input type="radio" name="estabilidade" id="estabilidadeIrracional" onchange="mudaEstabilidade('Irracional')">
+                            </div>
+                            <div class="grau-estabilidade">
+                            <p>Transtornado</p>
+                            <input type="radio" name="estabilidade" id="estabilidadeTranstornado" onchange="mudaEstabilidade('Transtornado')">
+                            </div>
+                        </div>
+                        <div class="descricao-estabilidade">
+                            <strong>Estresse Crítico:</strong>
+                            <p>-2 Manter o Controle</p>
+                            <p>-3 nas rolagens de Desvantagem</p>
+                            <p>+1 Ver Através da Ilusão</p>
+                        </div>
+                    </div>
+                    <div class="estabilidade__secao">
+                        <div class="grau-estabilidade">
+                        <p>Arruinado</p>
+                        <input type="radio" name="estabilidade" id="estabilidadeArruinado" onchange="mudaEstabilidade('Arruinado')">
+                        </div>
+                        <p>A MJ faz um Movimento</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ficha__linha2">
+        <div class="ficha__info" style="border: none">
+            <div class="relacoes__topo">
+            <h3>Narrativa</h3>
+            <button style="--titulo-largura: 125px"><i onclick="abreModal('narrativa')" class="fa-solid fa-pen-to-square"></i></button>
+            </div>
+            <div class="lista__ferimentos lista__narrativa" style="height: 13em;">
+                <p id="personagemHistoria"></p>
+            </div>
+        </div>
+        <div class="ficha__info" style="border: none">
+            <div class="relacoes__topo">
+            <h3>Dados Personalizados</h3>
+            <button style="--titulo-largura: 197px"><i onclick="abreModal('dados')" class="fa-solid fa-pen-to-square"></i></button>
+            </div>
+            <div class="lista__ferimentos ficha__dados" style="height: 13em;"></div>
+        </div>
+        <div class="ficha__info" style="border: none">
+            <div class="relacoes__topo">
+            <h3>Anotações</h3>
+            <button style="--titulo-largura: 128px"><i onclick="abreModal('anotacoes')" class="fa-solid fa-pen-to-square"></i></button>
+            </div>
+            <div class="lista__ferimentos lista__observacoes" style="height: 13em;">
+                <p id="personagemNotas"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<dialog class="modal" id="modalRelacoes">
+    <span class="icone-fechar">
+        <ion-icon name="close" onclick="fechaModal('relacoes')"></ion-icon>
+    </span>
+    <h2>Adicionar Relação</h2>
+        <div class="inputSegredos">
+            <select class="select-box" id="grauSelecionado">
+                <option value="Neutra">Neutra (0)</option>
+                <option value="Significativa">Significativa (+1)</option>
+                <option value="Vital">Vital (+2)</option>
+            </select>
+            <div class="icon-select">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <span>Grau</span>
+        </div>
+        <div class="inputSegredos">
+            <input type="text" id="relacaoPersonagem" onkeydown="limpaErro()" placeholder="placeholder">
+            <span>Personagem</span>
+            <p class="erro--segredo" id="mensagemErroRelacao"></p>
+        </div>
+        <div class="inputSegredos">
+            <input type="submit" value="Criar" onclick="criaRelacaoFicha()">
+        </div>
+</dialog>
+<dialog class="modal" id="modalSegredos">
+    <span class="icone-fechar">
+        <ion-icon name="close" onclick="fechaModal('segredos')"></ion-icon>
+    </span>
+    <h2>Adicionar Segredo</h2>
+        <div class="inputSegredos">
+            <select class="select-box" id="segredoSelecionado">
+                <option value="Conhecimento Proibido">Conhecimento Proibido</option>
+                <option value="Culpado de Crime">Culpado de Crime</option>
+                <option value="Desaparecimento Misterioso">Desaparecimento Misterioso</option>
+                <option value ="Doença Mental">Doença Mental</option>
+                <option value="Escolhido">Escolhido</option>
+                <option value="Experiência com Ocultismo">Experiência com Ocultismo</option>
+                <option value="Guardião">Guardião</option>
+                <option value="Herdeiro">Herdeiro</option>
+                <option value="Maldição">Maldição</option>
+                <option value="Pacto com Forças Sombrias">Pacto com Forças Sombrias</option>
+                <option value="Regressante do Outro Lado">Regressante do Outro Lado</option>
+                <option value="Responsável por Experimentos Médicos">Responsável por Experimentos Médicos</option>
+                <option value="Segredo de Família">Segredo de Família</option>
+                <option value="Sem Raízes">Sem Raízes</option>
+                <option value="Visitações">Visitações</option>
+                <option value="Vítima de Crime">Vítima de Crime</option>
+                <option value="Vítima de Experimentos Médicos">Vítima de Experimentos Médicos</option>
+            </select>
+            <div class="icon-select">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <span>Segredo Sombrio</span>
+        </div>
+        <div class="inputSegredos">
+            <input type="text" id="motivoSegredo" onkeydown="limpaErro()" placeholder="placeholder">
+            <span>Motivação Pessoal</span>
+            <p class="erro--segredo" id="mensagemErroSegredos"></p>
+        </div>
+        <div class="inputSegredos">
+            <input type="submit" value="Criar" onclick="criaSegredoFicha()">
+        </div>
+</dialog>
+<dialog class="modal" id="modalEquipamento">
+    <span class="icone-fechar">
+        <ion-icon name="close" onclick="fechaModal('equipamento')"></ion-icon>
+    </span>
+    <h2>Adicionar Equipamento</h2>
+        <div class="inputSegredos">
+            <select class="select-box" onchange="mostraInputs()" id="categoriaEquipamento">
+                <option value="Armas corpo-a-corpo">Armas corpo-a-corpo</option>
+                <option value="Armas à distância">Armas à distância</option>
+                <option value="Armaduras">Armaduras</option>
+                <option value="Equipamento Especial">Equipamento Especial</option>
+            </select>
+            <div class="icon-select">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <span>Categoria</span>
+        </div>
+        <div class="inputSegredos" id="divEquipamentoCorpo">
+            <select class="select-box" id="tipoEquipamentoCorpo">
+                <option value="Desarmado">Desarmado</option>
+                <option value="Armas Afiadas">Armas Afiadas</option>
+                <option value="Armas Contundentes">Armas Contundentes</option>
+                <option value="Armas Cortantes">Armas Cortantes</option>
+            </select>
+            <div class="icon-select">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <span>Tipo</span>
+        </div>
+        <div class="inputSegredos" id="divEquipamentoDistancia">
+            <select class="select-box" id="tipoEquipamentoDistancia">
+                <option value="Pistolas">Pistolas</option>
+                <option value="Pistolas Pesadas">Pistolas Pesadas</option>
+                <option value="Submetralhadoras">Submetralhadoras</option>
+                <option value="Fuzis de Assalto">Fuzis de Assalto</option>
+                <option value="Metralhadoras">Metralhadoras</option>
+                <option value="Rifles">Rifles</option>
+                <option value="Espingardas Táticas">Espingardas Táticas</option>
+                <option value="Explosivos">Explosivos</option>
+            </select>
+            <div class="icon-select">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <span>Tipo</span>
+        </div>
+        <div class="inputSegredos"  id="divEquipamentoArmadura">
+            <select class="select-box" id="tipoEquipamentoArmadura">
+                <option value="Leve">Leve</option>
+                <option value="Pesada">Pesada</option>
+            </select>
+            <div class="icon-select">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <span>Tipo</span>
+        </div>
+        <div class="inputSegredos"  id="divEquipamentoEspecial">
+            <select class="select-box" id="tipoEquipamentoEspecial">
+                <option value="Cão">Cão</option>
+                <option value="Spray de Pimenta">Spray de Pimenta</option>
+                <option value="Gazuas">Gazuas</option>
+                <option value="Arma de Choque (taser)">Arma de Choque (taser)</option>
+                <option value="Pé de Cabra">Pé de Cabra</option>
+                <option value="Kit de Primeiros Socorros">Kit de Primeiros Socorros</option>
+                <option value="Silenciador">Silenciador</option>
+                <option value="Granada de Atordoamento">Granada de Atordoamento</option>
+                <option value="Gases/Drogas Nocauteantes">Gases/Drogas Nocauteantes</option>
+                <option value="Tocha">Tocha</option>
+            </select>
+            <div class="icon-select">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <span>Tipo</span>
+        </div>
+        <div class="inputSegredos" id="divNomeEquipamento">
+            <input type="text" id="nomeEquipamento" onkeydown="limpaErro()" placeholder="placeholder">
+            <span>Nome</span>
+            <p class="erro--segredo" id="mensagemErroEquipamento"></p>
+        </div>
+        <div class="inputSegredos">
+            <input type="submit" value="Criar" onclick="criaEquipamentoFicha()">
+        </div>
+</dialog>
+<dialog class="modal" id="modalNarrativa">
+    <span class="icone-fechar">
+        <ion-icon name="close" onclick="fechaModal('narrativa')"></ion-icon>
+    </span>
+    <h2>Editar Narrativa</h2>
+        <div class="inputSegredos">
+            <textarea id="narrativaPersonagem" onkeydown="limpaErro()"></textarea>
+            <span>Narrativa</span>
+            <p class="erro--segredo" id="mensagemErroNarrativa"></p>
+        </div>
+        <div class="inputSegredos">
+            <input type="submit" value="Editar" onclick="criaNarrativaFicha()">
+        </div>
+</dialog>
+<dialog class="modal" id="modalAnotacoes">
+    <span class="icone-fechar">
+        <ion-icon name="close" onclick="fechaModal('anotacoes')"></ion-icon>
+    </span>
+    <h2>Editar Anotações</h2>
+        <div class="inputSegredos">
+            <textarea id="anotacoesPersonagem" onkeydown="limpaErro()"></textarea>
+            <span>Anotações</span>
+            <p class="erro--segredo" id="mensagemErroAnotacoes"></p>
+        </div>
+        <div class="inputSegredos">
+            <input type="submit" value="Editar" onclick="criaAnotacoes()">
+        </div>
+</dialog>
+<dialog class="modal" id="modalDados">
+    <span class="icone-fechar">
+        <ion-icon name="close" onclick="fechaModal('dados')"></ion-icon>
+    </span>
+    <h2>Personalizar Dados</h2>
+        <div class="inputSegredos">
+            <input type="text" id="rolagemDado" onkeydown="limpaErro()" placeholder="placeholder" value="1d20+5">
+            <span>Rolagem</span>
+            <p class="erro--segredo" id="mensagemErroDadosRolagem"></p>
+        </div>
+        <div class="inputSegredos">
+            <input type="text" id="nomeDado" onkeydown="limpaErro()" placeholder="placeholder">
+            <span>Nome</span>
+            <p class="erro--segredo" id="mensagemErroDadosNome"></p>
+        </div>
+        <div class="inputSegredos">
+            <select class="select-box" id="tipoDadoSelecionado">
+                <option value="Vantagem">Vantagem</option>
+                <option value="Desvantagem">Desvantagem</option>
+                <option value="Dano">Dano</option>
+            </select>
+            <div class="icon-select">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <span>Tipo</span>
+        </div>
+        <div class="inputSegredos">
+            <input type="submit" value="Criar" onclick="criaDadoFicha()">
+        </div>
+</dialog>
+<dialog class="modal" id="modalGanchos">
+    <span class="icone-fechar">
+        <ion-icon name="close" onclick="fechaModal('ganchos')"></ion-icon>
+    </span>
+    <h2>Adicionar Gancho</h2>
+        <div class="inputSegredos">
+            <textarea id="ganchosPersonagem" onkeydown="limpaErro()"></textarea>
+            <span>Gancho Dramático</span>
+            <p class="erro--segredo" id="mensagemErroGanchos"></p>
+        </div>
+        <div class="inputSegredos">
+            <input type="submit" value="Criar" onclick="criaGancho()">
+        </div>
+</dialog>
+<dialog class="modal" id="modalFerimentos">
+    <span class="icone-fechar">
+        <ion-icon name="close" onclick="fechaModal('ferimentos')"></ion-icon>
+    </span>
+    <h2>Adicionar Ferimento</h2>
+        <div class="inputSegredos">
+            <select class="select-box" id="ferimentoSelecionado">
+                <option value="Grave">Grave</option>
+                <option value="Crítico">Crítico</option>
+            </select>
+            <div class="icon-select">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <span>Tipo</span>
+        </div>
+        <div class="inputSegredos">
+            <input type="text" id="descricaoFerimento" onkeydown="limpaErro()" placeholder="placeholder">
+            <span>Descrição</span>
+            <p class="erro--segredo" id="mensagemErroFerimentos"></p>
+        </div>
+        <div class="inputSegredos">
+            <input type="submit" value="Criar" onclick="criaFerimento()">
+        </div>
+</dialog>
+<dialog class="modal" id="modalInfo">
+    <span class="icone-fechar">
+        <ion-icon name="close" onclick="fechaModal('info')"></ion-icon>
+    </span>
+    <h2>Editar Informações</h2>
+    <div class="modalOverflow">
+        <div class="inputSegredos">
+            <input type="text" id="infoImagem" onkeydown="limpaErro()" placeholder="placeholder">
+            <span>Imagem</span>
+            <p class="erro--segredo" id="mensagemErroInfoImagem"></p>
+            <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file-ficha" onchange="mudaImagem()">
+            <label for="input-file-ficha" class="uploadImage"><i class="fa-solid fa-arrow-up-from-bracket"></i></label>
+        </div>
+        <div class="inputSegredos">
+            <input type="text" id="infoNome" onkeydown="limpaErro()" placeholder="placeholder">
+            <span>Nome</span>
+            <p class="erro--segredo" id="mensagemErroInfoNome"></p>
+        </div>
+        <div class="inputSegredos">
+            <select class="select-box" id="infoArquetipo">
+                <option value="O Acadêmico">O Acadêmico</option>
+                <option value="A Agente">A Agente</option>
+                <option value="O Amaldiçoado">O Amaldiçoado</option>
+                <option value="A Arruinada">A Arruinada</option>
+                <option value="O Artista">O Artista</option>
+                <option value="O Atravessador">O Atravessador</option>
+                <option value="O Brinquedo">O Brinquedo</option>
+                <option value="A Carreirista">A Carreirista</option>
+                <option value="O Cientista">O Cientista</option>
+                <option value="O Criminoso">O Criminoso</option>
+                <option value="A Descendente">A Descendente</option>
+                <option value="O Detetive">O Detetive</option>
+                <option value="A Enganadora">A Enganadora</option>
+                <option value="A Indagadora">A Indagadora</option>
+                <option value="O Nômade">O Nômade</option>
+                <option value="A Ocultista">A Ocultista</option>
+                <option value="A Profetisa">A Profetisa</option>
+                <option value="A Ronin">A Ronin</option>
+                <option value="O Veterano">O Veterano</option>
+                <option value="A Vingadora">A Vingadora</option>
+            </select>
+            <div class="icon-select">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <span>Arquétipo</span>
+        </div>
+        <div class="inputSegredos">
+            <input type="text" id="infoOcupacao" onkeydown="limpaErro()" placeholder="placeholder">
+            <span>Ocupação</span>
+            <p class="erro--segredo" id="mensagemErroInfoOcupacao"></p>
+        </div>
+        <div class="inputSegredos">
+            <input type="text" id="infoNacionalidade" onkeydown="limpaErro()" placeholder="placeholder">
+            <span>Nacionalidade</span>
+            <p class="erro--segredo" id="mensagemErroInfoNacionalidade"></p>
+        </div>
+        <div class="inputSegredos">
+            <input type="number" id="infoIdade" onkeydown="limpaErro()" value="0" placeholder="placeholder">
+            <span>Idade</span>
+            <p class="erro--segredo" id="mensagemErroInfoIdade"></p>
+        </div>
+    </div>
+        <div class="inputSegredos">
+            <input type="submit" value="Editar" onclick="editaInfo()">
+        </div>
+</dialog>
+<div class="popup">
+    <header>
+      <span id="tituloRolagem"></span>
+      <div class="close"><i class="uil uil-times"></i></div>
+    </header>
+    <div class="content" id="rolagemResultado"></div>
+</div>
+<dialog class="modal" id="modalVantagens">
+    <span class="icone-fechar">
+        <ion-icon name="close" onclick="fechaModal('vantagens')"></ion-icon>
+    </span>
+    <h2>Adicionar Vantagem</h2>
+    <div class="modal-content">
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" placeholder="Buscar" oninput="buscaVantagem()" data-busca-vantagem>
+        </div>
+        <div class="boxVantagens">
+            <ul class="lista__vantagens" id="listaVantagensModal">
+            </ul>
+        </div>
+        <p class="erro--segredo" id="mensagemErroVantagens"></p>
+        <div class="inputSegredos">
+            <input type="submit" value="Adicionar" onclick="adicionaVantagens()">
+        </div>
+    </div>
+</dialog>
+<dialog class="modal" id="modalDesvantagens">
+    <span class="icone-fechar">
+        <ion-icon name="close" onclick="fechaModal('desvantagens')"></ion-icon>
+    </span>
+    <h2>Adicionar Desvantagem</h2>
+    <div class="modal-content">
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" placeholder="Buscar" oninput="buscaDesvantagem()" data-busca-desvantagem>
+        </div>
+        <div class="boxVantagens">
+            <ul class="lista__vantagens" id="listaDesvantagensModal">
+            </ul>
+        </div>
+        <p class="erro--segredo" id="mensagemErroDesvantagens"></p>
+        <div class="inputSegredos">
+            <input type="submit" value="Adicionar" onclick="adicionaDesvantagens()">
+        </div>
+    </div>
+</dialog>
+<dialog class="modal" id="modalProgressao">
+    <span class="icone-fechar">
+        <ion-icon name="close" onclick="fechaModal('progressao')"></ion-icon>
+    </span>
+    <h2>Progressão de Personagem</h2>
+    <div class="progressao__conteudo">
+        <h6>Ao acumular <strong>5 de Experiência</strong>, o jogador pode escolher uma progressão disponível em sua ficha de personagem, conforme a lista abaixo.</h6>
+        <h6>Quando um Arquétipo Consciente progride, ele deve escolher um dos seguintes aprimoramentos:</h6>
+        <div class="progressao__grupo">
+            <h5>Progressão Inicial:</h5>
+            <div class="progressao__item">
+                <p>Aumente um Atributo ativo em +1 (até +3 máx).</p>
+                <input type="checkbox" id="progressao1" onchange="verificaGrupo()">
+                <input type="checkbox" id="progressao2" onchange="verificaGrupo()">
+                <input type="checkbox" id="progressao3" onchange="verificaGrupo()">
+                <input type="checkbox" id="progressao4" onchange="verificaGrupo()">
+                <input type="checkbox" id="progressao5" onchange="verificaGrupo()">
+                <input type="checkbox" id="progressao6" onchange="verificaGrupo()">
+            </div>
+            <div class="progressao__item">
+                <p>Aumente um Atributo passivo em +1 (até +3 máx).</p>
+                <input type="checkbox" id="progressao7" onchange="verificaGrupo()">
+                <input type="checkbox" id="progressao8" onchange="verificaGrupo()">
+            </div>
+            <div class="progressao__item">
+                <p>Aumente qualquer Atributo em +1 (até +4 máx).</p>
+                <input type="checkbox" id="progressao9" onchange="verificaGrupo()">
+            </div>
+            <div class="progressao__item">
+                <p>Selecione uma nova vantagem do seu Arquétipo.</p>
+                <input type="checkbox" id="progressao10" onchange="verificaGrupo()">
+                <input type="checkbox" id="progressao11" onchange="verificaGrupo()">
+                <input type="checkbox" id="progressao12" onchange="verificaGrupo()">
+            </div>
+        </div>
+        <div class="progressao__grupo">
+            <h5>Progressão Intermediária:</h5>
+            <div class="progressao__item">
+                <p>Aumente qualquer um dos Atributos em +1 (até +4 máx).</p>
+                <input type="checkbox" id="progressao13" onchange="verificaGrupo()">
+                <input type="checkbox" id="progressao14" onchange="verificaGrupo()">
+            </div>
+            <div class="progressao__item">
+                <p>Selecione uma nova Vantagem de qualquer Arquétipo Consciente.</p>
+                <input type="checkbox" id="progressao15" onchange="verificaGrupo()">
+                <input type="checkbox" id="progressao16" onchange="verificaGrupo()">
+            </div>
+            <div class="progressao__item progressao__box">
+                <p class="progressao__texto">Encerre o arco da história do personagem como achar melhor, e crie um novo personagem Consciente que já começa com duas Progressões.</p>
+                <input type="checkbox" id="progressao17" onchange="verificaGrupo()">
+            </div>
+            <div class="progressao__item progressao__box">
+                <p class="progressao__texto">Substitua seu Arquétipo atual por outro Arquétipo Consciente e apague uma de suas três Vantagens iniciais.</p>
+                <input type="checkbox" id="progressao18" onchange="verificaGrupo()"> 
+            </div>
+        </div>
+        <div class="progressao__grupo">
+            <h5>Progressão Avançada:</h5>
+            <div class="progressao__item">
+                <p>Progrida seu personagem para um Arquétipo Iluminado.</p>
+                <input type="checkbox" id="progressao19" onchange="verificaGrupo()">
+            </div>
+        </div>
+        <div class="inputSegredos">
+            <button type="submit" onclick="selecionaProgressao()">Selecionar</button>
+            <p class="erro--segredo" id="mensagemErroProgressao"></p>
+        </div>
+    </div>
+</dialog>
+<dialog class="modal" id="modalAtributos">
+    <span class="icone-fechar">
+        <ion-icon name="close" onclick="fechaModal('atributos')"></ion-icon>
+    </span>
+    <h2>Editar Atributos</h2>
+    <div class="modal-content">
+        <div class="container__atributos">
+            <input required class="atributos" type="number" value="1" name="fortitude" title="Fortitude" id="inputFortitude" onkeydown="limpaErro()">
+            <label class="label-fortitude">Fortitude</label>
+            <span class="span-fortitude">Suportar Lesão</span>
+            <input required class="atributos" type="number" value="1" name="vontade" title="Vontade" id="inputVontade" onkeydown="limpaErro()">
+            <label class="label-vontade">Vontade</label>
+            <span class="span-vontade">Manter o Controle</span>
+            <input required class="atributos" type="number" value="1" name="reflexos" title="Reflexos" id="inputReflexos" onkeydown="limpaErro()">
+            <label class="label-reflexos">Reflexos</label>
+            <span class="span-reflexos">Evitar Dano</span>
+            <input required class="atributos" type="number" value="1" name="intuicao" title="Intuição" id="inputIntuicao" onkeydown="limpaErro()">
+            <label class="label-intuicao">Intuição</label>
+            <span class="span-intuicao">Ler uma Pessoa</span>
+            <input required class="atributos" type="number" value="1" name="violencia" title="Violência" id="inputViolencia" onkeydown="limpaErro()">
+            <label class="label-violencia">Violência</label>
+            <span class="span-violencia">Engajar em Combate</span>
+            <input required class="atributos" type="number" value="1" name="carisma" title="Carisma" id="inputCarisma" onkeydown="limpaErro()">
+            <label class="label-carisma">Carisma</label>
+            <span class="span-carisma">Inflenciar Alguém</span>
+            <input required class="atributos" type="number" value="1" name="alma" title="Alma" id="inputAlma" onkeydown="limpaErro()">
+            <label class="label-alma">Alma</label>
+            <span class="span-alma">Ver Através da Ilusão</span>
+            <input required class="atributos" type="number" value="1" name="firmeza" title="Firmeza" id="inputFirmeza" onkeydown="limpaErro()">
+            <label class="label-firmeza">Firmeza</label>
+            <span class="span-firmeza">Agir sob Pressão</span>
+            <input required class="atributos" type="number" value="1" name="razao" title="Razão" id="inputRazao" onkeydown="limpaErro()"> 
+            <label class="label-razao">Razão</label>
+            <span class="span-razao">Investigar</span>
+            <input required class="atributos" type="number" value="1" name="percepcao" title="Percepção" id="inputPercepcao" onkeydown="limpaErro()">
+            <label class="label-percepcao">Percepção</label>
+            <span class="span-percepcao">Observar Situação</span>
+        </div>
+        <p class="erro--segredo" id="mensagemErroAtributos"></p>
+        <div class="inputSegredos">
+            <input type="submit" value="Editar" onclick="modificaAtributos()">
+        </div>
+    </div>
+</dialog>
+</section>

@@ -1,0 +1,362 @@
+.box-info{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.box-info-single{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    border-radius: 10px;
+    width: 100%;
+    margin: 0 10px;
+    padding: 30px;
+}
+
+.box-info-single svg{
+    font-size: 46px;
+}
+
+.box-info-single h3{
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.box-info-single p{
+    font-size: 24px;
+    padding-top: 6px;
+}
+
+.feed{
+    background-color: rgb(67, 67, 67);
+    border-radius: 10px;
+    width: 30%;
+    padding: 30px;
+    margin: 20px 10px 0px 10px;
+}
+
+.feed-single{
+    padding: 0.5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.feed-text span{
+    font-weight: 500;
+    color: white;
+    margin: 8px;
+    display: inline-block;
+}
+
+.box-title{
+    font-size: 18px;
+    margin-bottom: 0.8em;
+    font-weight: 800;
+}
+
+.feed-text{
+    display: flex;
+}
+
+.feed-text .circle-icon{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #c3dfff;
+    position: relative;
+}
+
+.feed-text svg{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: #73b4ff;
+}
+
+.feed-time{
+    color: white;
+    font-weight: 200;
+}
+
+.dashboard-line{
+    display: flex;
+    flex-direction: row;
+}
+
+.box-container{
+    background-color: rgb(67, 67, 67);
+    border-radius: 10px;
+    width: 70%;
+    padding: 30px;
+    margin: 20px 10px 0px 10px;
+}
+
+.box-container-character{
+    background-color: rgb(67, 67, 67);
+    border-radius: 10px;
+    width: 80%;
+    padding: 30px;
+    margin: 20px 10px 0px 10px;
+}
+
+main{
+    margin: 0 20px 20px 10px;
+}
+
+.title-dashboard{
+    font-size: 36px;
+    font-weight: 700;
+    margin: 20px;
+    padding: 8px;
+    border-bottom: solid #444 3px;
+}
+
+.campaign-add{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 50px;
+    border: dashed #dc3545 2px;
+    border-radius: 18px;
+    background-color: transparent;
+    color: #dc3545;
+    margin-top: 20px;
+}
+
+.campaign-add .add-icon{
+    font-size: 80px;
+}
+
+.campaign-single{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 280px;
+    grid-template-rows: 130px 100px 50px;
+    grid-template-areas: "image" "text" "button";
+    border-radius: 18px;
+    height: 280px;
+    width: 280px;
+    margin-right: 20px;
+    background: rgb(30, 30, 30);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    text-align: center;
+}
+
+.card-image{
+    grid-area: image;
+    background: url("../img/Banner3.jpg");
+    background-size: 100%;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+}
+
+.card-text{
+    grid-area: text;
+    margin: 25px;
+}
+
+.card-text .date{
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--cor-texto)
+}
+
+.card-text h3{
+    font-size: 18px;
+    padding-bottom: 0.1em;
+    font-weight: 700;
+}
+
+.card-text p{
+    font-size: 15px;
+    padding-top: 5px;
+    color: var(--cor-secundaria)
+}
+
+.card-button{
+    grid-area: button;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    background: linear-gradient(45deg, #ec2a2a, #941717);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-button a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.campaign-container, .character-container{
+    margin: 0 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.add-element{
+    border: dashed #198754 1px;
+    color: #198754;
+    padding: 2px 3px;
+    cursor: pointer;
+}
+
+.box-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: -13px 0;
+}
+
+.box-top h3{
+    margin-top: 13px;
+}
+
+.character-image{
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    padding: 3px;
+    background: #7d2ae8;
+}
+
+.character-image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid rgb(30, 30, 30)
+}
+
+.character-card{
+    position: relative;
+    background: rgb(30, 30, 30);
+    border-radius: 20px;
+    margin: 30px 20px 0 0;
+    width: 280px;
+}
+
+.character-card::before{
+    content: "";
+    position: absolute;
+    height: 40%;
+    width: 100%;
+    background: #7d2ae8;
+    border-radius: 20px 20px 0 0;
+}
+
+.character-card .card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    z-index: 100;
+}
+
+.character-card .name-class{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    color: var(--cor-secundaria);
+}
+
+.name-class .character-name{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.name-class .character-class{
+    font-size: 15px;
+    font-weight: 400;
+    padding: 0.3em 0;
+}
+
+.name-class .creation-date{
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.character-card .character-button{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px
+}
+
+.character-card .character-button button{
+    background: #7d2ae8;
+    outline: none;
+    border: none;
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.character-button button:hover{
+    background: #6616d0;
+}
+
+.container-dices{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px 10px 0 10px;
+    flex-wrap: wrap;
+}
+
+.custom-dices{
+    padding-bottom: 0.1em;
+    font-size: 42px;
+}
+
+.single-dice{
+    display: flex;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    background: #2C3333;
+    margin: 20px 30px 0 0;
+    border-radius: 20px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+    0 10px 10px rgba(0,0,0,0.22);
+    transition: .4s;
+}
+
+.dice-content{
+    padding: 1em 1em 0 1em;
+}
+
+.single-dice p{
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 3px;
+}
+
+.dice-roll{
+    cursor: pointer;
+    margin-top: 0.7em;
+    background: linear-gradient(45deg, #FF6C00, #FA7D09);
+    width: 100%;
+    padding: 0.5em;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-weight: 600;
+}
