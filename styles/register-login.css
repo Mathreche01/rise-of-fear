@@ -326,6 +326,11 @@
     transform: translateX(-400px);
 }
 
+.wrapper.main{
+    position: static;
+    transform: none !important;
+}
+
 .wrapper.recovery .form-box.register{
     transition: none;
     transform: translateX(400px);
