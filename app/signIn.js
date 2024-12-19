@@ -26,6 +26,7 @@ signUp.addEventListener('click', (e) => {
     e.preventDefault()
     let validacoes = []
     camposDeRegistro.forEach((campo) => {
+        campo.setCustomValidity('')
         validacoes.push(verificaCampo(campo))
     })
 
@@ -94,39 +95,46 @@ recover.addEventListener('click', (e) => {
 
 login.addEventListener('click', (e) => {
     e.preventDefault()
-    camposDeLogin.forEach((campo) => verificaCampo(campo))
+    let validacoes = []
+    camposDeLogin.forEach((campo) => {
+        campo.setCustomValidity('')
+        validacoes.push(verificaCampo(campo))
+    })
+
     var email = document.getElementById('loginEmail').value;
     var password = document.getElementById('loginPassword').value;
     var staySigned = document.getElementById('remember-me');
-    setPersistence(auth, staySigned.checked ? browserLocalPersistence : browserSessionPersistence)
-  .then(() => {
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        const user = userCredential.user;
-        alerta.innerHTML = "Usuário conectado com sucesso!"
-        $('.alert').addClass("show");
-       $('.alert').removeClass("hide");
-       $('.alert').addClass("showAlert");
-       setTimeout(function(){
-         $('.alert').removeClass("show");
-         $('.alert').addClass("hide");
-       },1000);
-       $('.close-btn').click(function(){
-       $('.alert').removeClass("show");
-       $('.alert').addClass("hide");
-       })
-    
+    if(validacoes.indexOf(false) == -1){
+      setPersistence(auth, staySigned.checked ? browserLocalPersistence : browserSessionPersistence)
+        .then(() => {
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            alerta.innerHTML = "Usuário conectado com sucesso!"
+            $('.alert').addClass("show");
+          $('.alert').removeClass("hide");
+          $('.alert').addClass("showAlert");
+          setTimeout(function(){
+            $('.alert').removeClass("show");
+            $('.alert').addClass("hide");
+          },1000);
+          $('.close-btn').click(function(){
+          $('.alert').removeClass("show");
+          $('.alert').addClass("hide");
+          })
         
-    })
-    .catch((error) => {
-        const senhaErrada = document.getElementById('loginPassword')
-        const emailErrado = document.getElementById('loginEmail')
-        senhaErrada.setCustomValidity('Senha incorreta')
-        emailErrado.setCustomValidity('Email incorreto')
-        verificaCampo(senhaErrada)
-        verificaCampo(emailErrado)
-    })
-  })
+            
+        })
+        .catch((error) => {
+            const senhaErrada = document.getElementById('loginPassword')
+            const emailErrado = document.getElementById('loginEmail')
+            senhaErrada.setCustomValidity('Senha incorreta')
+            emailErrado.setCustomValidity('Email incorreto')
+            verificaCampo(senhaErrada)
+            verificaCampo(emailErrado)
+        })
+      })
+    }
 });
 
 onAuthStateChanged(auth, (user) => {
