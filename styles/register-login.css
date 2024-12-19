@@ -99,7 +99,8 @@
     font-family: var(--fonte-alerta);
     background: #c5f3d7;
     padding: 20px 40px;
-    min-width: 420px;
+    max-width: 420px;
+    width: 100%;
     position: absolute;
     right: 0px;
     top: 100px;
@@ -168,12 +169,19 @@
     padding: 0 20px;
     font-size: 18px;
     color: #57a073;
+    width: 100%;
+    display: inline-block;
+    white-space: wrap;
+    box-sizing: border-box;
 }
 
 .alert .close-btn{
     position: absolute;
     right: 0px;
     top: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
     transform: translateY(-50%);
     background: #94eab9;
     padding: 20px 18px;
@@ -383,6 +391,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: calc(100% - 80px);
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.error--message .mensagem-erro{
+    position: static;
 }
 
 @media (max-width: 1280px){
@@ -400,6 +415,33 @@
     .wrapper.active-popup{
         transform: scale(1) translateX(50%);
     }
+}
+
+@media (max-width: 600px){
+    .alert{
+        padding: 10px 20px;
+        max-width: 300px;
+    }
+
+    .alert .fa-circle-exclamation{
+        left: 10px;
+        font-size: 20px;
+    }
+    
+    .alert .msg{
+        padding: 0 20px;
+        font-size: 14px;
+    }
+    
+    .alert .close-btn{
+        padding: 10px 9px;
+    }
+
+    .alert .close-btn .fa-xmark{
+        font-size: 16px;
+        line-height: 20px;
+    }
+    
 }
 
 @media (max-width: 500px){
@@ -431,6 +473,15 @@
     .remember-forgot label, .remember-forgot a{
         font-size: 14px;
     }
+
+    .alert{
+        max-width: 250px;
+    }
+    
+    .alert .msg{
+        padding: 0 20px;
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 360px){
@@ -452,5 +503,31 @@
 
     .form-box{
         padding: 50px;
+    }
+}
+
+@media (max-width: 330px){
+    .alert{
+        padding: 10px 14px;
+        max-width: 240px;
+    }
+
+    .alert .fa-circle-exclamation{
+        left: 7px;
+        font-size: 18px;
+    }
+    
+    .alert .msg{
+        padding: 0 18px;
+        font-size: 12px;
+    }
+    
+    .alert .close-btn{
+        padding: 10px 7px;
+    }
+
+    .alert .close-btn .fa-xmark{
+        font-size: 14px;
+        line-height: 20px;
     }
 }
