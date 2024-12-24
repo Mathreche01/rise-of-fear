@@ -13,9 +13,8 @@ a {
       background: #323232;
       text-align: center;
       padding: 0 2em;
+      width: calc(100% - 4em);
 }
-
-
   
 .et-hero-tabs-container {
       display: flex;

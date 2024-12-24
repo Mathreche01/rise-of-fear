@@ -38,25 +38,40 @@
     padding: 30px;
     box-sizing: border-box;
     overflow: hidden;
-    height: 380px;
+    height: 400px;
 }
 
+.feed-container{
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    height: 100%;
+    background: transparent;
+}
+
+.feed-container::-webkit-scrollbar-corner{
+    background-color: transparent;
+}
 .feed-single{
     padding: 0.5em;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.feed .box-title{
+    margin-bottom: 10px;
 }
 
 .feed-text span{
     font-weight: 500;
     color: white;
-    margin: 8px;
     display: inline-block;
 }
 
 .box-title{
     font-size: 18px;
-    margin-bottom: 0.8em;
     font-weight: 800;
 }
 
@@ -65,7 +80,7 @@
     align-items: center;
 }
 
-.feed-text .circle-icon{
+.feed-icon .circle-icon{
     width: 30px;
     height: 30px;
     border-radius: 15px;
@@ -73,7 +88,7 @@
     position: relative;
 }
 
-.feed-text svg{
+.feed-icon svg{
     position: absolute;
     left: 50%;
     top: 50%;
@@ -85,6 +100,9 @@
 .feed-time{
     color: white;
     font-weight: 200;
+    position: absolute;
+    right: .5em;
+    top: .5em;
 }
 
 .dashboard-line{
@@ -103,7 +121,7 @@
     min-width: 890px;
     max-width: 65%;
     padding: 30px;
-    height: 380px;
+    height: 400px;
     box-sizing: border-box;
 }
 
@@ -113,7 +131,7 @@
     min-width: 640px;
     max-width: 55%;
     padding: 30px;
-    height: 430px;
+    height: 450px;
     box-sizing: border-box;
 }
 
@@ -121,13 +139,17 @@
     background-color: rgb(67, 67, 67);
     border-radius: 10px;
     width: 100%;
-    height: 430px;
+    height: 450px;
     padding: 30px;
     box-sizing: border-box;
 }
 
 main{
-    margin: 0 10px 20px 10px;
+    max-width: 1800px;
+    margin: 0 auto;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    padding: 0 10px 20px 10px;
 }
 
 .title-dashboard{
@@ -144,7 +166,7 @@ main{
     position: relative;
     align-items: center;
     justify-content: center;
-    min-width: 280px;
+    min-width: 180px;
     border: dashed #dc3545 2px;
     border-radius: 18px;
     background-color: transparent;
@@ -226,19 +248,24 @@ main{
     flex-wrap: nowrap;
     overflow-x: scroll;
     gap: 20px;
-    margin-top: 20px;
 }
 
 .campaign-container::-webkit-scrollbar, .character-container::-webkit-scrollbar {
     height: 8px;  
 }
+
+.feed-container::-webkit-scrollbar, .container-dices::-webkit-scrollbar{
+    width: 8px;
+}
   
-.campaign-container::-webkit-scrollbar-track, .character-container::-webkit-scrollbar-track {
+.campaign-container::-webkit-scrollbar-track, .character-container::-webkit-scrollbar-track,
+.feed-container::-webkit-scrollbar-track, .container-dices::-webkit-scrollbar-track {
     background-color: transparent; 
     border-radius: 10px;
 }
   
-.campaign-container::-webkit-scrollbar-thumb, .character-container::-webkit-scrollbar-thumb {
+.campaign-container::-webkit-scrollbar-thumb, .character-container::-webkit-scrollbar-thumb,
+.feed-container::-webkit-scrollbar-thumb, .container-dices::-webkit-scrollbar-thumb {
     background-color: #555; 
     border-radius: 10px;
 }
@@ -256,11 +283,12 @@ main{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: -13px 0;
 }
 
-.box-top h3{
-    margin-top: 13px;
+.box-top button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .character-image{
@@ -357,11 +385,16 @@ main{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 10px 10px 0 10px;
     flex-wrap: wrap;
     align-items: center;
+    overflow-y: scroll;
     gap: 30px;
-    margin-top: 20px;
+}
+
+.box-container, .box-container-character, .box-container-dices{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .custom-dices{
@@ -380,8 +413,6 @@ main{
     font-weight: 800;
     background: #2C3333;
     border-radius: 20px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
-    0 10px 10px rgba(0,0,0,0.22);
     transition: .4s;
 }
 
@@ -424,7 +455,14 @@ main{
     }
 }
 
+@media (min-width: 1131px) and (max-width: 1380px ){
+    .campaign-add{
+        width: calc(50% - 10px);
+    }
+}
+
 @media (max-width: 1130px){
+
     .dashboard-line{
         flex-direction: column;
     }
@@ -457,134 +495,137 @@ main{
     }
 }
 
-@media (max-width: 690px){
-    .character-container, .campaign-container{
-        flex-direction: column;
-        margin-top: 30px;
+@media (max-width: 680px){
+    .character-card .card-content{
+        padding: 20px;
     }
 
-    .box-container-character, .box-container{
-        height: auto;
+    .character-card{
+        min-width: calc(50% - 10px)
     }
 
-    .feed{
-        height: 370px;
-    }
-
-    .character-card, .campaign-single, .campaign-add{
-        width: calc(100% - 40px);
+    .box-container-character{
+        height: 430px;
     }
 }
 
-@media (max-width: 630px){
+@media (max-width: 640px){
+    .character-card .card-content{
+        padding: 20px 10px;
+    }
+
+    .box-container, .feed, .box-container-dices, .box-container-character{
+        padding: 20px;
+    }
+
+    .box-container, .feed{
+        height: 365px;
+    }
+
+    .box-container{
+        gap: 15px;
+    }
+
+    .box-container-character, .box-container-dices{
+        gap: 10px;
+    }
+
+    .box-container-character{
+        height: 400px;
+    }
+}
+
+@media (max-width: 650px){
     .box-info-single{
         width: 100%;
     }
-}
 
-@media (max-width: 590px){
     .title-dashboard{
         font-size: 20px;
-    }
-}
-
-@media (max-width: 500px){
-    .title-dashboard{
         margin: 10px;
     }
 }
 
-@media (max-width: 480px){
-    .character-card, .campaign-add, .campaign-single{
-        min-width: 100%;
-    }
- 
-    .feed-time{
-        font-size: 12px;
+@media (max-width: 590px){
+    .box-container-dices{
+        height: 410px;
     }
 
-    .feed-text{
-        font-size: 14px;
-    }
-
-    .feed{
-        height: 350px;
-    }
-
-    .feed-text .circle-icon{
-        width: 20px;
-        height: 20px;
-    }
-
-    .feed-text svg{
-        font-size: 14px;
+    .single-dice{
+        flex-grow: 1;
     }
 }
 
-@media (max-width: 420px){
-    .feed, .box-container, .box-container-dices, .box-container-character{
-        padding: 20px;
+@media (max-width: 580px){
+    .character-container, .campaign-container{
+        flex-direction: column;
     }
 
-    main{
-        margin: 0 0 20px 0px;
+    .box-container, .box-container-character{
+        height: auto;
     }
 
-    .campaign-container, .character-container{
-        margin-top: 15px;
+    .character-card, .campaign-add{
+        width: 100%;
     }
+}
 
-    .box-title{
-        margin-bottom: .5em;
-    }
-
+@media (max-width: 450px){
     .feed-single{
-        padding: .5em 0;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-areas: 
+        "icon text"
+        "icon time";
+        gap: 3px 8px;
+    }
+
+    .feed-icon{
+        grid-area: icon;
+    }
+
+    .feed-text{
+        grid-area: text;
+    }
+
+    .feed-time{
+        position: static;
+        grid-area: time;
     }
 }
 
-@media (max-width: 340px){
-    .feed-text{
-        font-size: 12px;
-    }
-
-    .add-element{
-        font-size: 12px;
-        margin-top: 8px;
-    }
-
-    .feed .box-title{
-        margin-bottom: 0;
-    }
-
-    .feed-text .circle-icon{
-        width: 15px;
-        height: 15px;
-    }
-
-    .feed-text svg{
-        font-size: 10px;
-    }
-
-    .feed-text span{
-        margin: 8px 6px;
-    }
-
-    .feed{
-        height: 300px;
-    }
-
-    .feed, .box-container, .box-container-dices, .box-container-character{
-        padding: 15px;
-    }
-
-    .character-card .card-content{
-        padding: 20px;
+@media (max-width: 360px){
+    main{
+        padding: 0 0 20px 0;
     }
 }
 
 @media (max-width: 320px){
-    .character-card .card-content{
-        padding: 20px 10px;
+    .box-info-single{
+        padding: 20px;
+    }
+
+    .box-info-single p{
+        font-size: 20px;
+    }
+
+    .box-info-single svg{
+        font-size: 40px;
+    }
+
+    .box-container-character, .box-container, .box-container-dices, .feed{
+        padding: 15px;
+    }
+
+    .box-title{
+        font-size: 16px;
+    }
+
+    .add-element{
+        font-size: 14px;
+    }
+
+    .box-container-dices{
+        height: 390px;
     }
 }
