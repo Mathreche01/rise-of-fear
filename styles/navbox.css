@@ -56,3 +56,9 @@ a {
       left: 0;
       transition: transform .5s ease, height .2s ease;
 }
+
+@media (max-width: 580px){
+      .et-hero-tabs{
+            display: none;
+      }
+}

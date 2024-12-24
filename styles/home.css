@@ -1,8 +1,9 @@
 .box-info{
-    width: 100%;
-    margin-top: 20px;
+    width: calc(100% - 20px);
+    margin: 20px 10px 0 10px;
     display: flex;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .box-info-single{
@@ -11,12 +12,13 @@
     color: white;
     border-radius: 10px;
     width: 100%;
-    margin: 0 10px;
     padding: 30px;
+    box-sizing: border-box;
 }
 
 .box-info-single svg{
     font-size: 46px;
+    margin-left: 10px;
 }
 
 .box-info-single h3{
@@ -32,12 +34,11 @@
 .feed{
     background-color: rgb(67, 67, 67);
     border-radius: 10px;
-    max-width: 100%;
-    min-width: 35%;
+    width: 100%;
     padding: 30px;
-    height: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    height: 380px;
 }
 
 .feed-single{
@@ -61,6 +62,7 @@
 
 .feed-text{
     display: flex;
+    align-items: center;
 }
 
 .feed-text .circle-icon{
@@ -90,15 +92,18 @@
     flex-direction: row;
     margin: 20px 10px 0 10px;
     gap: 20px;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .box-container{
     background-color: rgb(67, 67, 67);
     border-radius: 10px;
     min-width: 890px;
-    width: 65%;
+    max-width: 65%;
     padding: 30px;
-    height: fit-content;
+    height: 380px;
     box-sizing: border-box;
 }
 
@@ -106,24 +111,23 @@
     background-color: rgb(67, 67, 67);
     border-radius: 10px;
     min-width: 640px;
-    width: 55%;
+    max-width: 55%;
     padding: 30px;
-    height: fit-content;
+    height: 430px;
     box-sizing: border-box;
 }
 
 .box-container-dices{
     background-color: rgb(67, 67, 67);
     border-radius: 10px;
-    max-width: 100%;
-    min-width: 45%;
+    width: 100%;
+    height: 430px;
     padding: 30px;
-    height: 100%;
     box-sizing: border-box;
 }
 
 main{
-    margin: 0 20px 20px 10px;
+    margin: 0 10px 20px 10px;
 }
 
 .title-dashboard{
@@ -140,7 +144,7 @@ main{
     position: relative;
     align-items: center;
     justify-content: center;
-    width: 180px;
+    min-width: 280px;
     border: dashed #dc3545 2px;
     border-radius: 18px;
     background-color: transparent;
@@ -148,6 +152,7 @@ main{
     height: 280px;
     box-sizing: border-box;
     flex-shrink: 0;
+    flex-grow: 1;
 }
 
 .campaign-add .add-icon{
@@ -219,15 +224,30 @@ main{
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
-    overflow: hidden;
+    overflow-x: scroll;
     gap: 20px;
     margin-top: 20px;
+}
+
+.campaign-container::-webkit-scrollbar, .character-container::-webkit-scrollbar {
+    height: 8px;  
+}
+  
+.campaign-container::-webkit-scrollbar-track, .character-container::-webkit-scrollbar-track {
+    background-color: transparent; 
+    border-radius: 10px;
+}
+  
+.campaign-container::-webkit-scrollbar-thumb, .character-container::-webkit-scrollbar-thumb {
+    background-color: #555; 
+    border-radius: 10px;
 }
 
 .add-element{
     border: dashed #198754 1px;
     color: #198754;
     padding: 2px 3px;
+    border-radius: 3px;
     cursor: pointer;
 }
 
@@ -235,6 +255,7 @@ main{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin: -13px 0;
 }
 
@@ -383,4 +404,187 @@ main{
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     font-weight: 600;
+}
+
+@media (max-width: 1380px){
+    .box-container{
+        min-width: 640px;
+    }
+}
+
+@media (max-width: 1220px){
+    .box-info{
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .box-info-single{
+        width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 1130px){
+    .dashboard-line{
+        flex-direction: column;
+    }
+
+    .box-container, .box-container-character{
+        min-width: 100%;
+    }
+
+    .box-container-dices{
+        height: auto;
+    }
+}
+
+@media (max-width: 990px){
+    .character-card{
+        width: calc(50% - 10px);
+        min-width: 280px;
+    }
+}
+
+@media (max-width: 890px){
+    .campaign-single, .campaign-add{
+        min-width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 840px){
+    .title-dashboard{
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 690px){
+    .character-container, .campaign-container{
+        flex-direction: column;
+        margin-top: 30px;
+    }
+
+    .box-container-character, .box-container{
+        height: auto;
+    }
+
+    .feed{
+        height: 370px;
+    }
+
+    .character-card, .campaign-single, .campaign-add{
+        width: calc(100% - 40px);
+    }
+}
+
+@media (max-width: 630px){
+    .box-info-single{
+        width: 100%;
+    }
+}
+
+@media (max-width: 590px){
+    .title-dashboard{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 500px){
+    .title-dashboard{
+        margin: 10px;
+    }
+}
+
+@media (max-width: 480px){
+    .character-card, .campaign-add, .campaign-single{
+        min-width: 100%;
+    }
+ 
+    .feed-time{
+        font-size: 12px;
+    }
+
+    .feed-text{
+        font-size: 14px;
+    }
+
+    .feed{
+        height: 350px;
+    }
+
+    .feed-text .circle-icon{
+        width: 20px;
+        height: 20px;
+    }
+
+    .feed-text svg{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 420px){
+    .feed, .box-container, .box-container-dices, .box-container-character{
+        padding: 20px;
+    }
+
+    main{
+        margin: 0 0 20px 0px;
+    }
+
+    .campaign-container, .character-container{
+        margin-top: 15px;
+    }
+
+    .box-title{
+        margin-bottom: .5em;
+    }
+
+    .feed-single{
+        padding: .5em 0;
+    }
+}
+
+@media (max-width: 340px){
+    .feed-text{
+        font-size: 12px;
+    }
+
+    .add-element{
+        font-size: 12px;
+        margin-top: 8px;
+    }
+
+    .feed .box-title{
+        margin-bottom: 0;
+    }
+
+    .feed-text .circle-icon{
+        width: 15px;
+        height: 15px;
+    }
+
+    .feed-text svg{
+        font-size: 10px;
+    }
+
+    .feed-text span{
+        margin: 8px 6px;
+    }
+
+    .feed{
+        height: 300px;
+    }
+
+    .feed, .box-container, .box-container-dices, .box-container-character{
+        padding: 15px;
+    }
+
+    .character-card .card-content{
+        padding: 20px;
+    }
+}
+
+@media (max-width: 320px){
+    .character-card .card-content{
+        padding: 20px 10px;
+    }
 }
