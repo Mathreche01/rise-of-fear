@@ -32,9 +32,11 @@ onValue(ref(database, '/users/' + userId + '/dados/'), (snapshot) => {
 
 const menu = document.querySelector('.cabecalho__menu')
 const btnContainer = document.querySelector('.cabecalho__container')
+const navDashboard = document.querySelector('.et-hero-tabs')
 
 menu.addEventListener('click', () => {
     btnContainer.classList.toggle('active')
+    navDashboard.classList.toggle('active')
 })
 
 const logOut = document.querySelector('.botao__sair')
