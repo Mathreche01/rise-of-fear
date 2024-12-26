@@ -71,7 +71,8 @@
 }
 
 .box--idade__nacionalidade{
-    width: 60rem;
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     gap: 12px;
 }
@@ -87,11 +88,11 @@
     margin-left: 21px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    border-left: none;
+    border-left: 1px solid rgba(255,255,255,0.25);
     font-size: 1em;
     cursor: pointer;
     transition: 0.5s ease;
-    width: 5%;
+    width: 36px;
     text-align: center;
 }
 
@@ -111,16 +112,12 @@ input[name="pg-imagem"]{
     width: calc(95% - 20px);
 }
 
+#input-idade-pg{
+    width: 20%;
+}
+
 input[name="pg-nome"], input[name="pg-ocupacao"]{
     width: calc(100%-20px);
-}
-
-input[name="pg-idade"]{
-    width: 10rem;
-}
-
-input[name="pg-nacionalidade"]{
-    width: calc(47rem - 6px);
 }
 
 .inputBox textarea{
@@ -128,7 +125,7 @@ input[name="pg-nacionalidade"]{
     resize: none;
 }
 
-.inputBox textarea::-webkit-scrollbar, .boxVantagens::-webkit-scrollbar{
+.inputBox textarea::-webkit-scrollbar, .boxVantagens::-webkit-scrollbar, .options::-webkit-scrollbar{
     width: 6px;
     background-color: rgb(40, 40, 40);
     border-radius: 6px;
@@ -137,6 +134,17 @@ input[name="pg-nacionalidade"]{
 .inputBox textarea::-webkit-scrollbar-thumb, .boxVantagens::-webkit-scrollbar-thumb{
     background-color: #494949;
     border-radius: 8px;
+}
+
+.options::-webkit-scrollbar-thumb{
+    background-color: whitesmoke;
+    border-radius: 8px;
+}
+
+.options::-webkit-scrollbar{
+    width: 4px;
+    background-color: rgb(52, 52, 52);
+    border-radius: 6px;
 }
 
 .inputSegredos textarea::-webkit-scrollbar{
@@ -179,11 +187,13 @@ input[name="pg-nacionalidade"]{
 .tabela__segredos .tabela__conteudo{
     max-height: 20rem;
     min-height: 20rem;
-    overflow-y: auto;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .tabela__conteudo::-webkit-scrollbar{
     width: 6px;
+    height: 6px;
     background-color: rgb(40, 40, 40);
     border-radius: 6px;
 }
@@ -231,6 +241,7 @@ input[type="file"]{
 
 .tabela__segredos thead td{
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .tabela__segredos tbody tr{
@@ -241,6 +252,7 @@ input[type="file"]{
     padding: .5rem 1rem;
     font-size: .9rem;
     color: #eeeeee;
+    text-align: left;
 }
 
 .tabela__segredos tbody td{
@@ -288,7 +300,7 @@ input[type="file"]{
     margin-bottom: 0;
 }
 
-.modal .inputSegredos input, .modal .inputSegredos select, .modal .inputSegredos textarea{
+.modal .inputSegredos input, .modal .inputSegredos textarea{
     position: absolute;
     top: 0;
     left: 0;
@@ -321,11 +333,68 @@ input[type="file"]{
     color: transparent;
 }
 
-.modal .inputSegredos input:focus ~ span, .modal .inputSegredos input:not(:placeholder-shown) ~ span, .modal .inputSegredos select ~ span,
-.modal .inputSegredos textarea:focus ~ span, .modal .inputSegredos textarea:valid ~ span{
+.modal .inputSegredos input:focus ~ span, .modal .inputSegredos input:not(:placeholder-shown) ~ span, 
+.modal .inputSegredos textarea:focus ~ span, .modal .inputSegredos textarea:valid ~ span, .dropdown + span{
     transform: translateX(-10px) translateY(-32px);
-    font-size: 12px;
+    font-size: 12px !important;
 }
+
+.dropdown{
+    position: relative;
+    height: 100%;
+    cursor: pointer;
+}
+
+.select-box{
+    padding-right: 40px !important;
+    text-overflow: ellipsis;
+}
+
+.dropdown.active ion-icon{
+    transform: rotate(180deg) translateY(50%);
+}
+
+.modal .dropdown.active .options{
+    display: block;
+    position: absolute;
+    color: whitesmoke;
+    height: 136px;
+    bottom: -10px;
+    overflow-y: auto;
+    transform: translateY(100%);
+    z-index: 999;
+    left: 0;
+    width: 100%;
+    border: 1px solid whitesmoke;
+    border-radius: 4px;
+}
+
+.modal .dropdown.active .options div{
+    height: 34px;
+    white-space: wrap;
+    background: rgb(52, 52, 52);
+    font-size: 14px;
+    display: flex;
+    text-align: left;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.modal .dropdown.active .options div:hover{
+    background: rgb(42, 42, 42);
+}
+
+.dropdown ion-icon{
+    color: #fff;
+    font-size: 22px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transition: .3s ease;
+    transform: translateY(-50%);
+}
+
 
 .modal .inputSegredos textarea{
     resize: none;
@@ -385,12 +454,12 @@ input[type="file"]{
     pointer-events: none;
 }
 
-.modal .select-box option{
-    background-color: var(--cor-de-fundo);
+.modal .dropdown .options{
+    display: none;
 }
 
 .modal .select-box{
-    appearance: none;
+    pointer-events: none;
 }
 
 .modal .icon-select{
@@ -417,3 +486,97 @@ input[type="file"]{
     font-size: .9em;
     font-weight: 200;
 }
+
+@media (max-width: 600px){
+    .box--nome__ocupacao, .box--idade__nacionalidade{
+        flex-direction: column;
+    }
+
+    #input-idade-pg{
+        width: 100%;
+    }
+
+    .container__detalhes{
+        gap: 12px;
+    }
+
+    #step-group-5 .step--titulo{
+        font-size: 20px;
+        gap: 8px;
+    }    
+}
+
+@media (max-width: 490px){
+    .tabela__segredos tr, .tabela__segredos td{
+        width: 100%
+    }
+
+    .tabela__segredos table{
+        table-layout: fixed;
+    }
+}
+
+@media (max-width: 450px){
+    #step-group-5 .step--titulo{
+        font-size: 18px;
+    }    
+}
+
+@media (max-width: 420px){
+    .modal{
+        padding: 50px 30px;
+    }
+}
+
+@media (max-width: 390px){
+    #step-group-5 .step--titulo{
+        font-size: 16px;
+    }    
+
+    .modal{
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .modal .inputSegredos{
+        width: 100%
+    }
+}
+
+@media (max-width: 380px){
+    .tabela__segredos .tabela__topo{
+        padding: .5rem;
+    }
+
+    .tabela__segredos .tabela__topo h4{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 370px){
+    .modal h2{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 330px){
+    .modal{
+        padding: 40px 20px;
+    }
+
+    .icone-fechar{
+        font-size: 16px;
+    }
+}
+
+
+@media (max-width: 320px){
+    #step-group-5 .step--titulo{
+        font-size: 15px;
+        gap: 4px;
+    }  
+    
+    .tabela__segredos .tabela__topo h4{
+        font-size: 14px;
+    }
+}
+

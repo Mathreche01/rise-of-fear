@@ -32,6 +32,7 @@
     position: relative;
     width: 400px;
     height: 100px;
+    flex-grow: 1;
     background: rgb(41, 41, 41);
     box-shadow: 10px 10px 15px rgba(0,0,0,0.025);
 }
@@ -116,4 +117,43 @@
 .vantagem__card input[type="checkbox"]:checked + .vantagem__box .vantagem__conteudo .vantagem__texto span,
 .vantagem__card input[type="checkbox"]:checked + .vantagem__box .vantagem__conteudo .vantagem__texto p{
     color: rgb(41, 41, 41) ;
+}
+
+@media (max-width: 1300px){
+    .vantagem__card{
+        width: calc(50% - 5px)
+    }
+
+    .vantagem__box{
+        min-width: 400px;
+        width: 100% !important
+    }
+}
+
+@media (max-width: 900px){
+    .vantagem__card{
+        width: 100%;
+    }
+
+    .vantagem__box{
+        min-width: 100%;
+        min-height: 100px;
+        height: 100%;
+    }
+}
+
+
+@media (max-width: 350px){
+    .vantagem__botao button, .createCharacter{
+        box-sizing: border-box;
+        width: 250px;
+    }
+
+    .icone-v{
+        font-size: 2em;
+    }
+    
+    .vantagem__texto h3{
+        font-size: 14px;
+    }
 }

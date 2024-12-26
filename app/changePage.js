@@ -1,6 +1,7 @@
 const conteudoPagina = document.querySelector('#conteudo')
 const dashboard = conteudoPagina.innerHTML
 const slider = document.querySelector('.et-hero-tab-slider');
+let currentStep;
 
 async function mudaPagina(url, position){
     if(url !== "./dashboard.html"){
@@ -33,8 +34,16 @@ function contaLista(url){
         desvantagemErro = document.querySelector('.desvantagem--erro')
         erroFormulario = document.querySelector('.form--error')
 
+        currentStep = 1;
+        updateProgressBar(currentStep)
+
+        const selectbox = document.querySelector('.dropdown')
+        selectbox.addEventListener('click', () => {
+            selectbox.classList.toggle('active')
+        })
+
         var swiper = new Swiper(".desvantagem__container", {
-            slidesPerView: 3,
+            slidesPerView: 1,
             cssMode: true,
             grid: {
               rows: 3,
@@ -46,9 +55,58 @@ function contaLista(url){
             },
             pagination: {
               el: ".swiper-pagination",
+              clickable: true,
+            },
+            breakpoints: {
+                900: {
+                    slidesPerView: 2,
+                },
+                1300: {
+                    slidesPerView: 3,
+                },
             },
             mousewheel: true,
+            grabCursor: true,
             keyboard: true,
+            simulateTouch: true,
+            touchRatio: 1, 
+            touchAngle: 45, 
+            resistance: true, 
+            resistanceRatio: 0.85,
           });
+    }
+}
+
+function updateProgressBar(step) {
+    const steps = document.querySelectorAll('.progress-bar li');
+    const larguraTela = window.innerWidth;
+
+    steps.forEach((item, index) => {
+        item.classList.remove('active');
+        item.style.display = "none"
+        
+        if(index < step){
+            item.classList.add('active');
+        }
+    });
+
+    if(larguraTela <= 880 && larguraTela >= 560){
+        if(step === 1){
+            steps[step - 1].style.display = "block"
+            steps[step].style.display = "block"
+            steps[step + 1].style.display = "block"
+        } else if (step === 5){
+            steps[step - 3].style.display = "block"
+            steps[step - 2].style.display = "block"
+            steps[step - 1].style.display = "block"
+        } else{
+            steps[step - 2].style.display = "block"
+            steps[step - 1].style.display = "block"
+            steps[step].style.display = "block"
+        }
+    } else if(larguraTela < 560){
+        steps[step - 1].style.display = "block"
+    } else{
+        steps.forEach(step => step.style.display = "block")
     }
 }

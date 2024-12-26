@@ -18,6 +18,8 @@
     display: flex;
     flex-direction: column;
     font-family: 'Dai Banna SIL', serif;
+    transform: translateY(-30px);
+    flex-shrink: 0;
 }
 
 .box-atributos{
@@ -25,14 +27,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    gap: 4em;
+    position: relative;
 }
 
 
 .atributos__texto{
     font-size: 18px;
-    width: 40%;
-    margin: 5em 4em 0 0;
+    width: 100%;
 }
 
 .atributos__texto b{
@@ -73,11 +75,13 @@
 .container__atributos label{
     position: absolute;
     font-size: 20px;
+    white-space: nowrap;
 }
 
 .container__atributos span{
     position: absolute;
     font-size: 16px;
+    white-space: nowrap;
 }
 
 
@@ -107,7 +111,6 @@ input[name=violencia]{
 }
 
 .span-violencia{
-    white-space: nowrap;
     top: 401px;
     left: 210px;
 }
@@ -228,7 +231,354 @@ input[name=intuicao]{
 }
 
 .span-intuicao{
-    white-space: nowrap;
     top: 286px;
     left: 225px;
+}
+
+@media (max-width: 930px){
+    .box-atributos{
+        flex-direction: column;
+        margin-bottom: 4rem;
+    }
+
+    .atributos__texto button{
+        position: absolute;
+        bottom: -110px;
+        margin-bottom: 2rem;
+    }
+}
+
+
+@media (max-width: 420px){
+    .box-atributos{
+        gap: 2em;
+    }
+    
+    .container__atributos{
+        width: 18em;
+        height: 32em;
+    }
+
+    .container__atributos label{
+        font-size: 16px;
+    }
+    
+    .container__atributos span{
+        font-size: 12px;
+    }
+
+    input[name=vontade]{
+        top: 43px;
+        left: 128px;
+    }
+    
+    .label-vontade{
+        top: 94px;
+        left: 119px;
+    }
+    
+    .span-vontade{
+        top: 109px;
+        left: 103px;
+    }
+    
+    input[name=violencia]{
+        top: 308px;
+        left: 232px;
+    }
+    
+    .label-violencia{
+        top: 353px;
+        left: 222px;
+    }
+    
+    .span-violencia{
+        top: 367px;
+        left: 205px;
+    }
+    
+    input[name=fortitude]{
+        top: 96px;
+        left: 25px;
+    }
+    
+    .span-fortitude{
+        top: 163px;
+        left: 7px;
+    }
+    
+    .label-fortitude{
+        top: 148px;
+        left: 13px;
+    }
+    
+    input[name=percepcao]{
+        top: 255px;
+        left: 128px;
+    }
+    
+    .label-percepcao{
+        top: 300px;
+        left: 115px;
+    }
+    
+    .span-percepcao{
+        top: 317px;
+        left: 104px;
+    }
+    
+    input[name=alma]{
+        top: 465px;
+        left: 128px;
+    }
+    
+    .label-alma{
+        top: 512px;
+        left: 128px;
+    }
+    
+    .span-alma{
+        top: 528px;
+        left: 95px;
+    }
+    
+    input[name=carisma]{
+        top: 360px;
+        left: 128px;
+    }
+    
+    .label-carisma{
+        top: 410px;
+        left: 119px;
+    }
+    
+    .span-carisma{
+        top: 425px;
+        left: 101px;
+    }
+    
+    input[name=firmeza]{
+        top: 308px;
+        left: 25px;
+    }
+    
+    .label-firmeza{
+        top: 353px;
+        left: 18px;
+    }
+    
+    .span-firmeza{
+        top: 367px;
+        left: 3px;
+    }
+    
+    input[name=reflexos]{
+        top: 96px;
+        left: 232px;
+    }
+    
+    .label-reflexos{
+        top: 148px;
+        left: 225px;
+    }
+    
+    .span-reflexos{
+        top: 163px;
+        left: 224px;
+    }
+    
+    input[name=razao]{
+        top: 203px;
+        left: 25px;
+    }
+    
+    .label-razao{
+        top: 248px;
+        left: 23px;
+    }
+    
+    .span-razao{
+        top: 262px;
+        left: 17px;
+    }
+    
+    input[name=intuicao]{
+        top: 203px;
+        left: 232px;
+    }
+    
+    .label-intuicao{
+        top: 250px;
+        left: 225px;
+    }
+    
+    .span-intuicao{
+        top: 264px;
+        left: 214px;
+    }
+}
+
+@media (max-width: 350px){
+    .container__atributos{
+        width: 15em;
+        height: 27em;
+    }
+
+    .container__atributos label{
+        font-size: 14px;
+    }
+    
+    .container__atributos span{
+        font-size: 10px;
+    }
+
+    input[name=vontade]{
+        top: 35px;
+        left: 103px;
+    }
+    
+    .label-vontade{
+        top: 80px;
+        left: 100px;
+    }
+    
+    .span-vontade{
+        top: 95px;
+        left: 88px;
+    }
+    
+    input[name=violencia]{
+        top: 257px;
+        left: 191px;
+    }
+    
+    .label-violencia{
+        top: 300px;
+        left: 185px;
+    }
+    
+    .span-violencia{
+        top: 314px;
+        left: 172px;
+    }
+    
+    input[name=fortitude]{
+        top: 79px;
+        left: 16px;
+    }
+    
+    .span-fortitude{
+        top: 137px;
+        left: 4px;
+    }
+    
+    .label-fortitude{
+        top: 123px;
+        left: 8px;
+    }
+    
+    input[name=percepcao]{
+        top: 213px;
+        left: 103px;
+    }
+    
+    .label-percepcao{
+        top: 255px;
+        left: 95px;
+    }
+    
+    .span-percepcao{
+        top: 270px;
+        left: 88px;
+    }
+    
+    input[name=alma]{
+        top: 393px;
+        left: 103px;
+    }
+    
+    .label-alma{
+        top: 432px;
+        left: 106px;
+    }
+    
+    .span-alma{
+        top: 446px;
+        left: 78px;
+    }
+    
+    input[name=carisma]{
+        top: 303px;
+        left: 103px;
+    }
+    
+    .label-carisma{
+        top: 343px;
+        left: 99px;
+    }
+    
+    .span-carisma{
+        top: 356px;
+        left: 87px;
+    }
+    
+    input[name=firmeza]{
+        top: 257px;
+        left: 16px;
+    }
+    
+    .label-firmeza{
+        top: 300px;
+        left: 13px;
+    }
+    
+    .span-firmeza{
+        top: 314px;
+        left: 1px;
+    }
+    
+    input[name=reflexos]{
+        top: 79px;
+        left: 191px;
+    }
+    
+    .label-reflexos{
+        top: 123px;
+        left: 186px;
+    }
+    
+    .span-reflexos{
+        top: 137px;
+        left: 186px;
+    }
+    
+    input[name=razao]{
+        top: 169px;
+        left: 16px;
+    }
+    
+    .label-razao{
+        top: 209px;
+        left: 17px;
+    }
+    
+    .span-razao{
+        top: 222px;
+        left: 13px;
+    }
+    
+    input[name=intuicao]{
+        top: 169px;
+        left: 191px;
+    }
+    
+    .label-intuicao{
+        top: 209px;
+        left: 187px;
+    }
+    
+    .span-intuicao{
+        top: 223px;
+        left: 179px;
+    }  
 }

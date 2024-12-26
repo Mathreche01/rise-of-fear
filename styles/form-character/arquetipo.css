@@ -77,7 +77,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .accordion-content button{
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 15px;
     padding: 5px 10px;
     background: linear-gradient(45deg,#FF033E, #BA0021);
     border-radius: 6px;
@@ -99,10 +99,14 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .accordion input[type="checkbox"]:checked + label + .accordion-content{
-    max-height: 400px;
+    max-height: 100%;
     padding: 10px 10px 20px;
 }
 
 .accordion input[type="checkbox"]:checked + label::before{
     content: "-"
+}
+
+@media (max-width: 880px){
+    
 }

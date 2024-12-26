@@ -1,6 +1,6 @@
 <main class="div-form">
     <ul class="progress-bar">
-        <li id="step1" class="active">Arquétipo</li>
+        <li id="step1">Arquétipo</li>
         <li id="step2">Atributos</li>
         <li id="step3">Vantagens</li>
         <li id="step4">Desvantagens</li>
@@ -290,17 +290,17 @@
             <div class="atributos__texto">
                 <p>Há dez atributos, cada um com Movimentos associados. Os 
                     Atributos modificam as rolagens de Movimentos e Vantagens do 
-                    jogador. Atributos e seus Movimentos são <b>passivos</b> (ativados 
+                    Jogador. Atributos e seus Movimentos são <b>passivos</b> (ativados 
                     automaticamente quando as condições são atendidas) ou <b>ativos</b>
                     (ativados por um personagem executando uma ação específica).</p>
-                <p>Atributos passivos são usados para resistir às influências externas e internas. Os Movimentos de jogador associados com atributos passivos são ativados quando o personagem é ameaçado. 
-                    Ao criar seu personagem, distribua os valores de ajuste de +2, +1 e 0 para os Atributos passivos.</p>
-                <span>Há três Atributos passivos: <b>Fortitude</b>, <b>Vontade</b> e <b>Reflexos</b>.</span>
-                <p>Atributos ativos são usados quando um personagem age de forma 
-                    proativa. Os Movimentos de jogador associados com Atributos 
-                    ativos são ativados quando um protagonista executa uma ação específica 
-                    na história. Ao criar seu personagem, distribua os valores de ajuste de +3, +2, +1, +1, 0, -1 e -2 para os Atributos ativos.</p>
-                <span>Há sete Atributos ativos: <b>Razão</b>, <b>Intuição</b>, <b>Percepção</b>, <b>Firmeza</b>, <b>Violência</b>, <b>Carisma</b> e <b>Alma</b>.</span>
+                <p>Atributos Passivos são usados para resistir às influências externas e internas. Os Movimentos de Jogador associados com Atributos Passivos são ativados quando o personagem é ameaçado. 
+                    Ao criar seu personagem, distribua os valores de ajuste de +2, +1 e 0 para os Atributos Passivos.</p>
+                <span>Há três Atributos Passivos: <b>Fortitude</b>, <b>Vontade</b> e <b>Reflexos</b>.</span>
+                <p>Atributos Ativos são usados quando um personagem age de forma 
+                    proativa. Os Movimentos de Jogador associados com Atributos 
+                    Ativos são ativados quando um protagonista executa uma ação específica 
+                    na história. Ao criar seu personagem, distribua os valores de ajuste de +3, +2, +1, +1, 0, -1 e -2 para os Atributos Ativos.</p>
+                <span>Há sete Atributos Ativos: <b>Razão</b>, <b>Intuição</b>, <b>Percepção</b>, <b>Firmeza</b>, <b>Violência</b>, <b>Carisma</b> e <b>Alma</b>.</span>
                 <button onclick="selecionaAtributos()">Selecionar</button>
             </div>
             <div class="container__atributos">
@@ -435,27 +435,28 @@
                 </span>
                 <h2>Adicionar Segredo</h2>
                     <div class="inputSegredos">
-                        <select class="select-box">
-                            <option value="Conhecimento Proibido">Conhecimento Proibido</option>
-                            <option value="Culpado de Crime">Culpado de Crime</option>
-                            <option value="Desaparecimento Misterioso">Desaparecimento Misterioso</option>
-                            <option value ="Doença Mental">Doença Mental</option>
-                            <option value="Escolhido">Escolhido</option>
-                            <option value="Experiência com Ocultismo">Experiência com Ocultismo</option>
-                            <option value="Guardião">Guardião</option>
-                            <option value="Herdeiro">Herdeiro</option>
-                            <option value="Maldição">Maldição</option>
-                            <option value="Pacto com Forças Sombrias">Pacto com Forças Sombrias</option>
-                            <option value="Regressante do Outro Lado">Regressante do Outro Lado</option>
-                            <option value="Responsável por Experimentos Médicos">Responsável por Experimentos Médicos</option>
-                            <option value="Segredo de Família">Segredo de Família</option>
-                            <option value="Sem Raízes">Sem Raízes</option>
-                            <option value="Visitações">Visitações</option>
-                            <option value="Vítima de Crime">Vítima de Crime</option>
-                            <option value="Vítima de Experimentos Médicos">Vítima de Experimentos Médicos</option>
-                        </select>
-                        <div class="icon-select">
-                            <i class="fa-solid fa-chevron-down"></i>
+                        <div class="dropdown">
+                            <input type="text" class="select-box" value="Conhecimento Proibido" readonly>
+                            <div class="options">
+                                <div onclick="show(event)">Conhecimento Proibido</div>
+                                <div onclick="show(event)">Culpado de Crime</div>
+                                <div onclick="show(event)">Desaparecimento Misterioso</div>
+                                <div onclick="show(event)">Doença Mental</div>
+                                <div onclick="show(event)">Escolhido</div>
+                                <div onclick="show(event)">Experiência com Ocultismo</div>
+                                <div onclick="show(event)">Guardião</div>
+                                <div onclick="show(event)">Herdeiro</div>
+                                <div onclick="show(event)">Maldição</div>
+                                <div onclick="show(event)">Pacto com Forças Sombrias</div>
+                                <div onclick="show(event)">Regressante do Outro Lado</div>
+                                <div onclick="show(event)">Responsável por Experimentos Médicos</div>
+                                <div onclick="show(event)">Segredo de Família</div>
+                                <div onclick="show(event)">Sem Raízes</div>
+                                <div onclick="show(event)">Visitações</div>
+                                <div onclick="show(event)">Vítima de Crime</div>
+                                <div onclick="show(event)">Vítima de Experimentos Médicos</div>
+                            </div>
+                            <ion-icon name="chevron-down-outline"></ion-icon>
                         </div>
                         <span>Segredo Sombrio</span>
                     </div>
@@ -471,7 +472,7 @@
             <div class="formulario__botao">
             <button class="createCharacter" onclick="criaFicha()">Finalizar</button>
             <h5 class="form--error"></h5>
-            </div>
+        </div>
         </div>
     </div>
 </main>

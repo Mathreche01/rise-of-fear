@@ -26,9 +26,11 @@ function selecionaArquetipo(arquetipo, desvantagemObrigatoria){
     const etapa2 = document.getElementById('step2')
     etapaGrupo1.style.display = "none"
     etapaGrupo2.style.display = "block"
-    etapa2.classList.add("active")
     mostraVantagens(arquetipo)
     mostraDesvantagens(desvantagemObrigatoria)
+
+    currentStep++;
+    updateProgressBar(currentStep);
 }
 
 function selecionaAtributos(){
@@ -42,7 +44,9 @@ function selecionaAtributos(){
     const etapa3 = document.getElementById('step3')
     etapaGrupo2.style.display = "none"
     etapaGrupo3.style.display = "block"
-    etapa3.classList.add("active")
+
+    currentStep++;
+    updateProgressBar(currentStep);
 }
 
 function buscaArquetipo(){
@@ -143,7 +147,9 @@ function selecionaVantagens(){
         const etapa4 = document.getElementById('step4')
         etapaGrupo3.style.display = "none"
         etapaGrupo4.style.display = "block"
-        etapa4.classList.add("active")
+
+        currentStep++;
+        updateProgressBar(currentStep);
     }
 }
 
@@ -163,7 +169,9 @@ function selecionaDesvantagens(){
         const etapa5 = document.getElementById('step5')
         etapaGrupo4.style.display = "none"
         etapaGrupo5.style.display = "block"
-        etapa5.classList.add("active")
+
+        currentStep++;
+        updateProgressBar(currentStep);
     }
 }
 
@@ -259,3 +267,8 @@ function defineImagem(){
     })
 }
 
+function show(event){
+    const container = event.target.parentElement.parentElement
+    const input = container.querySelector('input')
+    input.value = event.target.textContent
+}
