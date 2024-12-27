@@ -68,6 +68,7 @@ function buscaArquetipo(){
 function mostraVantagens(arquetipo){
     const listaVantagens = arquetipoVantagens[arquetipo]
     const lista = document.querySelector('.vantagem__container')
+    lista.innerHTML = ""
     listaVantagens.forEach((vantagem) => {
     const vantagemCard = vantagens[vantagem]
     const elemento = document.createElement('div')
@@ -94,21 +95,6 @@ function mostraDesvantagens(desvantagemObrigatoria){
     desvantagens.forEach((desvantagem) => {
         const elemento = document.createElement('div')
         elemento.className = "vantagem__card swiper-slide"
-        if(desvantagem.nome === desvantagemObrigatoria){
-            elemento.innerHTML = `
-            <input type="checkbox" class="seleciona-desvantagem" id="${desvantagem.nome}">
-            <div class="vantagem__box">
-                <div class="vantagem__conteudo">
-                <div class="vantagem__icone"><i class="fa-solid ${desvantagem.icon} icone-v" onclick="limpaTexto()"></i></div>
-                <div class="vantagem__texto">
-                    <h3>${desvantagem.nome}</h3>
-                    <span>Desvantagem</span>
-                    <p>${desvantagem.descricao}</p>
-                </div>
-                </div>
-            </div>
-            ` 
-        } else {
         elemento.innerHTML = `
         <input type="checkbox" class="seleciona-desvantagem" id="${desvantagem.nome}">
         <div class="vantagem__box">
@@ -122,11 +108,14 @@ function mostraDesvantagens(desvantagemObrigatoria){
             </div>
         </div>
         `
-        }
         lista.appendChild(elemento)
         if(desvantagem.nome === desvantagemObrigatoria){
             const input = document.getElementById(desvantagemObrigatoria)
             input.checked = true;
+            input.disabled = true;
+        } else{
+            const input = document.getElementById(desvantagem.nome)
+            input.checked = false;
         }
     })
 }

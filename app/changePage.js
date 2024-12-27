@@ -37,6 +37,23 @@ function contaLista(url){
         currentStep = 1;
         updateProgressBar(currentStep)
 
+        const stepSelect = document.querySelectorAll('.progress-bar li');
+        const stepArray = Array.from(stepSelect); 
+        const steps = document.querySelectorAll('.step-group')
+        stepSelect.forEach((btn) =>
+            btn.addEventListener('click', () => {
+                let index = stepArray.indexOf(btn); 
+                if(index < currentStep){
+                    steps.forEach(step => step.style.display = "none")
+                    steps[index].style.display = "block"
+                    currentStep = index + 1
+                    updateProgressBar(currentStep)
+                } else{
+                    return
+                }
+            })
+        );
+
         const selectbox = document.querySelector('.dropdown')
         selectbox.addEventListener('click', () => {
             selectbox.classList.toggle('active')

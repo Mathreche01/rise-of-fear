@@ -96,7 +96,8 @@
         overflow: hidden;
         transform: translateY(100%);
         transition: .4s;
-        z-index: 999;
+        background-color: var(--cor-de-fundo);
+        z-index: 9999;
     }
 
     .cabecalho__botao{

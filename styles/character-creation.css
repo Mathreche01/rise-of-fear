@@ -23,10 +23,13 @@
     font-weight: 500;
     text-align: center;
     position: relative;
+    pointer-events: none;
 }
 
 .progress-bar li:before{
     position: relative;
+    cursor: pointer;
+    pointer-events: all;
     z-index: 2;
     width: 40px;
     height: 40px;

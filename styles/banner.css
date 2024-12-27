@@ -1,4 +1,4 @@
-.banner{
+.banner {
     background: url("../img/Banner.jpg") no-repeat;
     background-position: center;
     background-size: cover;
@@ -6,8 +6,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    padding: 10em;
+    padding: 10em; 
     overflow: hidden;
+    max-width: 100%;
+    position: relative;
 }
 
 .banner2{

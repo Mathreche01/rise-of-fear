@@ -13,7 +13,7 @@
 }
 
 .inputBox input, .inputBox textarea{
-    width: calc(100% - 20px);
+    width: 100%;
     padding: 12px 10px 10px 10px;
     border: 1px solid rgba(255,255,255,0.25);
     background: var(--cor-de-fundo);
@@ -85,7 +85,6 @@
 .uploadImage{
     border: dashed rgba(255,255,255,0.25) 1px;
     padding: 12px 10px 10px 10px;
-    margin-left: 21px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border-left: 1px solid rgba(255,255,255,0.25);
@@ -109,7 +108,7 @@ input[name="pg-imagem"]{
 }
 
 #input-imagem-pg{
-    width: calc(95% - 20px);
+    width: 100%;
 }
 
 #input-idade-pg{
@@ -117,11 +116,12 @@ input[name="pg-imagem"]{
 }
 
 input[name="pg-nome"], input[name="pg-ocupacao"]{
-    width: calc(100%-20px);
+    width: 100%;
 }
 
 .inputBox textarea{
     height: 5em;
+    box-sizing: border-box;
     resize: none;
 }
 
@@ -361,6 +361,7 @@ input[type="file"]{
     height: 136px;
     bottom: -10px;
     overflow-y: auto;
+    background: rgb(52, 52, 52);
     transform: translateY(100%);
     z-index: 999;
     left: 0;
