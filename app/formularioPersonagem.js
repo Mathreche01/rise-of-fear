@@ -28,7 +28,7 @@ function selecionaArquetipo(arquetipo, desvantagemObrigatoria){
     etapaGrupo1.style.display = "none"
     etapaGrupo2.style.display = "block"
     mostraVantagens(arquetipo)
-    mostraDesvantagens(desvantagemObrigatoria)
+    desvantagemArquetipo(desvantagemObrigatoria)
 
     currentStep++;
     updateProgressBar(currentStep);
@@ -114,7 +114,7 @@ function mostraVantagens(arquetipo){
     })
 }
 
-function mostraDesvantagens(desvantagemObrigatoria){
+function mostraDesvantagens(){
     const lista = document.querySelector('.swiper-wrapper')
     desvantagens.forEach((desvantagem) => {
         const elemento = document.createElement('div')
@@ -133,13 +133,21 @@ function mostraDesvantagens(desvantagemObrigatoria){
         </div>
         `
         lista.appendChild(elemento)
-        if(desvantagem.nome === desvantagemObrigatoria){
+    })
+}
+
+function desvantagemArquetipo(desvantagemObrigatoria){
+    const desvantagens = document.querySelectorAll('.vantagem__card.swiper-slide')
+    desvantagens.forEach((desvantagem) => {
+        let nome = desvantagem.querySelector('.vantagem__texto h3').textContent
+        if(nome === desvantagemObrigatoria){
             const input = document.getElementById(desvantagemObrigatoria)
             input.checked = true;
             input.disabled = true;
         } else{
-            const input = document.getElementById(desvantagem.nome)
+            const input = document.getElementById(nome)
             input.checked = false;
+            input.disabled = false;
         }
     })
 }

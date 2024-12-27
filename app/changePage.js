@@ -38,6 +38,8 @@ function contaLista(url){
         currentStep = 1;
         updateProgressBar(currentStep)
 
+        mostraDesvantagens()
+
         const stepSelect = document.querySelectorAll('.progress-bar li');
         const stepArray = Array.from(stepSelect); 
         const steps = document.querySelectorAll('.step-group')
