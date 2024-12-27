@@ -30,6 +30,7 @@ function contaLista(url){
         slotsTexto.innerHTML = slotsUsados.length
     } else if(url === "./create-character.html"){
         vantagemErro = document.querySelector('.vantagem--erro')
+        atributosErro = document.querySelector('.atributos--erro')
         mensagemErro = document.querySelector('.erro--segredo')
         desvantagemErro = document.querySelector('.desvantagem--erro')
         erroFormulario = document.querySelector('.form--error')
@@ -53,6 +54,14 @@ function contaLista(url){
                 }
             })
         );
+
+        const returnBtns = document.querySelectorAll('.return-btn')
+        returnBtns.forEach((btn) => btn.addEventListener('click', () => {
+            steps.forEach(step => step.style.display = "none")
+            steps[currentStep - 2].style.display = "block"
+            currentStep--
+            updateProgressBar(currentStep)
+        }))
 
         const selectbox = document.querySelector('.dropdown')
         selectbox.addEventListener('click', () => {
@@ -107,7 +116,7 @@ function updateProgressBar(step) {
         }
     });
 
-    if(larguraTela <= 880 && larguraTela >= 560){
+    if(larguraTela <= 880 && larguraTela > 560){
         if(step === 1){
             steps[step - 1].style.display = "block"
             steps[step].style.display = "block"
@@ -121,7 +130,7 @@ function updateProgressBar(step) {
             steps[step - 1].style.display = "block"
             steps[step].style.display = "block"
         }
-    } else if(larguraTela < 560){
+    } else if(larguraTela <= 560){
         steps[step - 1].style.display = "block"
     } else{
         steps.forEach(step => step.style.display = "block")

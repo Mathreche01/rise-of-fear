@@ -4,6 +4,7 @@ let desvantagensEscolhidas = []
 let atributosPersonagem = []
 let vantagemErro = ""
 let desvantagemErro = ""
+let atributosErro = ""
 let mensagemErro = ""
 let segredosSombrios = []
 let nomePersonagem;
@@ -23,7 +24,7 @@ function selecionaArquetipo(arquetipo, desvantagemObrigatoria){
     arquetipoPersonagem	= arquetipo;
     const etapaGrupo1 = document.getElementById('step-group-1')
     const etapaGrupo2 = document.getElementById('step-group-2')
-    const etapa2 = document.getElementById('step2')
+
     etapaGrupo1.style.display = "none"
     etapaGrupo2.style.display = "block"
     mostraVantagens(arquetipo)
@@ -34,19 +35,42 @@ function selecionaArquetipo(arquetipo, desvantagemObrigatoria){
 }
 
 function selecionaAtributos(){
-    const atributos = document.querySelectorAll('.atributos')
-    atributosPersonagem = [];
-    atributos.forEach((atributo) => {
-        atributosPersonagem.push(atributo.value)
-    })
-    const etapaGrupo2 = document.getElementById('step-group-2')
-    const etapaGrupo3 = document.getElementById('step-group-3')
-    const etapa3 = document.getElementById('step3')
-    etapaGrupo2.style.display = "none"
-    etapaGrupo3.style.display = "block"
+        const atributos = document.querySelectorAll('.atributos')
+        atributosPersonagem = [];
 
-    currentStep++;
-    updateProgressBar(currentStep);
+        atributos.forEach((atributo) => {
+            atributosPersonagem.push(atributo.value); 
+        });
+
+        if(atributosPersonagem.indexOf("") === -1){
+            
+        const valoresEsperadosGrupo1 = ["0", "1", "2"]; 
+        const valoresEsperadosGrupo2 = ["3", "2", "1", "1", "0", "-1", "-2"]; 
+
+        const grupo1 = atributosPersonagem.slice(0, 3).sort();
+        if (JSON.stringify(grupo1) !== JSON.stringify(valoresEsperadosGrupo1)) {
+            atributosErro.textContent = "Distribua corretamente os valores de atributo."
+            return;
+        }
+
+
+        const grupo2 = atributosPersonagem.slice(3, 10).sort();
+        if (JSON.stringify(grupo2) !== JSON.stringify(valoresEsperadosGrupo2.sort())) {
+            atributosErro.textContent = "Distribua corretamente os valores de atributo."
+            return;
+        }
+
+        const etapaGrupo2 = document.getElementById('step-group-2')
+        const etapaGrupo3 = document.getElementById('step-group-3')
+
+        etapaGrupo2.style.display = "none"
+        etapaGrupo3.style.display = "block"
+
+        currentStep++;
+        updateProgressBar(currentStep);
+    } else{
+        atributosErro.textContent = "Preencha todos os campos."
+    }
 }
 
 function buscaArquetipo(){
@@ -133,7 +157,7 @@ function selecionaVantagens(){
     } else {
         const etapaGrupo3 = document.getElementById('step-group-3')
         const etapaGrupo4 = document.getElementById('step-group-4')
-        const etapa4 = document.getElementById('step4')
+    
         etapaGrupo3.style.display = "none"
         etapaGrupo4.style.display = "block"
 
@@ -155,7 +179,7 @@ function selecionaDesvantagens(){
     } else {
         const etapaGrupo4 = document.getElementById('step-group-4')
         const etapaGrupo5 = document.getElementById('step-group-5')
-        const etapa5 = document.getElementById('step5')
+       
         etapaGrupo4.style.display = "none"
         etapaGrupo5.style.display = "block"
 
@@ -192,6 +216,9 @@ function limpaTexto(){
    }
    if(erroFormulario){
         erroFormulario.innerHTML = ""
+   }
+   if(atributosErro){
+        atributosErro.innerHTML = ""
    }
 }
 
@@ -260,4 +287,20 @@ function show(event){
     const container = event.target.parentElement.parentElement
     const input = container.querySelector('input')
     input.value = event.target.textContent
+}
+
+function formataInput(event){
+    let value = event.target.value;
+
+    if (!/^(-?[0-9]?)$/.test(value)) {
+      value = value.slice(0, -1); 
+    }
+
+    event.target.value = value;
+
+    event.target.addEventListener('blur', () => {
+        if (event.target.value === '-') {
+            event.target.value = '';
+        }
+    })
 }

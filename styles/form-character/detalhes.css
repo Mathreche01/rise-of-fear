@@ -479,14 +479,6 @@ input[type="file"]{
     color: whitesmoke;
 }
 
-.form--error{
-    width: 100%;
-    text-align: center;
-    color: red;
-    padding-top: 10px;
-    font-size: .9em;
-    font-weight: 200;
-}
 
 @media (max-width: 600px){
     .box--nome__ocupacao, .box--idade__nacionalidade{

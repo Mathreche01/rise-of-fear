@@ -56,6 +56,16 @@
     flex-direction: row;
 }
 
+.atributos__botao{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    gap: .3rem;
+}
+
 .atributos__texto{
     display: flex;
     flex-direction: column;
@@ -86,8 +96,8 @@
 
 
 input[name=vontade]{
-    top: 46px;
-    left: 144px;
+    top: 48px;
+    left: 145px;
 }
 
 .label-vontade{
@@ -101,8 +111,8 @@ input[name=vontade]{
 }
 
 input[name=violencia]{
-    top: 334px;
-    left: 257px;
+    top: 336px;
+    left: 259px;
 }
 
 .label-violencia{
@@ -116,8 +126,8 @@ input[name=violencia]{
 }
 
 input[name=fortitude]{
-    top: 103px;
-    left: 30px;
+    top: 105px;
+    left: 32px;
 }
 
 .span-fortitude{
@@ -131,8 +141,8 @@ input[name=fortitude]{
 }
 
 input[name=percepcao]{
-    top: 277px;
-    left: 143px;
+    top: 279px;
+    left: 145px;
 }
 
 .label-percepcao{
@@ -146,8 +156,8 @@ input[name=percepcao]{
 }
 
 input[name=alma]{
-    top: 510px;
-    left: 143px;
+    top: 512px;
+    left: 145px;
 }
 
 .label-alma{
@@ -161,8 +171,8 @@ input[name=alma]{
 }
 
 input[name=carisma]{
-    top: 394px;
-    left: 143px;
+    top: 396px;
+    left: 145px;
 }
 
 .label-carisma{
@@ -176,8 +186,8 @@ input[name=carisma]{
 }
 
 input[name=firmeza]{
-    top: 334px;
-    left: 30px;
+    top: 336px;
+    left: 32px;
 }
 
 .label-firmeza{
@@ -191,8 +201,8 @@ input[name=firmeza]{
 }
 
 input[name=reflexos]{
-    top: 103px;
-    left: 257px;
+    top: 105px;
+    left: 259px;
 }
 
 .label-reflexos{
@@ -206,8 +216,8 @@ input[name=reflexos]{
 }
 
 input[name=razao]{
-    top: 219px;
-    left: 30px;
+    top: 221px;
+    left: 32px;
 }
 
 .label-razao{
@@ -221,8 +231,8 @@ input[name=razao]{
 }
 
 input[name=intuicao]{
-    top: 219px;
-    left: 257px;
+    top: 221px;
+    left: 259px;
 }
 
 .label-intuicao{
@@ -241,7 +251,7 @@ input[name=intuicao]{
         margin-bottom: 4rem;
     }
 
-    .atributos__texto button{
+    .atributos__botao{
         position: absolute;
         bottom: -110px;
         margin-bottom: 2rem;
@@ -268,8 +278,8 @@ input[name=intuicao]{
     }
 
     input[name=vontade]{
-        top: 43px;
-        left: 128px;
+        top: 44px;
+        left: 129px;
     }
     
     .label-vontade{
@@ -283,8 +293,8 @@ input[name=intuicao]{
     }
     
     input[name=violencia]{
-        top: 308px;
-        left: 232px;
+        top: 307px;
+        left: 233px;
     }
     
     .label-violencia{
@@ -299,7 +309,7 @@ input[name=intuicao]{
     
     input[name=fortitude]{
         top: 96px;
-        left: 25px;
+        left: 26px;
     }
     
     .span-fortitude{
@@ -313,8 +323,8 @@ input[name=intuicao]{
     }
     
     input[name=percepcao]{
-        top: 255px;
-        left: 128px;
+        top: 256px;
+        left: 129px;
     }
     
     .label-percepcao{
@@ -328,8 +338,8 @@ input[name=intuicao]{
     }
     
     input[name=alma]{
-        top: 465px;
-        left: 128px;
+        top: 467px;
+        left: 129px;
     }
     
     .label-alma{
@@ -343,8 +353,8 @@ input[name=intuicao]{
     }
     
     input[name=carisma]{
-        top: 360px;
-        left: 128px;
+        top: 362px;
+        left: 129px;
     }
     
     .label-carisma{
@@ -358,8 +368,8 @@ input[name=intuicao]{
     }
     
     input[name=firmeza]{
-        top: 308px;
-        left: 25px;
+        top: 307px;
+        left: 26px;
     }
     
     .label-firmeza{
@@ -374,7 +384,7 @@ input[name=intuicao]{
     
     input[name=reflexos]{
         top: 96px;
-        left: 232px;
+        left: 233px;
     }
     
     .label-reflexos{
@@ -389,7 +399,7 @@ input[name=intuicao]{
     
     input[name=razao]{
         top: 203px;
-        left: 25px;
+        left: 26px;
     }
     
     .label-razao{
@@ -404,7 +414,7 @@ input[name=intuicao]{
     
     input[name=intuicao]{
         top: 203px;
-        left: 232px;
+        left: 233px;
     }
     
     .label-intuicao{
@@ -433,8 +443,8 @@ input[name=intuicao]{
     }
 
     input[name=vontade]{
-        top: 35px;
-        left: 103px;
+        top: 36px;
+        left: 106px;
     }
     
     .label-vontade{
@@ -448,8 +458,8 @@ input[name=intuicao]{
     }
     
     input[name=violencia]{
-        top: 257px;
-        left: 191px;
+        top: 258px;
+        left: 193px;
     }
     
     .label-violencia{
@@ -463,8 +473,8 @@ input[name=intuicao]{
     }
     
     input[name=fortitude]{
-        top: 79px;
-        left: 16px;
+        top: 80px;
+        left: 18px;
     }
     
     .span-fortitude{
@@ -478,8 +488,8 @@ input[name=intuicao]{
     }
     
     input[name=percepcao]{
-        top: 213px;
-        left: 103px;
+        top: 214px;
+        left: 106px;
     }
     
     .label-percepcao{
@@ -493,8 +503,8 @@ input[name=intuicao]{
     }
     
     input[name=alma]{
-        top: 393px;
-        left: 103px;
+        top: 394px;
+        left: 106px;
     }
     
     .label-alma{
@@ -508,8 +518,8 @@ input[name=intuicao]{
     }
     
     input[name=carisma]{
-        top: 303px;
-        left: 103px;
+        top: 304px;
+        left: 105px;
     }
     
     .label-carisma{
@@ -523,8 +533,8 @@ input[name=intuicao]{
     }
     
     input[name=firmeza]{
-        top: 257px;
-        left: 16px;
+        top: 258px;
+        left: 18px;
     }
     
     .label-firmeza{
@@ -538,8 +548,8 @@ input[name=intuicao]{
     }
     
     input[name=reflexos]{
-        top: 79px;
-        left: 191px;
+        top: 80px;
+        left: 193px;
     }
     
     .label-reflexos{
@@ -553,8 +563,8 @@ input[name=intuicao]{
     }
     
     input[name=razao]{
-        top: 169px;
-        left: 16px;
+        top: 170px;
+        left: 18px;
     }
     
     .label-razao{
@@ -568,8 +578,8 @@ input[name=intuicao]{
     }
     
     input[name=intuicao]{
-        top: 169px;
-        left: 191px;
+        top: 170px;
+        left: 193px;
     }
     
     .label-intuicao{

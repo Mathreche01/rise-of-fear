@@ -301,37 +301,41 @@
                     Ativos são ativados quando um protagonista executa uma ação específica 
                     na história. Ao criar seu personagem, distribua os valores de ajuste de +3, +2, +1, +1, 0, -1 e -2 para os Atributos Ativos.</p>
                 <span>Há sete Atributos Ativos: <b>Razão</b>, <b>Intuição</b>, <b>Percepção</b>, <b>Firmeza</b>, <b>Violência</b>, <b>Carisma</b> e <b>Alma</b>.</span>
-                <button onclick="selecionaAtributos()">Selecionar</button>
+                <div class="atributos__botao">
+                    <button onclick="selecionaAtributos()">Selecionar</button>
+                    <button class="return-btn" onclick="retornarEtapa()"><i class="fa-solid fa-arrow-left-long"></i> Retornar</button>
+                    <span class="atributos--erro"></span>
+                </div>
             </div>
             <div class="container__atributos">
-                <input required class="atributos" type="number" value="1" name="fortitude" title="Fortitude">
+                <input required class="atributos" type="text" maxlength="2" value="1" name="fortitude" title="Fortitude" onfocus="limpaTexto()" oninput="formataInput(event)">
                 <label class="label-fortitude">Fortitude</label>
                 <span class="span-fortitude">Suportar Lesão</span>
-                <input required class="atributos" type="number" value="1" name="vontade" title="Vontade">
+                <input required class="atributos" type="text" maxlength="2" value="1" name="vontade" title="Vontade" onfocus="limpaTexto()" oninput="formataInput(event)">
                 <label class="label-vontade">Vontade</label>
                 <span class="span-vontade">Manter o Controle</span>
-                <input required class="atributos" type="number" value="1" name="reflexos" title="Reflexos">
+                <input required class="atributos" type="text" maxlength="2" value="1" name="reflexos" title="Reflexos" onfocus="limpaTexto()" oninput="formataInput(event)">
                 <label class="label-reflexos">Reflexos</label>
                 <span class="span-reflexos">Evitar Dano</span>
-                <input required class="atributos" type="number" value="1" name="intuicao" title="Intuição">
+                <input required class="atributos" type="text" maxlength="2" value="1" name="intuicao" title="Intuição" onfocus="limpaTexto()" oninput="formataInput(event)">
                 <label class="label-intuicao">Intuição</label>
                 <span class="span-intuicao">Ler uma Pessoa</span>
-                <input required class="atributos" type="number" value="1" name="violencia" title="Violência">
+                <input required class="atributos" type="text" maxlength="2" value="1" name="violencia" title="Violência" onfocus="limpaTexto()" oninput="formataInput(event)">
                 <label class="label-violencia">Violência</label>
                 <span class="span-violencia">Engajar em Combate</span>
-                <input required class="atributos" type="number" value="1" name="carisma" title="Carisma">
+                <input required class="atributos" type="text" maxlength="2" value="1" name="carisma" title="Carisma" onfocus="limpaTexto()" oninput="formataInput(event)">
                 <label class="label-carisma">Carisma</label>
                 <span class="span-carisma">Inflenciar Alguém</span>
-                <input required class="atributos" type="number" value="1" name="alma" title="Alma">
+                <input required class="atributos" type="text" maxlength="2" value="1" name="alma" title="Alma" onfocus="limpaTexto()" oninput="formataInput(event)">
                 <label class="label-alma">Alma</label>
                 <span class="span-alma">Ver Através da Ilusão</span>
-                <input required class="atributos" type="number" value="1" name="firmeza" title="Firmeza">
+                <input required class="atributos" type="text" maxlength="2" value="1" name="firmeza" title="Firmeza" onfocus="limpaTexto()" oninput="formataInput(event)">
                 <label class="label-firmeza">Firmeza</label>
                 <span class="span-firmeza">Agir sob Pressão</span>
-                <input required class="atributos" type="number" value="1" name="razao" title="Razão">
+                <input required class="atributos" type="text" maxlength="2" value="1" name="razao" title="Razão" onfocus="limpaTexto()" oninput="formataInput(event)">
                 <label class="label-razao">Razão</label>
                 <span class="span-razao">Investigar</span>
-                <input required class="atributos" type="number" value="1" name="percepcao" title="Percepção">
+                <input required class="atributos" type="text" maxlength="2" value="1" name="percepcao" title="Percepção" onfocus="limpaTexto()" oninput="formataInput(event)">
                 <label class="label-percepcao">Percepção</label>
                 <span class="span-percepcao">Observar Situação</span>
             </div>
@@ -348,8 +352,9 @@
             <div class="vantagem__container">
             </div>
             <div class="vantagem__botao">
-            <button onclick="selecionaVantagens()">Selecionar</button>
-            <h4 class="vantagem--erro"></h4>
+                <button onclick="selecionaVantagens()">Selecionar</button>
+                <button class="return-btn" onclick="retornarEtapa()"><i class="fa-solid fa-arrow-left-long"></i> Retornar</button>
+                <span class="vantagem--erro"></span>
             </div>
         </div>
         <div class="step-group" id="step-group-4">
@@ -366,8 +371,9 @@
                 <div class="swiper-pagination"></div>
             </div>
             <div class="vantagem__botao">
-            <button onclick="selecionaDesvantagens()">Selecionar</button>
-            <h4 class="desvantagem--erro"></h4>
+                <button onclick="selecionaDesvantagens()">Selecionar</button>
+                <button class="return-btn" onclick="retornarEtapa()"><i class="fa-solid fa-arrow-left-long"></i> Retornar</button>
+                <span class="desvantagem--erro"></span>
             </div>
         </div>
         <div class="step-group" id="step-group-5">
@@ -377,7 +383,7 @@
             <div class="container__detalhes">
                 <div class="box--imagem">
                     <div class="inputBox" id="input-imagem-pg">
-                    <input required type="url" name="pg-imagem" id="pg-imagem" placeholder="placeholder" onkeydown="limpaTexto()">
+                    <input required type="url" name="pg-imagem" id="pg-imagem" placeholder="placeholder" onfocus="limpaTexto()">
                     <span>Imagem</span>
                     </div>
                     <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" onchange="defineImagem()">
@@ -385,26 +391,26 @@
                 </div>
                 <div class="box--nome__ocupacao">
                     <div class="inputBox" id="input-nome-pg">
-                    <input required type="text" name="pg-nome" id="pg-nome" onkeydown="limpaTexto()" placeholder="placeholder">
+                    <input required type="text" name="pg-nome" id="pg-nome" onfocus="limpaTexto()" placeholder="placeholder">
                     <span>Nome</span>
                     </div>
                     <div class="inputBox" id="input-ocupacao-pg">
-                    <input required type="text" name="pg-ocupacao" id="pg-ocupacao" onkeydown="limpaTexto()" placeholder="placeholder">
+                    <input required type="text" name="pg-ocupacao" id="pg-ocupacao" onfocus="limpaTexto()" placeholder="placeholder">
                     <span>Ocupação</span>
                     </div>
                 </div>
                 <div class="box--idade__nacionalidade">
                     <div class="inputBox" id="input-idade-pg">
-                    <input required type="number" value="0" name="pg-idade" id="pg-idade"  onkeydown="limpaTexto()" placeholder="placeholder">
+                    <input required type="number" value="0" name="pg-idade" id="pg-idade"  onfocus="limpaTexto()" placeholder="placeholder">
                     <span>Idade</span>
                     </div>
                     <div class="inputBox" id="input-nacionalidade-pg">
-                    <input required type="text" name="pg-nacionalidade" id="pg-nacionalidade" onkeydown="limpaTexto()" placeholder="placeholder">
+                    <input required type="text" name="pg-nacionalidade" id="pg-nacionalidade" onfocus="limpaTexto()" placeholder="placeholder">
                     <span>Nacionalidade</span>
                     </div>
                 </div>
                 <div class="inputBox">
-                <textarea required name="pg-historia" id="pg-historia" onkeydown="limpaTexto()"></textarea>
+                <textarea required name="pg-historia" id="pg-historia" onfocus="limpaTexto()"></textarea>
                 <span>Narrativa</span>
                 </div>
             </div>
@@ -461,7 +467,7 @@
                         <span>Segredo Sombrio</span>
                     </div>
                     <div class="inputSegredos">
-                        <input type="text" id="motivoSegredo" onkeydown="limpaTexto()" placeholder="placeholder">
+                        <input type="text" id="motivoSegredo" onfocus="limpaTexto()" placeholder="placeholder">
                         <span>Motivação Pessoal</span>
                         <p class="erro--segredo"></p>
                     </div>
@@ -470,9 +476,10 @@
                     </div>
             </dialog>
             <div class="formulario__botao">
-            <button class="createCharacter" onclick="criaFicha()">Finalizar</button>
-            <h5 class="form--error"></h5>
-        </div>
+                <button class="createCharacter" onclick="criaFicha()">Finalizar</button>
+                <button class="return-btn" onclick="retornarEtapa()"><i class="fa-solid fa-arrow-left-long"></i> Retornar</button>
+                <span class="form--error"></span>
+            </div>
         </div>
     </div>
 </main>

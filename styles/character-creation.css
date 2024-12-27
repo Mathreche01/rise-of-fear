@@ -148,8 +148,34 @@
     margin-bottom: 30px;
 }
 
+.return-btn{
+    display: none;
+}
+
 @media (max-width: 880px){
     .step-group{
         margin: 1rem 0;
+    }
+}
+
+@media (max-width: 560px){
+    .return-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 !important;
+        gap: .3rem;
+        margin: 0 !important;
+        background: transparent !important;
+        border: none;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 300 !important;
+        cursor: pointer;
+    }
+
+    .return-btn:hover{
+        font-weight: 300 !important;
+        text-decoration: underline;
     }
 }
