@@ -80,6 +80,7 @@ a {
             flex-direction: column;
             background-color: var(--cor-de-fundo);
             border-bottom: 1px solid var(--cor-divisoria);
+            border-top: 1px solid var(--cor-divisoria);
       }
 
       .et-hero-tab{

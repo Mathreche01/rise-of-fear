@@ -67,6 +67,10 @@ input {
 	font-size: inherit;
 	font-weight: inherit;
 	font-family: inherit;
+	margin: 0;
+	padding: 0;
+	outline: none;
+	box-sizing: border-box;
 }
 
 textarea {
