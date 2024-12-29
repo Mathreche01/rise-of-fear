@@ -191,7 +191,8 @@
 .relacao .relacao-rating input:checked ~ input::before, .relacao .relacao-rating input:checked::before,
 .ferimento__item input:checked ~ input::before, .ferimento__item input:checked::before,
 .estabilidade__secao input:checked ~ input::before, .estabilidade__secao input:checked::before{
-    content: '◈'
+    content: '◈';
+    font-size: 20px;
 }
 
 .ficha__coluna{
