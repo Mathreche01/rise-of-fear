@@ -37,7 +37,8 @@
 }
 
 .inputBox input::placeholder{
-    color: transparent
+    color: transparent;
+    pointer-events: none;
 }
 
 .inputBox input:not(:placeholder-shown) ~ span, .inputBox input:focus ~ span, .inputBox textarea:valid ~ span, .inputBox textarea:focus ~ span{

@@ -265,8 +265,14 @@ async function criaFicha(){
     inputs.forEach((input) => {
         const inputStatus = input.value
         validacao.push(inputStatus !== "")
-    })
-    if((validacao.indexOf(false) !== -1) || listaSegredos.length === 0){
+    }) 
+
+    if(listaSegredos.length < 2){
+        erroFormulario.innerHTML = "A lista deve conter, ao menos, dois segredos sombrios."
+        return  
+    }
+
+    if((validacao.indexOf(false) !== -1)){
         erroFormulario.innerHTML = "Todos os campos devem ser preenchidos."
     } else {
         nomePersonagem = document.querySelector("#pg-nome").value
