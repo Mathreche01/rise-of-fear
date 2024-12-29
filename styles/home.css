@@ -144,7 +144,7 @@
     box-sizing: border-box;
 }
 
-main{
+.dashboard{
     max-width: 1800px;
     margin: 0 auto;
     width: calc(100% - 20px);
@@ -595,7 +595,7 @@ main{
 }
 
 @media (max-width: 360px){
-    main{
+    .dashboard{
         padding: 0 0 20px 0;
     }
 }

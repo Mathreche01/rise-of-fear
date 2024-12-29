@@ -5,14 +5,21 @@
     background-size: cover;
     background-position: center;
     height: 100%;
-    display: flex;
-    flex-direction: column; 
+    width: 100vw;
+    box-sizing: border-box;
 }
 
 .ficha{
     backdrop-filter: blur(6px);
+    padding: 20px;
     -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
 }
+
 
 .ficha__detalhes{
     display: flex;
@@ -31,6 +38,8 @@
 .relacao .relacao-rating{
     position: relative;
     display: flex;
+    width: 20%;
+    justify-content: center;
     flex-direction: row-reverse;
     border-left: 1px dashed rgb(60,60,60);
     padding: 8px 0 8px 10px;
@@ -66,6 +75,8 @@
     position: absolute;
     font-family: 'Dai Banna SIL',    serif;
     font-size: 20px;
+    width: 22px;
+    height: 22px;
     left: 4px;
 }
 
@@ -95,19 +106,31 @@
     position: relative;
     display: flex;
     flex-direction: row;
+    white-space: nowrap;
     align-items: center;
+    width: fit-content;
     justify-content: space-between;
     font-family: 'Dai Banna SIL', serif;
 }
 
+.relacoes__topo h3{
+    position: relative;
+}
+
 .relacao__grau{
-    transform: translateX(110%) translateY(20%);
+    position: absolute;
+    left: 60%;
+    transform: translateX(-50%);
+    bottom: 0;
     color: rgb(90, 90, 90);
     font-weight: 600;
 }
 
 .ficha__segredos h4{
-    width: 68%;
+    position: absolute;
+    left: 75%;
+    bottom: 0;
+    transform: translateX(-50%);
     text-align: center;
     color: rgb(90, 90, 90);
     font-weight: 600;
@@ -129,7 +152,7 @@
 
 .relacao b{
     position: relative;
-    width: 180px;
+    width: 40%;
     padding: 8px 0;
     border-right: 1px dashed rgb(60,60,60);
 }
@@ -139,7 +162,7 @@
 }
 
 .relacao p{
-    width: 100px;
+    width: 40%;
     text-align: center;
 }
 
@@ -149,11 +172,16 @@
     text-align: center;
     color: rgb(90, 90, 90);
     font-weight: 600;
+    position: absolute;
+    bottom: 0;
+    transform: translateX(-50%);
+    left: 91%;
+    gap: 7px;
 }
 
-.modificadores p{
-    padding: 10px 0 0 12px;
-    margin-right: 4px;
+
+.relacoes__topo{
+    width: 100%;
 }
 
 .relacao .relacao-rating input:hover ~ input::before, .relacao .relacao-rating input:hover::before,
@@ -163,20 +191,13 @@
     content: '◈'
 }
 
-.ficha__coluna1, .ficha__coluna2, .ficha__coluna3{
-    width: 33%;
+.ficha__coluna{
     display: flex;
+    box-sizing: border-box;
     flex-direction: column;
+    width: 100%;
     gap: 20px;
-    padding: 0 2em 2em 2em;
-}
-
-.ficha__coluna2{
-    gap: 50px;
-}
-
-.ficha__segredos .ficha__relacoes--lista{
-    height: 70px;
+    justify-content: space-between;
 }
 
 .segredo-item{
@@ -187,14 +208,21 @@
     border-bottom: 1px dashed rgb(60,60,60);
 }
 
+.ficha__equipamento{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
 .segredo-item b{
-    padding: 10px 10px 8px 0;
-    width: 30%;
+    padding: 10px 30px 8px 0;
+    width: 50%;
+    box-sizing: border-box;
     border-right: 1px dashed rgb(60,60,60);
 }
 
 .segredo-item p{
-    width: 70%;
+    width: 50%;
     text-align: center;
 }
 
@@ -239,14 +267,15 @@
     left: 5px;
 }
 
-.segredo-item b{
-    position: relative;
+.segredo-item b, .relacao b{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
 }
 
 .relacao ion-icon, .segredo-item b ion-icon{
     color: red;
-    position: absolute;
-    right: 3px;
     cursor: pointer;
 }
 
@@ -254,6 +283,7 @@
     padding: 8px 5px 2px 5px;
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     border-bottom: 1px dashed rgb(60,60,60);
 }
@@ -264,6 +294,9 @@
 
 .ferimento__item p{
     margin-left: 10px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }
 
 .ferimentos__graves--topo, .ferimentos__criticos--topo, .ficha__itens h4{
@@ -276,6 +309,10 @@
     font-weight: 600;
     margin: 8px 0 4px 0;
     border-bottom: 2px solid rgb(60,60,60);
+}
+
+#listaEquipamento{
+    height: 12em;
 }
 
 #listaEquipamentoEspecial td:nth-child(2), #listaEquipamentoCorpo td:nth-child(4), #listaEquipamentoDistancia td:nth-child(4){
@@ -307,7 +344,8 @@
     border-left: 2px dotted rgb(60,60,60);
     border-bottom: 2px dotted rgb(60,60,60);
     padding-left: 10px;
-    height: 132px;
+    height: 7em;
+    box-sizing: border-box;
     overflow-y: scroll;
 }
 
@@ -332,6 +370,11 @@
     border: 2px dotted rgb(60,60,60)
 }
 
+.ficha__detalhes .ficha__info{
+    border-bottom: none;
+    gap: 0;
+}
+
 .ficha__info h3, .ficha__imagem h3{
     background-color: black;
     width: fit-content;
@@ -341,20 +384,40 @@
 }
 
 .ficha__personagem{
-    width: 400px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    margin-top: 32px;
 }
 
 .ficha__detalhes .ficha__info p{
     padding: 10px 0 0 7px;
     font-size: 17px;
+    white-space: nowrap;
+    border-bottom: 2px dotted rgb(60,60,60);
+    height: 36px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.ficha__info.estabilidade{
+    height: 100%;
+}
+
+.ficha__info.estabilidade .lista__ferimentos{
+    height: calc(100% - 40px);
+}
+
+.ficha__info.vantagens .lista__ferimentos, .ficha__info.desvantagens .lista__ferimentos{
+    box-sizing: border-box;
+    height: 16em;
 }
 
 .ficha__info{
     border-bottom: 2px dotted rgb(60,60,60);
+    flex-grow: 1;
 }
 
 .ficha__info h3::before, .ficha__imagem h3::before{
@@ -367,55 +430,62 @@
     padding-left: 5px;
 }
 
-
 .ficha__atributos{
     align-self: center;
-    width: 37.7em;
     position: relative;
-    background: url("../img/Frame2.png") no-repeat;
-    background-position: center;
-    background-size: contain;
     font-family: 'Dai Banna SIL', serif;
     color: whitesmoke;
     pointer-events: none;
     font-size: 20px;
+    margin-bottom: 30px;
     font-weight: 600;
-    height: 35em;
+    flex-grow: 1;
+    flex-shrink: 0;
+    aspect-ratio: 449 / 711;
 }
+
+.ficha__atributos img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 
 .ficha__atributos label{
     position: absolute;
     font-size: 20px;
+    white-space: nowrap;
 }
 
 .ficha__atributos span{
     position: absolute;
     font-size: 16px;
+    white-space: nowrap;
 }
 
 .intuicao-titulo{
-    top: 338px;
-    left: 483px;
+    top: 48%;
+    left: 74.8%;
 }
 
 .intuicao-descricao{
-    top: 359px;
-    left: 466px;
+    top: 50.9%;
+    left: 70.5%;
 }
 
 #intuicao{
-    top: 282px;
-    left: 509px;
+    top: 40.3%;
+    left: 79.8%;
 }
 
 .violencia-titulo{
-    top: 484px;
-    left: 481px;
+    top: 68.5%;
+    left: 73.3%;
 }
 
 .violencia-descricao{
-    top: 505px;
-    left: 453px;
+    top: 70.9%;
+    left: 67%;
 }
 
 #modalAtributos .container__atributos{
@@ -433,128 +503,128 @@
 }
 
 #violencia{
-    top: 425px;
-    left: 509px;
+    top: 60.7%;
+    left: 79.8%;
 }
 
 .reflexos-titulo{
-    top: 197px;
-    left: 485px;
+    top: 28.5%;
+    left: 74%;
 }
 
 .reflexos-descricao{
-    top: 217px;
-    left: 481px;
+    top: 30.9%;
+    left: 73%;
 }
 
 #reflexos{
-    top: 135px;
-    left: 509px;
+    top: 19.5%;
+    left: 79.8%;
 }
 
 .razao-titulo{
-    top: 338px;
-    left: 210px;
+    top: 48%;
+    left: 12%;
 }
 
 .razao-descricao{
-    top: 359px;
-    left: 201px;
+    top: 50.9%;
+    left: 10%;
 }
 
 #razao{
-    top: 282px;
-    left: 226px;
+    top: 40.3%;
+    left: 15.7%;
 }
 
 .firmeza-titulo{
-    top: 480px;
-    left: 201px;
+    top: 68.5%;
+    left: 10.8%;
 }
 
 .firmeza-descricao{
-    top: 501px;
-    left: 179px;
+    top: 70.9%;
+    left: 5.8%;
 }
 
 #firmeza{
-    top: 425px;
-    left: 226px;
+    top: 60.7%;
+    left: 15.7%;
 }
 
 .carisma-titulo{
-    top: 558px;
-    left: 344px;
+    top: 79.5%;
+    left: 42.4%;
 }
 
 .carisma-descricao{
-    top: 579px;
-    left: 317px;
+    top: 81.9%;
+    left: 36.2%;
 }
 
 #carisma{
-    top: 499px;
-    left: 368px;
+    top: 71.2%;
+    left: 47.7%;
 }
 
 .alma-titulo{
-    top: 697px;
-    left: 356px;
+    top: 99.5%;
+    left: 45%;
 }
 
 .alma-descricao{
-    top: 718px;
-    left: 310px;
+    top: 102%;
+    left: 33.7%;
 }
 
 #alma{
-    top: 643px;
-    left: 368px;
+    top: 92%;
+    left: 47.7%;
 }
 
 .fortitude-titulo{
-    top: 198px;
-    left: 196px;
+    top: 28.5%;
+    left: 9%;
 }
 
 .fortitude-descricao{
-    top: 219px;
-    left: 184px;
+    top: 30.9%;
+    left: 6.2%;
 }
 
 #fortitude{
-    top: 135px;
-    left: 226px;
+    top: 19.7%;
+    left: 15.7%;
 }
 
 .percepcao-titulo{
-    top: 408px;
-    left: 336px;
+    top: 58.2%;
+    left: 40.5%;
 }
 
 .percepcao-descricao{
-    top: 429px;
-    left: 317px;
+    top: 60.9%;
+    left: 36%;
 }
 
 #percepcao{
-    top: 354px;
-    left: 368px;
+    top: 50.6%;
+    left: 47.7%;
 }
 
 .vontade-titulo{
-    top: 125px;
-    left: 342px;
+    top: 18.2%;
+    left: 41.5%;
 }
 
 .vontade-descricao{
-    top: 146px;
-    left: 317px;
+    top: 20.9%;
+    left: 35.5%;
 }
 
 #vontade{
-    top: 63px;
-    left: 368px;
+    top: 9.2%;
+    left: 47.7%;
 }
 
 .atributo{
@@ -763,8 +833,8 @@
 
 .grau-estabilidade{
     display: flex;
+    align-items: center;
     flex-direction: row;
-    padding-top: 1px;
 }
 
 .estabilidade__secao{
@@ -793,11 +863,11 @@
 .ficha__linha1, .ficha__linha2{
     display: flex;
     flex-direction: row;
+    gap: 30px;
 }
 
 .ficha__linha2 .ficha__info{
-    width: 33%;
-    margin: 0 2em 3em 2em;
+    width: 100%;
 }
 
 .ficha__linha2 .lista__ferimentos{
@@ -884,7 +954,6 @@
 
 .progress{
     cursor: pointer;
-    margin-right: 1em;
     position: relative;
     width: 50px;
     height: 50px;
@@ -1086,16 +1155,11 @@
 
 .relacoes__topo button{
     position: absolute;
-    top: 11px;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
     left: var(--titulo-largura)
 }
-
-.ficha__imagem button{
-    position: absolute;
-    top: 8px;
-    left: var(--titulo-largura)
-}
-
 
 #mensagemErroRelacao, #mensagemErroSegredos, #mensagemErroEquipamento, #mensagemErroFerimentos, #mensagemErroDadosNome, #mensagemErroInfoIdade{
     transform: translateY(55px);
@@ -1151,12 +1215,12 @@
         justify-content: center;
     }
 
-    .ficha__coluna1, .ficha__coluna2, .ficha__coluna3{
-        width: 90%;
+    .ficha__linha2 .ficha__info{
+        width: 100%;
     }
 
-    .ficha__linha2 .ficha__info{
-        width: 90%;
+    .ficha__topo{
+        margin: 0 1em;
     }
 }
 
@@ -1292,3 +1356,26 @@
     cursor: pointer;
 }
 
+@media (max-width: 540px){
+    .ficha__detalhes{
+        flex-direction: column;
+    }
+    
+    .ficha__imagem{
+        width: 100%;
+    }
+
+    .ficha__imagem img{
+        width: 100%;
+        height: auto;
+    }
+
+    .ficha__personagem{
+        gap: 20px;
+    }
+}
+@media (max-width: 640px) {
+    .ficha__topo{
+        margin: 0;
+    }
+}

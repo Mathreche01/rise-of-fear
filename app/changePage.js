@@ -6,15 +6,18 @@ let currentStep;
 async function mudaPagina(url, position){
     if(url !== "./dashboard.html"){
     await fetch(url).then((res) => res.text()).then(res => conteudoPagina.innerHTML = res)
-    if(url === "./personagens.html"){
-        await constroiCardPersonagem()
-    } 
-    contaLista(url)
-        if(url === "./ficha.html"){
-            conteudoPagina.style.margin = "0"
-        }
+        if(url === "./personagens.html"){
+            await constroiCardPersonagem()
+        } 
+        contaLista(url)
     } else {
         conteudoPagina.innerHTML = dashboard
+    }
+
+    if(url !== "./ficha.html"){
+        conteudoPagina.classList.add('dashboard')
+    } else{
+        conteudoPagina.classList.remove('dashboard')
     }
     slider.style.transform = `translateX(${position})`;
 }
