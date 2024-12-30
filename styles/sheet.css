@@ -48,8 +48,8 @@
 
 .relacao .relacao-rating input, .ferimento__item input, .estabilidade__secao input{
     position: relative;
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     display: flex;
     justify-content: center;
     appearance: none;
@@ -60,7 +60,7 @@
 }
 
 #modalProgressao input{
-    width: 18px;
+    width: 22px;
     height: 22px;
     display: flex;
     justify-content: center;
@@ -71,14 +71,11 @@
 }
 
 .relacao .relacao-rating input::before, .ferimento__item input::before, .estabilidade__secao input::before{
-    content: '◇';
-    position: absolute;
-    text-align: center;
-    line-height: 24px;
-    font-family: 'Dai Banna SIL',    serif;
-    font-size: 20px;
-    width: 100%;
-    height: 100%;
+    content: '';
+    border: 2px solid #fff;
+    transform: rotate(45deg);
+    width: 8px;
+    height: 8px;
 }
 
 #modalProgressao input::before{
@@ -187,12 +184,16 @@
     width: 100%;
 }
 
-.relacao .relacao-rating input:hover ~ input::before, .relacao .relacao-rating input:hover::before,
-.relacao .relacao-rating input:checked ~ input::before, .relacao .relacao-rating input:checked::before,
-.ferimento__item input:checked ~ input::before, .ferimento__item input:checked::before,
-.estabilidade__secao input:checked ~ input::before, .estabilidade__secao input:checked::before{
-    content: '◈';
-    font-size: 20px;
+.relacao .relacao-rating input:hover ~ input::after, .relacao .relacao-rating input:hover::after,
+.relacao .relacao-rating input:checked ~ input::after, .relacao .relacao-rating input:checked::after,
+.ferimento__item input:checked ~ input::after, .ferimento__item input:checked::after,
+.estabilidade__secao input:checked ~ input::after, .estabilidade__secao input:checked::after{
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    transform: rotate(45deg);
 }
 
 .ficha__coluna{
@@ -284,7 +285,7 @@
 }
 
 .ferimento__item{
-    padding: 8px 5px 2px 5px;
+    padding: 8px 0px 2px 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -293,7 +294,7 @@
 }
 
 .ferimento__item input{
-    margin-right: 35px;
+    width: 88px;
 }
 
 .ferimento__item p{
@@ -377,7 +378,7 @@
 .ficha__imagem h3{
     position: absolute;
     top: 0;
-    transform: translateY(calc(-100% + 2px)22px);
+    transform: translateY(calc(-100% + 2px));
     left: 0;
 }
 
