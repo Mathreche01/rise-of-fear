@@ -31,6 +31,11 @@ function contaLista(url){
         const slotsUsados = document.querySelectorAll('.campanha__card')
         const slotsTexto = document.querySelector('#slots-usados')
         slotsTexto.innerHTML = slotsUsados.length
+    } else if(url === "./ficha.html"){
+        const selectboxes = document.querySelectorAll('.dropdown')
+        selectboxes.forEach(box => box.addEventListener('click', () => {
+            box.classList.toggle('active')
+        }))
     } else if(url === "./create-character.html"){
         vantagemErro = document.querySelector('.vantagem--erro')
         atributosErro = document.querySelector('.atributos--erro')

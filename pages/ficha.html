@@ -39,26 +39,34 @@
                     </div>
                     </div>
                 </div>
-                <div class="ficha__info ficha__relacoes" style="border: none">
+                <div class="ficha__info ficha__relacoes">
                     <div class="relacoes__topo">
-                    <h3>Relações <button><i onclick="abreModal('relacoes')" class="fa-solid fa-pen-to-square"></i></button></h3>
-                    <h4 class="relacao__grau">Grau</h4>
-                    <div class="modificadores">
-                        <p>0</p>
-                        <p>+1</p>
-                        <p>+2</p>
+                        <h3>Relações <button><i onclick="abreModal('relacoes')" class="fa-solid fa-pen-to-square"></i></button></h3>
                     </div>
+                    <div class="ficha__relacoes--lista">
+                        <div class="relacao__categoria">
+                            <h4 class="relacao__nome">Nome</h4>
+                            <h4 class="relacao__grau">Grau</h4>
+                            <div class="modificadores">
+                                <p>0</p>
+                                <p>+1</p>
+                                <p>+2</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ficha__relacoes--lista"></div>
                 </div>
-                <div class="ficha__info ficha__segredos" style="border: none">
+                <div class="ficha__info ficha__segredos">
                     <div class="relacoes__topo">
                     <h3>Segredos Sombrios <button><i onclick="abreModal('segredos')" class="fa-solid fa-pen-to-square"></i></button></h3>
-                    <h4 class="segredos__motivacoes">Motivações Pessoais</h4>
                     </div>
-                    <div class="ficha__relacoes--lista" id="listaSegredos"></div>
+                    <div class="ficha__relacoes--lista" id="listaSegredos">
+                        <div class="segredos__categoria">
+                            <h4 class="segredo__tipo">Tipo</h4>
+                            <h4 class="segredos__motivacoes">Motivações Pessoais</h4>
+                        </div>
+                    </div>
                 </div>
-                <div class="ficha__info ficha__ganchos" style="border: none">
+                <div class="ficha__info ficha__ganchos">
                     <div class="relacoes__topo">
                     <h3>Ganchos Dramáticos <button><i onclick="abreModal('ganchos')" class="fa-solid fa-pen-to-square"></i></button></h3>
                     </div>
@@ -66,7 +74,7 @@
                         <ul id="lista-ganchos" onclick="atualizaGanchos(event)"></ul>
                     </div>
                 </div>
-                <div class="ficha__info ficha__ferimentos" style="border: none">
+                <div class="ficha__info ficha__ferimentos">
                     <div class="relacoes__topo">
                     <h3>Ferimentos <button><i onclick="abreModal('ferimentos')" class="fa-solid fa-pen-to-square"></i></button></h3>
                     </div>
@@ -142,76 +150,84 @@
                         <span class="intuicao-descricao">Ler uma Pessoa</span>
                     </div>
                 </div>
-                <div class="ficha__info ficha__equipamento" style="border: none">
+                <div class="ficha__info ficha__equipamento">
                     <div class="relacoes__topo">
                     <h3>Equipamentos e Armas <button><i onclick="abreModal('equipamento')" class="fa-solid fa-pen-to-square"></i></button></h3>
                     </div>
                     <div class="lista__ferimentos" id="listaEquipamento">
                     <div class="ficha__itens">
                         <h4>Armas corpo-a-corpo</h4>
-                        <table width="100%" height="100%">
-                            <thead>
-                                <tr>
-                                    <td>Nome</td>
-                                    <td>Tipo</td>
-                                    <td>Distância</td>
-                                    <td>Ataques</td>
-                                    <td></td>
-                                </tr>
-                            </thead>
-                            <tbody id="listaEquipamentoCorpo"></tbody>
-                        </table>
+                        <div class="ficha__itens--tabela">
+                            <table width="100%" height="100%">
+                                <thead>
+                                    <tr>
+                                        <td>Nome</td>
+                                        <td>Tipo</td>
+                                        <td>Distância</td>
+                                        <td>Ataques</td>
+                                        <td></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="listaEquipamentoCorpo"></tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="ficha__itens">
                         <h4>Armas à distância</h4>
-                        <table width="100%" height="100%">
-                            <thead>
-                                <tr>
-                                    <td>Nome</td>
-                                    <td>Tipo</td>
-                                    <td>Distância</td>
-                                    <td>Ataques</td>
-                                    <td>Munição</td>
-                                    <td></td>
-                                </tr>
-                            </thead>
-                            <tbody id="listaEquipamentoDistancia">
-                            </tbody>
-                        </table>
+                        <div class="ficha__itens--tabela">
+                            <table width="100%" height="100%">
+                                <thead>
+                                    <tr>
+                                        <td>Nome</td>
+                                        <td>Tipo</td>
+                                        <td>Distância</td>
+                                        <td>Ataques</td>
+                                        <td>Munição</td>
+                                        <td></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="listaEquipamentoDistancia">
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="ficha__itens">
                         <h4>Armaduras</h4>
-                        <table width="100%" height="100%">
-                            <thead>
-                                <tr>
-                                    <td>Nome</td>
-                                    <td>Tipo</td>
-                                    <td>Valor</td>
-                                    <td></td>
-                                </tr>
-                            </thead>
-                            <tbody id="listaArmadura"></tbody>
-                        </table>
+                        <div class="ficha__itens--tabela">
+                            <table width="100%" height="100%">
+                                <thead>
+                                    <tr>
+                                        <td>Nome</td>
+                                        <td>Tipo</td>
+                                        <td>Valor</td>
+                                        <td></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="listaArmadura"></tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="ficha__itens">
                         <h4>Equipamento Especial</h4>
-                        <table width="100%" height="100%">
-                            <thead>
-                                <tr>
-                                    <td>Tipo</td>
-                                    <td>Regras</td>
-                                    <td></td>
-                                </tr>
-                            </thead>
-                            <tbody id="listaEquipamentoEspecial">
-                            </tbody>
-                        </table>
+                        <div class="ficha__itens--tabela">
+                            <table width="100%" height="100%">
+                                <thead>
+                                    <tr>
+                                        <td>Tipo</td>
+                                        <td>Regras</td>
+                                        <td></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="listaEquipamentoEspecial">
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 </div>
         </div>
         <div class="ficha__coluna">
-                <div class="ficha__info desvantagens" style="border: none">
+                <div class="ficha__info desvantagens">
                     <div class="relacoes__topo">
                     <h3>Vantagens <button><i onclick="abreModal('vantagens')" class="fa-solid fa-pen-to-square"></i></button></h3>
                     </div>
@@ -219,7 +235,7 @@
                         <ul class="lista__vantagens" id="listaVantagens"></ul>
                     </div>
                 </div>
-                <div class="ficha__info vantagens" style="border: none">
+                <div class="ficha__info vantagens">
                     <div class="relacoes__topo">
                     <h3>Desvantagens <button><i onclick="abreModal('desvantagens')" class="fa-solid fa-pen-to-square"></i></button></h3>
                     </div>
@@ -227,7 +243,7 @@
                         <ul class="lista__vantagens" id="listaDesvantagens"></ul>
                     </div>
                 </div>
-                <div class="ficha__info estabilidade" style="border: none">
+                <div class="ficha__info estabilidade">
                     <h3>Estabilidade</h3>
                     <div class="lista__ferimentos">
                         <div class="estabilidade__secao">
@@ -307,7 +323,7 @@
         </div>
     </div>
     <div class="ficha__linha2">
-        <div class="ficha__info" style="border: none">
+        <div class="ficha__info">
                 <div class="relacoes__topo">
                 <h3>Narrativa <button><i onclick="abreModal('narrativa')" class="fa-solid fa-pen-to-square"></i></button></h3>
                 </div>
@@ -315,13 +331,13 @@
                     <p id="personagemHistoria"></p>
                 </div>
         </div>
-        <div class="ficha__info" style="border: none">
+        <div class="ficha__info">
                 <div class="relacoes__topo">
                 <h3>Dados Personalizados <button><i onclick="abreModal('dados')" class="fa-solid fa-pen-to-square"></i></button></h3>
                 </div>
                 <div class="lista__ferimentos ficha__dados" style="height: 13em;"></div>
         </div>
-        <div class="ficha__info" style="border: none">
+        <div class="ficha__info">
                 <div class="relacoes__topo">
                 <h3>Anotações <button><i onclick="abreModal('anotacoes')" class="fa-solid fa-pen-to-square"></i></button></h3>
                 </div>
@@ -337,13 +353,14 @@
     </span>
     <h2>Adicionar Relação</h2>
         <div class="inputSegredos">
-            <select class="select-box" id="grauSelecionado">
-                <option value="Neutra">Neutra (0)</option>
-                <option value="Significativa">Significativa (+1)</option>
-                <option value="Vital">Vital (+2)</option>
-            </select>
-            <div class="icon-select">
-                <i class="fa-solid fa-chevron-down"></i>
+            <div class="dropdown">
+                <input type="text" class="select-box" value="Neutra (0)" readonly id="grauSelecionado">
+                <div class="options">
+                    <div onclick="show(event)">Neutra (0)</div>
+                    <div onclick="show(event)">Significativa (+1)</div>
+                    <div onclick="show(event)">Vital (+2)</div>
+                </div>
+                <ion-icon name="chevron-down-outline"></ion-icon>
             </div>
             <span>Grau</span>
         </div>
@@ -362,27 +379,28 @@
     </span>
     <h2>Adicionar Segredo</h2>
         <div class="inputSegredos">
-            <select class="select-box" id="segredoSelecionado">
-                <option value="Conhecimento Proibido">Conhecimento Proibido</option>
-                <option value="Culpado de Crime">Culpado de Crime</option>
-                <option value="Desaparecimento Misterioso">Desaparecimento Misterioso</option>
-                <option value ="Doença Mental">Doença Mental</option>
-                <option value="Escolhido">Escolhido</option>
-                <option value="Experiência com Ocultismo">Experiência com Ocultismo</option>
-                <option value="Guardião">Guardião</option>
-                <option value="Herdeiro">Herdeiro</option>
-                <option value="Maldição">Maldição</option>
-                <option value="Pacto com Forças Sombrias">Pacto com Forças Sombrias</option>
-                <option value="Regressante do Outro Lado">Regressante do Outro Lado</option>
-                <option value="Responsável por Experimentos Médicos">Responsável por Experimentos Médicos</option>
-                <option value="Segredo de Família">Segredo de Família</option>
-                <option value="Sem Raízes">Sem Raízes</option>
-                <option value="Visitações">Visitações</option>
-                <option value="Vítima de Crime">Vítima de Crime</option>
-                <option value="Vítima de Experimentos Médicos">Vítima de Experimentos Médicos</option>
-            </select>
-            <div class="icon-select">
-                <i class="fa-solid fa-chevron-down"></i>
+            <div class="dropdown">
+                <input type="text" class="select-box" value="Conhecimento Proibido" readonly id="segredoSelecionado">
+                <div class="options">
+                    <div onclick="show(event)">Conhecimento Proibido</div>
+                    <div onclick="show(event)">Culpado de Crime</div>
+                    <div onclick="show(event)">Desaparecimento Misterioso</div>
+                    <div onclick="show(event)">Doença Mental</div>
+                    <div onclick="show(event)">Escolhido</div>
+                    <div onclick="show(event)">Experiência com Ocultismo</div>
+                    <div onclick="show(event)">Guardião</div>
+                    <div onclick="show(event)">Herdeiro</div>
+                    <div onclick="show(event)">Maldição</div>
+                    <div onclick="show(event)">Pacto com Forças Sombrias</div>
+                    <div onclick="show(event)">Regressante do Outro Lado</div>
+                    <div onclick="show(event)">Responsável por Experimentos Médicos</div>
+                    <div onclick="show(event)">Segredo de Família</div>
+                    <div onclick="show(event)">Sem Raízes</div>
+                    <div onclick="show(event)">Visitações</div>
+                    <div onclick="show(event)">Vítima de Crime</div>
+                    <div onclick="show(event)">Vítima de Experimentos Médicos</div>
+                </div>
+                <ion-icon name="chevron-down-outline"></ion-icon>
             </div>
             <span>Segredo Sombrio</span>
         </div>
@@ -401,70 +419,75 @@
     </span>
     <h2>Adicionar Equipamento</h2>
         <div class="inputSegredos">
-            <select class="select-box" onchange="mostraInputs()" id="categoriaEquipamento">
-                <option value="Armas corpo-a-corpo">Armas corpo-a-corpo</option>
-                <option value="Armas à distância">Armas à distância</option>
-                <option value="Armaduras">Armaduras</option>
-                <option value="Equipamento Especial">Equipamento Especial</option>
-            </select>
-            <div class="icon-select">
-                <i class="fa-solid fa-chevron-down"></i>
+            <div class="dropdown">
+                <input type="text" class="select-box" value="Armas corpo-a-corpo" readonly id="categoriaEquipamento">
+                <div class="options">
+                    <div onclick="show(event), mostraInputs()">Armas corpo-a-corpo</div>
+                    <div onclick="show(event), mostraInputs()">Armas à distância</div>
+                    <div onclick="show(event), mostraInputs()">Armaduras</div>
+                    <div onclick="show(event), mostraInputs()">Equipamento Especial</div>
+                </div>
+                <ion-icon name="chevron-down-outline"></ion-icon>
             </div>
             <span>Categoria</span>
         </div>
         <div class="inputSegredos" id="divEquipamentoCorpo">
-            <select class="select-box" id="tipoEquipamentoCorpo">
-                <option value="Desarmado">Desarmado</option>
-                <option value="Armas Afiadas">Armas Afiadas</option>
-                <option value="Armas Contundentes">Armas Contundentes</option>
-                <option value="Armas Cortantes">Armas Cortantes</option>
-            </select>
-            <div class="icon-select">
-                <i class="fa-solid fa-chevron-down"></i>
+            <div class="dropdown">
+                <input type="text" class="select-box" value="Desarmado" id="tipoEquipamentoCorpo" readonly>
+                <div class="options">
+                    <div onclick="show(event)">Desarmado</div>
+                    <div onclick="show(event)">Armas Afiadas</div>
+                    <div onclick="show(event)">Armas Contundentes</div>
+                    <div onclick="show(event)">Armas Cortantes</div>
+                </div>
+                <ion-icon name="chevron-down-outline"></ion-icon>
             </div>
             <span>Tipo</span>
         </div>
         <div class="inputSegredos" id="divEquipamentoDistancia">
-            <select class="select-box" id="tipoEquipamentoDistancia">
-                <option value="Pistolas">Pistolas</option>
-                <option value="Pistolas Pesadas">Pistolas Pesadas</option>
-                <option value="Submetralhadoras">Submetralhadoras</option>
-                <option value="Fuzis de Assalto">Fuzis de Assalto</option>
-                <option value="Metralhadoras">Metralhadoras</option>
-                <option value="Rifles">Rifles</option>
-                <option value="Espingardas Táticas">Espingardas Táticas</option>
-                <option value="Explosivos">Explosivos</option>
-            </select>
-            <div class="icon-select">
-                <i class="fa-solid fa-chevron-down"></i>
+            <div class="dropdown">
+                <input type="text" class="select-box" value="Pistolas" id="tipoEquipamentoDistancia" readonly>
+                <div class="options">
+                    <div onclick="show(event)">Pistolas</div>
+                    <div onclick="show(event)">Pistolas Pesadas</div>
+                    <div onclick="show(event)">Submetralhadoras</div>
+                    <div onclick="show(event)">Fuzis de Assalto</div>
+                    <div onclick="show(event)">Metralhadoras</div>
+                    <div onclick="show(event)">Rifles</div>
+                    <div onclick="show(event)">Espingardas Táticas</div>
+                    <div onclick="show(event)">Explosivos</div>
+                </div>
+                <ion-icon name="chevron-down-outline"></ion-icon>
             </div>
             <span>Tipo</span>
         </div>
         <div class="inputSegredos"  id="divEquipamentoArmadura">
-            <select class="select-box" id="tipoEquipamentoArmadura">
-                <option value="Leve">Leve</option>
-                <option value="Pesada">Pesada</option>
-            </select>
-            <div class="icon-select">
-                <i class="fa-solid fa-chevron-down"></i>
+            <div class="dropdown">
+                <input type="text" class="select-box" value="Leve" id="tipoEquipamentoArmadura" readonly>
+                <div class="options">
+                    <div onclick="show(event)">Leve</div>
+                    <div onclick="show(event)">Pesada</div>
+                </div>
+                <ion-icon name="chevron-down-outline"></ion-icon>
             </div>
             <span>Tipo</span>
         </div>
         <div class="inputSegredos"  id="divEquipamentoEspecial">
-            <select class="select-box" id="tipoEquipamentoEspecial">
-                <option value="Cão">Cão</option>
-                <option value="Spray de Pimenta">Spray de Pimenta</option>
-                <option value="Gazuas">Gazuas</option>
-                <option value="Arma de Choque (taser)">Arma de Choque (taser)</option>
-                <option value="Pé de Cabra">Pé de Cabra</option>
-                <option value="Kit de Primeiros Socorros">Kit de Primeiros Socorros</option>
-                <option value="Silenciador">Silenciador</option>
-                <option value="Granada de Atordoamento">Granada de Atordoamento</option>
-                <option value="Gases/Drogas Nocauteantes">Gases/Drogas Nocauteantes</option>
-                <option value="Tocha">Tocha</option>
-            </select>
-            <div class="icon-select">
-                <i class="fa-solid fa-chevron-down"></i>
+            <div class="dropdown">
+                <input type="text" class="select-box" value="Cão" id="tipoEquipamentoEspecial" readonly>
+                <div class="options">
+                    <div onclick="show(event)">Cão</div>
+                    <div onclick="show(event)">Spray de Pimenta</div>
+                    <div onclick="show(event)">Gazuas</div>
+                    <div onclick="show(event)">Arma de Choque (taser)</div>
+                    <div onclick="show(event)">Pé de Cabra</div>
+                    <div onclick="show(event)">Kit de Primeiros Socorros</div>
+                    <div onclick="show(event)">Silenciador</div>
+                    <div onclick="show(event)">Granada de Atordoamento</div>
+                    <div onclick="show(event)">Gases/Drogas Nocauteantes</div>
+                    <div onclick="show(event)">Tocha</div>
+                </div>
+                <ion-icon name="chevron-down-outline"></ion-icon>
             </div>
             <span>Tipo</span>
         </div>
@@ -521,13 +544,14 @@
             <p class="erro--segredo" id="mensagemErroDadosNome"></p>
         </div>
         <div class="inputSegredos">
-            <select class="select-box" id="tipoDadoSelecionado">
-                <option value="Vantagem">Vantagem</option>
-                <option value="Desvantagem">Desvantagem</option>
-                <option value="Dano">Dano</option>
-            </select>
-            <div class="icon-select">
-                <i class="fa-solid fa-chevron-down"></i>
+            <div class="dropdown">
+                <input type="text" class="select-box" value="Vantagem" id="tipoDadoSelecionado" readonly>
+                <div class="options">
+                    <div onclick="show(event)">Vantagem</div>
+                    <div onclick="show(event)">Desvantagem</div>
+                    <div onclick="show(event)">Dano</div>
+                </div>
+                <ion-icon name="chevron-down-outline"></ion-icon>
             </div>
             <span>Tipo</span>
         </div>
@@ -555,12 +579,13 @@
     </span>
     <h2>Adicionar Ferimento</h2>
         <div class="inputSegredos">
-            <select class="select-box" id="ferimentoSelecionado">
-                <option value="Grave">Grave</option>
-                <option value="Crítico">Crítico</option>
-            </select>
-            <div class="icon-select">
-                <i class="fa-solid fa-chevron-down"></i>
+            <div class="dropdown">
+                <input type="text" class="select-box" value="Grave" id="ferimentoSelecionado" readonly>
+                <div class="options">
+                    <div onclick="show(event)">Grave</div>
+                    <div onclick="show(event)">Crítico</div>
+                </div>
+                <ion-icon name="chevron-down-outline"></ion-icon>
             </div>
             <span>Tipo</span>
         </div>
@@ -592,30 +617,31 @@
             <p class="erro--segredo" id="mensagemErroInfoNome"></p>
         </div>
         <div class="inputSegredos">
-            <select class="select-box" id="infoArquetipo">
-                <option value="O Acadêmico">O Acadêmico</option>
-                <option value="A Agente">A Agente</option>
-                <option value="O Amaldiçoado">O Amaldiçoado</option>
-                <option value="A Arruinada">A Arruinada</option>
-                <option value="O Artista">O Artista</option>
-                <option value="O Atravessador">O Atravessador</option>
-                <option value="O Brinquedo">O Brinquedo</option>
-                <option value="A Carreirista">A Carreirista</option>
-                <option value="O Cientista">O Cientista</option>
-                <option value="O Criminoso">O Criminoso</option>
-                <option value="A Descendente">A Descendente</option>
-                <option value="O Detetive">O Detetive</option>
-                <option value="A Enganadora">A Enganadora</option>
-                <option value="A Indagadora">A Indagadora</option>
-                <option value="O Nômade">O Nômade</option>
-                <option value="A Ocultista">A Ocultista</option>
-                <option value="A Profetisa">A Profetisa</option>
-                <option value="A Ronin">A Ronin</option>
-                <option value="O Veterano">O Veterano</option>
-                <option value="A Vingadora">A Vingadora</option>
-            </select>
-            <div class="icon-select">
-                <i class="fa-solid fa-chevron-down"></i>
+            <div class="dropdown">
+                <input type="text" class="select-box" value="O Acadêmico" id="infoArquetipo" readonly>
+                <div class="options">
+                    <div onclick="show(event)">O Acadêmico</div>
+                    <div onclick="show(event)">A Agente</div>
+                    <div onclick="show(event)">O Amaldiçoado</div>
+                    <div onclick="show(event)">A Arruinada</div>
+                    <div onclick="show(event)">O Artista</div>
+                    <div onclick="show(event)">O Atravessador</div>
+                    <div onclick="show(event)">O Brinquedo</div>
+                    <div onclick="show(event)">A Carreirista</div>
+                    <div onclick="show(event)">O Cientista</div>
+                    <div onclick="show(event)">O Criminoso</div>
+                    <div onclick="show(event)">A Descendente</div>
+                    <div onclick="show(event)">O Detetive</div>
+                    <div onclick="show(event)">A Enganadora</div>
+                    <div onclick="show(event)">A Indagadora</div>
+                    <div onclick="show(event)">O Nômade</div>
+                    <div onclick="show(event)">A Ocultista</div>
+                    <div onclick="show(event)">A Profetisa</div>
+                    <div onclick="show(event)">A Ronin</div>
+                    <div onclick="show(event)">O Veterano</div>
+                    <div onclick="show(event)">A Vingadora</div>
+                </div>
+                <ion-icon name="chevron-down-outline"></ion-icon>
             </div>
             <span>Arquétipo</span>
         </div>
