@@ -50,48 +50,50 @@ function mostraDetalhes(event){
 }
 
 function abreModal(modal){
+    const container = document.querySelector('.modal__container')
+    container.style.display = "flex"
     if(modal === "relacoes"){
         const modal = document.querySelector('#modalRelacoes')
-        modal.showModal()
+        modal.style.display = "block"
         document.body.classList.add('modal-active')
     } else if(modal === "segredos"){
         const modal = document.querySelector('#modalSegredos')
-        modal.showModal()
+        modal.style.display = "block"
         document.body.classList.add('modal-active')
     } else if(modal === "equipamento"){
         const modal = document.querySelector('#modalEquipamento')
         mostraInputs()
-        modal.showModal()
+        modal.style.display = "block"
         document.body.classList.add('modal-active')
     }  else if(modal === "narrativa"){
         const modal = document.querySelector('#modalNarrativa')
         const narrativaInput = document.querySelector('#narrativaPersonagem')
         const narrativa = document.querySelector('#personagemHistoria').textContent
         narrativaInput.value = narrativa
-        modal.showModal()
+        modal.style.display = "block"
         document.body.classList.add('modal-active')
     } else if(modal === "anotacoes"){
         const modal = document.querySelector('#modalAnotacoes')
         const anotacoesInput = document.querySelector('#anotacoesPersonagem')
         const notas = document.querySelector('#personagemNotas').textContent
         anotacoesInput.value = notas
-        modal.showModal()
+        modal.style.display = "block"
         document.body.classList.add('modal-active')
     } else if(modal === "dados"){
         const modal = document.querySelector('#modalDados')
-        modal.showModal()
+        modal.style.display = "block"
         document.body.classList.add('modal-active')
     } else if(modal === "ganchos"){
         const modal = document.querySelector('#modalGanchos')
-        modal.showModal()
+        modal.style.display = "block"
         document.body.classList.add('modal-active')
     } else if(modal === "ferimentos"){
         const modal = document.querySelector('#modalFerimentos')
-        modal.showModal()
+        modal.style.display = "block"
         document.body.classList.add('modal-active')
     } else if(modal === "info"){
         const modal = document.querySelector('#modalInfo')
-        modal.showModal()
+        modal.style.display = "block"
         document.body.classList.add('modal-active')
 
         const nomePersonagem = document.querySelector('#personagemNome')
@@ -136,7 +138,7 @@ function abreModal(modal){
             })
             listaVantagensFicha.appendChild(vantagemElemento)
         }
-        modal.showModal()
+        modal.style.display = "block"
         document.body.classList.add('modal-active')
     } else if(modal === "desvantagens"){
         const modal = document.querySelector('#modalDesvantagens')
@@ -157,11 +159,11 @@ function abreModal(modal){
             })
             listaDesvantagensFicha.appendChild(desvantagemElemento)
         }
-        modal.showModal()
+        modal.style.display = "block"
         document.body.classList.add('modal-active')
     } else if(modal === "progressao"){
         const modal = document.querySelector('#modalProgressao')
-        modal.showModal()
+        modal.style.display = "block"
         document.body.classList.add('modal-active')
         pegaProgressoes()
         progressoesMarcadas.forEach((progressao) => {
@@ -179,7 +181,7 @@ function abreModal(modal){
         })
     } else if(modal === "atributos"){
         const modal = document.querySelector('#modalAtributos')
-        modal.showModal()
+        modal.style.display = "block"
         document.body.classList.add('modal-active')
 
         const atributoVontade = document.querySelector('#vontade')
@@ -218,62 +220,64 @@ function abreModal(modal){
 }
 
 function fechaModal(modal){
+    const container = document.querySelector('.modal__container')
+    container.style.display = "none"
     if(modal === "segredos"){
         const modal = document.querySelector('#modalSegredos')
-        modal.close()
+        modal.style.display = "none"
         document.body.classList.remove('modal-active')
     } else if(modal ==="relacoes"){
         const modal = document.querySelector('#modalRelacoes')
-        modal.close()
+        modal.style.display = "none"
         document.body.classList.remove('modal-active')
     } else if(modal === "equipamento"){
         const modal = document.querySelector('#modalEquipamento')
-        modal.close()
+        modal.style.display = "none"
         document.body.classList.remove('modal-active')
     } else if(modal === "narrativa"){
         const modal = document.querySelector('#modalNarrativa')
-        modal.close()
+        modal.style.display = "none"
         document.body.classList.remove('modal-active')
     } else if(modal === "anotacoes"){
         const modal = document.querySelector('#modalAnotacoes')
-        modal.close()
+        modal.style.display = "none"
         document.body.classList.remove('modal-active')
     } else if(modal === "dados"){
         const modal = document.querySelector('#modalDados')
-        modal.close()
+        modal.style.display = "none"
         document.body.classList.remove('modal-active')
     } else if(modal === "ganchos"){
         const modal = document.querySelector('#modalGanchos')
-        modal.close()
+        modal.style.display = "none"
         document.body.classList.remove('modal-active')
     } else if(modal === "ferimentos"){
         const modal = document.querySelector('#modalFerimentos')
-        modal.close()
+        modal.style.display = "none"
         document.body.classList.remove('modal-active')
     } else if(modal === "info"){
         const modal = document.querySelector('#modalInfo')
-        modal.close()
+        modal.style.display = "none"
         document.body.classList.remove('modal-active')
     } else if(modal === "vantagens"){
         const modal = document.querySelector('#modalVantagens')
-        modal.close()
+        modal.style.display = "none"
         document.body.classList.remove('modal-active')
         const listaVantagensFicha = document.querySelector('#listaVantagensModal')
         listaVantagensFicha.innerHTML = ""
     } else if(modal === "desvantagens"){
         const modal = document.querySelector('#modalDesvantagens')
-        modal.close()
+        modal.style.display = "none"
         document.body.classList.remove('modal-active')
         const listaDesvantagensFicha = document.querySelector('#listaDesvantagensModal')
         listaDesvantagensFicha.innerHTML = ""
     } else if(modal === "progressao"){
         const modal = document.querySelector('#modalProgressao')
-        modal.close()
+        modal.style.display = "none"
         limpaErro()
         document.body.classList.remove('modal-active')
     } else if(modal === "atributos"){
         const modal = document.querySelector('#modalAtributos')
-        modal.close()
+        modal.style.display = "none"
         document.body.classList.remove('modal-active')
     }
 }
@@ -286,7 +290,9 @@ function criaRelacaoFicha(){
     var id = generateUniqueId()
     if(personagem !== ""){
         constroiRelacao(personagem, grau, id)
-        modal.close()
+        modal.style.display = "none"
+        const container = document.querySelector('.modal__container')
+        container.style.display = "none"
         document.body.classList.remove('modal-active')
         registraRelacao(personagem, grau, id)
     } else{
@@ -305,7 +311,9 @@ function criaDadoFicha(){
     if(rolagem !== "" && nome !== ""){
         constroiDadoFicha(rolagem, nome, tipo, id)
         registraDadoFicha(rolagem, nome, tipo, id)
-        modal.close()
+        modal.style.display = "none"
+        const container = document.querySelector('.modal__container')
+        container.style.display = "none"
         document.body.classList.remove('modal-active')
     } else if(rolagem !== ""){
         mensagemErroNome.innerHTML = "Este campo não pode estar vazio."
@@ -372,7 +380,9 @@ function criaEquipamentoFicha(){
                 constroiEquipamento(tipoArmadura, nome, categoria, -1, id)
                 registraItem(tipoArmadura, nome, categoria, id)
             }
-            modal.close()
+            modal.style.display = "none"
+            const container = document.querySelector('.modal__container')
+            container.style.display = "none"
             document.body.classList.remove('modal-active')
         } else{
             mensagemErro.innerHTML = "Este campo não pode estar vazio."
@@ -380,7 +390,9 @@ function criaEquipamentoFicha(){
     } else{
         constroiEquipamento(tipoEspecial,"", categoria, -1, id)
         registraItem(tipoEspecial,"", categoria, id)
-        modal.close()
+        modal.style.display = "none"
+        const container = document.querySelector('.modal__container')
+        container.style.display = "none"
         document.body.classList.remove('modal-active')
     }
 }
@@ -402,7 +414,9 @@ function criaSegredoFicha(){
                     <p>${motivo}</p>
         `
         listaSegredos.appendChild(novoSegredo)
-        modal.close()
+        modal.style.display = "none"
+        const container = document.querySelector('.modal__container')
+        container.style.display = "none"
         document.body.classList.remove('modal-active')
         registraSegredo(segredo, motivo, segredoId)
     } else{
@@ -417,7 +431,9 @@ function criaNarrativaFicha(){
     if(narrativa !== ""){
         const historia = document.querySelector('#personagemHistoria')
         historia.textContent = narrativa
-        modal.close()
+        modal.style.display = "none"
+        const container = document.querySelector('.modal__container')
+        container.style.display = "none"
         document.body.classList.remove('modal-active')
         registraHistoria(narrativa)
     } else{
@@ -432,7 +448,9 @@ function criaAnotacoes(){
     if(anotacoes !== ""){
         const notas = document.querySelector('#personagemNotas')
         notas.textContent= anotacoes
-        modal.close()
+        modal.style.display = "none"
+        const container = document.querySelector('.modal__container')
+        container.style.display = "none"
         document.body.classList.remove('modal-active')
         registraNotas(anotacoes)
     } else{
@@ -450,7 +468,9 @@ function criaGancho() {
     if (gancho !== "") {
         const ganchoId = generateUniqueId();
         constroiGancho(gancho, "Não", ganchoId);
-        modal.close();
+        modal.style.display = "none";
+        const container = document.querySelector('.modal__container')
+        container.style.display = "none"
         document.body.classList.remove('modal-active');
         registraGancho(gancho, ganchoId, "Não");
     } else {
@@ -471,7 +491,9 @@ function criaFerimento(){
     if(descricao !== ""){
        constroiFerimento(tipo, descricao, 'Não', id)
        registraFerimento(tipo, descricao, id)
-       modal.close()
+       modal.style.display = "none"
+       const container = document.querySelector('.modal__container')
+        container.style.display = "none"
        document.body.classList.remove('modal-active')
     } else{
         mensagemErro.innerHTML = "Este campo não pode estar vazio."
@@ -831,7 +853,9 @@ function editaInfo(){
         imagemPersonagem.src = inputImagem
         ocupacaoPersonagem.textContent = inputOcupacao
         nacionalidadePersonagem.textContent = inputNacionalidade
-        modal.close()
+        modal.style.display = "none"
+        const container = document.querySelector('.modal__container')
+        container.style.display = "none"
         document.body.classList.remove('modal-active')
     } else{
         if(inputNome === ""){
@@ -938,7 +962,9 @@ function adicionaVantagens(){
             registraVantagem(nome.innerHTML, numero.length)
             lista.appendChild(vantagem)
         })
-        modal.close()
+        modal.style.display = "none"
+        const container = document.querySelector('.modal__container')
+        container.style.display = "none"
         document.body.classList.remove('modal-active')
         const listaVantagensFicha = document.querySelector('#listaVantagensModal')
         listaVantagensFicha.innerHTML = ""
@@ -959,7 +985,9 @@ function adicionaDesvantagens(){
             registraDesvantagem(nome.innerHTML, numero.length)
             lista.appendChild(desvantagem)
         })
-        modal.close()
+        modal.style.display = "none"
+        const container = document.querySelector('.modal__container')
+        container.style.display = "none"
         document.body.classList.remove('modal-active')
         const listaVantagensFicha = document.querySelector('#listaDesvantagensModal')
         listaVantagensFicha.innerHTML = ""
@@ -1000,7 +1028,9 @@ function modificaAtributos(){
 
     registraAtributos(atributos)
 
-    modal.close()
+    modal.style.display = "none"
+    const container = document.querySelector('.modal__container')
+    container.style.display = "none"
     document.body.classList.remove('modal-active')
     } else {
         mensagemErro.innerHTML = "Preencha todos os campos."
@@ -1036,7 +1066,10 @@ function selecionaProgressao(){
         registraExperiencia(valorXP)
         registraProgressao(inputsChecados)
         limpaErro()
-        modal.close()
+        document.body.classList.remove('modal-active')
+        modal.style.display = "none"
+        const container = document.querySelector('.modal__container')
+        container.style.display = "none"
     }
 }
 

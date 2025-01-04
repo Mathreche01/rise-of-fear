@@ -202,13 +202,17 @@ function abrirSegredo(){
     motivo.value = ""
     segredo.value = "Conhecimento Proibido"
     const modal = document.querySelector('.modal')
-    modal.showModal()
+    modal.style.display = "block"
+    const container = document.querySelector('.modal__container')
+    container.style.display = "flex"
     document.body.classList.add('modal-active')
 }
 
 function fechaSegredo(){
     const modal = document.querySelector('.modal')
-    modal.close()
+    modal.style.display = "none"
+    const container = document.querySelector('.modal__container')
+    container.style.display = "none"
     document.body.classList.remove('modal-active')
 }
 
@@ -244,7 +248,9 @@ function criaSegredo(){
         <td>${motivo}</td>
         `
         lista.appendChild(item)
-        modal.close()
+        modal.style.display = "none"
+        const container = document.querySelector('.modal__container')
+        container.style.display = "none"
         document.body.classList.remove('modal-active')
         const segredoSombrio = {
                     segredo: segredo,

@@ -2,11 +2,14 @@
     margin: 2em 0 1em 0;
     height: 45px;
     width: 100%;
+    position: relative;
 }
 
 .search-box .fa-magnifying-glass{
     position: absolute;
-    transform: translateY(13px) translateX(13px);
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
     font-size: 20px;
 }
 

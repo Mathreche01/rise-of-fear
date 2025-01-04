@@ -435,51 +435,53 @@
                     </table>
                 </div>
             </div>
-            <dialog class="modal" id="modal">
-                <span class="icone-fechar">
-                    <ion-icon name="close" onclick="fechaSegredo()"></ion-icon>
-                </span>
-                <h2>Adicionar Segredo</h2>
-                    <div class="inputSegredos">
-                        <div class="dropdown">
-                            <input type="text" class="select-box" value="Conhecimento Proibido" readonly>
-                            <div class="options">
-                                <div onclick="show(event)">Conhecimento Proibido</div>
-                                <div onclick="show(event)">Culpado de Crime</div>
-                                <div onclick="show(event)">Desaparecimento Misterioso</div>
-                                <div onclick="show(event)">Doença Mental</div>
-                                <div onclick="show(event)">Escolhido</div>
-                                <div onclick="show(event)">Experiência com Ocultismo</div>
-                                <div onclick="show(event)">Guardião</div>
-                                <div onclick="show(event)">Herdeiro</div>
-                                <div onclick="show(event)">Maldição</div>
-                                <div onclick="show(event)">Pacto com Forças Sombrias</div>
-                                <div onclick="show(event)">Regressante do Outro Lado</div>
-                                <div onclick="show(event)">Responsável por Experimentos Médicos</div>
-                                <div onclick="show(event)">Segredo de Família</div>
-                                <div onclick="show(event)">Sem Raízes</div>
-                                <div onclick="show(event)">Visitações</div>
-                                <div onclick="show(event)">Vítima de Crime</div>
-                                <div onclick="show(event)">Vítima de Experimentos Médicos</div>
-                            </div>
-                            <ion-icon name="chevron-down-outline"></ion-icon>
-                        </div>
-                        <span>Segredo Sombrio</span>
-                    </div>
-                    <div class="inputSegredos">
-                        <input type="text" id="motivoSegredo" onfocus="limpaTexto()" placeholder="placeholder">
-                        <span>Motivação Pessoal</span>
-                        <p class="erro--segredo"></p>
-                    </div>
-                    <div class="inputSegredos">
-                        <input type="submit" value="Criar" onclick="criaSegredo()">
-                    </div>
-            </dialog>
             <div class="formulario__botao">
                 <button class="createCharacter" onclick="criaFicha()">Finalizar</button>
                 <button class="return-btn"><i class="fa-solid fa-arrow-left-long"></i> Retornar</button>
                 <span class="form--error"></span>
             </div>
+        </div>
+    </div>
+    <div class="modal__container">
+        <div class="modal" id="modal">
+            <span class="icone-fechar">
+                <ion-icon name="close" onclick="fechaSegredo()"></ion-icon>
+            </span>
+            <h2>Adicionar Segredo</h2>
+                <div class="inputSegredos">
+                    <div class="dropdown">
+                        <input type="text" class="select-box" value="Conhecimento Proibido" readonly>
+                        <div class="options">
+                            <div onclick="show(event)">Conhecimento Proibido</div>
+                            <div onclick="show(event)">Culpado de Crime</div>
+                            <div onclick="show(event)">Desaparecimento Misterioso</div>
+                            <div onclick="show(event)">Doença Mental</div>
+                            <div onclick="show(event)">Escolhido</div>
+                            <div onclick="show(event)">Experiência com Ocultismo</div>
+                            <div onclick="show(event)">Guardião</div>
+                            <div onclick="show(event)">Herdeiro</div>
+                            <div onclick="show(event)">Maldição</div>
+                            <div onclick="show(event)">Pacto com Forças Sombrias</div>
+                            <div onclick="show(event)">Regressante do Outro Lado</div>
+                            <div onclick="show(event)">Responsável por Experimentos Médicos</div>
+                            <div onclick="show(event)">Segredo de Família</div>
+                            <div onclick="show(event)">Sem Raízes</div>
+                            <div onclick="show(event)">Visitações</div>
+                            <div onclick="show(event)">Vítima de Crime</div>
+                            <div onclick="show(event)">Vítima de Experimentos Médicos</div>
+                        </div>
+                        <ion-icon name="chevron-down-outline"></ion-icon>
+                    </div>
+                    <span>Segredo Sombrio</span>
+                </div>
+                <div class="inputSegredos">
+                    <input type="text" id="motivoSegredo" onfocus="limpaTexto()" placeholder="placeholder">
+                    <span>Motivação Pessoal</span>
+                    <p class="erro--segredo"></p>
+                </div>
+                <div class="inputSegredos">
+                    <input type="submit" value="Criar" onclick="criaSegredo()">
+                </div>
         </div>
     </div>
 </main>

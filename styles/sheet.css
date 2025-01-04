@@ -21,7 +21,8 @@
 }
 
 .ficha__info.estabilidade{
-    height: 1020px !important;
+    flex-shrink: 0;
+    height: fit-content !important;
 }
 
 .ficha__detalhes{
@@ -775,7 +776,6 @@
 
 .lista__vantagens{
     margin-top: 10px;
-
 }
 
 .lista__vantagens li{
@@ -1042,7 +1042,7 @@
 }
 
 #modalInfo{
-    height: 23em;
+    height: fit-content;
     overflow-y: hidden;
 }
 
@@ -1153,9 +1153,17 @@
     color: white;
 }
 
+#modalVantagens h2, #modalDesvantagens h2{
+    margin-bottom: 0;
+}
+
 #modalVantagens, #modalDesvantagens{
-    height: 60%;
-    width: 30em;
+    max-width: 30em;
+    max-height: 35em;
+    box-sizing: border-box;
+    width: 100%;
+    height: fit-content;
+    margin: 1rem;
     overflow-y: hidden;
 }
 
@@ -1177,7 +1185,7 @@
 }
 
 .boxVantagens{
-    height: 18em;
+    height: 16em;
     width: 100%;
     background: rgb(41,41,41);
     border-radius: 6px;
@@ -1219,13 +1227,11 @@
 }
 
 .modalOverflow::-webkit-scrollbar{
-    width: 0;
+    width: 0px;
 }
 
 .modalOverflow{
-    height: 15em;
     margin-bottom: 2em;
-    overflow-y: scroll;
 }
 
 .inputSegredos{
@@ -1687,7 +1693,25 @@
     
 }
 
+@media (max-width: 400px){
+    .vantagem__accordion .vantagem__titulo{
+        font-size: 14px;
+    }
+
+    .search-box input{
+        font-size: 14px;
+    }
+
+    .search-box .fa-magnifying-glass{
+        font-size: 16px;
+    }
+}
+
 @media (max-width: 380px){
+    #modalVantagens .lista__vantagens, #modalDesvantagens .lista__vantagens{
+        margin: 10px;
+    }
+
     .estabilidade__secao{
         font-size: 14px;
     }
@@ -1866,6 +1890,10 @@
 }
 
 @media (max-width: 350px){
+    #modalVantagens .search-box, #modalDesvantagens .search-box{
+        margin: 1em 0 .5em;
+    }
+
     .ficha__atributos{
         aspect-ratio: 13/24;
     }
@@ -2032,6 +2060,10 @@
 }
 
 @media (max-width: 330px){
+    .modal h2{
+        font-size: 14px;
+    }
+
     .estabilidade__secao{
         font-size: 13px;
     }

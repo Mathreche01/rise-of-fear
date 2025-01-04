@@ -347,482 +347,484 @@
         </div>
     </div>
 </div>
-<dialog class="modal" id="modalRelacoes">
-    <span class="icone-fechar">
-        <ion-icon name="close" onclick="fechaModal('relacoes')"></ion-icon>
-    </span>
-    <h2>Adicionar Relação</h2>
-        <div class="inputSegredos">
-            <div class="dropdown">
-                <input type="text" class="select-box" value="Neutra (0)" readonly id="grauSelecionado">
-                <div class="options">
-                    <div onclick="show(event)">Neutra (0)</div>
-                    <div onclick="show(event)">Significativa (+1)</div>
-                    <div onclick="show(event)">Vital (+2)</div>
+<div class="modal__container">
+    <div class="modal" id="modalRelacoes">
+        <span class="icone-fechar">
+            <ion-icon name="close" onclick="fechaModal('relacoes')"></ion-icon>
+        </span>
+        <h2>Adicionar Relação</h2>
+            <div class="inputSegredos">
+                <div class="dropdown">
+                    <input type="text" class="select-box" value="Neutra (0)" readonly id="grauSelecionado">
+                    <div class="options">
+                        <div onclick="show(event)">Neutra (0)</div>
+                        <div onclick="show(event)">Significativa (+1)</div>
+                        <div onclick="show(event)">Vital (+2)</div>
+                    </div>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
-                <ion-icon name="chevron-down-outline"></ion-icon>
+                <span>Grau</span>
             </div>
-            <span>Grau</span>
-        </div>
-        <div class="inputSegredos">
-            <input type="text" id="relacaoPersonagem" onkeydown="limpaErro()" placeholder="placeholder">
-            <span>Personagem</span>
-            <p class="erro--segredo" id="mensagemErroRelacao"></p>
-        </div>
-        <div class="inputSegredos">
-            <input type="submit" value="Criar" onclick="criaRelacaoFicha()">
-        </div>
-</dialog>
-<dialog class="modal" id="modalSegredos">
-    <span class="icone-fechar">
-        <ion-icon name="close" onclick="fechaModal('segredos')"></ion-icon>
-    </span>
-    <h2>Adicionar Segredo</h2>
-        <div class="inputSegredos">
-            <div class="dropdown">
-                <input type="text" class="select-box" value="Conhecimento Proibido" readonly id="segredoSelecionado">
-                <div class="options">
-                    <div onclick="show(event)">Conhecimento Proibido</div>
-                    <div onclick="show(event)">Culpado de Crime</div>
-                    <div onclick="show(event)">Desaparecimento Misterioso</div>
-                    <div onclick="show(event)">Doença Mental</div>
-                    <div onclick="show(event)">Escolhido</div>
-                    <div onclick="show(event)">Experiência com Ocultismo</div>
-                    <div onclick="show(event)">Guardião</div>
-                    <div onclick="show(event)">Herdeiro</div>
-                    <div onclick="show(event)">Maldição</div>
-                    <div onclick="show(event)">Pacto com Forças Sombrias</div>
-                    <div onclick="show(event)">Regressante do Outro Lado</div>
-                    <div onclick="show(event)">Responsável por Experimentos Médicos</div>
-                    <div onclick="show(event)">Segredo de Família</div>
-                    <div onclick="show(event)">Sem Raízes</div>
-                    <div onclick="show(event)">Visitações</div>
-                    <div onclick="show(event)">Vítima de Crime</div>
-                    <div onclick="show(event)">Vítima de Experimentos Médicos</div>
+            <div class="inputSegredos">
+                <input type="text" id="relacaoPersonagem" onkeydown="limpaErro()" placeholder="placeholder">
+                <span>Personagem</span>
+                <p class="erro--segredo" id="mensagemErroRelacao"></p>
+            </div>
+            <div class="inputSegredos">
+                <input type="submit" value="Criar" onclick="criaRelacaoFicha()">
+            </div>
+    </div>
+    <div class="modal" id="modalSegredos">
+        <span class="icone-fechar">
+            <ion-icon name="close" onclick="fechaModal('segredos')"></ion-icon>
+        </span>
+        <h2>Adicionar Segredo</h2>
+            <div class="inputSegredos">
+                <div class="dropdown">
+                    <input type="text" class="select-box" value="Conhecimento Proibido" readonly id="segredoSelecionado">
+                    <div class="options">
+                        <div onclick="show(event)">Conhecimento Proibido</div>
+                        <div onclick="show(event)">Culpado de Crime</div>
+                        <div onclick="show(event)">Desaparecimento Misterioso</div>
+                        <div onclick="show(event)">Doença Mental</div>
+                        <div onclick="show(event)">Escolhido</div>
+                        <div onclick="show(event)">Experiência com Ocultismo</div>
+                        <div onclick="show(event)">Guardião</div>
+                        <div onclick="show(event)">Herdeiro</div>
+                        <div onclick="show(event)">Maldição</div>
+                        <div onclick="show(event)">Pacto com Forças Sombrias</div>
+                        <div onclick="show(event)">Regressante do Outro Lado</div>
+                        <div onclick="show(event)">Responsável por Experimentos Médicos</div>
+                        <div onclick="show(event)">Segredo de Família</div>
+                        <div onclick="show(event)">Sem Raízes</div>
+                        <div onclick="show(event)">Visitações</div>
+                        <div onclick="show(event)">Vítima de Crime</div>
+                        <div onclick="show(event)">Vítima de Experimentos Médicos</div>
+                    </div>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
-                <ion-icon name="chevron-down-outline"></ion-icon>
+                <span>Segredo Sombrio</span>
             </div>
-            <span>Segredo Sombrio</span>
-        </div>
-        <div class="inputSegredos">
-            <input type="text" id="motivoSegredo" onkeydown="limpaErro()" placeholder="placeholder">
-            <span>Motivação Pessoal</span>
-            <p class="erro--segredo" id="mensagemErroSegredos"></p>
-        </div>
-        <div class="inputSegredos">
-            <input type="submit" value="Criar" onclick="criaSegredoFicha()">
-        </div>
-</dialog>
-<dialog class="modal" id="modalEquipamento">
-    <span class="icone-fechar">
-        <ion-icon name="close" onclick="fechaModal('equipamento')"></ion-icon>
-    </span>
-    <h2>Adicionar Equipamento</h2>
-        <div class="inputSegredos">
-            <div class="dropdown">
-                <input type="text" class="select-box" value="Armas corpo-a-corpo" readonly id="categoriaEquipamento">
-                <div class="options">
-                    <div onclick="show(event), mostraInputs()">Armas corpo-a-corpo</div>
-                    <div onclick="show(event), mostraInputs()">Armas à distância</div>
-                    <div onclick="show(event), mostraInputs()">Armaduras</div>
-                    <div onclick="show(event), mostraInputs()">Equipamento Especial</div>
+            <div class="inputSegredos">
+                <input type="text" id="motivoSegredo" onkeydown="limpaErro()" placeholder="placeholder">
+                <span>Motivação Pessoal</span>
+                <p class="erro--segredo" id="mensagemErroSegredos"></p>
+            </div>
+            <div class="inputSegredos">
+                <input type="submit" value="Criar" onclick="criaSegredoFicha()">
+            </div>
+    </div>
+    <div class="modal" id="modalEquipamento">
+        <span class="icone-fechar">
+            <ion-icon name="close" onclick="fechaModal('equipamento')"></ion-icon>
+        </span>
+        <h2>Adicionar Equipamento</h2>
+            <div class="inputSegredos">
+                <div class="dropdown">
+                    <input type="text" class="select-box" value="Armas corpo-a-corpo" readonly id="categoriaEquipamento">
+                    <div class="options">
+                        <div onclick="show(event), mostraInputs()">Armas corpo-a-corpo</div>
+                        <div onclick="show(event), mostraInputs()">Armas à distância</div>
+                        <div onclick="show(event), mostraInputs()">Armaduras</div>
+                        <div onclick="show(event), mostraInputs()">Equipamento Especial</div>
+                    </div>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
-                <ion-icon name="chevron-down-outline"></ion-icon>
+                <span>Categoria</span>
             </div>
-            <span>Categoria</span>
-        </div>
-        <div class="inputSegredos" id="divEquipamentoCorpo">
-            <div class="dropdown">
-                <input type="text" class="select-box" value="Desarmado" id="tipoEquipamentoCorpo" readonly>
-                <div class="options">
-                    <div onclick="show(event)">Desarmado</div>
-                    <div onclick="show(event)">Armas Afiadas</div>
-                    <div onclick="show(event)">Armas Contundentes</div>
-                    <div onclick="show(event)">Armas Cortantes</div>
+            <div class="inputSegredos" id="divEquipamentoCorpo">
+                <div class="dropdown">
+                    <input type="text" class="select-box" value="Desarmado" id="tipoEquipamentoCorpo" readonly>
+                    <div class="options">
+                        <div onclick="show(event)">Desarmado</div>
+                        <div onclick="show(event)">Armas Afiadas</div>
+                        <div onclick="show(event)">Armas Contundentes</div>
+                        <div onclick="show(event)">Armas Cortantes</div>
+                    </div>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
-                <ion-icon name="chevron-down-outline"></ion-icon>
+                <span>Tipo</span>
             </div>
-            <span>Tipo</span>
-        </div>
-        <div class="inputSegredos" id="divEquipamentoDistancia">
-            <div class="dropdown">
-                <input type="text" class="select-box" value="Pistolas" id="tipoEquipamentoDistancia" readonly>
-                <div class="options">
-                    <div onclick="show(event)">Pistolas</div>
-                    <div onclick="show(event)">Pistolas Pesadas</div>
-                    <div onclick="show(event)">Submetralhadoras</div>
-                    <div onclick="show(event)">Fuzis de Assalto</div>
-                    <div onclick="show(event)">Metralhadoras</div>
-                    <div onclick="show(event)">Rifles</div>
-                    <div onclick="show(event)">Espingardas Táticas</div>
-                    <div onclick="show(event)">Explosivos</div>
+            <div class="inputSegredos" id="divEquipamentoDistancia">
+                <div class="dropdown">
+                    <input type="text" class="select-box" value="Pistolas" id="tipoEquipamentoDistancia" readonly>
+                    <div class="options">
+                        <div onclick="show(event)">Pistolas</div>
+                        <div onclick="show(event)">Pistolas Pesadas</div>
+                        <div onclick="show(event)">Submetralhadoras</div>
+                        <div onclick="show(event)">Fuzis de Assalto</div>
+                        <div onclick="show(event)">Metralhadoras</div>
+                        <div onclick="show(event)">Rifles</div>
+                        <div onclick="show(event)">Espingardas Táticas</div>
+                        <div onclick="show(event)">Explosivos</div>
+                    </div>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
-                <ion-icon name="chevron-down-outline"></ion-icon>
+                <span>Tipo</span>
             </div>
-            <span>Tipo</span>
-        </div>
-        <div class="inputSegredos"  id="divEquipamentoArmadura">
-            <div class="dropdown">
-                <input type="text" class="select-box" value="Leve" id="tipoEquipamentoArmadura" readonly>
-                <div class="options">
-                    <div onclick="show(event)">Leve</div>
-                    <div onclick="show(event)">Pesada</div>
+            <div class="inputSegredos"  id="divEquipamentoArmadura">
+                <div class="dropdown">
+                    <input type="text" class="select-box" value="Leve" id="tipoEquipamentoArmadura" readonly>
+                    <div class="options">
+                        <div onclick="show(event)">Leve</div>
+                        <div onclick="show(event)">Pesada</div>
+                    </div>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
-                <ion-icon name="chevron-down-outline"></ion-icon>
+                <span>Tipo</span>
             </div>
-            <span>Tipo</span>
-        </div>
-        <div class="inputSegredos"  id="divEquipamentoEspecial">
-            <div class="dropdown">
-                <input type="text" class="select-box" value="Cão" id="tipoEquipamentoEspecial" readonly>
-                <div class="options">
-                    <div onclick="show(event)">Cão</div>
-                    <div onclick="show(event)">Spray de Pimenta</div>
-                    <div onclick="show(event)">Gazuas</div>
-                    <div onclick="show(event)">Arma de Choque (taser)</div>
-                    <div onclick="show(event)">Pé de Cabra</div>
-                    <div onclick="show(event)">Kit de Primeiros Socorros</div>
-                    <div onclick="show(event)">Silenciador</div>
-                    <div onclick="show(event)">Granada de Atordoamento</div>
-                    <div onclick="show(event)">Gases/Drogas Nocauteantes</div>
-                    <div onclick="show(event)">Tocha</div>
+            <div class="inputSegredos"  id="divEquipamentoEspecial">
+                <div class="dropdown">
+                    <input type="text" class="select-box" value="Cão" id="tipoEquipamentoEspecial" readonly>
+                    <div class="options">
+                        <div onclick="show(event)">Cão</div>
+                        <div onclick="show(event)">Spray de Pimenta</div>
+                        <div onclick="show(event)">Gazuas</div>
+                        <div onclick="show(event)">Arma de Choque (taser)</div>
+                        <div onclick="show(event)">Pé de Cabra</div>
+                        <div onclick="show(event)">Kit de Primeiros Socorros</div>
+                        <div onclick="show(event)">Silenciador</div>
+                        <div onclick="show(event)">Granada de Atordoamento</div>
+                        <div onclick="show(event)">Gases/Drogas Nocauteantes</div>
+                        <div onclick="show(event)">Tocha</div>
+                    </div>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
-                <ion-icon name="chevron-down-outline"></ion-icon>
+                <span>Tipo</span>
             </div>
-            <span>Tipo</span>
-        </div>
-        <div class="inputSegredos" id="divNomeEquipamento">
-            <input type="text" id="nomeEquipamento" onkeydown="limpaErro()" placeholder="placeholder">
-            <span>Nome</span>
-            <p class="erro--segredo" id="mensagemErroEquipamento"></p>
-        </div>
-        <div class="inputSegredos">
-            <input type="submit" value="Criar" onclick="criaEquipamentoFicha()">
-        </div>
-</dialog>
-<dialog class="modal" id="modalNarrativa">
-    <span class="icone-fechar">
-        <ion-icon name="close" onclick="fechaModal('narrativa')"></ion-icon>
-    </span>
-    <h2>Editar Narrativa</h2>
-        <div class="inputSegredos">
-            <textarea id="narrativaPersonagem" onkeydown="limpaErro()"></textarea>
-            <span>Narrativa</span>
-            <p class="erro--segredo" id="mensagemErroNarrativa"></p>
-        </div>
-        <div class="inputSegredos">
-            <input type="submit" value="Editar" onclick="criaNarrativaFicha()">
-        </div>
-</dialog>
-<dialog class="modal" id="modalAnotacoes">
-    <span class="icone-fechar">
-        <ion-icon name="close" onclick="fechaModal('anotacoes')"></ion-icon>
-    </span>
-    <h2>Editar Anotações</h2>
-        <div class="inputSegredos">
-            <textarea id="anotacoesPersonagem" onkeydown="limpaErro()"></textarea>
-            <span>Anotações</span>
-            <p class="erro--segredo" id="mensagemErroAnotacoes"></p>
-        </div>
-        <div class="inputSegredos">
-            <input type="submit" value="Editar" onclick="criaAnotacoes()">
-        </div>
-</dialog>
-<dialog class="modal" id="modalDados">
-    <span class="icone-fechar">
-        <ion-icon name="close" onclick="fechaModal('dados')"></ion-icon>
-    </span>
-    <h2>Personalizar Dados</h2>
-        <div class="inputSegredos">
-            <input type="text" id="rolagemDado" onkeydown="limpaErro()" placeholder="placeholder" value="1d20+5">
-            <span>Rolagem</span>
-            <p class="erro--segredo" id="mensagemErroDadosRolagem"></p>
-        </div>
-        <div class="inputSegredos">
-            <input type="text" id="nomeDado" onkeydown="limpaErro()" placeholder="placeholder">
-            <span>Nome</span>
-            <p class="erro--segredo" id="mensagemErroDadosNome"></p>
-        </div>
-        <div class="inputSegredos">
-            <div class="dropdown">
-                <input type="text" class="select-box" value="Vantagem" id="tipoDadoSelecionado" readonly>
-                <div class="options">
-                    <div onclick="show(event)">Vantagem</div>
-                    <div onclick="show(event)">Desvantagem</div>
-                    <div onclick="show(event)">Dano</div>
+            <div class="inputSegredos" id="divNomeEquipamento">
+                <input type="text" id="nomeEquipamento" onkeydown="limpaErro()" placeholder="placeholder">
+                <span>Nome</span>
+                <p class="erro--segredo" id="mensagemErroEquipamento"></p>
+            </div>
+            <div class="inputSegredos">
+                <input type="submit" value="Criar" onclick="criaEquipamentoFicha()">
+            </div>
+    </div>
+    <div class="modal" id="modalNarrativa">
+        <span class="icone-fechar">
+            <ion-icon name="close" onclick="fechaModal('narrativa')"></ion-icon>
+        </span>
+        <h2>Editar Narrativa</h2>
+            <div class="inputSegredos">
+                <textarea id="narrativaPersonagem" onkeydown="limpaErro()"></textarea>
+                <span>Narrativa</span>
+                <p class="erro--segredo" id="mensagemErroNarrativa"></p>
+            </div>
+            <div class="inputSegredos">
+                <input type="submit" value="Editar" onclick="criaNarrativaFicha()">
+            </div>
+    </div>
+    <div class="modal" id="modalAnotacoes">
+        <span class="icone-fechar">
+            <ion-icon name="close" onclick="fechaModal('anotacoes')"></ion-icon>
+        </span>
+        <h2>Editar Anotações</h2>
+            <div class="inputSegredos">
+                <textarea id="anotacoesPersonagem" onkeydown="limpaErro()"></textarea>
+                <span>Anotações</span>
+                <p class="erro--segredo" id="mensagemErroAnotacoes"></p>
+            </div>
+            <div class="inputSegredos">
+                <input type="submit" value="Editar" onclick="criaAnotacoes()">
+            </div>
+    </div>
+    <div class="modal" id="modalDados">
+        <span class="icone-fechar">
+            <ion-icon name="close" onclick="fechaModal('dados')"></ion-icon>
+        </span>
+        <h2>Personalizar Dados</h2>
+            <div class="inputSegredos">
+                <input type="text" id="rolagemDado" onkeydown="limpaErro()" placeholder="placeholder" value="1d20+5">
+                <span>Rolagem</span>
+                <p class="erro--segredo" id="mensagemErroDadosRolagem"></p>
+            </div>
+            <div class="inputSegredos">
+                <input type="text" id="nomeDado" onkeydown="limpaErro()" placeholder="placeholder">
+                <span>Nome</span>
+                <p class="erro--segredo" id="mensagemErroDadosNome"></p>
+            </div>
+            <div class="inputSegredos">
+                <div class="dropdown">
+                    <input type="text" class="select-box" value="Vantagem" id="tipoDadoSelecionado" readonly>
+                    <div class="options">
+                        <div onclick="show(event)">Vantagem</div>
+                        <div onclick="show(event)">Desvantagem</div>
+                        <div onclick="show(event)">Dano</div>
+                    </div>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
-                <ion-icon name="chevron-down-outline"></ion-icon>
+                <span>Tipo</span>
             </div>
-            <span>Tipo</span>
-        </div>
-        <div class="inputSegredos">
-            <input type="submit" value="Criar" onclick="criaDadoFicha()">
-        </div>
-</dialog>
-<dialog class="modal" id="modalGanchos">
-    <span class="icone-fechar">
-        <ion-icon name="close" onclick="fechaModal('ganchos')"></ion-icon>
-    </span>
-    <h2>Adicionar Gancho</h2>
-        <div class="inputSegredos">
-            <textarea id="ganchosPersonagem" onkeydown="limpaErro()"></textarea>
-            <span>Gancho Dramático</span>
-            <p class="erro--segredo" id="mensagemErroGanchos"></p>
-        </div>
-        <div class="inputSegredos">
-            <input type="submit" value="Criar" onclick="criaGancho()">
-        </div>
-</dialog>
-<dialog class="modal" id="modalFerimentos">
-    <span class="icone-fechar">
-        <ion-icon name="close" onclick="fechaModal('ferimentos')"></ion-icon>
-    </span>
-    <h2>Adicionar Ferimento</h2>
-        <div class="inputSegredos">
-            <div class="dropdown">
-                <input type="text" class="select-box" value="Grave" id="ferimentoSelecionado" readonly>
-                <div class="options">
-                    <div onclick="show(event)">Grave</div>
-                    <div onclick="show(event)">Crítico</div>
+            <div class="inputSegredos">
+                <input type="submit" value="Criar" onclick="criaDadoFicha()">
+            </div>
+    </div>
+    <div class="modal" id="modalGanchos">
+        <span class="icone-fechar">
+            <ion-icon name="close" onclick="fechaModal('ganchos')"></ion-icon>
+        </span>
+        <h2>Adicionar Gancho</h2>
+            <div class="inputSegredos">
+                <textarea id="ganchosPersonagem" onkeydown="limpaErro()"></textarea>
+                <span>Gancho Dramático</span>
+                <p class="erro--segredo" id="mensagemErroGanchos"></p>
+            </div>
+            <div class="inputSegredos">
+                <input type="submit" value="Criar" onclick="criaGancho()">
+            </div>
+    </div>
+    <div class="modal" id="modalFerimentos">
+        <span class="icone-fechar">
+            <ion-icon name="close" onclick="fechaModal('ferimentos')"></ion-icon>
+        </span>
+        <h2>Adicionar Ferimento</h2>
+            <div class="inputSegredos">
+                <div class="dropdown">
+                    <input type="text" class="select-box" value="Grave" id="ferimentoSelecionado" readonly>
+                    <div class="options">
+                        <div onclick="show(event)">Grave</div>
+                        <div onclick="show(event)">Crítico</div>
+                    </div>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
-                <ion-icon name="chevron-down-outline"></ion-icon>
+                <span>Tipo</span>
             </div>
-            <span>Tipo</span>
-        </div>
-        <div class="inputSegredos">
-            <input type="text" id="descricaoFerimento" onkeydown="limpaErro()" placeholder="placeholder">
-            <span>Descrição</span>
-            <p class="erro--segredo" id="mensagemErroFerimentos"></p>
-        </div>
-        <div class="inputSegredos">
-            <input type="submit" value="Criar" onclick="criaFerimento()">
-        </div>
-</dialog>
-<dialog class="modal" id="modalInfo">
-    <span class="icone-fechar">
-        <ion-icon name="close" onclick="fechaModal('info')"></ion-icon>
-    </span>
-    <h2>Editar Informações</h2>
-    <div class="modalOverflow">
-        <div class="inputSegredos">
-            <input type="text" id="infoImagem" onkeydown="limpaErro()" placeholder="placeholder">
-            <span>Imagem</span>
-            <p class="erro--segredo" id="mensagemErroInfoImagem"></p>
-            <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file-ficha" onchange="mudaImagem()">
-            <label for="input-file-ficha" class="uploadImage"><i class="fa-solid fa-arrow-up-from-bracket"></i></label>
-        </div>
-        <div class="inputSegredos">
-            <input type="text" id="infoNome" onkeydown="limpaErro()" placeholder="placeholder">
-            <span>Nome</span>
-            <p class="erro--segredo" id="mensagemErroInfoNome"></p>
-        </div>
-        <div class="inputSegredos">
-            <div class="dropdown">
-                <input type="text" class="select-box" value="O Acadêmico" id="infoArquetipo" readonly>
-                <div class="options">
-                    <div onclick="show(event)">O Acadêmico</div>
-                    <div onclick="show(event)">A Agente</div>
-                    <div onclick="show(event)">O Amaldiçoado</div>
-                    <div onclick="show(event)">A Arruinada</div>
-                    <div onclick="show(event)">O Artista</div>
-                    <div onclick="show(event)">O Atravessador</div>
-                    <div onclick="show(event)">O Brinquedo</div>
-                    <div onclick="show(event)">A Carreirista</div>
-                    <div onclick="show(event)">O Cientista</div>
-                    <div onclick="show(event)">O Criminoso</div>
-                    <div onclick="show(event)">A Descendente</div>
-                    <div onclick="show(event)">O Detetive</div>
-                    <div onclick="show(event)">A Enganadora</div>
-                    <div onclick="show(event)">A Indagadora</div>
-                    <div onclick="show(event)">O Nômade</div>
-                    <div onclick="show(event)">A Ocultista</div>
-                    <div onclick="show(event)">A Profetisa</div>
-                    <div onclick="show(event)">A Ronin</div>
-                    <div onclick="show(event)">O Veterano</div>
-                    <div onclick="show(event)">A Vingadora</div>
+            <div class="inputSegredos">
+                <input type="text" id="descricaoFerimento" onkeydown="limpaErro()" placeholder="placeholder">
+                <span>Descrição</span>
+                <p class="erro--segredo" id="mensagemErroFerimentos"></p>
+            </div>
+            <div class="inputSegredos">
+                <input type="submit" value="Criar" onclick="criaFerimento()">
+            </div>
+    </div>
+    <div class="modal" id="modalInfo">
+        <span class="icone-fechar">
+            <ion-icon name="close" onclick="fechaModal('info')"></ion-icon>
+        </span>
+        <h2>Editar Informações</h2>
+        <div class="modalOverflow">
+            <div class="inputSegredos">
+                <input type="text" id="infoImagem" onkeydown="limpaErro()" placeholder="placeholder">
+                <span>Imagem</span>
+                <p class="erro--segredo" id="mensagemErroInfoImagem"></p>
+                <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file-ficha" onchange="mudaImagem()">
+                <label for="input-file-ficha" class="uploadImage"><i class="fa-solid fa-arrow-up-from-bracket"></i></label>
+            </div>
+            <div class="inputSegredos">
+                <input type="text" id="infoNome" onkeydown="limpaErro()" placeholder="placeholder">
+                <span>Nome</span>
+                <p class="erro--segredo" id="mensagemErroInfoNome"></p>
+            </div>
+            <div class="inputSegredos">
+                <div class="dropdown">
+                    <input type="text" class="select-box" value="O Acadêmico" id="infoArquetipo" readonly>
+                    <div class="options">
+                        <div onclick="show(event)">O Acadêmico</div>
+                        <div onclick="show(event)">A Agente</div>
+                        <div onclick="show(event)">O Amaldiçoado</div>
+                        <div onclick="show(event)">A Arruinada</div>
+                        <div onclick="show(event)">O Artista</div>
+                        <div onclick="show(event)">O Atravessador</div>
+                        <div onclick="show(event)">O Brinquedo</div>
+                        <div onclick="show(event)">A Carreirista</div>
+                        <div onclick="show(event)">O Cientista</div>
+                        <div onclick="show(event)">O Criminoso</div>
+                        <div onclick="show(event)">A Descendente</div>
+                        <div onclick="show(event)">O Detetive</div>
+                        <div onclick="show(event)">A Enganadora</div>
+                        <div onclick="show(event)">A Indagadora</div>
+                        <div onclick="show(event)">O Nômade</div>
+                        <div onclick="show(event)">A Ocultista</div>
+                        <div onclick="show(event)">A Profetisa</div>
+                        <div onclick="show(event)">A Ronin</div>
+                        <div onclick="show(event)">O Veterano</div>
+                        <div onclick="show(event)">A Vingadora</div>
+                    </div>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
-                <ion-icon name="chevron-down-outline"></ion-icon>
+                <span>Arquétipo</span>
             </div>
-            <span>Arquétipo</span>
+            <div class="inputSegredos">
+                <input type="text" id="infoOcupacao" onkeydown="limpaErro()" placeholder="placeholder">
+                <span>Ocupação</span>
+                <p class="erro--segredo" id="mensagemErroInfoOcupacao"></p>
+            </div>
+            <div class="inputSegredos">
+                <input type="text" id="infoNacionalidade" onkeydown="limpaErro()" placeholder="placeholder">
+                <span>Nacionalidade</span>
+                <p class="erro--segredo" id="mensagemErroInfoNacionalidade"></p>
+            </div>
+            <div class="inputSegredos">
+                <input type="number" id="infoIdade" onkeydown="limpaErro()" value="0" placeholder="placeholder">
+                <span>Idade</span>
+                <p class="erro--segredo" id="mensagemErroInfoIdade"></p>
+            </div>
         </div>
-        <div class="inputSegredos">
-            <input type="text" id="infoOcupacao" onkeydown="limpaErro()" placeholder="placeholder">
-            <span>Ocupação</span>
-            <p class="erro--segredo" id="mensagemErroInfoOcupacao"></p>
-        </div>
-        <div class="inputSegredos">
-            <input type="text" id="infoNacionalidade" onkeydown="limpaErro()" placeholder="placeholder">
-            <span>Nacionalidade</span>
-            <p class="erro--segredo" id="mensagemErroInfoNacionalidade"></p>
-        </div>
-        <div class="inputSegredos">
-            <input type="number" id="infoIdade" onkeydown="limpaErro()" value="0" placeholder="placeholder">
-            <span>Idade</span>
-            <p class="erro--segredo" id="mensagemErroInfoIdade"></p>
+            <div class="inputSegredos">
+                <input type="submit" value="Editar" onclick="editaInfo()">
+            </div>
+    </div>
+    <div class="modal" id="modalVantagens">
+        <span class="icone-fechar">
+            <ion-icon name="close" onclick="fechaModal('vantagens')"></ion-icon>
+        </span>
+        <h2>Adicionar Vantagem</h2>
+        <div class="modal-content">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" placeholder="Buscar" oninput="buscaVantagem()" data-busca-vantagem>
+            </div>
+            <div class="boxVantagens">
+                <ul class="lista__vantagens" id="listaVantagensModal">
+                </ul>
+            </div>
+            <p class="erro--segredo" id="mensagemErroVantagens"></p>
+            <div class="inputSegredos">
+                <input type="submit" value="Adicionar" onclick="adicionaVantagens()">
+            </div>
         </div>
     </div>
-        <div class="inputSegredos">
-            <input type="submit" value="Editar" onclick="editaInfo()">
+    <div class="modal" id="modalDesvantagens">
+        <span class="icone-fechar">
+            <ion-icon name="close" onclick="fechaModal('desvantagens')"></ion-icon>
+        </span>
+        <h2>Adicionar Desvantagem</h2>
+        <div class="modal-content">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" placeholder="Buscar" oninput="buscaDesvantagem()" data-busca-desvantagem>
+            </div>
+            <div class="boxVantagens">
+                <ul class="lista__vantagens" id="listaDesvantagensModal">
+                </ul>
+            </div>
+            <p class="erro--segredo" id="mensagemErroDesvantagens"></p>
+            <div class="inputSegredos">
+                <input type="submit" value="Adicionar" onclick="adicionaDesvantagens()">
+            </div>
         </div>
-</dialog>
+    </div>
+    <div class="modal" id="modalProgressao">
+        <span class="icone-fechar">
+            <ion-icon name="close" onclick="fechaModal('progressao')"></ion-icon>
+        </span>
+        <h2>Progressão de Personagem</h2>
+        <div class="progressao__conteudo">
+            <h6>Ao acumular <strong>5 de Experiência</strong>, o jogador pode escolher uma progressão disponível em sua ficha de personagem, conforme a lista abaixo.</h6>
+            <h6>Quando um Arquétipo Consciente progride, ele deve escolher um dos seguintes aprimoramentos:</h6>
+            <div class="progressao__grupo">
+                <h5>Progressão Inicial:</h5>
+                <div class="progressao__item">
+                    <p>Aumente um Atributo ativo em +1 (até +3 máx).</p>
+                    <input type="checkbox" id="progressao1" onchange="verificaGrupo()">
+                    <input type="checkbox" id="progressao2" onchange="verificaGrupo()">
+                    <input type="checkbox" id="progressao3" onchange="verificaGrupo()">
+                    <input type="checkbox" id="progressao4" onchange="verificaGrupo()">
+                    <input type="checkbox" id="progressao5" onchange="verificaGrupo()">
+                    <input type="checkbox" id="progressao6" onchange="verificaGrupo()">
+                </div>
+                <div class="progressao__item">
+                    <p>Aumente um Atributo passivo em +1 (até +3 máx).</p>
+                    <input type="checkbox" id="progressao7" onchange="verificaGrupo()">
+                    <input type="checkbox" id="progressao8" onchange="verificaGrupo()">
+                </div>
+                <div class="progressao__item">
+                    <p>Aumente qualquer Atributo em +1 (até +4 máx).</p>
+                    <input type="checkbox" id="progressao9" onchange="verificaGrupo()">
+                </div>
+                <div class="progressao__item">
+                    <p>Selecione uma nova vantagem do seu Arquétipo.</p>
+                    <input type="checkbox" id="progressao10" onchange="verificaGrupo()">
+                    <input type="checkbox" id="progressao11" onchange="verificaGrupo()">
+                    <input type="checkbox" id="progressao12" onchange="verificaGrupo()">
+                </div>
+            </div>
+            <div class="progressao__grupo">
+                <h5>Progressão Intermediária:</h5>
+                <div class="progressao__item">
+                    <p>Aumente qualquer um dos Atributos em +1 (até +4 máx).</p>
+                    <input type="checkbox" id="progressao13" onchange="verificaGrupo()">
+                    <input type="checkbox" id="progressao14" onchange="verificaGrupo()">
+                </div>
+                <div class="progressao__item">
+                    <p>Selecione uma nova Vantagem de qualquer Arquétipo Consciente.</p>
+                    <input type="checkbox" id="progressao15" onchange="verificaGrupo()">
+                    <input type="checkbox" id="progressao16" onchange="verificaGrupo()">
+                </div>
+                <div class="progressao__item progressao__box">
+                    <p class="progressao__texto">Encerre o arco da história do personagem como achar melhor, e crie um novo personagem Consciente que já começa com duas Progressões.</p>
+                    <input type="checkbox" id="progressao17" onchange="verificaGrupo()">
+                </div>
+                <div class="progressao__item progressao__box">
+                    <p class="progressao__texto">Substitua seu Arquétipo atual por outro Arquétipo Consciente e apague uma de suas três Vantagens iniciais.</p>
+                    <input type="checkbox" id="progressao18" onchange="verificaGrupo()"> 
+                </div>
+            </div>
+            <div class="progressao__grupo">
+                <h5>Progressão Avançada:</h5>
+                <div class="progressao__item">
+                    <p>Progrida seu personagem para um Arquétipo Iluminado.</p>
+                    <input type="checkbox" id="progressao19" onchange="verificaGrupo()">
+                </div>
+            </div>
+            <div class="inputSegredos">
+                <button type="submit" onclick="selecionaProgressao()">Selecionar</button>
+                <p class="erro--segredo" id="mensagemErroProgressao"></p>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modalAtributos">
+        <span class="icone-fechar">
+            <ion-icon name="close" onclick="fechaModal('atributos')"></ion-icon>
+        </span>
+        <h2>Editar Atributos</h2>
+        <div class="modal-content">
+            <div class="container__atributos">
+                <input required class="atributos" type="number" value="1" name="fortitude" title="Fortitude" id="inputFortitude" onkeydown="limpaErro()">
+                <label class="label-fortitude">Fortitude</label>
+                <span class="span-fortitude">Suportar Lesão</span>
+                <input required class="atributos" type="number" value="1" name="vontade" title="Vontade" id="inputVontade" onkeydown="limpaErro()">
+                <label class="label-vontade">Vontade</label>
+                <span class="span-vontade">Manter o Controle</span>
+                <input required class="atributos" type="number" value="1" name="reflexos" title="Reflexos" id="inputReflexos" onkeydown="limpaErro()">
+                <label class="label-reflexos">Reflexos</label>
+                <span class="span-reflexos">Evitar Dano</span>
+                <input required class="atributos" type="number" value="1" name="intuicao" title="Intuição" id="inputIntuicao" onkeydown="limpaErro()">
+                <label class="label-intuicao">Intuição</label>
+                <span class="span-intuicao">Ler uma Pessoa</span>
+                <input required class="atributos" type="number" value="1" name="violencia" title="Violência" id="inputViolencia" onkeydown="limpaErro()">
+                <label class="label-violencia">Violência</label>
+                <span class="span-violencia">Engajar em Combate</span>
+                <input required class="atributos" type="number" value="1" name="carisma" title="Carisma" id="inputCarisma" onkeydown="limpaErro()">
+                <label class="label-carisma">Carisma</label>
+                <span class="span-carisma">Inflenciar Alguém</span>
+                <input required class="atributos" type="number" value="1" name="alma" title="Alma" id="inputAlma" onkeydown="limpaErro()">
+                <label class="label-alma">Alma</label>
+                <span class="span-alma">Ver Através da Ilusão</span>
+                <input required class="atributos" type="number" value="1" name="firmeza" title="Firmeza" id="inputFirmeza" onkeydown="limpaErro()">
+                <label class="label-firmeza">Firmeza</label>
+                <span class="span-firmeza">Agir sob Pressão</span>
+                <input required class="atributos" type="number" value="1" name="razao" title="Razão" id="inputRazao" onkeydown="limpaErro()"> 
+                <label class="label-razao">Razão</label>
+                <span class="span-razao">Investigar</span>
+                <input required class="atributos" type="number" value="1" name="percepcao" title="Percepção" id="inputPercepcao" onkeydown="limpaErro()">
+                <label class="label-percepcao">Percepção</label>
+                <span class="span-percepcao">Observar Situação</span>
+            </div>
+            <p class="erro--segredo" id="mensagemErroAtributos"></p>
+            <div class="inputSegredos">
+                <input type="submit" value="Editar" onclick="modificaAtributos()">
+            </div>
+        </div>
+    </div>
+</div>
 <div class="popup">
     <header>
-      <span id="tituloRolagem"></span>
-      <div class="close"><i class="uil uil-times"></i></div>
+    <span id="tituloRolagem"></span>
+    <div class="close"><i class="uil uil-times"></i></div>
     </header>
     <div class="content" id="rolagemResultado"></div>
 </div>
-<dialog class="modal" id="modalVantagens">
-    <span class="icone-fechar">
-        <ion-icon name="close" onclick="fechaModal('vantagens')"></ion-icon>
-    </span>
-    <h2>Adicionar Vantagem</h2>
-    <div class="modal-content">
-        <div class="search-box">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" placeholder="Buscar" oninput="buscaVantagem()" data-busca-vantagem>
-        </div>
-        <div class="boxVantagens">
-            <ul class="lista__vantagens" id="listaVantagensModal">
-            </ul>
-        </div>
-        <p class="erro--segredo" id="mensagemErroVantagens"></p>
-        <div class="inputSegredos">
-            <input type="submit" value="Adicionar" onclick="adicionaVantagens()">
-        </div>
-    </div>
-</dialog>
-<dialog class="modal" id="modalDesvantagens">
-    <span class="icone-fechar">
-        <ion-icon name="close" onclick="fechaModal('desvantagens')"></ion-icon>
-    </span>
-    <h2>Adicionar Desvantagem</h2>
-    <div class="modal-content">
-        <div class="search-box">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" placeholder="Buscar" oninput="buscaDesvantagem()" data-busca-desvantagem>
-        </div>
-        <div class="boxVantagens">
-            <ul class="lista__vantagens" id="listaDesvantagensModal">
-            </ul>
-        </div>
-        <p class="erro--segredo" id="mensagemErroDesvantagens"></p>
-        <div class="inputSegredos">
-            <input type="submit" value="Adicionar" onclick="adicionaDesvantagens()">
-        </div>
-    </div>
-</dialog>
-<dialog class="modal" id="modalProgressao">
-    <span class="icone-fechar">
-        <ion-icon name="close" onclick="fechaModal('progressao')"></ion-icon>
-    </span>
-    <h2>Progressão de Personagem</h2>
-    <div class="progressao__conteudo">
-        <h6>Ao acumular <strong>5 de Experiência</strong>, o jogador pode escolher uma progressão disponível em sua ficha de personagem, conforme a lista abaixo.</h6>
-        <h6>Quando um Arquétipo Consciente progride, ele deve escolher um dos seguintes aprimoramentos:</h6>
-        <div class="progressao__grupo">
-            <h5>Progressão Inicial:</h5>
-            <div class="progressao__item">
-                <p>Aumente um Atributo ativo em +1 (até +3 máx).</p>
-                <input type="checkbox" id="progressao1" onchange="verificaGrupo()">
-                <input type="checkbox" id="progressao2" onchange="verificaGrupo()">
-                <input type="checkbox" id="progressao3" onchange="verificaGrupo()">
-                <input type="checkbox" id="progressao4" onchange="verificaGrupo()">
-                <input type="checkbox" id="progressao5" onchange="verificaGrupo()">
-                <input type="checkbox" id="progressao6" onchange="verificaGrupo()">
-            </div>
-            <div class="progressao__item">
-                <p>Aumente um Atributo passivo em +1 (até +3 máx).</p>
-                <input type="checkbox" id="progressao7" onchange="verificaGrupo()">
-                <input type="checkbox" id="progressao8" onchange="verificaGrupo()">
-            </div>
-            <div class="progressao__item">
-                <p>Aumente qualquer Atributo em +1 (até +4 máx).</p>
-                <input type="checkbox" id="progressao9" onchange="verificaGrupo()">
-            </div>
-            <div class="progressao__item">
-                <p>Selecione uma nova vantagem do seu Arquétipo.</p>
-                <input type="checkbox" id="progressao10" onchange="verificaGrupo()">
-                <input type="checkbox" id="progressao11" onchange="verificaGrupo()">
-                <input type="checkbox" id="progressao12" onchange="verificaGrupo()">
-            </div>
-        </div>
-        <div class="progressao__grupo">
-            <h5>Progressão Intermediária:</h5>
-            <div class="progressao__item">
-                <p>Aumente qualquer um dos Atributos em +1 (até +4 máx).</p>
-                <input type="checkbox" id="progressao13" onchange="verificaGrupo()">
-                <input type="checkbox" id="progressao14" onchange="verificaGrupo()">
-            </div>
-            <div class="progressao__item">
-                <p>Selecione uma nova Vantagem de qualquer Arquétipo Consciente.</p>
-                <input type="checkbox" id="progressao15" onchange="verificaGrupo()">
-                <input type="checkbox" id="progressao16" onchange="verificaGrupo()">
-            </div>
-            <div class="progressao__item progressao__box">
-                <p class="progressao__texto">Encerre o arco da história do personagem como achar melhor, e crie um novo personagem Consciente que já começa com duas Progressões.</p>
-                <input type="checkbox" id="progressao17" onchange="verificaGrupo()">
-            </div>
-            <div class="progressao__item progressao__box">
-                <p class="progressao__texto">Substitua seu Arquétipo atual por outro Arquétipo Consciente e apague uma de suas três Vantagens iniciais.</p>
-                <input type="checkbox" id="progressao18" onchange="verificaGrupo()"> 
-            </div>
-        </div>
-        <div class="progressao__grupo">
-            <h5>Progressão Avançada:</h5>
-            <div class="progressao__item">
-                <p>Progrida seu personagem para um Arquétipo Iluminado.</p>
-                <input type="checkbox" id="progressao19" onchange="verificaGrupo()">
-            </div>
-        </div>
-        <div class="inputSegredos">
-            <button type="submit" onclick="selecionaProgressao()">Selecionar</button>
-            <p class="erro--segredo" id="mensagemErroProgressao"></p>
-        </div>
-    </div>
-</dialog>
-<dialog class="modal" id="modalAtributos">
-    <span class="icone-fechar">
-        <ion-icon name="close" onclick="fechaModal('atributos')"></ion-icon>
-    </span>
-    <h2>Editar Atributos</h2>
-    <div class="modal-content">
-        <div class="container__atributos">
-            <input required class="atributos" type="number" value="1" name="fortitude" title="Fortitude" id="inputFortitude" onkeydown="limpaErro()">
-            <label class="label-fortitude">Fortitude</label>
-            <span class="span-fortitude">Suportar Lesão</span>
-            <input required class="atributos" type="number" value="1" name="vontade" title="Vontade" id="inputVontade" onkeydown="limpaErro()">
-            <label class="label-vontade">Vontade</label>
-            <span class="span-vontade">Manter o Controle</span>
-            <input required class="atributos" type="number" value="1" name="reflexos" title="Reflexos" id="inputReflexos" onkeydown="limpaErro()">
-            <label class="label-reflexos">Reflexos</label>
-            <span class="span-reflexos">Evitar Dano</span>
-            <input required class="atributos" type="number" value="1" name="intuicao" title="Intuição" id="inputIntuicao" onkeydown="limpaErro()">
-            <label class="label-intuicao">Intuição</label>
-            <span class="span-intuicao">Ler uma Pessoa</span>
-            <input required class="atributos" type="number" value="1" name="violencia" title="Violência" id="inputViolencia" onkeydown="limpaErro()">
-            <label class="label-violencia">Violência</label>
-            <span class="span-violencia">Engajar em Combate</span>
-            <input required class="atributos" type="number" value="1" name="carisma" title="Carisma" id="inputCarisma" onkeydown="limpaErro()">
-            <label class="label-carisma">Carisma</label>
-            <span class="span-carisma">Inflenciar Alguém</span>
-            <input required class="atributos" type="number" value="1" name="alma" title="Alma" id="inputAlma" onkeydown="limpaErro()">
-            <label class="label-alma">Alma</label>
-            <span class="span-alma">Ver Através da Ilusão</span>
-            <input required class="atributos" type="number" value="1" name="firmeza" title="Firmeza" id="inputFirmeza" onkeydown="limpaErro()">
-            <label class="label-firmeza">Firmeza</label>
-            <span class="span-firmeza">Agir sob Pressão</span>
-            <input required class="atributos" type="number" value="1" name="razao" title="Razão" id="inputRazao" onkeydown="limpaErro()"> 
-            <label class="label-razao">Razão</label>
-            <span class="span-razao">Investigar</span>
-            <input required class="atributos" type="number" value="1" name="percepcao" title="Percepção" id="inputPercepcao" onkeydown="limpaErro()">
-            <label class="label-percepcao">Percepção</label>
-            <span class="span-percepcao">Observar Situação</span>
-        </div>
-        <p class="erro--segredo" id="mensagemErroAtributos"></p>
-        <div class="inputSegredos">
-            <input type="submit" value="Editar" onclick="modificaAtributos()">
-        </div>
-    </div>
-</dialog>
 </section>
