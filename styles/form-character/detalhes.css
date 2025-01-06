@@ -535,6 +535,10 @@ input[type="file"]{
     .modal{
         padding: 50px 30px;
     }
+
+    #modalProgressao{
+        padding: 30px !important;
+    }
 }
 
 @media (max-width: 390px){
@@ -571,6 +575,10 @@ input[type="file"]{
 @media (max-width: 330px){
     .modal{
         padding: 40px 20px;
+    }
+
+    #modalProgressao{
+        padding: 30px 20px !important;
     }
 
     .icone-fechar{

@@ -467,12 +467,14 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    user-select: none;
 }
 
 
 .ficha__atributos label{
     position: absolute;
     font-size: 20px;
+    user-select: none;
     white-space: nowrap;
 }
 
@@ -480,6 +482,7 @@
     position: absolute;
     font-size: 16px;
     white-space: nowrap;
+    user-select: none;
 }
 
 .intuicao-titulo{
@@ -678,6 +681,7 @@
     cursor: pointer;
     color: white;
     width: 20px;
+    user-select: none;
     text-align: center;
 }
 
@@ -1106,9 +1110,38 @@
 }
 
 #modalProgressao{
-    width: 40em;
+    max-width: 570px;
+    padding: 40px;
+    box-sizing: border-box;
+    width: calc(100% - 1rem);
+    margin: .5rem;
     color: white;
     transform: none;
+}
+
+.progressao__lista{
+    max-height: 200px;
+    overflow: scroll;
+}
+
+.progressao__grupo p{
+    flex-shrink: 1;
+}
+
+.progressao__inputs{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.progressao__lista::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+}
+
+.progressao__buttons{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
 }
 
 #modalProgressao .inputSegredos{
@@ -1136,10 +1169,14 @@
 #modalProgressao p{
     color: white;
     transform: none;
-    margin-left: 5px;
     font-size: 15px;
     font-weight: 300;
     line-height: 1.2;
+}
+
+.progressao__grupo .grupo-descricao{
+    font-weight: 500 !important;
+    margin: 10px 0 5px 0 !important;
 }
 
 #modalProgressao button{
@@ -1147,11 +1184,15 @@
     padding: 10px 20px;
     width: 300px;
     border-radius: 4px;
-    margin-top: 3em;
+    margin-top: 1em;
+}
+
+#modalProgressao .progressao__conteudo{
+    display: flex;
+    flex-direction: column;
 }
 
 #modalProgressao .progressao__texto{
-    margin-left: 5px;
     margin-top: 16px;
 }
 
@@ -1163,7 +1204,8 @@
     position: absolute;
     font-size: 13px;
     color: red;
-    transform: translateY(5.8em);
+    bottom: -10px;
+    transform: translateY(100%);
     font-weight: 300;
 }
 
@@ -1171,6 +1213,7 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    gap: 5px;
     justify-content: flex-end;
     padding-top: 10px;
 }
@@ -1276,11 +1319,15 @@
     margin-bottom: 2em;
 }
 
-.modalMain .btnDetails:hover{
+.modalMain .btnDetails:hover, .progressao__conteudo .btnDetails:hover{
     background: rgba(245, 245, 245, 0.055);
 }
 
-.modalMain .btnDetails{
+.progressao__inicial, .progressao__intermediaria, .progressao__avancada{
+    display: none;
+}
+
+.modalMain .btnDetails, .progressao__conteudo .btnDetails{
     width: 100%;
     transition: .3s ease;
     border: 1px solid whitesmoke;
@@ -1290,6 +1337,14 @@
     background: transparent;
     font-weight: 500;
     font-size: 16px;
+}
+
+.progressao__conteudo .btnDetails{
+    margin-top: 20px !important;
+}
+
+#modalProgressao h2{
+    margin-bottom: 20px;
 }
 
 .inputSegredos{
@@ -1468,6 +1523,10 @@
     margin: 0;
 }
 
+.progressao__inputs--label{
+    display: none;
+}
+
 #modalProgressao .completeGroup p{
     text-decoration: line-through;
     color: gray;
@@ -1527,7 +1586,61 @@
     }
 }
 
+@media (max-width: 590px){
+    .progressao__item{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+    }
+
+    .progressao__inputs--label{
+        font-size: 16px;
+        font-weight: 600;
+        margin-right: 5px;
+        display: block;
+    }
+
+    .progressao__inputs{
+        align-items: center;
+    }
+
+
+    #modalProgressao h5{
+        padding-bottom: 10px;
+        border-bottom: 1px #c8102E dashed;
+    }
+
+    .progressao__item{
+        padding: 10px 0 !important;
+        border-bottom: 1px #c8102E dashed;
+    }
+}
+
 @media (max-width: 500px){
+    #modalProgressao h6{
+        font-size: 14px;
+    }
+
+    .progressao__inputs--label{
+        font-size: 13px;
+    }
+    
+    #modalProgressao h2{
+        margin-bottom: 10px;
+    }
+
+    #modalProgressao p {
+        font-size: 13px;
+    }
+
+    #modalProgressao h5 {
+        font-size: 14px;
+    }
+
+    #modalProgressao button{
+        font-size: 14px;
+    }
+
     .segredo-item b, .segredo-item p{
         min-width: 100%;
         height: 100%;
@@ -1987,6 +2100,12 @@
     }
 }
 
+@media (max-width: 360px){
+    .progressao__buttons .btnDetails{
+        margin-top: 10px !important;
+    }
+}
+
 @media (max-width: 350px){
     #modalVantagens .search-box, #modalDesvantagens .search-box{
         margin: 1em 0 .5em;
@@ -2176,6 +2295,15 @@
 }
 
 @media (max-width: 330px){
+    #modalProgressao .erro--segredo{
+        position: absolute;
+        font-size: 12px;
+        color: red;
+        bottom: -10px;
+        transform: translateY(100%);
+        font-weight: 300;
+    }
+
     .modal h2{
         font-size: 14px;
     }

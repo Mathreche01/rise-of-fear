@@ -34,7 +34,13 @@ function contaLista(url){
     } else if(url === "./ficha.html"){
         const selectboxes = document.querySelectorAll('.dropdown')
         selectboxes.forEach(box => box.addEventListener('click', () => {
-            box.classList.toggle('active')
+            if(box.classList.contains('active')){
+                box.classList.remove('active')
+            } else{
+                selectboxes.forEach((select) => select.classList.remove('active'))
+                box.classList.add('active')
+            }
+            
         }))
     } else if(url === "./create-character.html"){
         vantagemErro = document.querySelector('.vantagem--erro')

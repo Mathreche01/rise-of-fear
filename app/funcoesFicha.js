@@ -8,6 +8,8 @@ let mudaEstabilidade;
 let registraGancho;
 let removerGancho;
 let registraFerimento;
+let pegaEstabilidade;
+let estabilidadeAtual;
 let mudaStatusFerimento;
 let registraDadoFicha;
 let pegaMunicao;
@@ -165,6 +167,20 @@ function abreModal(modal, submodal){
         const modal = document.querySelector('#modalProgressao')
         modal.style.display = "block"
         document.body.classList.add('modal-active')
+
+        const progressaoInicial = document.querySelector('.progressao__grupo.progressao__inicial')
+        const progressaoIntermediaria = document.querySelector('.progressao__grupo.progressao__intermediaria')
+        const progressaoAvancada = document.querySelector('.progressao__grupo.progressao__avancada')
+        progressaoInicial.style.display = "block"
+        progressaoIntermediaria.style.display = "none"
+        progressaoAvancada.style.display = "none"
+
+        const btnPrevious = document.getElementById('progressionPrevious')
+        btnPrevious.style.display = "none"
+
+        const btnNext = document.getElementById('progressionNext')
+        btnNext.style.display = "block"
+
         pegaProgressoes()
         progressoesMarcadas.forEach((progressao) => {
             const input = document.getElementById(progressao)
@@ -299,7 +315,7 @@ function fechaModal(modal){
 function criaRelacaoFicha(){
     const modal = document.querySelector('#modalRelacoes')
     const mensagemErro = document.querySelector('#mensagemErroRelacao')
-    var grau = document.querySelector('#grauSelecionado').value
+    var grau = document.querySelector('#grauSelecionado').value.replace(/\s?\([^\)]*\)/, '')
     var personagem = document.querySelector('#relacaoPersonagem').value
     var id = generateUniqueId()
     if(personagem !== ""){
@@ -566,13 +582,13 @@ function constroiRelacao(personagem, grau, id){
     <b>${personagem}: <ion-icon name="trash-outline" onclick="removerRelacao('${id}', event)"></ion-icon></b> 
     <p>${grau}</p>
     <div class="relacao-rating">
-        <input type="radio" name="${personagem}" onchange="mudaGrau('Vital', '${personagem}', event)">
-        <input type="radio" name="${personagem}" onchange="mudaGrau('Significativa', '${personagem}', event)">
-        <input type="radio" name="${personagem}" onchange="mudaGrau('Neutra', '${personagem}', event)">
+        <input type="radio" name="${id}" onchange="mudaGrau('Vital', '${personagem}', event, ${id})">
+        <input type="radio" name="${id}" onchange="mudaGrau('Significativa', '${personagem}', event, ${id})">
+        <input type="radio" name="${id}" onchange="mudaGrau('Neutra', '${personagem}', event, ${id})">
     </div>
     `
     lista.appendChild(item)
-    const inputs = document.querySelectorAll(`input[name="${personagem}"]`)
+    const inputs = document.querySelectorAll(`input[name="${id}"]`)
     if(grau === "Neutra"){
         inputs[2].checked = true
     } else if(grau === "Significativa"){
@@ -791,6 +807,9 @@ function rolaDadoFicha(nome, lancamento, tipo) {
 }
 
 function rolarDado(event) {
+    pegaEstabilidade()
+    console.log(estabilidadeAtual)
+    
     const elementoPai = event.target.parentElement;
     const titulo = elementoPai.querySelector('label').textContent;
     const tituloRolagem = document.querySelector('#tituloRolagem');
@@ -1060,10 +1079,43 @@ function selecionaProgressao(){
     const inputs = progressao.querySelectorAll('input')
     let inputsChecados = []
     inputs.forEach((input) =>  {
-    if(input.checked){
-        inputsChecados.push(input.id)
-    }
+        if(input.checked){
+            inputsChecados.push(input.id)
+        }
     })
+
+    let contador = 0;
+
+    for (let i = 0; i < inputsChecados.length; i++) {
+        let numero = parseInt(inputsChecados[i].replace('progressao', ''));
+        
+        if (numero >= 13 && numero < 19) {
+          for (let j = 0; j < inputsChecados.length; j++) {
+            let numeroMenor = parseInt(inputsChecados[j].replace('progressao', ''));
+            if (numeroMenor < 13) {
+              contador++;
+            }
+          }
+          
+          if (contador < 5) {
+            mensagemErro.innerHTML = "Obtenha cinco progressões anteriores."
+            return;
+          }
+        } else if(numero == 19){
+            for (let j = 0; j < inputsChecados.length; j++) {
+                let numeroMenor = parseInt(inputsChecados[j].replace('progressao', ''));
+                if (numeroMenor < 19) {
+                  contador++;
+                }
+              }
+              
+            if (contador < 5) {
+                mensagemErro.innerHTML = "Obtenha dez progressões anteriores."
+                return;
+            }
+        }
+    }    
+
     if(xp < (inputsChecados.length - progressoesMarcadas.length) * 5){
         mensagemErro.innerHTML = "Não há experiência suficiente."
     } else{
@@ -1094,6 +1146,39 @@ function changeModal(){
     detailsModal.classList.toggle('active')
 }
 
+function changeProgression(type){
+        const mensagemErro = document.querySelector('#mensagemErroProgressao')
+        mensagemErro.innerHTML = ""
+
+        const progressaoInicial = document.querySelector('.progressao__grupo.progressao__inicial')
+        const progressaoIntermediaria = document.querySelector('.progressao__grupo.progressao__intermediaria')
+        const progressaoAvancada = document.querySelector('.progressao__grupo.progressao__avancada')
+
+        const btnPrevious = document.getElementById('progressionPrevious')
+        const btnNext = document.getElementById('progressionNext')
+
+        btnPrevious.style.display = "block"
+        btnNext.style.display = "block"
+
+            if(progressaoInicial.style.display === "block"){
+                progressaoInicial.style.display = "none"
+                progressaoIntermediaria.style.display = "block"
+            } else if(progressaoIntermediaria.style.display === "block" && type === "next"){
+                progressaoIntermediaria.style.display = "none"
+                progressaoAvancada.style.display = "block"
+
+                btnNext.style.display = "none"
+            } else if(progressaoIntermediaria.style.display === "block" && type === "previous"){
+                progressaoIntermediaria.style.display = "none"
+                progressaoInicial.style.display = "block"
+
+                btnPrevious.style.display = "none"
+            } else{
+                progressaoAvancada.style.display = "none"
+                progressaoIntermediaria.style.display = "block"
+            }
+}
+
 function verificaGrupo(){
     const grupos = document.querySelectorAll('.progressao__item')
     grupos.forEach((grupo) => {
@@ -1122,3 +1207,4 @@ function marcaInputs(e){
         }
     }
 }
+

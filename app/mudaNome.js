@@ -316,11 +316,11 @@ pegaDadosFicha = function acessaDados(numero){
 }
 
 
-mudaGrau = function mudarGrauRelacao(grau, personagem, e){
+mudaGrau = function mudarGrauRelacao(grau, personagem, e, id){
     const alvo = e.target.parentElement.parentElement
     const textoGrau = alvo.querySelector('p')
     textoGrau.innerHTML = grau
-    set(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + '/relacoes/' + personagem), {
+    set(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + '/relacoes/' + id), {
         personagem: personagem,
         grau: grau,
     })
@@ -396,5 +396,11 @@ pegaProgressoes = function acessaProgressoes(){
         if(progressoesMarcadas === undefined || progressoesMarcadas === null){
             progressoesMarcadas = []
         }
+    }))
+}
+
+pegaEstabilidade = function acessaEstabilidade(){
+    (onValue(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado), (snapshot) => {
+        estabilidadeAtual = (snapshot.val() && snapshot.val().estabilidade)
     }))
 }
