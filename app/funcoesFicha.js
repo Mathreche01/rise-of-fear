@@ -49,7 +49,7 @@ function mostraDetalhes(event){
     }
 }
 
-function abreModal(modal){
+function abreModal(modal, submodal){
     const container = document.querySelector('.modal__container')
     container.style.display = "flex"
     if(modal === "relacoes"){
@@ -184,6 +184,16 @@ function abreModal(modal){
         modal.style.display = "block"
         document.body.classList.add('modal-active')
 
+
+        const modaisAtributos = document.querySelectorAll('.modal-atributo')
+        modaisAtributos.forEach((atributo) => {
+            if(atributo.getAttribute('data-atributo') === submodal){
+                atributo.style.display = "flex"
+            } else{
+                atributo.style.display = "none"
+            }
+        })
+
         const atributoVontade = document.querySelector('#vontade')
         const atributoFortitude= document.querySelector('#fortitude')
         const atributoPercepcao = document.querySelector('#percepcao')
@@ -256,7 +266,11 @@ function fechaModal(modal){
         document.body.classList.remove('modal-active')
     } else if(modal === "info"){
         const modal = document.querySelector('#modalInfo')
+        const modalMain = document.querySelector('.modalMain')
+        const modalDetails = document.querySelector('.modalDetails')
         modal.style.display = "none"
+        modalMain.classList.remove('active')
+        modalDetails.classList.remove('active')
         document.body.classList.remove('modal-active')
     } else if(modal === "vantagens"){
         const modal = document.querySelector('#modalVantagens')
@@ -1015,16 +1029,16 @@ function modificaAtributos(){
     const atributoFirmeza = document.querySelector('#firmeza')
     const atributoReflexos = document.querySelector('#reflexos')
 
-    atributoAlma.textContent = formatarAtributo(atributos[6])
-    atributoCarisma.textContent = formatarAtributo(atributos[5])
-    atributoFirmeza.textContent = formatarAtributo(atributos[7])
-    atributoRazao.textContent = formatarAtributo(atributos[8])
+    atributoAlma.textContent = formatarAtributo(atributos[9])
+    atributoCarisma.textContent = formatarAtributo(atributos[8])
+    atributoFirmeza.textContent = formatarAtributo(atributos[6])
+    atributoRazao.textContent = formatarAtributo(atributos[3])
     atributoReflexos.textContent = formatarAtributo(atributos[2])
-    atributoViolencia.textContent = formatarAtributo(atributos[4])
-    atributoIntuicao.textContent = formatarAtributo(atributos[3])
-    atributoPercepcao.textContent = formatarAtributo(atributos[9])
-    atributoFortitude.textContent = formatarAtributo(atributos[0])
-    atributoVontade.textContent = formatarAtributo(atributos[1])
+    atributoViolencia.textContent = formatarAtributo(atributos[7])
+    atributoIntuicao.textContent = formatarAtributo(atributos[4])
+    atributoPercepcao.textContent = formatarAtributo(atributos[5])
+    atributoFortitude.textContent = formatarAtributo(atributos[1])
+    atributoVontade.textContent = formatarAtributo(atributos[0])
 
     registraAtributos(atributos)
 
@@ -1033,7 +1047,7 @@ function modificaAtributos(){
     container.style.display = "none"
     document.body.classList.remove('modal-active')
     } else {
-        mensagemErro.innerHTML = "Preencha todos os campos."
+        mensagemErro.innerHTML = "Preencha o campo de atributo."
     }
 }
 
@@ -1071,6 +1085,13 @@ function selecionaProgressao(){
         const container = document.querySelector('.modal__container')
         container.style.display = "none"
     }
+}
+
+function changeModal(){
+    const mainModal = document.querySelector('.modalMain')
+    const detailsModal = document.querySelector('.modalDetails')
+    mainModal.classList.toggle('active')
+    detailsModal.classList.toggle('active')
 }
 
 function verificaGrupo(){

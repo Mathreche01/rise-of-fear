@@ -507,15 +507,40 @@
     left: 67%;
 }
 
-#modalAtributos .container__atributos{
-    color: white;
-    transform: translateY(-2em);
+#modalAtributos .erro--segredo{
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    white-space: nowrap;
 }
 
-#modalAtributos{
-    width: 25em;
+.modal-atributo .atributo-descricao{
+    position: static;
+    transform: none;
+    text-align: justify;
+    font-size: 16px;
+    color: whitesmoke;
+    font-weight: 400;
 }
 
+.modal-atributo .atributo-descricao b{
+    font-weight: 600;
+}
+
+.modal-atributo .inputSegredos{
+    margin-bottom: 0;
+    margin-top: 12px;
+}
+
+.modal-atributo{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+#modalAtributos h2{
+    margin-bottom: 30px;
+}
 #mensagemErroAtributos{
     position: absolute;
     top: 91%;
@@ -1103,6 +1128,11 @@
     padding-top: 10px;
 }
 
+#modalAtributos{
+    max-width: 380px;
+    box-sizing: border-box;
+}
+
 #modalProgressao p{
     color: white;
     transform: none;
@@ -1226,16 +1256,65 @@
     border-bottom-right-radius: 0;
 }
 
-.modalOverflow::-webkit-scrollbar{
-    width: 0px;
+.modalMain.active{
+    display: none;
 }
 
-.modalOverflow{
+.modalDetails{
+    display: none;
+}
+
+.modalDetails.active{
+    display: block;
+}
+
+.modalDetails.active + .inputSegredos .returnBtn{
+    display: flex;
+}
+
+.modalMain, .modalDetails{
     margin-bottom: 2em;
+}
+
+.modalMain .btnDetails:hover{
+    background: rgba(245, 245, 245, 0.055);
+}
+
+.modalMain .btnDetails{
+    width: 100%;
+    transition: .3s ease;
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+    padding: 10px;
+    border-radius: 4px;
+    background: transparent;
+    font-weight: 500;
+    font-size: 16px;
 }
 
 .inputSegredos{
     position: relative;
+}
+
+.inputSegredos .returnBtn{
+    padding: 0;
+    display: none;
+    align-items: center;
+    font-weight: 300;
+    gap: 5px;
+    font-size: 13px;
+    background: transparent;
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: whitesmoke;
+    transition: .3s;
+}
+
+.inputSegredos .returnBtn:hover{
+    background: transparent;
+    text-decoration: underline;
 }
 
 .inputSegredos .uploadImage{
@@ -1296,6 +1375,7 @@
     padding: 25px;
     border-radius: 15px;
     top: -150%;
+    box-sizing: border-box;
     max-width: 380px;
     width: 100%;
     opacity: 0;
@@ -1693,6 +1773,24 @@
     
 }
 
+@media (max-width: 410px){
+    .popup{
+        width: calc(100% - 1rem)
+    }
+
+    .popup .content p:first-child{
+        font-size: 20px;
+    }
+
+    .popup .content p {
+        font-size: 14px;
+    }
+
+    .popup header span{
+        font-size: 18px;
+    }
+}
+
 @media (max-width: 400px){
     .vantagem__accordion .vantagem__titulo{
         font-size: 14px;
@@ -2057,6 +2155,24 @@
         top: 9.2%;
         left: 45.8%;
     }    
+}
+
+@media (max-width: 340px){
+    .popup .content p:first-child{
+        font-size: 18px;
+    }
+
+    .popup .content p {
+        font-size: 12px;
+    }
+
+    .popup header span{
+        font-size: 16px;
+    }
+
+    .popup{
+        padding: 20px;
+    }
 }
 
 @media (max-width: 330px){

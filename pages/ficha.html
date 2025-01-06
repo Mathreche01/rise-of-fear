@@ -101,52 +101,52 @@
                     <img src="../img/Frame2.png">
                     <div>
                         <p class="atributo" id="vontade" onclick="rolarDado(event)">1</p>
-                        <label class="vontade-titulo">Vontade<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                        <label class="vontade-titulo">Vontade<i onclick="abreModal('atributos', 'vontade')" class="fa-solid fa-pencil"></i></label>
                         <span class="vontade-descricao" >Manter o Controle</span>
                     </div>
                     <div>
                         <p class="atributo" id="percepcao" onclick="rolarDado(event)">1</p>
-                        <label class="percepcao-titulo">Percepção<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                        <label class="percepcao-titulo">Percepção<i onclick="abreModal('atributos', 'percepcao')" class="fa-solid fa-pencil"></i></label>
                         <span class="percepcao-descricao">Observar Situação</span>
                     </div>
                     <div>
                         <p class="atributo" id="fortitude" onclick="rolarDado(event)">1</p>
-                        <label class="fortitude-titulo">Fortitude<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                        <label class="fortitude-titulo">Fortitude<i onclick="abreModal('atributos', 'fortitude')" class="fa-solid fa-pencil"></i></label>
                         <span class="fortitude-descricao">Suportar Lesão</span>
                     </div>
                     <div>
                         <p class="atributo" id="reflexos" onclick="rolarDado(event)">1</p>
-                        <label class="reflexos-titulo">Reflexos<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                        <label class="reflexos-titulo">Reflexos<i onclick="abreModal('atributos', 'reflexos')" class="fa-solid fa-pencil"></i></label>
                         <span class="reflexos-descricao">Evitar Dano</span>
                     </div>
                     <div>
                         <p class="atributo" id="alma" onclick="rolarDado(event)">1</p>
-                        <label class="alma-titulo">Alma<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                        <label class="alma-titulo">Alma<i onclick="abreModal('atributos', 'alma')" class="fa-solid fa-pencil"></i></label>
                         <span class="alma-descricao">Ver Através da Ilusão</span>
                     </div>
                     <div>
                         <p class="atributo" id="violencia" onclick="rolarDado(event)">1</p>
-                        <label class="violencia-titulo">Violência<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                        <label class="violencia-titulo">Violência<i onclick="abreModal('atributos', 'violencia')" class="fa-solid fa-pencil"></i></label>
                         <span class="violencia-descricao">Engajar em Combate</span>
                     </div>
                     <div>
                         <p class="atributo" id="razao" onclick="rolarDado(event)">1</p>
-                        <label class="razao-titulo">Razão<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                        <label class="razao-titulo">Razão<i onclick="abreModal('atributos', 'razao')" class="fa-solid fa-pencil"></i></label>
                         <span class="razao-descricao">Investigar</span>
                     </div>
                     <div>
                         <p class="atributo" id="firmeza" onclick="rolarDado(event)">1</p>
-                        <label class="firmeza-titulo">Firmeza<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                        <label class="firmeza-titulo">Firmeza<i onclick="abreModal('atributos', 'firmeza')" class="fa-solid fa-pencil"></i></label>
                         <span class="firmeza-descricao">Agir sob Pressão</span>
                     </div>
                     <div>
                         <p class="atributo" id="carisma" onclick="rolarDado(event)">1</p>
-                        <label class="carisma-titulo">Carisma<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                        <label class="carisma-titulo">Carisma<i onclick="abreModal('atributos', 'carisma')" class="fa-solid fa-pencil"></i></label>
                         <span class="carisma-descricao">Inflenciar Alguém</span>
                     </div>
                     <div>
                         <p class="atributo" id="intuicao" onclick="rolarDado(event)">1</p>
-                        <label class="intuicao-titulo">Intuição<i onclick="abreModal('atributos')" class="fa-solid fa-pencil"></i></label>
+                        <label class="intuicao-titulo">Intuição<i onclick="abreModal('atributos', 'intuicao')" class="fa-solid fa-pencil"></i></label>
                         <span class="intuicao-descricao">Ler uma Pessoa</span>
                     </div>
                 </div>
@@ -366,7 +366,7 @@
                 <span>Grau</span>
             </div>
             <div class="inputSegredos">
-                <input type="text" id="relacaoPersonagem" onkeydown="limpaErro()" placeholder="placeholder">
+                <input type="text" id="relacaoPersonagem" onfocus="limpaErro()" placeholder="placeholder">
                 <span>Personagem</span>
                 <p class="erro--segredo" id="mensagemErroRelacao"></p>
             </div>
@@ -406,7 +406,7 @@
                 <span>Segredo Sombrio</span>
             </div>
             <div class="inputSegredos">
-                <input type="text" id="motivoSegredo" onkeydown="limpaErro()" placeholder="placeholder">
+                <input type="text" id="motivoSegredo" onfocus="limpaErro()" placeholder="placeholder">
                 <span>Motivação Pessoal</span>
                 <p class="erro--segredo" id="mensagemErroSegredos"></p>
             </div>
@@ -493,7 +493,7 @@
                 <span>Tipo</span>
             </div>
             <div class="inputSegredos" id="divNomeEquipamento">
-                <input type="text" id="nomeEquipamento" onkeydown="limpaErro()" placeholder="placeholder">
+                <input type="text" id="nomeEquipamento" onfocus="limpaErro()" placeholder="placeholder">
                 <span>Nome</span>
                 <p class="erro--segredo" id="mensagemErroEquipamento"></p>
             </div>
@@ -507,7 +507,7 @@
         </span>
         <h2>Editar Narrativa</h2>
             <div class="inputSegredos">
-                <textarea id="narrativaPersonagem" onkeydown="limpaErro()"></textarea>
+                <textarea id="narrativaPersonagem" onfocus="limpaErro()"></textarea>
                 <span>Narrativa</span>
                 <p class="erro--segredo" id="mensagemErroNarrativa"></p>
             </div>
@@ -521,7 +521,7 @@
         </span>
         <h2>Editar Anotações</h2>
             <div class="inputSegredos">
-                <textarea id="anotacoesPersonagem" onkeydown="limpaErro()"></textarea>
+                <textarea id="anotacoesPersonagem" onfocus="limpaErro()"></textarea>
                 <span>Anotações</span>
                 <p class="erro--segredo" id="mensagemErroAnotacoes"></p>
             </div>
@@ -535,12 +535,12 @@
         </span>
         <h2>Personalizar Dados</h2>
             <div class="inputSegredos">
-                <input type="text" id="rolagemDado" onkeydown="limpaErro()" placeholder="placeholder" value="1d20+5">
+                <input type="text" id="rolagemDado" onfocus="limpaErro()" placeholder="placeholder" value="1d20+5">
                 <span>Rolagem</span>
                 <p class="erro--segredo" id="mensagemErroDadosRolagem"></p>
             </div>
             <div class="inputSegredos">
-                <input type="text" id="nomeDado" onkeydown="limpaErro()" placeholder="placeholder">
+                <input type="text" id="nomeDado" onfocus="limpaErro()" placeholder="placeholder">
                 <span>Nome</span>
                 <p class="erro--segredo" id="mensagemErroDadosNome"></p>
             </div>
@@ -566,7 +566,7 @@
         </span>
         <h2>Adicionar Gancho</h2>
             <div class="inputSegredos">
-                <textarea id="ganchosPersonagem" onkeydown="limpaErro()"></textarea>
+                <textarea id="ganchosPersonagem" onfocus="limpaErro()"></textarea>
                 <span>Gancho Dramático</span>
                 <p class="erro--segredo" id="mensagemErroGanchos"></p>
             </div>
@@ -591,7 +591,7 @@
                 <span>Tipo</span>
             </div>
             <div class="inputSegredos">
-                <input type="text" id="descricaoFerimento" onkeydown="limpaErro()" placeholder="placeholder">
+                <input type="text" id="descricaoFerimento" onfocus="limpaErro()" placeholder="placeholder">
                 <span>Descrição</span>
                 <p class="erro--segredo" id="mensagemErroFerimentos"></p>
             </div>
@@ -604,18 +604,13 @@
             <ion-icon name="close" onclick="fechaModal('info')"></ion-icon>
         </span>
         <h2>Editar Informações</h2>
-        <div class="modalOverflow">
+        <div class="modalMain">
             <div class="inputSegredos">
-                <input type="text" id="infoImagem" onkeydown="limpaErro()" placeholder="placeholder">
+                <input type="text" id="infoImagem" onfocus="limpaErro()" placeholder="placeholder">
                 <span>Imagem</span>
                 <p class="erro--segredo" id="mensagemErroInfoImagem"></p>
                 <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file-ficha" onchange="mudaImagem()">
                 <label for="input-file-ficha" class="uploadImage"><i class="fa-solid fa-arrow-up-from-bracket"></i></label>
-            </div>
-            <div class="inputSegredos">
-                <input type="text" id="infoNome" onkeydown="limpaErro()" placeholder="placeholder">
-                <span>Nome</span>
-                <p class="erro--segredo" id="mensagemErroInfoNome"></p>
             </div>
             <div class="inputSegredos">
                 <div class="dropdown">
@@ -646,25 +641,34 @@
                 </div>
                 <span>Arquétipo</span>
             </div>
+            <button class="btnDetails" onclick="changeModal()">Detalhes</button>
+        </div>
+        <div class="modalDetails">
             <div class="inputSegredos">
-                <input type="text" id="infoOcupacao" onkeydown="limpaErro()" placeholder="placeholder">
+                <input type="text" id="infoNome" onfocus="limpaErro()" placeholder="placeholder">
+                <span>Nome</span>
+                <p class="erro--segredo" id="mensagemErroInfoNome"></p>
+            </div>
+            <div class="inputSegredos">
+                <input type="text" id="infoOcupacao" onfocus="limpaErro()" placeholder="placeholder">
                 <span>Ocupação</span>
                 <p class="erro--segredo" id="mensagemErroInfoOcupacao"></p>
             </div>
             <div class="inputSegredos">
-                <input type="text" id="infoNacionalidade" onkeydown="limpaErro()" placeholder="placeholder">
+                <input type="text" id="infoNacionalidade" onfocus="limpaErro()" placeholder="placeholder">
                 <span>Nacionalidade</span>
                 <p class="erro--segredo" id="mensagemErroInfoNacionalidade"></p>
             </div>
             <div class="inputSegredos">
-                <input type="number" id="infoIdade" onkeydown="limpaErro()" value="0" placeholder="placeholder">
+                <input type="number" id="infoIdade" onfocus="limpaErro()" value="0" placeholder="placeholder">
                 <span>Idade</span>
                 <p class="erro--segredo" id="mensagemErroInfoIdade"></p>
             </div>
         </div>
-            <div class="inputSegredos">
-                <input type="submit" value="Editar" onclick="editaInfo()">
-            </div>
+        <div class="inputSegredos">
+            <input type="submit" value="Editar" onclick="editaInfo()">
+            <button class="returnBtn" onclick="changeModal()"><i class="fa-solid fa-arrow-left-long"></i> Retornar</button>
+        </div>
     </div>
     <div class="modal" id="modalVantagens">
         <span class="icone-fechar">
@@ -779,43 +783,91 @@
         <span class="icone-fechar">
             <ion-icon name="close" onclick="fechaModal('atributos')"></ion-icon>
         </span>
-        <h2>Editar Atributos</h2>
+        <h2>Editar Atributo</h2>
         <div class="modal-content">
-            <div class="container__atributos">
-                <input required class="atributos" type="number" value="1" name="fortitude" title="Fortitude" id="inputFortitude" onkeydown="limpaErro()">
-                <label class="label-fortitude">Fortitude</label>
-                <span class="span-fortitude">Suportar Lesão</span>
-                <input required class="atributos" type="number" value="1" name="vontade" title="Vontade" id="inputVontade" onkeydown="limpaErro()">
-                <label class="label-vontade">Vontade</label>
-                <span class="span-vontade">Manter o Controle</span>
-                <input required class="atributos" type="number" value="1" name="reflexos" title="Reflexos" id="inputReflexos" onkeydown="limpaErro()">
-                <label class="label-reflexos">Reflexos</label>
-                <span class="span-reflexos">Evitar Dano</span>
-                <input required class="atributos" type="number" value="1" name="intuicao" title="Intuição" id="inputIntuicao" onkeydown="limpaErro()">
-                <label class="label-intuicao">Intuição</label>
-                <span class="span-intuicao">Ler uma Pessoa</span>
-                <input required class="atributos" type="number" value="1" name="violencia" title="Violência" id="inputViolencia" onkeydown="limpaErro()">
-                <label class="label-violencia">Violência</label>
-                <span class="span-violencia">Engajar em Combate</span>
-                <input required class="atributos" type="number" value="1" name="carisma" title="Carisma" id="inputCarisma" onkeydown="limpaErro()">
-                <label class="label-carisma">Carisma</label>
-                <span class="span-carisma">Inflenciar Alguém</span>
-                <input required class="atributos" type="number" value="1" name="alma" title="Alma" id="inputAlma" onkeydown="limpaErro()">
-                <label class="label-alma">Alma</label>
-                <span class="span-alma">Ver Através da Ilusão</span>
-                <input required class="atributos" type="number" value="1" name="firmeza" title="Firmeza" id="inputFirmeza" onkeydown="limpaErro()">
-                <label class="label-firmeza">Firmeza</label>
-                <span class="span-firmeza">Agir sob Pressão</span>
-                <input required class="atributos" type="number" value="1" name="razao" title="Razão" id="inputRazao" onkeydown="limpaErro()"> 
-                <label class="label-razao">Razão</label>
-                <span class="span-razao">Investigar</span>
-                <input required class="atributos" type="number" value="1" name="percepcao" title="Percepção" id="inputPercepcao" onkeydown="limpaErro()">
-                <label class="label-percepcao">Percepção</label>
-                <span class="span-percepcao">Observar Situação</span>
+            <div class="modal-atributo" data-atributo="vontade">
+                <p class="atributo-descricao"><b>Vontade</b> mede a resiliência mental do personagem, a compostura, paz de espírito e capacidade para lidar com o trauma.</p>
+                <div class="inputSegredos">
+                    <input class="atributos" type="text" id="inputVontade" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <span>Vontade</span>
+                </div>
+                <p class="atributo-descricao"> Uma PJ com <b>Vontade</b> elevada pode resistir à influência aterrorizante de poderes mundanos e sobrenaturais e permanecer são.</p>
             </div>
-            <p class="erro--segredo" id="mensagemErroAtributos"></p>
+            <div class="modal-atributo" data-atributo="fortitude">
+                <p class="atributo-descricao"><b>Fortitude</b> mede a resistência física do personagem, o limiar de dor e a resposta a estresse quando sofrer lesões físicas.</p>
+                <div class="inputSegredos">
+                    <input class="atributos" type="text" id="inputFortitude" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <span>Fortitude</span>
+                </div>
+                <p class="atributo-descricao"> Uma PJ com <b>Fortitude</b> elevada é capaz de suportar lesões que derrubariam um personagem com <b>Fortitude</b> mais baixa.</p>
+            </div>
+            <div class="modal-atributo" data-atributo="reflexos">
+                <p class="atributo-descricao"><b>Reflexos</b> medem a rapidez, reação e instinto físico quando é agredido ou quando sofre risco de lesão.</p>
+                <div class="inputSegredos">
+                    <input class="atributos" type="text" id="inputReflexos" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <span>Reflexos</span>
+                </div>
+                <p class="atributo-descricao"> Uma PJ com <b>Reflexos</b> elevados é melhor ao tentar evitar sofrer dano.</p>
+            </div>
+            <div class="modal-atributo" data-atributo="razao">
+                <p class="atributo-descricao"><b>Razão</b> mede a capacidade analítica de um personagem.</p>
+                <div class="inputSegredos">
+                    <input class="atributos" type="text" id="inputRazao" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <span>Razão</span>
+                </div>
+                <p class="atributo-descricao"> Uma PJ com <b>Razão</b> elevada é boa em coleta de informações e investigação.</p>
+            </div>
+            <div class="modal-atributo" data-atributo="intuicao">
+                <p class="atributo-descricao"><b>Intuição</b> mede a empatia e o instinto do personagem.</p>
+                <div class="inputSegredos">
+                    <input class="atributos" type="text" id="inputIntuicao" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <span>Intuição</span>
+                </div>
+                <p class="atributo-descricao"> Uma PJ com <b>Intuição</b> elevada é boa em perceber as intenções e motivos ocultos de outras criaturas inteligentes.</p>
+            </div>
+            <div class="modal-atributo" data-atributo="percepcao">
+                <p class="atributo-descricao"><b>Percepção</b> mede o estado de alerta do personagem.</p>
+                <div class="inputSegredos">
+                    <input class="atributos" type="text" id="inputPercepcao" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <span>Percepção</span>
+                </div>
+                <p class="atributo-descricao"> Uma PJ com <b>Percepção</b> elevada é boa em avaliar o ambiente e perceber o que os outros ignoram.</p>
+            </div>
+            <div class="modal-atributo" data-atributo="firmeza">
+                <p class="atributo-descricao"><b>Firmeza</b> mede o controle do personagem sobre pressão.</p>
+                <div class="inputSegredos">
+                    <input class="atributos" type="text" id="inputFirmeza" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <span>Firmeza</span>
+                </div>
+                <p class="atributo-descricao"> Uma PJ com <b>Firmeza</b> elevada é boa em furtividade, furto e outras situações que exigem decisões rápidas em situações de estresse.</p>
+            </div>
+            <div class="modal-atributo" data-atributo="violencia">
+                <p class="atributo-descricao"><b>Violência</b> mede a força bruta, habilidade de combate e ferocidade do personagem.</p>
+                <div class="inputSegredos">
+                    <input class="atributos" type="text" id="inputViolencia" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <span>Violência</span>
+                </div>
+                <p class="atributo-descricao"> Um PJ com <b>Violência</b> elevada se sobressai em infligir dano aos outros.</p>
+            </div>
+            <div class="modal-atributo" data-atributo="carisma">
+                <p class="atributo-descricao"><b>Carisma</b> mede o charme, a liderança e o talento retórico do personagem.</p>
+                <div class="inputSegredos">
+                    <input class="atributos" type="text" id="inputCarisma" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <span>Carisma</span>
+                </div>
+                <p class="atributo-descricao"> Uma PJ com <b>Carisma</b> elevado facilmente persuade e manipula os outros.</p>
+            </div>
+            <div class="modal-atributo" data-atributo="alma">
+                <p class="atributo-descricao"><b>Alma</b> mede a sensibilidade do personagem às forças sobrenaturais.</p>
+                <div class="inputSegredos">
+                    <input class="atributos" type="text" id="inputAlma" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <span>Alma</span>
+                </div>
+                <p class="atributo-descricao"> Uma PJ com <b>Alma</b> elevada tem mais facilidade em perceber a Realidade e está mais sintonizado com seus poderes intrínsecos.</p>
+            </div>
             <div class="inputSegredos">
                 <input type="submit" value="Editar" onclick="modificaAtributos()">
+                <p class="erro--segredo" id="mensagemErroAtributos"></p>
             </div>
         </div>
     </div>
