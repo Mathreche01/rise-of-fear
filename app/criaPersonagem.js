@@ -94,12 +94,20 @@ async function abreFicha(vantagens, atributos, desvantagens, arquetipo, ocupacao
     arrayVantagens.forEach((vantagem) => {
         const vantagemElemento = document.createElement('li')
         const listaVantagensFicha = document.querySelector('#listaVantagens')
+
         vantagemElemento.innerHTML = `
         <div class="vantagem__accordion">
         <span class="vantagem__titulo">${vantagem}</span>
         <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <div class="vantagem__conteudo">${vantagensDetalhadas[vantagem]}</div>
+        <div class="vantagem__conteudo">
+            ${vantagensDetalhadas[vantagem]}
+            ${vantagensLista[vantagem]["atributo"] === "-" ? "" : `
+                <div class="vantagem__rolagem">
+                    <button onclick="rolarDado(event, 'vantagem', '${vantagensLista[vantagem]["atributo"]}')">Rolar</button>
+                </div>
+            `}
+        </div>
         <span class="vantagem__linha"></span>
         `
         vantagemElemento.addEventListener('click', (e) => mostraDetalhes(e))
@@ -113,7 +121,14 @@ async function abreFicha(vantagens, atributos, desvantagens, arquetipo, ocupacao
         <span class="vantagem__titulo">${desvantagem}</span>
         <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <div class="vantagem__conteudo">${desvantagensDetalhadas[desvantagem]}</div>
+        <div class="vantagem__conteudo">
+            ${desvantagensDetalhadas[desvantagem]}
+            ${desvantagem === "Arruinado" || desvantagem === "Racionalista" || desvantagem === "Fobia" ? "" : `
+                <div class="vantagem__rolagem">
+                    <button onclick="rolarDado(event, 'desvantagem')">Rolar</button>
+                </div>
+            `}
+        </div>
         <span class="vantagem__linha"></span>
         `
         desvantagemElemento.addEventListener('click', (e) => mostraDetalhes(e))

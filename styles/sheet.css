@@ -1240,6 +1240,27 @@
     overflow-y: hidden;
 }
 
+.vantagem__rolagem{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.vantagem__rolagem button{
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px 15px;
+    background: linear-gradient(45deg,#FF033E, #BA0021);
+    border-radius: 6px;
+    font-weight: 300;
+    color: white;
+}
+
+.vantagem__rolagem button:hover{
+    opacity: .9;
+}
+
 #modalVantagens p, #modalDesvantagens p{
     transform: none;
 }
@@ -1277,7 +1298,7 @@
     gap: 1em;
 }
 
-.relacoes__topo button{
+.relacoes__topo h3 button{
     position: absolute;
     right: -25px;
     top: 50%;

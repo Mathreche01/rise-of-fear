@@ -21,7 +21,7 @@ const arquetipoVantagens = {
     "A Vingadora": ["Consciência Ampliada", "Comunicação Animal", "Instinto", "Instinto de Sobrevivência", "Intimidador", "Código de Honra", "Fúria", "Olho por Olho"]
 }
 
-const vantagens = {
+const vantagensLista = {
     "Acesso à Dark Net": {
         nome: "Acesso à Dark Net",
         icon: "fa-user-secret",

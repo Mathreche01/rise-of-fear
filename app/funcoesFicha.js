@@ -806,27 +806,91 @@ function rolaDadoFicha(nome, lancamento, tipo) {
     };
 }
 
-function rolarDado(event) {
-    pegaEstabilidade()
-    console.log(estabilidadeAtual)
-    
-    const elementoPai = event.target.parentElement;
-    const titulo = elementoPai.querySelector('label').textContent;
-    const tituloRolagem = document.querySelector('#tituloRolagem');
-    tituloRolagem.textContent = titulo;
-    
-    const modificador = parseInt(event.target.textContent);
+function rolarDado(event, tipo, atributo) {
+    pegaEstabilidade();
+
     const primeiraRolagem = Math.floor(Math.random() * 10 + 1);
     const segundaRolagem = Math.floor(Math.random() * 10 + 1);
     const rolagemResultado = document.querySelector('#rolagemResultado');
-    
-    const modificadorAbsoluto = Math.abs(modificador);
-    const resultado = (modificador < 0) ? primeiraRolagem + segundaRolagem - modificadorAbsoluto : primeiraRolagem + segundaRolagem + modificadorAbsoluto;
-    
-    rolagemResultado.innerHTML = `
+    let resultado;
+    let ajuste = '';
+    let titulo = '';
+
+    if(tipo === "atributo"){
+        const elementoPai = event.target.parentElement;
+        titulo = elementoPai.querySelector('label').textContent;
+        
+        const modificador = parseInt(event.target.textContent);
+        
+        const modificadorAbsoluto = Math.abs(modificador);
+        
+        resultado = (modificador < 0) ? primeiraRolagem + segundaRolagem - modificadorAbsoluto : primeiraRolagem + segundaRolagem + modificadorAbsoluto;   
+        
+        if (estabilidadeAtual === "Abalado" || estabilidadeAtual === "Angustiado" || estabilidadeAtual === "Neurótico") {
+            if (titulo === "Vontade") {
+                resultado -= 1; 
+                ajuste = '- 1';
+            }
+        } else if (estabilidadeAtual === "Agoniado" || estabilidadeAtual === "Irracional" || estabilidadeAtual === "Transtornado" || estabilidadeAtual === "Arruinado") {
+            if (titulo === "Vontade") {
+                resultado -= 2; 
+                ajuste = '- 2';
+            }
+            if (titulo === "Alma") {
+                resultado += 1; 
+                ajuste = '+ 1';
+            }
+        }
+
+        rolagemResultado.innerHTML = `
+        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificador < 0 ? '-' : '+'} ${modificadorAbsoluto} ${ajuste} = ${resultado}</p>
+        <p>D10: ${primeiraRolagem}, ${segundaRolagem}</p>
+        `;
+    } else if(tipo === "desvantagem"){
+        const itemLista = event.target.parentElement.parentElement.parentElement
+        titulo = itemLista.querySelector('.vantagem__titulo').textContent
+        resultado = primeiraRolagem + segundaRolagem
+
+        if(estabilidadeAtual === "Apreensivo" || estabilidadeAtual === "Disperso"){
+            resultado -= 1
+            ajuste = '- 1'
+        } else if(estabilidadeAtual === "Abalado" || estabilidadeAtual === "Angustiado" || estabilidadeAtual === "Neurótico"){
+            resultado -= 2
+            ajuste = '- 2'
+        } else if(estabilidadeAtual === "Agoniado" || estabilidadeAtual === "Irracional" || estabilidadeAtual === "Transtornado" || estabilidadeAtual === "Arruinado"){
+            resultado -= 3
+            ajuste = '- 3'
+        }
+
+        rolagemResultado.innerHTML = `
+        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${ajuste} = ${resultado}</p>
+        <p>D10: ${primeiraRolagem}, ${segundaRolagem}</p>
+        `;
+    } else if(tipo === "vantagem"){
+        const itemLista = event.target.parentElement.parentElement.parentElement
+        titulo = itemLista.querySelector('.vantagem__titulo').textContent
+        let modificador;
+
+        const atributos = document.querySelectorAll('.ficha__atributos label')
+        atributos.forEach((label) => {
+            if(label.textContent === atributo){
+                modificador = parseInt(label.parentElement.querySelector('.atributo').textContent)
+            }
+        })
+
+        const modificadorAbsoluto = Math.abs(modificador);
+        
+        resultado = (modificador < 0) ? primeiraRolagem + segundaRolagem - modificadorAbsoluto : primeiraRolagem + segundaRolagem + modificadorAbsoluto;   
+
+        resultado = primeiraRolagem + segundaRolagem + parseInt(modificador)
+        rolagemResultado.innerHTML = `
         <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificador < 0 ? '-' : '+'} ${modificadorAbsoluto} = ${resultado}</p>
         <p>D10: ${primeiraRolagem}, ${segundaRolagem}</p>
-    `;
+        `;
+    }
+
+    const tituloRolagem = document.querySelector('#tituloRolagem');
+    tituloRolagem.textContent = titulo;
     
     const popup = document.querySelector(".popup");
     popup.classList.toggle("show");
@@ -836,6 +900,7 @@ function rolarDado(event) {
         popup.classList.toggle("show");
     };
 }
+
 
 function mudaMunicao(event){
     event.preventDefault();

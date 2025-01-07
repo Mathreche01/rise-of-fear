@@ -1,4 +1,4 @@
-const desvantagens = [
+const desvantagensLista = [
     {
         nome: "Acossado",
         icon: "fa-truck-fast",

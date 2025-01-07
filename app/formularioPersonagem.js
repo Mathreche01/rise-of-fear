@@ -94,7 +94,7 @@ function mostraVantagens(arquetipo){
     const lista = document.querySelector('.vantagem__container')
     lista.innerHTML = ""
     listaVantagens.forEach((vantagem) => {
-    const vantagemCard = vantagens[vantagem]
+    const vantagemCard = vantagensLista[vantagem]
     const elemento = document.createElement('div')
     elemento.className = "vantagem__card"
     elemento.innerHTML = `
@@ -116,7 +116,7 @@ function mostraVantagens(arquetipo){
 
 function mostraDesvantagens(){
     const lista = document.querySelector('.swiper-wrapper')
-    desvantagens.forEach((desvantagem) => {
+    desvantagensLista.forEach((desvantagem) => {
         const elemento = document.createElement('div')
         elemento.className = "vantagem__card swiper-slide"
         elemento.innerHTML = `
