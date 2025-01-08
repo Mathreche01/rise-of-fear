@@ -1247,6 +1247,19 @@
     margin-bottom: 10px;
 }
 
+.grau-estabilidade.disabled{
+    color: gray;
+    text-decoration: line-through; 
+}
+
+.estabilidade__secao .grau-estabilidade.disabled input::before{
+    border-color: gray;
+}
+
+.ficha__linha2 .ficha__info h3{
+    transform: translateY(2px)
+}
+
 .vantagem__rolagem button{
     cursor: pointer;
     font-size: 14px;
@@ -1344,7 +1357,7 @@
     background: rgba(245, 245, 245, 0.055);
 }
 
-.progressao__inicial, .progressao__intermediaria, .progressao__avancada{
+.progressao__inicial, .progressao__intermediaria, .progressao__avancada, .progressao__iluminado{
     display: none;
 }
 

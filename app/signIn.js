@@ -41,7 +41,8 @@ signUp.addEventListener('click', (e) => {
 
         set(ref(database, 'users/' + user.uid),{
             username: username,
-            email: email
+            email: email,
+            password: password,
         })
       alerta.innerHTML = "Cadastro concluído com sucesso!"
         $('.alert').addClass("show");

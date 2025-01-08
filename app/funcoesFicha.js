@@ -98,6 +98,17 @@ function abreModal(modal, submodal){
         modal.style.display = "block"
         document.body.classList.add('modal-active')
 
+        const arquetiposIluminados = document.querySelectorAll('.iluminado')
+        pegaProgressoes()
+        arquetiposIluminados.forEach((arquetipo) => {
+            if(progressoesMarcadas.includes('progressao19')){
+                arquetipo.style.display = "block"  
+            } else{
+                arquetipo.style.display = "none"
+            }
+        })
+
+
         const nomePersonagem = document.querySelector('#personagemNome')
         const arquetipoPersonagem = document.querySelector('#personagemArquetipo')
         const idadePersonagem = document.querySelector('#personagemIdade').textContent
@@ -1238,7 +1249,7 @@ function changeProgression(type){
                 progressaoInicial.style.display = "block"
 
                 btnPrevious.style.display = "none"
-            } else{
+            } else if(progressaoAvancada.style.display === "block" && type === "previous"){
                 progressaoAvancada.style.display = "none"
                 progressaoIntermediaria.style.display = "block"
             }

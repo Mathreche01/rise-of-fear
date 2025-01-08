@@ -78,7 +78,7 @@ enviarPersonagem = function criaDado(){
     desvantagens: desvantagensEscolhidas,
     segredos: segredosSombrios,
     historia: historiaPersonagem,
-    estabilidade: 'Calmo',
+    estabilidade: desvantagensEscolhidas.indexOf("Arruinado") ? 'Calmo' : 'Angustiado',
     numero: personagensCriados,
     experiencia: 0,
 })

@@ -186,6 +186,23 @@ async function abreFicha(vantagens, atributos, desvantagens, arquetipo, ocupacao
     const estabilidadeAtiva = document.querySelector(`#estabilidade${estabilidade}`)
     estabilidadeAtiva.checked = true
 
+    const estabilidadeCalmo = document.getElementById('estabilidadeCalmo')
+    const estabilidadeApreensivo = document.getElementById('estabilidadeApreensivo')
+    const estabilidadeDisperso = document.getElementById('estabilidadeDisperso')
+    const estabilidadeAbalado = document.getElementById('estabilidadeAbalado')
+
+    const inputs = [estabilidadeCalmo, estabilidadeApreensivo, estabilidadeDisperso, estabilidadeAbalado]
+    inputs.forEach((input) => {
+        if(arrayDesvantagens.includes('Arruinado')){
+            input.disabled = true
+            input.parentElement.classList.add('disabled')
+        } else{
+            input.disabled = false
+            input.parentElement.classList.remove('disabled')
+        }
+    })
+
+
     pegaGanchos(numero)
     if(ganchosPersonagem !== null && ganchosPersonagem !== undefined){
         ganchosPersonagem.forEach((gancho) => {
