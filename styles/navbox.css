@@ -74,6 +74,14 @@ a {
             opacity: 1;
       }
 
+      .et-hero-tabs.active .et-hero-tab{
+            display: block;
+      }
+
+      .et-hero-tabs .et-hero-tab{
+            display: none;
+      }
+
       .et-hero-tabs-container{
             display: flex;
             height: auto;

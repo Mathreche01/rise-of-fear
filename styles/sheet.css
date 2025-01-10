@@ -389,6 +389,8 @@
 .ficha__imagem img{
     width: 210px;
     height: 202px;
+    object-fit: cover;
+    object-position: center;
     border: 2px dotted rgb(60,60,60)
 }
 
@@ -1607,6 +1609,7 @@
     .ficha__imagem img{
         width: 100%;
         height: auto;
+        aspect-ratio: 1/1;
     }
 
     .ficha__personagem{
