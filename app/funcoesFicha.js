@@ -958,7 +958,7 @@ function editaInfo(){
 
         nomePersonagem.textContent = inputNome
         arquetipoPersonagem.textContent = inputArquetipo
-        idadePersonagem.textContent = inputIdade + ' Anos'
+        idadePersonagem.textContent = inputIdade + ' anos'
         imagemPersonagem.src = inputImagem
         ocupacaoPersonagem.textContent = inputOcupacao
         nacionalidadePersonagem.textContent = inputNacionalidade
@@ -985,14 +985,24 @@ function editaInfo(){
     }
 }
 
-function mudaImagem(){
-    const imagem = document.querySelector('#infoImagem')
-    let input = document.querySelector('#input-file-ficha')
-    let reader = new FileReader()
-    reader.readAsDataURL(input.files[0])
-    reader.addEventListener('load', () => {
-        imagem.value = reader.result
-    })
+function mudaImagem() {
+    const imagem = document.querySelector('#infoImagem');
+    let input = document.querySelector('#input-file-ficha');
+    
+    if (input.files && input.files[0]) {
+        let file = input.files[0];
+        
+        if (file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/jpg') {
+            let reader = new FileReader();
+            reader.onload = function(event) {
+                imagem.value = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        } else {
+            const erroImagem = document.querySelector('#mensagemErroInfoImagem')
+            erroImagem.innerHTML = "Formato de arquivo inválido."
+        }
+    }
 }
 
 function mudaExperiencia(e){
