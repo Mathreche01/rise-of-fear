@@ -134,9 +134,19 @@ function abreModal(modal, submodal){
         inputNacionalidade.value = nacionalidadePersonagem.textContent
     } else if(modal === "vantagens"){
         const modal = document.querySelector('#modalVantagens')
+        const listaVantagens = document.getElementById('listaVantagens')
+        const vantagensAdquiridas = listaVantagens.querySelectorAll('.vantagem__titulo')
+
+        let vantagens = [];
+        vantagensAdquiridas.forEach((vantagem) => vantagens.push(vantagem.textContent))
+
+        const listaVantagensFicha = document.querySelector('#listaVantagensModal')
+        listaVantagensFicha.innerHTML = ""
+
         for(const vantagem in vantagensDetalhadas){
             const vantagemElemento = document.createElement('li')
-            const listaVantagensFicha = document.querySelector('#listaVantagensModal')
+            vantagemElemento.className = vantagens.includes(vantagem) ? "showAnswer" : ""
+
             vantagemElemento.innerHTML = `
             <div class="vantagem__accordion">
             <span class="vantagem__titulo titulo-busca">${vantagem}</span>
@@ -155,9 +165,19 @@ function abreModal(modal, submodal){
         document.body.classList.add('modal-active')
     } else if(modal === "desvantagens"){
         const modal = document.querySelector('#modalDesvantagens')
+        const listaDesvantagens = document.getElementById('listaDesvantagens')
+        const desvantagensAdquiridas = listaDesvantagens.querySelectorAll('.vantagem__titulo')
+
+        let desvantagens = [];
+        desvantagensAdquiridas.forEach((desvantagem) => desvantagens.push(desvantagem.textContent))
+
+        const listaDesvantagensFicha = document.querySelector('#listaDesvantagensModal')
+        listaDesvantagensFicha.innerHTML = ""
+
         for(const desvantagem in desvantagensDetalhadas){
             const desvantagemElemento = document.createElement('li')
-            const listaDesvantagensFicha = document.querySelector('#listaDesvantagensModal')
+            desvantagemElemento.className = desvantagens.includes(desvantagem) ? "showAnswer" : ""
+
             desvantagemElemento.innerHTML = `
             <div class="vantagem__accordion">
             <span class="vantagem__titulo titulo-busca">${desvantagem}</span>
@@ -170,7 +190,12 @@ function abreModal(modal, submodal){
                 mostraDetalhes(e)
                 limpaErro()
             })
+
             listaDesvantagensFicha.appendChild(desvantagemElemento)
+
+            if(desvantagens.includes(desvantagem)){
+                desvantagemElemento.click()
+            }
         }
         modal.style.display = "block"
         document.body.classList.add('modal-active')
@@ -191,6 +216,18 @@ function abreModal(modal, submodal){
 
         const btnNext = document.getElementById('progressionNext')
         btnNext.style.display = "block"
+
+        const progressoesConsciente = document.querySelectorAll(".progressao__lista.consciente")
+        const progressoesIluminado = document.querySelectorAll(".progressao__lista.iluminado")
+        const arquetipo = document.getElementById('personagemArquetipo').textContent
+
+        if(arquetipo === "A Revivida" || arquetipo === "O Mago da Morte" || arquetipo === "O Abominável" || arquetipo === "A Discípula"){
+            progressoesIluminado.forEach((progressao) => progressao.style.display = "block")
+            progressoesConsciente.forEach((progressao) => progressao.style.display = "none")
+        } else{
+            progressoesConsciente.forEach((progressao) => progressao.style.display = "block")
+            progressoesIluminado.forEach((progressao) => progressao.style.display = "none")
+        }
 
         pegaProgressoes()
         progressoesMarcadas.forEach((progressao) => {
@@ -826,6 +863,7 @@ function rolarDado(event, tipo, atributo) {
     let resultado;
     let ajuste = '';
     let titulo = '';
+    let modificadorAbsoluto;
 
     if(tipo === "atributo"){
         const elementoPai = event.target.parentElement;
@@ -833,7 +871,7 @@ function rolarDado(event, tipo, atributo) {
         
         const modificador = parseInt(event.target.textContent);
         
-        const modificadorAbsoluto = Math.abs(modificador);
+        modificadorAbsoluto = Math.abs(modificador);
         
         resultado = (modificador < 0) ? primeiraRolagem + segundaRolagem - modificadorAbsoluto : primeiraRolagem + segundaRolagem + modificadorAbsoluto;   
         
@@ -853,24 +891,26 @@ function rolarDado(event, tipo, atributo) {
             }
         }
 
+        const modificadorTexto = modificadorAbsoluto === 0 ? '' : `${modificador < 0 ? '-' : '+'} ${modificadorAbsoluto}`;
+
         rolagemResultado.innerHTML = `
-        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificador < 0 ? '-' : '+'} ${modificadorAbsoluto} ${ajuste} = ${resultado}</p>
+        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificadorTexto} ${ajuste} = ${resultado}</p>
         <p>D10: ${primeiraRolagem}, ${segundaRolagem}</p>
         `;
     } else if(tipo === "desvantagem"){
-        const itemLista = event.target.parentElement.parentElement.parentElement
-        titulo = itemLista.querySelector('.vantagem__titulo').textContent
-        resultado = primeiraRolagem + segundaRolagem
+        const itemLista = event.target.parentElement.parentElement.parentElement;
+        titulo = itemLista.querySelector('.vantagem__titulo').textContent;
+        resultado = primeiraRolagem + segundaRolagem;
 
         if(estabilidadeAtual === "Apreensivo" || estabilidadeAtual === "Disperso"){
-            resultado -= 1
-            ajuste = '- 1'
+            resultado -= 1;
+            ajuste = '- 1';
         } else if(estabilidadeAtual === "Abalado" || estabilidadeAtual === "Angustiado" || estabilidadeAtual === "Neurótico"){
-            resultado -= 2
-            ajuste = '- 2'
+            resultado -= 2;
+            ajuste = '- 2';
         } else if(estabilidadeAtual === "Agoniado" || estabilidadeAtual === "Irracional" || estabilidadeAtual === "Transtornado" || estabilidadeAtual === "Arruinado"){
-            resultado -= 3
-            ajuste = '- 3'
+            resultado -= 3;
+            ajuste = '- 3';
         }
 
         rolagemResultado.innerHTML = `
@@ -878,24 +918,25 @@ function rolarDado(event, tipo, atributo) {
         <p>D10: ${primeiraRolagem}, ${segundaRolagem}</p>
         `;
     } else if(tipo === "vantagem"){
-        const itemLista = event.target.parentElement.parentElement.parentElement
-        titulo = itemLista.querySelector('.vantagem__titulo').textContent
+        const itemLista = event.target.parentElement.parentElement.parentElement;
+        titulo = itemLista.querySelector('.vantagem__titulo').textContent;
         let modificador;
 
-        const atributos = document.querySelectorAll('.ficha__atributos label')
+        const atributos = document.querySelectorAll('.ficha__atributos label');
         atributos.forEach((label) => {
             if(label.textContent === atributo){
-                modificador = parseInt(label.parentElement.querySelector('.atributo').textContent)
+                modificador = parseInt(label.parentElement.querySelector('.atributo').textContent);
             }
-        })
+        });
 
-        const modificadorAbsoluto = Math.abs(modificador);
+        modificadorAbsoluto = Math.abs(modificador);
         
-        resultado = (modificador < 0) ? primeiraRolagem + segundaRolagem - modificadorAbsoluto : primeiraRolagem + segundaRolagem + modificadorAbsoluto;   
+        const modificadorTexto = modificadorAbsoluto === 0 ? '' : `${modificador < 0 ? '-' : '+'} ${modificadorAbsoluto}`;
 
-        resultado = primeiraRolagem + segundaRolagem + parseInt(modificador)
+        resultado = primeiraRolagem + segundaRolagem + parseInt(modificador);
+
         rolagemResultado.innerHTML = `
-        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificador < 0 ? '-' : '+'} ${modificadorAbsoluto} = ${resultado}</p>
+        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificadorTexto} = ${resultado}</p>
         <p>D10: ${primeiraRolagem}, ${segundaRolagem}</p>
         `;
     }
@@ -958,7 +999,7 @@ function editaInfo(){
 
         nomePersonagem.textContent = inputNome
         arquetipoPersonagem.textContent = inputArquetipo
-        idadePersonagem.textContent = inputIdade + ' anos'
+        idadePersonagem.textContent = inputIdade + ' Anos'
         imagemPersonagem.src = inputImagem
         ocupacaoPersonagem.textContent = inputOcupacao
         nacionalidadePersonagem.textContent = inputNacionalidade
@@ -1039,7 +1080,8 @@ function mudaExperiencia(e){
 
 function buscaVantagem(){
     const busca = document.querySelector('[data-busca-vantagem]').value.toLowerCase()
-    const lista = document.querySelectorAll('.titulo-busca')
+    const listaVantagensModal = document.getElementById('listaVantagensModal')
+    const lista = listaVantagensModal.querySelectorAll('.titulo-busca')
     lista.forEach(function(titulo){
         const texto = titulo.innerHTML.toLowerCase()
         const found = texto.indexOf(busca)
@@ -1055,7 +1097,8 @@ function buscaVantagem(){
 
 function buscaDesvantagem(){
     const busca = document.querySelector('[data-busca-desvantagem]').value.toLowerCase()
-    const lista = document.querySelectorAll('.titulo-busca')
+    const listaDesvantagensModal = document.getElementById('listaDesvantagensModal')
+    const lista = listaDesvantagensModal.querySelectorAll('.titulo-busca')
     lista.forEach(function(titulo){
         const texto = titulo.innerHTML.toLowerCase()
         const found = texto.indexOf(busca)
@@ -1075,18 +1118,21 @@ function adicionaVantagens(){
     const vantagensSelecionadas = modal.querySelectorAll('.showAnswer')
     if(vantagensSelecionadas.length !== 0){
         const lista = document.querySelector('#listaVantagens')
+        lista.innerHTML = ""
+
+        let vantagens = []
         vantagensSelecionadas.forEach((vantagem) => {
-            const numero = lista.querySelectorAll('li')
             const nome = vantagem.querySelector('.titulo-busca')
-            registraVantagem(nome.innerHTML, numero.length)
+            vantagens.push(nome.textContent)
             lista.appendChild(vantagem)
+            vantagem.classList.remove('showAnswer')
         })
+
+        registraVantagem(vantagens)
         modal.style.display = "none"
         const container = document.querySelector('.modal__container')
         container.style.display = "none"
         document.body.classList.remove('modal-active')
-        const listaVantagensFicha = document.querySelector('#listaVantagensModal')
-        listaVantagensFicha.innerHTML = ""
     } else{
         mensagemErro.innerHTML = "Nenhum item selecionado."
     }
@@ -1098,18 +1144,21 @@ function adicionaDesvantagens(){
     const desvantagensSelecionadas = modal.querySelectorAll('.showAnswer')
     if(desvantagensSelecionadas.length !== 0){
         const lista = document.querySelector('#listaDesvantagens')
+        lista.innerHTML = ""
+        
+        let desvantagens = []
         desvantagensSelecionadas.forEach((desvantagem) => {
-            const numero = lista.querySelectorAll('li')
             const nome = desvantagem.querySelector('.titulo-busca')
-            registraDesvantagem(nome.innerHTML, numero.length)
+            desvantagens.push(nome.textContent)
             lista.appendChild(desvantagem)
+            desvantagem.classList.remove('showAnswer')
         })
+
+        registraDesvantagem(desvantagens)
         modal.style.display = "none"
         const container = document.querySelector('.modal__container')
         container.style.display = "none"
         document.body.classList.remove('modal-active')
-        const listaVantagensFicha = document.querySelector('#listaDesvantagensModal')
-        listaVantagensFicha.innerHTML = ""
     } else{
         mensagemErro.innerHTML = "Nenhum item selecionado."
     }

@@ -678,7 +678,7 @@
         <span class="icone-fechar">
             <ion-icon name="close" onclick="fechaModal('vantagens')"></ion-icon>
         </span>
-        <h2>Adicionar Vantagem</h2>
+        <h2>Editar Vantagens</h2>
         <div class="modal-content">
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -690,7 +690,7 @@
             </div>
             <p class="erro--segredo" id="mensagemErroVantagens"></p>
             <div class="inputSegredos">
-                <input type="submit" value="Adicionar" onclick="adicionaVantagens()">
+                <input type="submit" value="Editar" onclick="adicionaVantagens()">
             </div>
         </div>
     </div>
@@ -698,7 +698,7 @@
         <span class="icone-fechar">
             <ion-icon name="close" onclick="fechaModal('desvantagens')"></ion-icon>
         </span>
-        <h2>Adicionar Desvantagem</h2>
+        <h2>Editar Desvantagem</h2>
         <div class="modal-content">
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -710,7 +710,7 @@
             </div>
             <p class="erro--segredo" id="mensagemErroDesvantagens"></p>
             <div class="inputSegredos">
-                <input type="submit" value="Adicionar" onclick="adicionaDesvantagens()">
+                <input type="submit" value="Editar" onclick="adicionaDesvantagens()">
             </div>
         </div>
     </div>
@@ -724,7 +724,7 @@
             <h6>Quando um Arquétipo Consciente progride, ele deve escolher um dos seguintes aprimoramentos:</h6>
             <div class="progressao__grupo progressao__inicial">
                 <h5>Progressão Inicial:</h5>
-                <div class="progressao__lista">
+                <div class="progressao__lista consciente">
                     <div class="progressao__item">
                         <p>Aumente um Atributo Ativo em +1 (até +3 máx).</p>
                         <div class="progressao__inputs">
@@ -753,7 +753,7 @@
                         </div>
                     </div>
                     <div class="progressao__item">
-                        <p>Selecione uma nova vantagem do seu Arquétipo.</p>
+                        <p>Selecione uma nova Vantagem do seu Arquétipo.</p>
                         <div class="progressao__inputs">
                             <input type="checkbox" id="progressao10" onchange="verificaGrupo()">
                             <input type="checkbox" id="progressao11" onchange="verificaGrupo()">
@@ -762,10 +762,47 @@
                         </div>
                     </div>
                 </div>
+                <div class="progressao__lista iluminado">
+                    <div class="progressao__item">
+                        <p>Aumente um Atributo Ativo em +1 (até +4 máx).</p>
+                        <div class="progressao__inputs">
+                            <input type="checkbox" id="progressao20" onchange="verificaGrupo()">
+                            <input type="checkbox" id="progressao21" onchange="verificaGrupo()">
+                            <input type="checkbox" id="progressao22" onchange="verificaGrupo()">
+                            <input type="checkbox" id="progressao23" onchange="verificaGrupo()">
+                            <input type="checkbox" id="progressao24" onchange="verificaGrupo()">
+                            <label class="progressao__inputs--label">Progressões:</label>
+                        </div>
+                    </div>
+                    <div class="progressao__item">
+                        <p>Aumente um Atributo Passivo em +1 (até +4 máx).</p>
+                        <div class="progressao__inputs">
+                            <input type="checkbox" id="progressao25" onchange="verificaGrupo()">
+                            <input type="checkbox" id="progressao26" onchange="verificaGrupo()">
+                            <label class="progressao__inputs--label">Progressões:</label>
+                        </div>
+                    </div>
+                    <div class="progressao__item">
+                        <p>Aumente qualquer Atributo em +1 (até +5 máx).</p>
+                        <div class="progressao__inputs">
+                            <input type="checkbox" id="progressao27" onchange="verificaGrupo()">
+                            <label class="progressao__inputs--label">Progressões:</label>
+                        </div>
+                    </div>
+                    <div class="progressao__item">
+                        <p>Selecione uma nova Qualidade do seu Arquétipo.</p>
+                        <div class="progressao__inputs">
+                            <input type="checkbox" id="progressao28" onchange="verificaGrupo()">
+                            <input type="checkbox" id="progressao29" onchange="verificaGrupo()">
+                            <input type="checkbox" id="progressao30" onchange="verificaGrupo()">
+                            <label class="progressao__inputs--label">Progressões:</label>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="progressao__grupo progressao__intermediaria">
                 <h5>Progressão Intermediária:</h5>
-                <div class="progressao__lista">
+                <div class="progressao__lista consciente">
                     <div class="progressao__item">
                         <p>Aumente qualquer um dos Atributos em +1 (até +4 máx).</p>
                         <div class="progressao__inputs">
@@ -782,14 +819,14 @@
                             <label class="progressao__inputs--label">Progressões:</label>
                         </div>
                     </div>
-                    <div class="progressao__item progressao__box">
+                    <div class="progressao__item">
                         <p class="progressao__texto">Encerre o arco da história do personagem como achar melhor, e crie um novo personagem Consciente que já começa com duas Progressões.</p>
                         <div class="progressao__inputs">
                             <input type="checkbox" id="progressao17" onchange="verificaGrupo()">
                             <label class="progressao__inputs--label">Progressões:</label>
                         </div>
                     </div>
-                    <div class="progressao__item progressao__box">
+                    <div class="progressao__item">
                         <p class="progressao__texto">Substitua seu Arquétipo atual por outro Arquétipo Consciente e apague uma de suas três Vantagens iniciais.</p>
                         <div class="progressao__inputs">
                             <input type="checkbox" id="progressao18" onchange="verificaGrupo()"> 
@@ -797,14 +834,56 @@
                         </div>
                     </div>
                 </div>
+                <div class="progressao__lista iluminado">
+                    <div class="progressao__item">
+                        <p>Aumente qualquer um dos Atributos em +1 (até +5 máx).</p>
+                        <div class="progressao__inputs">
+                            <input type="checkbox" id="progressao31" onchange="verificaGrupo()">
+                            <input type="checkbox" id="progressao32" onchange="verificaGrupo()">
+                            <label class="progressao__inputs--label">Progressões:</label>
+                        </div>
+                    </div>
+                    <div class="progressao__item">
+                        <p>Selecione uma nova Qualidade ou Vantagem de sua escolha.</p>
+                        <div class="progressao__inputs">
+                            <input type="checkbox" id="progressao33" onchange="verificaGrupo()">
+                            <input type="checkbox" id="progressao34" onchange="verificaGrupo()">
+                            <input type="checkbox" id="progressao35" onchange="verificaGrupo()">
+                            <label class="progressao__inputs--label">Progressões:</label>
+                        </div>
+                    </div>
+                    <div class="progressao__item">
+                        <p class="progressao__texto">Encerre o arco da história do personagem e crie um novo PJ.</p>
+                        <div class="progressao__inputs">
+                            <input type="checkbox" id="progressao36" onchange="verificaGrupo()">
+                            <label class="progressao__inputs--label">Progressões:</label>
+                        </div>
+                    </div>
+                    <div class="progressao__item">
+                        <p class="progressao__texto">Substitua seu Arquétipo atual por outro Iluminado.</p>
+                        <div class="progressao__inputs">
+                            <input type="checkbox" id="progressao37" onchange="verificaGrupo()"> 
+                            <label class="progressao__inputs--label">Progressões:</label>
+                        </div>
+                    </div> 
+                </div>
             </div>
             <div class="progressao__grupo progressao__avancada">
                 <h5>Progressão Avançada:</h5>
-                <div class="progressao__lista">
+                <div class="progressao__lista consciente">
                     <div class="progressao__item">
                         <p>Progrida seu personagem para um Arquétipo Iluminado.</p>
                         <div class="progressao__inputs">
                             <input type="checkbox" id="progressao19" onchange="verificaGrupo()">
+                            <label class="progressao__inputs--label">Progressões:</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="progressao__lista iluminado">
+                    <div class="progressao__item">
+                        <p>Inicie sua jornada rumo ao Despertar.</p>
+                        <div class="progressao__inputs">
+                            <input type="checkbox" id="progressao38" onchange="verificaGrupo()">
                             <label class="progressao__inputs--label">Progressões:</label>
                         </div>
                     </div>

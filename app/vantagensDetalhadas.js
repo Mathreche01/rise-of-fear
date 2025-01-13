@@ -24,55 +24,6 @@ const vantagensDetalhadas = {
     <p>◇ Chame a entidade ligada ao artefato e barganhe com ela.</p>
     </div>
     `,
-    "Educação de Elite": `
-    <p>Você estudou em um dos institutos de ensino superior de maior prestígio do mundo e fez contatos com 
-        poder e influência. Sempre que você pedir um favor aos 
-        seus contatos, <strong>role +Carisma:</strong></p>
-    <div class="vantagem__resultados">
-    <p><b>15 + ∘ </b>Escolha até três opções.</p>
-    <p><b>10 - 14 ∘ </b>Escolha até duas opções.</p>
-    <p><b>- 9 ∘ </b>Escolha uma opção, mas você está devendo para alguém. A dívida pode ser cobrada durante a história, quando a MJ escolher.</p>
-    </div>
-    <span class="titulo__opcoes">Opções:</span>
-    <div class="vantagem__opcoes">
-    <p>◇ Ganhe um favor da administração de um país (ex.:, seja liberado da 
-        cadeia, burle uma verificação da alfândega, ou consiga ajuda da 
-        polícia).</p>
-    <p>◇ Obtenha acesso a um local indisponível ao público.</p>
-    <p>◇ Localize ou rastreie uma pessoa escondida ou desaparecida.</p>
-    <p>◇ Receba simultaneamente os meios para fugir e um esconderijo 
-        seguro. </p>
-    </div>
-    `,
-    "Esportista de Elite": `
-    <p>Você competiu profissionalmente em um esporte, e por isto 
-    recebia uma bolsa para financiar seus estudos. Escolha um 
-    esporte:</p>
-    <div class="vantagem__resultados">
-    <p>◇ <strong>Esgrima:</strong> Ao usar espadas, você pode fazer o ataque, Ripostar [3], [Distância: braço, ataque imediatamente após 
-        aparar], e você tem um florete [Arma perfurante] em casa.</p>
-    <p>◇ <strong>Beisebol/Críquete/Rúgbi/Futebol/Tênis:</strong> Você recebe +1 constante para correr, arremessar ou apanhar objetos.</p>
-    <p>◇ <strong>Hóquei no gelo:</strong> Você recebe +1 em rolagens para <strong>Suportar Lesão</strong> contra ataques em combate corpo a corpo.</p>
-    </div>
-    `,
-    "Coleta de Dados": `
-    <p>Sempre que você procurar informações sobre um assunto em uma biblioteca, em um arquivo de pesquisas, ou na Internet, <strong>role +Razão</strong>.
-    Em resposta às suas pesquisas, a MJ dirá o que você descobriu 
-    com o detalhamento esperado da fonte que você utilizou:</p>
-    <div class="vantagem__resultados">
-    <p><b>15 + ∘ </b>Faça três perguntas.</p>
-    <p><b>10 - 14 ∘ </b>Faça duas perguntas.</p>
-    <p><b>- 9 ∘ </b>Faça uma pergunta, mas você também descobre algo inesperado. A MJ faz um movimento.</p>
-    </div>
-    <span class="titulo__opcoes">Perguntas:</span>
-    <div class="vantagem__opcoes">
-    <p>◇ Qual é a origem disso?</p>
-    <p>◇ Qual o propósito disso?</p>
-    <p>◇ Como isso funciona?</p>
-    <p>◇ Com o que eu tenho que tomar cuidado?</p>
-    <p>◇ Como posso parar ou destruir isso?</p>
-    </div>
-    `, 
     "Atração Magnética": `
     <p>Sempre que você atrair a atenção de todos, <strong>role +Alma:</strong></p>
     <div class="vantagem__resultados">
@@ -109,6 +60,24 @@ const vantagensDetalhadas = {
     não agir contra eles.</p>
     </div>
     `,
+        "Coleta de Dados": `
+    <p>Sempre que você procurar informações sobre um assunto em uma biblioteca, em um arquivo de pesquisas, ou na Internet, <strong>role +Razão</strong>.
+    Em resposta às suas pesquisas, a MJ dirá o que você descobriu 
+    com o detalhamento esperado da fonte que você utilizou:</p>
+    <div class="vantagem__resultados">
+    <p><b>15 + ∘ </b>Faça três perguntas.</p>
+    <p><b>10 - 14 ∘ </b>Faça duas perguntas.</p>
+    <p><b>- 9 ∘ </b>Faça uma pergunta, mas você também descobre algo inesperado. A MJ faz um movimento.</p>
+    </div>
+    <span class="titulo__opcoes">Perguntas:</span>
+    <div class="vantagem__opcoes">
+    <p>◇ Qual é a origem disso?</p>
+    <p>◇ Qual o propósito disso?</p>
+    <p>◇ Como isso funciona?</p>
+    <p>◇ Com o que eu tenho que tomar cuidado?</p>
+    <p>◇ Como posso parar ou destruir isso?</p>
+    </div>
+    `, 
     "Consciência Ampliada": `
     <p>Quando você concentra seus sentidos em um local onde a Ilusão é 
     fraca, <strong>role +Alma</strong>. Com um sucesso, você tem visões sobre o local e 
@@ -134,6 +103,26 @@ const vantagensDetalhadas = {
     <div class="vantagem__opcoes">
     <p>◇ Acalme uma criatura agressiva.</p>
     <p>◇ Comande a criatura e force-a a obedecer a sua ordem.</p>
+    </div>
+    `,
+    "Educação de Elite": `
+    <p>Você estudou em um dos institutos de ensino superior de maior prestígio do mundo e fez contatos com 
+        poder e influência. Sempre que você pedir um favor aos 
+        seus contatos, <strong>role +Carisma:</strong></p>
+    <div class="vantagem__resultados">
+    <p><b>15 + ∘ </b>Escolha até três opções.</p>
+    <p><b>10 - 14 ∘ </b>Escolha até duas opções.</p>
+    <p><b>- 9 ∘ </b>Escolha uma opção, mas você está devendo para alguém. A dívida pode ser cobrada durante a história, quando a MJ escolher.</p>
+    </div>
+    <span class="titulo__opcoes">Opções:</span>
+    <div class="vantagem__opcoes">
+    <p>◇ Ganhe um favor da administração de um país (ex.:, seja liberado da 
+        cadeia, burle uma verificação da alfândega, ou consiga ajuda da 
+        polícia).</p>
+    <p>◇ Obtenha acesso a um local indisponível ao público.</p>
+    <p>◇ Localize ou rastreie uma pessoa escondida ou desaparecida.</p>
+    <p>◇ Receba simultaneamente os meios para fugir e um esconderijo 
+        seguro. </p>
     </div>
     `,
     "Encantador de Serpentes": `
@@ -166,6 +155,17 @@ const vantagensDetalhadas = {
     <p><b>- 9 ∘ </b>Você descobre um atalho, mas isso te leva até uma 
     situação perigosa, como o covil de alguma criatura ou uma 
     emboscada de alguma gangue. A MJ faz um Movimento.</p>
+    </div>
+    `,
+    "Esportista de Elite": `
+    <p>Você competiu profissionalmente em um esporte, e por isto 
+    recebia uma bolsa para financiar seus estudos. Escolha um 
+    esporte:</p>
+    <div class="vantagem__resultados">
+    <p>◇ <strong>Esgrima:</strong> Ao usar espadas, você pode fazer o ataque, Ripostar [3], [Distância: braço, ataque imediatamente após 
+        aparar], e você tem um florete [Arma perfurante] em casa.</p>
+    <p>◇ <strong>Beisebol/Críquete/Rúgbi/Futebol/Tênis:</strong> Você recebe +1 constante para correr, arremessar ou apanhar objetos.</p>
+    <p>◇ <strong>Hóquei no gelo:</strong> Você recebe +1 em rolagens para <strong>Suportar Lesão</strong> contra ataques em combate corpo a corpo.</p>
     </div>
     `,
     "Exorcista": `

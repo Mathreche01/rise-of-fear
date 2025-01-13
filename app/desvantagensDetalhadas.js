@@ -1,38 +1,4 @@
 const desvantagensDetalhadas = {
-    "Compulsão Mental": `
-    <p>Você está fixado em uma ideia ou ação específica, ao ponto de isto impactar bastante a sua vida. Escolha uma compulsão quando 
-    você pegar esta Desvantagem. Em situações em que sua compulsão poderia distrair você, <strong>role +0</strong>:</p>
-    <div class="vantagem__resultados">
-    <p><b>15 + ∘ </b>Você controla sua compulsão e consegue concentrar em outras coisas.</p>
-    <p><b>10 - 14 ∘ </b>Você se distrai e recebe -1 constante em todas as rolagens até você se afastar da situação ou sucumbir à sua compulsão, fazendo quaisquer ações que ele exija de você.</p>
-    <p><b>- 9 ∘ </b>Você fica completamente obcecado por sua compulsão. Se você se concentrar em qualquer outra coisa, reduza <strong>-2 de Estabilidade</strong>.</p>
-    </div>
-    <span class="titulo__opcoes">Lista de possíveis compulsões:</span>
-    <div class="vantagem__opcoes">
-    <p>◇ Limpeza.</p>
-    <p>◇ Contagens.</p>
-    <p>◇ Checar três vezes.</p>
-    <p>◇ Tomar banho.</p>
-    <p>◇ Memorização.</p>
-    <p>◇ Piromania.</p>
-    <p>◇ Cleptomania.</p>
-    <p>◇ Xingar.</p>
-    <p>◇ Confessar seus pecados.</p>
-    <p>◇ Comer.</p>
-    <p>◇ Hipocondria.</p>
-    </div>
-    `,
-    "Concorrente": `
-    <p>Você tem um concorrente no submundo do crime, cujo nicho de negócios é semelhante ao seu. Sempre for negligente em proteger seus interesses ou se distrair em outro lugar, <strong>role +0</strong>
-        para ver se o seu concorrente conseguiu prejudicar seus negócios:</p>
-    <div class="vantagem__resultados">
-    <p><b>15 + ∘ </b>Você está seguro do seu concorrente, por enquanto.</p>
-    <p><b>10 - 14 ∘ </b>Você foi descuidado. Seu concorrente pode tentar dar um golpe em você. A MJ recebe 1 Reserva.</p>
-    <p><b>- 9 ∘ </b>Você dá uma oportunidade de ouro ao seu concorrente para agir contra os seus interesses. A MJ recebe 3 Reservas.</p>
-    </div>
-    <p>A MJ pode gastar Reserva para fazer Movimentos pelo seu concorrente. Por exemplo, seu concorrente pode assumir o controle de 
-    algumas das suas negociatas, descobrir um dos seus segredos, sabotar um de seus recursos, ou machucar ou subornar alguém de quem você gosta e confia.</p>
-    `,
     "Acossado": `
     <p>Você é caçado por um inimigo sem rosto. Qualquer um que você conhece pode ser um dos seus lacaios — ou até mesmo o próprio perseguidor. Não se pode confiar em ninguém. Você deve 
     mudar constantemente de endereço e ficar atento o tempo todo para evitar deixar rastros que ele possa seguir. Na primeira sessão 
@@ -69,6 +35,40 @@ const desvantagensDetalhadas = {
     </div>
     <p>A MJ pode gastar Reservas para fazer um Movimento para a entidade. Por exemplo, ela exige um serviço de você e ameaçar retaliação se você se recusar, a entidade possui seu corpo durante 
     a noite, ou a entidade revela uma pista do que ela é e o que ela quer de você.</p>
+    `,
+    "Compulsão Mental": `
+    <p>Você está fixado em uma ideia ou ação específica, ao ponto de isto impactar bastante a sua vida. Escolha uma compulsão quando 
+    você pegar esta Desvantagem. Em situações em que sua compulsão poderia distrair você, <strong>role +0</strong>:</p>
+    <div class="vantagem__resultados">
+    <p><b>15 + ∘ </b>Você controla sua compulsão e consegue concentrar em outras coisas.</p>
+    <p><b>10 - 14 ∘ </b>Você se distrai e recebe -1 constante em todas as rolagens até você se afastar da situação ou sucumbir à sua compulsão, fazendo quaisquer ações que ele exija de você.</p>
+    <p><b>- 9 ∘ </b>Você fica completamente obcecado por sua compulsão. Se você se concentrar em qualquer outra coisa, reduza <strong>-2 de Estabilidade</strong>.</p>
+    </div>
+    <span class="titulo__opcoes">Lista de possíveis compulsões:</span>
+    <div class="vantagem__opcoes">
+    <p>◇ Limpeza.</p>
+    <p>◇ Contagens.</p>
+    <p>◇ Checar três vezes.</p>
+    <p>◇ Tomar banho.</p>
+    <p>◇ Memorização.</p>
+    <p>◇ Piromania.</p>
+    <p>◇ Cleptomania.</p>
+    <p>◇ Xingar.</p>
+    <p>◇ Confessar seus pecados.</p>
+    <p>◇ Comer.</p>
+    <p>◇ Hipocondria.</p>
+    </div>
+    `,
+    "Concorrente": `
+    <p>Você tem um concorrente no submundo do crime, cujo nicho de negócios é semelhante ao seu. Sempre for negligente em proteger seus interesses ou se distrair em outro lugar, <strong>role +0</strong>
+        para ver se o seu concorrente conseguiu prejudicar seus negócios:</p>
+    <div class="vantagem__resultados">
+    <p><b>15 + ∘ </b>Você está seguro do seu concorrente, por enquanto.</p>
+    <p><b>10 - 14 ∘ </b>Você foi descuidado. Seu concorrente pode tentar dar um golpe em você. A MJ recebe 1 Reserva.</p>
+    <p><b>- 9 ∘ </b>Você dá uma oportunidade de ouro ao seu concorrente para agir contra os seus interesses. A MJ recebe 3 Reservas.</p>
+    </div>
+    <p>A MJ pode gastar Reserva para fazer Movimentos pelo seu concorrente. Por exemplo, seu concorrente pode assumir o controle de 
+    algumas das suas negociatas, descobrir um dos seus segredos, sabotar um de seus recursos, ou machucar ou subornar alguém de quem você gosta e confia.</p>
     `,
     "Condenado": `
     <div class="vantagem__inputs">

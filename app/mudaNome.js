@@ -65,24 +65,36 @@ botaoDashboard.addEventListener('click', () => {
     })
 })
 
-enviarPersonagem = function criaDado(){
-    set(ref(database, 'users/' + userId + '/personagens/' + (personagensCriados)),{
-    nome: nomePersonagem,
-    atributos: atributosPersonagem,
-    idade: idadePersonagem,
-    nacionalidade: nacionalidadePersonagem,
-    imagem: imagemPersonagem,
-    ocupacao: ocupacaoPersonagem,
-    arquetipo: arquetipoPersonagem,
-    vantagens: vantagensEscolhidas,
-    desvantagens: desvantagensEscolhidas,
-    segredos: segredosSombrios,
-    historia: historiaPersonagem,
-    estabilidade: desvantagensEscolhidas.indexOf("Arruinado") ? 'Calmo' : 'Angustiado',
-    numero: personagensCriados,
-    experiencia: 0,
-})
-    mudaPagina('./personagens.html', '200%')
+
+function obterDataAtual() {
+    const data = new Date();  
+    const dia = String(data.getDate()).padStart(2, '0'); 
+    const mes = String(data.getMonth() + 1).padStart(2, '0'); 
+    const ano = data.getFullYear(); 
+    
+    return `${dia}/${mes}/${ano}`; 
+}
+
+enviarPersonagem = function criaDado() {
+    set(ref(database, 'users/' + userId + '/personagens/' + (personagensCriados)), {
+        nome: nomePersonagem,
+        atributos: atributosPersonagem,
+        idade: idadePersonagem,
+        nacionalidade: nacionalidadePersonagem,
+        data: obterDataAtual(), 
+        imagem: imagemPersonagem,
+        ocupacao: ocupacaoPersonagem,
+        arquetipo: arquetipoPersonagem,
+        vantagens: vantagensEscolhidas,
+        desvantagens: desvantagensEscolhidas,
+        segredos: segredosSombrios,
+        historia: historiaPersonagem,
+        estabilidade: desvantagensEscolhidas.indexOf("Arruinado") ? 'Calmo' : 'Angustiado',
+        numero: personagensCriados,
+        experiencia: 0,
+    });
+
+    mudaPagina('./personagens.html', '200%');
 }
 
 constroiCardPersonagem = function constroiCard(){
@@ -199,12 +211,12 @@ registraInfos = function infosDatabase(nome, idade, imagem, arquetipo, ocupacao,
     set(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + "/nacionalidade"), nacionalidade)
 }
 
-registraVantagem = function vantagensDatabase(nome, numero){
-    set(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + "/vantagens/" + numero), nome)
+registraVantagem = function vantagensDatabase(vantagens){
+    set(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + "/vantagens/"), vantagens)
 }
 
-registraDesvantagem = function desvantagensDatabase(nome, numero){
-    set(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + "/desvantagens/" + numero), nome)
+registraDesvantagem = function desvantagensDatabase(desvantagens){
+    set(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + "/desvantagens/"), desvantagens)
 }
 
 registraDadoFicha = function dadosDatabase(rolagem, nome, tipo, id){

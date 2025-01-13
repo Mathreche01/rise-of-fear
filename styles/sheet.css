@@ -29,7 +29,6 @@
     display: flex;
     flex-direction: row;
     gap: 20px;
-    border-radius: 20px;
 }
 
 .ficha__relacoes--lista .relacao{
@@ -222,6 +221,8 @@
     flex-grow: 1;
     height: 100%;
     overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .segredo-item{
@@ -387,7 +388,7 @@
 }
 
 .ficha__imagem img{
-    width: 210px;
+    width: 202px;
     height: 202px;
     object-fit: cover;
     object-position: center;
@@ -414,21 +415,29 @@
 }
 
 .ficha__personagem{
-    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: calc(100% - 222px);
+}
+
+.ficha__personagem .ficha__info{
+    box-sizing: border-box;
 }
 
 .ficha__detalhes .ficha__info p{
-    padding-left: 7px;
-    font-size: 17px;
+    padding: 10px 0 10px 7px;
+    font-size: 16px;
     white-space: nowrap;
-    text-overflow: ellipsis;
     border-bottom: 2px dotted rgb(60,60,60);
     height: 36px;
-    width: 100%;
     display: flex;
+    width: 100%;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
     align-items: center;
     box-sizing: border-box;
 }
@@ -1194,14 +1203,6 @@
     flex-direction: column;
 }
 
-#modalProgressao .progressao__texto{
-    margin-top: 16px;
-}
-
-#modalProgressao .progressao__box{
-    margin-top: -12px;
-}
-
 #modalProgressao .erro--segredo{
     position: absolute;
     font-size: 13px;
@@ -1597,6 +1598,10 @@
     .ficha__detalhes{
         flex-direction: column;
     }
+
+    .ficha__detalhes .ficha__info{
+        width: 100%;
+    }
     
     .ficha__imagem{
         width: 100%;
@@ -1614,6 +1619,7 @@
 
     .ficha__personagem{
         gap: 20px;
+        max-width: 100%;
     }
 }
 
