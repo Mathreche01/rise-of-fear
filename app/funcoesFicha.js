@@ -13,13 +13,18 @@ let estabilidadeAtual;
 let mudaStatusFerimento;
 let registraDadoFicha;
 let pegaMunicao;
+let vantagensPersonagem;
+let pegaVantagens;
 let cadastraMunicao;
 let indiceMunicao;
 let registraInfos;
 let registraExperiencia;
 let registraVantagem;
+let registraQualidade;
+let registraLimitacao;
 let registraDesvantagem;
 let registraAtributos;
+let registraPoderSuperior;
 let registraProgressao;
 let pegaProgressoes;
 let removerRelacao;
@@ -27,7 +32,16 @@ let removerSegredo;
 let removerFerimento;
 let removerDadoFicha;
 let removerEquipamento;
+let removerPoderSuperior;
 let progressoesMarcadas;
+let pegaPoderSuperior;
+let pegaDesvantagens;
+let desvantagensPersonagem;
+let vantagensAtivas = [];
+
+let vantagemFracasso = false;
+
+const arquetiposIluminados = ["O Mago da Morte", "A Revivida", "O Abominável", "A Discípula"]
 
 function atualizaGanchos(event){
         if(event.target.tagName === "LI"){
@@ -51,20 +65,68 @@ function mostraDetalhes(event){
     }
 }
 
+const movimentos = {
+    reflexos: "Evitar Dano",
+    fortitude: "Suportar Lesão",
+    vontade: "Manter o Controle",
+    carisma: "Influenciar Alguém",
+    razao: "Investigar",
+    percepcao: "Observar uma Situação",
+    violencia: "Engajar em Combate",
+    firmeza: "Agir sob Pressão",
+    intuicao: "Ler uma Pessoa",
+    alma: "Ver Através da Ilusão",
+    relacoes: "Movimentos de Relação",
+}
+
 function abreModal(modal, submodal){
     const container = document.querySelector('.modal__container')
     container.style.display = "flex"
     if(modal === "relacoes"){
         const modal = document.querySelector('#modalRelacoes')
+
+        const relacaoNome = document.getElementById('relacaoPersonagem')
+        relacaoNome.value = ""
+
+        const grau = document.getElementById('grauSelecionado')
+        grau.value = "Neutra (0)"
+
         modal.style.display = "block"
         document.body.classList.add('modal-active')
     } else if(modal === "segredos"){
         const modal = document.querySelector('#modalSegredos')
         modal.style.display = "block"
+
+        const segredoTipo = document.getElementById('segredoSelecionado')
+        segredoTipo.value = "Conhecimento Proibido"
+
+        const motivacao = document.getElementById('motivoSegredo')
+        motivacao.value = ""
+
         document.body.classList.add('modal-active')
     } else if(modal === "equipamento"){
         const modal = document.querySelector('#modalEquipamento')
-        mostraInputs()
+
+        const categoria = document.getElementById('categoriaEquipamento')
+        categoria.value = "Armas corpo-a-corpo"
+
+        const tipoCorpo = document.getElementById('tipoEquipamentoCorpo')
+        tipoCorpo.value = "Desarmado"
+
+        const tipoDistancia = document.getElementById('tipoEquipamentoDistancia')
+        tipoDistancia.value = "Pistolas"
+
+        const tipoArmadura = document.getElementById('tipoEquipamentoArmadura')
+        tipoArmadura.value = "Leve"
+
+        const tipoEspecial = document.getElementById('tipoEquipamentoEspecial')
+        tipoEspecial.value = "Cão"
+
+        const nome = document.getElementById('nomeEquipamento')
+        nome.value = ""
+
+        mostraInputs('equipamento')
+
         modal.style.display = "block"
         document.body.classList.add('modal-active')
     }  else if(modal === "narrativa"){
@@ -83,14 +145,35 @@ function abreModal(modal, submodal){
         document.body.classList.add('modal-active')
     } else if(modal === "dados"){
         const modal = document.querySelector('#modalDados')
+
+        const rolagem = document.getElementById('rolagemDado')
+        rolagem.value = "1d20+0"
+
+        const nome = document.getElementById('nomeDado')
+        nome.value = ""
+
+        const tipo = document.getElementById('tipoDadoSelecionado')
+        tipo.value = "Vantagem"
+
         modal.style.display = "block"
         document.body.classList.add('modal-active')
     } else if(modal === "ganchos"){
         const modal = document.querySelector('#modalGanchos')
+
+        const ganchos = document.getElementById('ganchosPersonagem')
+        ganchos.value = ""
+
         modal.style.display = "block"
         document.body.classList.add('modal-active')
     } else if(modal === "ferimentos"){
         const modal = document.querySelector('#modalFerimentos')
+
+        const descricao = document.getElementById('descricaoFerimento') 
+        descricao.value = ""
+
+        const tipo = document.getElementById('ferimentoSelecionado')
+        tipo.value = "Grave"
+        
         modal.style.display = "block"
         document.body.classList.add('modal-active')
     } else if(modal === "info"){
@@ -134,14 +217,45 @@ function abreModal(modal, submodal){
         inputNacionalidade.value = nacionalidadePersonagem.textContent
     } else if(modal === "vantagens"){
         const modal = document.querySelector('#modalVantagens')
+        const conteudoModal = modal.querySelector('.modal-content')
+        conteudoModal.classList.remove('iluminado')
+
+        const pesquisa = conteudoModal.querySelector('.search-box input')
+        pesquisa.value = ""
+
+        const tituloModal = modal.querySelector('h2')
+        tituloModal.textContent = "Editar Vantagens"
+
         const listaVantagens = document.getElementById('listaVantagens')
+        const listaQualidades = document.getElementById('listaQualidades')
         const vantagensAdquiridas = listaVantagens.querySelectorAll('.vantagem__titulo')
+        const qualidadesAdquiridas = listaQualidades.querySelectorAll('.vantagem__titulo')
+
+        const btnIluminado = modal.querySelector('.btnDetails.btnIluminado')
+        const btnConsciente = modal.querySelector('.btnDetails.btnConsciente')
+        const arquetipo = document.getElementById('personagemArquetipo').textContent
+
+        if(arquetiposIluminados.includes(arquetipo)){
+            btnIluminado.style.display = "block"
+        } else{
+            btnIluminado.style.display = "none"
+        }
+
+        btnConsciente.style.display = "none"
 
         let vantagens = [];
         vantagensAdquiridas.forEach((vantagem) => vantagens.push(vantagem.textContent))
 
         const listaVantagensFicha = document.querySelector('#listaVantagensModal')
         listaVantagensFicha.innerHTML = ""
+
+        let qualidades = [];
+        if(qualidadesAdquiridas.length > 0){
+            qualidadesAdquiridas.forEach((qualidade) => qualidades.push(qualidade.textContent))
+        }
+
+        const listaQualidadesFicha = document.querySelector('#listaQualidadesModal')
+        listaQualidadesFicha.innerHTML = ""
 
         for(const vantagem in vantagensDetalhadas){
             const vantagemElemento = document.createElement('li')
@@ -161,12 +275,60 @@ function abreModal(modal, submodal){
             })
             listaVantagensFicha.appendChild(vantagemElemento)
         }
+
+        for(const qualidade in qualidadesDetalhadas){
+            const qualidadeElemento = document.createElement('li')
+            qualidadeElemento.className = qualidades.includes(qualidade) ? "showAnswer" : ""
+
+            qualidadeElemento.innerHTML = `
+            <div class="vantagem__accordion">
+            <span class="vantagem__titulo titulo-busca">${qualidade}</span>
+            <i class="bx bxs-chevron-down arrow"></i>
+            </div>
+            <div class="vantagem__conteudo">${qualidadesDetalhadas[qualidade]}</div>
+            <span class="vantagem__linha"></span>
+            `
+
+            listaQualidadesFicha.appendChild(qualidadeElemento)
+            if(arquetipo === "O Mago da Morte" && qualidade === "Iniciado em Magia"){
+                continue
+            } else{
+                qualidadeElemento.addEventListener('click', (e) => {
+                    mostraDetalhes(e)
+                    limpaErro()
+                })
+            }
+        }
+
         modal.style.display = "block"
         document.body.classList.add('modal-active')
     } else if(modal === "desvantagens"){
         const modal = document.querySelector('#modalDesvantagens')
+        const conteudoModal = modal.querySelector('.modal-content')
+        conteudoModal.classList.remove('iluminado')
+
+        const pesquisa = conteudoModal.querySelector('.search-box input')
+        pesquisa.value = ""
+
+        const tituloModal = modal.querySelector('h2')
+        tituloModal.textContent = "Editar Desvantagens"
+        
         const listaDesvantagens = document.getElementById('listaDesvantagens')
         const desvantagensAdquiridas = listaDesvantagens.querySelectorAll('.vantagem__titulo')
+        const listaLimitacoes = document.getElementById('listaLimitacoes')
+        const limitacoesAdquiridas = listaLimitacoes.querySelectorAll('.vantagem__titulo')
+
+        const btnIluminado = modal.querySelector('.btnDetails.btnIluminado')
+        const btnConsciente = modal.querySelector('.btnDetails.btnConsciente')
+        const arquetipo = document.getElementById('personagemArquetipo').textContent
+
+        if(arquetiposIluminados.includes(arquetipo)){
+            btnIluminado.style.display = "block"
+        } else{
+            btnIluminado.style.display = "none"
+        }
+
+        btnConsciente.style.display = "none"
 
         let desvantagens = [];
         desvantagensAdquiridas.forEach((desvantagem) => desvantagens.push(desvantagem.textContent))
@@ -174,6 +336,15 @@ function abreModal(modal, submodal){
         const listaDesvantagensFicha = document.querySelector('#listaDesvantagensModal')
         listaDesvantagensFicha.innerHTML = ""
 
+        let limitacoes = [];
+        if(limitacoesAdquiridas.length > 0){
+            limitacoesAdquiridas.forEach((limitacao) => limitacoes.push(limitacao.textContent))
+        }
+
+        const listaLimitacoesFicha = document.querySelector('#listaLimitacoesModal')
+        listaLimitacoesFicha.innerHTML = ""
+
+        const arquetipoPersonagem = document.querySelector('#personagemArquetipo').textContent
         for(const desvantagem in desvantagensDetalhadas){
             const desvantagemElemento = document.createElement('li')
             desvantagemElemento.className = desvantagens.includes(desvantagem) ? "showAnswer" : ""
@@ -186,17 +357,57 @@ function abreModal(modal, submodal){
             <div class="vantagem__conteudo">${desvantagensDetalhadas[desvantagem]}</div>
             <span class="vantagem__linha"></span>
             `
-            desvantagemElemento.addEventListener('click', (e) => {
-                mostraDetalhes(e)
-                limpaErro()
-            })
+            
+            if(desvantagem !== desvantagensObrigatorias[arquetipoPersonagem]){
+                desvantagemElemento.addEventListener('click', (e) => {
+                    mostraDetalhes(e)
+                    limpaErro()
+                })
+            }
+
+            if((desvantagem === "Perseguidores" && arquetipoPersonagem !== "A Revivida") || (desvantagem === "Maculado" && arquetipoPersonagem !== "O Mago da Morte") || 
+            (desvantagem === "Pupilo" && arquetipoPersonagem !== "A Discípula") || (desvantagem === "Criador" && arquetipoPersonagem !== "O Abominável")){
+                continue
+            }
 
             listaDesvantagensFicha.appendChild(desvantagemElemento)
-
-            if(desvantagens.includes(desvantagem)){
-                desvantagemElemento.click()
-            }
         }
+
+        for(const limitacao in limitacoesDetalhadas){
+            const limitacaoElemento = document.createElement('li')
+            limitacaoElemento.className = limitacoes.includes(limitacao) ? "showAnswer" : ""
+
+            limitacaoElemento.innerHTML = `
+            <div class="vantagem__accordion">
+            <span class="vantagem__titulo titulo-busca">${limitacao}</span>
+            <i class="bx bxs-chevron-down arrow"></i>
+            </div>
+            <div class="vantagem__conteudo">${limitacoesDetalhadas[limitacao]}</div>
+            <span class="vantagem__linha"></span>
+            `
+
+            if(limitacao !== limitacoesObrigatorias[arquetipoPersonagem]){
+                limitacaoElemento.addEventListener('click', (e) => {
+                    mostraDetalhes(e)
+                    limpaErro()
+                })
+            }
+
+            listaLimitacoesFicha.appendChild(limitacaoElemento)
+        }
+
+        pegaPoderSuperior(numeroPersonagemSelecionado)
+        const dropdown = listaLimitacoesFicha.querySelector('.vantagem__dropdown')
+        dropdown.addEventListener('click', () => {
+            dropdown.classList.toggle('active')
+        })
+
+        if(poderSuperior !== null && poderSuperior !== undefined){
+            const selectbox = dropdown.querySelector('.vantagem__selectbox')
+            selectbox.value = poderSuperior
+        }
+
+
         modal.style.display = "block"
         document.body.classList.add('modal-active')
     } else if(modal === "progressao"){
@@ -220,13 +431,16 @@ function abreModal(modal, submodal){
         const progressoesConsciente = document.querySelectorAll(".progressao__lista.consciente")
         const progressoesIluminado = document.querySelectorAll(".progressao__lista.iluminado")
         const arquetipo = document.getElementById('personagemArquetipo').textContent
+        const tipoProgressao = document.getElementById('progressaoTipo')
 
-        if(arquetipo === "A Revivida" || arquetipo === "O Mago da Morte" || arquetipo === "O Abominável" || arquetipo === "A Discípula"){
+        if(arquetiposIluminados.includes(arquetipo)){
             progressoesIluminado.forEach((progressao) => progressao.style.display = "block")
             progressoesConsciente.forEach((progressao) => progressao.style.display = "none")
+            tipoProgressao.textContent = "Iluminado"
         } else{
             progressoesConsciente.forEach((progressao) => progressao.style.display = "block")
             progressoesIluminado.forEach((progressao) => progressao.style.display = "none")
+            tipoProgressao.textContent = "Consciente"
         }
 
         pegaProgressoes()
@@ -290,6 +504,86 @@ function abreModal(modal, submodal){
         inputReflexos.value = parseInt(atributoReflexos.textContent)
         inputIntuicao.value = parseInt(atributoIntuicao.textContent)
         inputFortitude.value = parseInt(atributoFortitude.textContent)
+    } else if(modal === "popup"){
+        const modal = document.querySelector('#modalPopup')
+        modal.style.display = "block"
+        document.body.classList.add('modal-active')
+        
+        const acao = document.getElementById("acaoSelecionada")
+        acao.value = "Influenciar Alguém"
+        const atributo = document.getElementById("atributoSelecionado").value
+
+        mostraInputs('popup')
+    } else if(modal === "tips"){
+        const modal = document.querySelector('#modalTips')
+        modal.style.display = "block"
+        document.body.classList.add('modal-active')
+
+        const titulo = modal.querySelector('h2')
+        titulo.textContent = movimentos[submodal]
+
+        if(submodal === "alma" || submodal === "reflexos" || submodal === "firmeza"){
+            modal.style.maxWidth = "440px"
+        } else{
+            modal.style.maxWidth = "560px"
+        }
+
+        const agirDeAcordoBtn = modal.querySelector('.inputSegredos button')
+        if(submodal === "percepcao"){
+            agirDeAcordoBtn.style.display = "block"
+        } else{
+            agirDeAcordoBtn.style.display = "none"
+        }
+
+        const buttons = modal.querySelectorAll('.modal-tip-btns button')
+        const sections = modal.querySelectorAll('.modal-tip-section')
+        buttons.forEach((btn) => btn.addEventListener("click", () => {
+            buttons.forEach((btn) => btn.classList.remove("active"))
+            btn.classList.add("active")
+
+            sections.forEach(section => {
+                const tipo = section.getAttribute('data-section')
+                if(tipo === btn.textContent){
+                    section.style.display = "flex"
+                } else{
+                    section.style.display = "none"
+                }
+            })
+        }))
+
+        buttons[0].click()
+
+        const submodais = modal.querySelectorAll('.modal-tip')
+        submodais.forEach(sub => {
+            const tipo = sub.getAttribute('data-atributo')
+            if(tipo === submodal){
+                sub.style.display = "flex"
+            } else{
+                sub.style.display = "none"
+            }
+        })
+    }
+}
+
+let modificadorManipulador = false;
+
+function ativarRolagem(e){
+    const modal = document.querySelector('#modalPopup')
+    modal.style.display = "none"
+    document.body.classList.remove('modal-active')
+    const container = document.querySelector('.modal__container')
+    container.style.display = "none"
+
+    const acao = document.getElementById("acaoSelecionada")
+    const atributo = document.getElementById("atributoSelecionado").value
+
+    modificadorManipulador = true;
+
+    if(acao.value === "Influenciar Alguém"){
+        const carisma = document.getElementById('carisma')
+        carisma.click()
+    } else{
+        rolarDado(e, 'atrapalhar', atributo)
     }
 }
 
@@ -357,6 +651,14 @@ function fechaModal(modal){
         const modal = document.querySelector('#modalAtributos')
         modal.style.display = "none"
         document.body.classList.remove('modal-active')
+    } else if(modal === "popup"){
+        const modal = document.querySelector('#modalPopup')
+        modal.style.display = "none"
+        document.body.classList.remove('modal-active')
+    } else if(modal === "tips"){
+        const modal = document.querySelector('#modalTips')
+        modal.style.display = "none"
+        document.body.classList.remove('modal-active')
     }
 }
 
@@ -385,14 +687,18 @@ function criaDadoFicha(){
     var rolagem = document.querySelector('#rolagemDado').value
     var nome = document.querySelector('#nomeDado').value
     var tipo = document.querySelector('#tipoDadoSelecionado').value
+    const regex = /^(\d+)d(\d+)([+-]\d+)$/;
+    console.log(regex.test(rolagem))
     var id = generateUniqueId()
-    if(rolagem !== "" && nome !== ""){
+    if(rolagem !== "" && nome !== "" && regex.test(rolagem)){
         constroiDadoFicha(rolagem, nome, tipo, id)
         registraDadoFicha(rolagem, nome, tipo, id)
         modal.style.display = "none"
         const container = document.querySelector('.modal__container')
         container.style.display = "none"
         document.body.classList.remove('modal-active')
+    } else if(!regex.test(rolagem) && rolagem !== "" && nome !== ""){
+        mensagemErroRolagem.innerHTML = "Valor incompatível ao modelo fornecido."
     } else if(rolagem !== ""){
         mensagemErroNome.innerHTML = "Este campo não pode estar vazio."
     } else if(nome !== ""){
@@ -646,6 +952,37 @@ function constroiRelacao(personagem, grau, id){
     }
 }
 
+function mudaModal(event){
+    const conteudoModal = event.target.parentElement.parentElement
+    conteudoModal.classList.toggle('iluminado')
+
+    const modal = conteudoModal.parentElement
+    const modalTitulo = modal.querySelector('h2')
+
+    const btnIluminado = conteudoModal.querySelector('.btnDetails.btnIluminado')
+    const btnConsciente = conteudoModal.querySelector('.btnDetails.btnConsciente')
+
+    if(conteudoModal.classList.contains('iluminado')){
+        btnIluminado.style.display = "none"
+        btnConsciente.style.display = "block"
+        
+        if(modal.id === "modalVantagens"){
+            modalTitulo.textContent = "Editar Qualidades"
+        } else{
+            modalTitulo.textContent = "Editar Limitações"
+        }
+    } else{
+        btnIluminado.style.display = "block"
+        btnConsciente.style.display = "none"
+
+        if(modal.id === "modalVantagens"){
+            modalTitulo.textContent = "Editar Vantagens"
+        } else{
+            modalTitulo.textContent = "Editar Desvantagens"
+        }
+    }
+}
+
 function limpaErro(){
     const erroRelacao = document.querySelector('#mensagemErroRelacao')
     const erroSegredo = document.querySelector('#mensagemErroSegredos')
@@ -721,37 +1058,54 @@ function limpaErro(){
     }
 }
 
-function mostraInputs(){
-    const categoria = document.querySelector('#categoriaEquipamento').value
-    const tipoCorpo = document.querySelector('#divEquipamentoCorpo')
-    const tipoDistancia = document.querySelector('#divEquipamentoDistancia')
-    const tipoArmadura = document.querySelector('#divEquipamentoArmadura')
-    const tipoEspecial = document.querySelector('#divEquipamentoEspecial')
-    const nomeEquipamento = document.querySelector('#divNomeEquipamento')
-    if(categoria === "Armas corpo-a-corpo"){
-        nomeEquipamento.style.display = "block"
-        tipoCorpo.style.display = "block"
-        tipoDistancia.style.display = "none"
-        tipoArmadura.style.display = "none"
-        tipoEspecial.style.display = "none"
-    }else if(categoria === "Armas à distância"){
-        nomeEquipamento.style.display = "block"
-        tipoDistancia.style.display = "block"
-        tipoCorpo.style.display = "none"
-        tipoArmadura.style.display = "none"
-        tipoEspecial.style.display = "none"
-    } else if(categoria === "Armaduras"){
-        nomeEquipamento.style.display = "block"
-        tipoDistancia.style.display = "none"
-        tipoCorpo.style.display = "none"
-        tipoArmadura.style.display = "block"
-        tipoEspecial.style.display = "none"
-    } else{
-        nomeEquipamento.style.display = "none"
-        tipoDistancia.style.display = "none"
-        tipoCorpo.style.display = "none"
-        tipoArmadura.style.display = "none"
-        tipoEspecial.style.display = "block"
+function mostraInputs(tipo){
+    if(tipo === "equipamento"){
+        const categoria = document.querySelector('#categoriaEquipamento').value
+        const tipoCorpo = document.querySelector('#divEquipamentoCorpo')
+        const tipoDistancia = document.querySelector('#divEquipamentoDistancia')
+        const tipoArmadura = document.querySelector('#divEquipamentoArmadura')
+        const tipoEspecial = document.querySelector('#divEquipamentoEspecial')
+        const nomeEquipamento = document.querySelector('#divNomeEquipamento')
+        if(categoria === "Armas corpo-a-corpo"){
+            nomeEquipamento.style.display = "block"
+            tipoCorpo.style.display = "block"
+            tipoDistancia.style.display = "none"
+            tipoArmadura.style.display = "none"
+            tipoEspecial.style.display = "none"
+        }else if(categoria === "Armas à distância"){
+            nomeEquipamento.style.display = "block"
+            tipoDistancia.style.display = "block"
+            tipoCorpo.style.display = "none"
+            tipoArmadura.style.display = "none"
+            tipoEspecial.style.display = "none"
+        } else if(categoria === "Armaduras"){
+            nomeEquipamento.style.display = "block"
+            tipoDistancia.style.display = "none"
+            tipoCorpo.style.display = "none"
+            tipoArmadura.style.display = "block"
+            tipoEspecial.style.display = "none"
+        } else{
+            nomeEquipamento.style.display = "none"
+            tipoDistancia.style.display = "none"
+            tipoCorpo.style.display = "none"
+            tipoArmadura.style.display = "none"
+            tipoEspecial.style.display = "block"
+        }
+    } else if(tipo === "popup"){
+        const acao = document.getElementById('acaoSelecionada').value
+        const atributo = document.getElementById('divAtributoSelecionado')
+        const atributoSelecionado = document.getElementById('atributoSelecionado')
+        const icon = atributo.querySelector('ion-icon')
+
+        if(acao === "Atrapalhar"){
+            atributo.classList.remove('locked')
+            atributoSelecionado.value = "Alma"
+            icon.name = "chevron-down-outline"
+        } else{
+            atributo.classList.add('locked')
+            atributoSelecionado.value = "Carisma"
+            icon.name = "lock-closed-outline"
+        }
     }
 }
 
@@ -821,14 +1175,14 @@ function rolaDadoFicha(nome, lancamento, tipo) {
     const tipoDeDados = parseInt(match[2]);
     const modificador = match[3] ? parseInt(match[3]) : 0;
 
-    let resultados = []; // Armazena os resultados de cada rolagem
+    let resultados = []; 
 
     for (let i = 0; i < quantidadeDeDados; i++) {
         const rolagem = Math.floor(Math.random() * tipoDeDados + 1);
-        resultados.push(rolagem); // Armazena o resultado desta rolagem
+        resultados.push(rolagem);
     }
 
-    let resultadoFinal = 0; // Resultado a ser exibido
+    let resultadoFinal = 0; 
 
     if (tipo === "Vantagem") {
         resultadoFinal = Math.max(...resultados) 
@@ -854,6 +1208,8 @@ function rolaDadoFicha(nome, lancamento, tipo) {
     };
 }
 
+let agirDeAcordo = false;
+
 function rolarDado(event, tipo, atributo) {
     pegaEstabilidade();
 
@@ -864,6 +1220,68 @@ function rolarDado(event, tipo, atributo) {
     let ajuste = '';
     let titulo = '';
     let modificadorAbsoluto;
+
+    const ferimentosGraves = document.querySelectorAll('.ferimentos__graves--lista .ferimento__item')
+    const ferimentosCriticos = document.querySelectorAll('.ferimentos__criticos--lista .ferimento__item')
+
+    let ferimentos = '';
+    let modificadorFerimento = 0;
+
+    if(ferimentosGraves.length > 0 && ferimentosCriticos.length > 0){
+        ferimentos = '- 2'
+        modificadorFerimento = -2
+    } else if((ferimentosGraves.length > 0 && ferimentosCriticos.length === 0) || (ferimentosGraves.length === 0 && ferimentosCriticos.length > 0)){
+        ferimentos = '- 1'
+        modificadorFerimento = -2
+    }
+
+    let percepcao = '';
+    let modificadorPercepcao = 0;
+
+    pegaVantagens(numeroPersonagemSelecionado)
+    if(vantagensPersonagem.includes("Indomável")){
+        ferimentos = '';
+        modificadorFerimento = 0;
+    }
+
+    if(agirDeAcordo === true){
+        modificadorPercepcao = vantagensPersonagem.includes("Instinto") ? 2 : 1
+        percepcao = `+ ${modificadorPercepcao}`
+    }
+
+    let vantagem = ''
+    let modificadorVantagem = 0;
+    let bonus = ""
+
+    if(vantagensAtivas.includes('Desesperado')){
+        modificadorVantagem += 1
+        vantagem = `+ ${modificadorVantagem}`
+    }
+    if(vantagensAtivas.includes('Olho por Olho')){
+        modificadorVantagem += 2
+        vantagem = `+ ${modificadorVantagem}`
+    }
+    if(vantagensAtivas.includes('Rancor')){
+        modificadorVantagem += 1
+        vantagem = `+ ${modificadorVantagem}`
+    }
+    if(vantagensAtivas.includes('Instinto')){
+        modificadorVantagem += 2
+        vantagem = `+ ${modificadorVantagem}`
+    }
+    if(vantagensAtivas.includes('Ambicioso')){
+        modificadorVantagem += 2
+        vantagem = `+ ${modificadorVantagem}`
+        verificaEstabilidade(-2)
+    }
+
+    let fracasso = ''
+    let modificadorFracasso = 0;
+
+    if(vantagemFracasso === true){
+        fracasso = '- 1'
+        modificadorFracasso = -1
+    }
 
     if(tipo === "atributo"){
         const elementoPai = event.target.parentElement;
@@ -891,10 +1309,22 @@ function rolarDado(event, tipo, atributo) {
             }
         }
 
+        if(titulo === "Fortitude" && vantagensPersonagem.includes("Durão")){
+            resultado += 1;
+            ajuste = '+ 1'
+        }
+
+        if(titulo === "Fortitude" && vantagensAtivas.includes("Guerreiro Divino")){
+            resultado += 1;
+            bonus = '+ 1'
+        }
+
+        resultado = resultado + modificadorFerimento + modificadorVantagem + modificadorPercepcao + modificadorFracasso + (modificadorManipulador === true ? 2 : 0)
+
         const modificadorTexto = modificadorAbsoluto === 0 ? '' : `${modificador < 0 ? '-' : '+'} ${modificadorAbsoluto}`;
 
         rolagemResultado.innerHTML = `
-        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificadorTexto} ${ajuste} = ${resultado}</p>
+        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificadorTexto} ${ajuste} ${ferimentos} ${vantagem} ${bonus} ${fracasso} ${percepcao} ${modificadorManipulador === true ? "+ 2" : ""} = ${resultado}</p>
         <p>D10: ${primeiraRolagem}, ${segundaRolagem}</p>
         `;
     } else if(tipo === "desvantagem"){
@@ -913,8 +1343,10 @@ function rolarDado(event, tipo, atributo) {
             ajuste = '- 3';
         }
 
+        resultado = resultado + modificadorFerimento + modificadorVantagem + modificadorFracasso + modificadorPercepcao
+
         rolagemResultado.innerHTML = `
-        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${ajuste} = ${resultado}</p>
+        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${ajuste} ${ferimentos} ${vantagem} ${fracasso} ${percepcao} = ${resultado}</p>
         <p>D10: ${primeiraRolagem}, ${segundaRolagem}</p>
         `;
     } else if(tipo === "vantagem"){
@@ -933,10 +1365,32 @@ function rolarDado(event, tipo, atributo) {
         
         const modificadorTexto = modificadorAbsoluto === 0 ? '' : `${modificador < 0 ? '-' : '+'} ${modificadorAbsoluto}`;
 
-        resultado = primeiraRolagem + segundaRolagem + parseInt(modificador);
+        resultado = primeiraRolagem + segundaRolagem + parseInt(modificador) + modificadorFerimento + modificadorVantagem + modificadorFracasso + modificadorPercepcao;
 
         rolagemResultado.innerHTML = `
-        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificadorTexto} = ${resultado}</p>
+        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificadorTexto} ${ferimentos} ${vantagem} ${fracasso} ${percepcao} = ${resultado}</p>
+        <p>D10: ${primeiraRolagem}, ${segundaRolagem}</p>
+        `;
+    } else if(tipo === "ajudar" || tipo === "atrapalhar"){
+        titulo = tipo === "ajudar" ? "Ajudar" : "Atrapalhar"
+
+        let modificador;
+        const atributos = document.querySelectorAll('.ficha__atributos label');
+        atributos.forEach((label) => {
+            if(label.textContent === atributo){
+                modificador = parseInt(label.parentElement.querySelector('.atributo').textContent);
+            }
+        });
+
+
+        modificadorAbsoluto = Math.abs(modificador);
+        
+        const modificadorTexto = modificadorAbsoluto === 0 ? '' : `${modificador < 0 ? '-' : '+'} ${modificadorAbsoluto}`;
+
+        resultado = primeiraRolagem + segundaRolagem + parseInt(modificador) + modificadorFerimento + modificadorVantagem + modificadorFracasso + modificadorPercepcao + (modificadorManipulador === true ? 2 : 0);
+
+        rolagemResultado.innerHTML = `
+        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificadorTexto} ${ferimentos} ${vantagem} ${fracasso} ${percepcao} ${modificadorManipulador === true ? "+ 2" : ""} = ${resultado}</p>
         <p>D10: ${primeiraRolagem}, ${segundaRolagem}</p>
         `;
     }
@@ -951,6 +1405,8 @@ function rolarDado(event, tipo, atributo) {
     close.onclick = () => {
         popup.classList.toggle("show");
     };
+
+    modificadorManipulador = false;
 }
 
 
@@ -1003,6 +1459,120 @@ function editaInfo(){
         imagemPersonagem.src = inputImagem
         ocupacaoPersonagem.textContent = inputOcupacao
         nacionalidadePersonagem.textContent = inputNacionalidade
+
+        pegaDesvantagens(numeroPersonagemSelecionado)
+        if(desvantagensObrigatorias[inputArquetipo] !== undefined && !desvantagensPersonagem.includes(desvantagensObrigatorias[inputArquetipo])){
+            desvantagensPersonagem.push(desvantagensObrigatorias[inputArquetipo])  
+            registraDesvantagem(desvantagensPersonagem)
+            
+            const listaDesvantagensFicha = document.querySelector('#listaDesvantagens')
+            const desvantagemObrigatoria = document.createElement('li')
+            desvantagemObrigatoria.innerHTML = `
+            <div class="vantagem__accordion">
+            <span class="vantagem__titulo">${desvantagensObrigatorias[inputArquetipo]}</span>
+            <i class="bx bxs-chevron-down arrow"></i>
+            </div>
+            <div class="vantagem__conteudo">
+                ${desvantagensDetalhadas[desvantagensObrigatorias[inputArquetipo]]}
+                ${desvantagensObrigatorias[inputArquetipo] === "Arruinado" || desvantagensObrigatorias[inputArquetipo] === "Racionalista" || desvantagensObrigatorias[inputArquetipo] === "Fobia" ? "" : `
+                    <div class="vantagem__rolagem">
+                        <button onclick="rolarDado(event, 'desvantagem')">Rolar</button>
+                    </div>
+                `}
+            </div>
+            <span class="vantagem__linha"></span>
+            `
+            desvantagemObrigatoria.addEventListener('click', (e) => mostraDetalhes(e))
+            listaDesvantagensFicha.appendChild(desvantagemObrigatoria)
+
+            const estabilidadeCalmo = document.getElementById('estabilidadeCalmo')
+            const estabilidadeApreensivo = document.getElementById('estabilidadeApreensivo')
+            const estabilidadeDisperso = document.getElementById('estabilidadeDisperso')
+            const estabilidadeAbalado = document.getElementById('estabilidadeAbalado')
+            const estabilidadeAngustiado = document.getElementById('estabilidadeAngustiado')
+
+            const inputs = [estabilidadeCalmo, estabilidadeApreensivo, estabilidadeDisperso, estabilidadeAbalado]
+            inputs.forEach((input) => {
+                if(desvantagensObrigatorias[inputArquetipo] === "Arruinado"){
+                    input.disabled = true
+                    input.parentElement.classList.add('disabled')
+
+                    pegaEstabilidade()
+                    if(estabilidadeAtual === "Calmo" || estabilidadeAtual === "Apreensivo" || estabilidadeAtual === "Disperso" || estabilidadeAtual === "Abalado"){
+                        estabilidadeAngustiado.checked = true
+                        mudaEstabilidade('Angustiado')
+                    }
+                } else{
+                    input.disabled = false
+                    input.parentElement.classList.remove('disabled')
+                }
+            })
+        }
+
+        pegaQualidades(numeroPersonagemSelecionado)
+        if(qualidadesPersonagem === null){
+            qualidadesPersonagem = []
+        }
+
+        if(inputArquetipo === "O Mago da Morte" && !qualidadesPersonagem.includes("Iniciado em Magia")){
+            qualidadesPersonagem.push("Iniciado em Magia")
+            registraQualidade(qualidadesPersonagem)
+
+            const qualidadeElemento = document.createElement('li')
+            const listaQualidadesFicha = document.querySelector('#listaQualidades')
+    
+            qualidadeElemento.innerHTML = `
+            <div class="vantagem__accordion">
+            <span class="vantagem__titulo">Iniciado em Magia</span>
+            <i class="bx bxs-chevron-down arrow"></i>
+            </div>
+            <div class="vantagem__conteudo">
+                ${qualidadesDetalhadas["Iniciado em Magia"]}
+            </div>
+            <span class="vantagem__linha"></span>
+            `
+            qualidadeElemento.addEventListener('click', (e) => mostraDetalhes(e))
+            listaQualidadesFicha.appendChild(qualidadeElemento)
+        }
+
+        pegaLimitacoes(numeroPersonagemSelecionado)
+        if(limitacoesPersonagem === null){
+            limitacoesPersonagem = []
+        }
+
+        if(limitacoesObrigatorias[inputArquetipo] !== undefined && !limitacoesPersonagem.includes(limitacoesObrigatorias[inputArquetipo])){
+            limitacoesPersonagem.push(limitacoesObrigatorias[inputArquetipo])
+            registraLimitacao(limitacoesPersonagem)
+
+            const limitacaoElemento = document.createElement('li')
+            const listaLimitacoesFicha = document.querySelector('#listaLimitacoes')
+    
+            limitacaoElemento.innerHTML = `
+            <div class="vantagem__accordion">
+            <span class="vantagem__titulo">${limitacoesObrigatorias[inputArquetipo]}</span>
+            <i class="bx bxs-chevron-down arrow"></i>
+            </div>
+            <div class="vantagem__conteudo">
+                ${limitacoesDetalhadas[limitacoesObrigatorias[inputArquetipo]]}
+                ${limitacoesLista[limitacoesObrigatorias[inputArquetipo]]["tipo"] === "-" ? "" : `
+                    <div class="vantagem__rolagem">
+                        <button onclick="rolarDado(event, '${limitacoesLista[limitacoesObrigatorias[inputArquetipo]]["tipo"]}', '${limitacoesLista[limitacoesObrigatorias[inputArquetipo]]["atributo"]}')">Rolar</button>
+                    </div>
+                `}
+            </div>
+            <span class="vantagem__linha"></span>
+            `
+
+            if(limitacoesObrigatorias[inputArquetipo] === "Vinculado a um Poder Superior"){
+                const dropdown = limitacaoElemento.querySelector(".vantagem__dropdown")
+                dropdown.remove()
+            }
+
+
+            limitacaoElemento.addEventListener('click', (e) => mostraDetalhes(e))
+            listaLimitacoesFicha.appendChild(limitacaoElemento)
+        }
+
         modal.style.display = "none"
         const container = document.querySelector('.modal__container')
         container.style.display = "none"
@@ -1080,9 +1650,24 @@ function mudaExperiencia(e){
 
 function buscaVantagem(){
     const busca = document.querySelector('[data-busca-vantagem]').value.toLowerCase()
+    
     const listaVantagensModal = document.getElementById('listaVantagensModal')
     const lista = listaVantagensModal.querySelectorAll('.titulo-busca')
     lista.forEach(function(titulo){
+        const texto = titulo.innerHTML.toLowerCase()
+        const found = texto.indexOf(busca)
+        if(busca == ""){
+            titulo.parentElement.parentElement.style.display = "block"
+        } else if(found == -1){
+            titulo.parentElement.parentElement.style.display = "none"
+        } else {
+            titulo.parentElement.parentElement.style.display = "block"      
+        }
+    })
+
+    const listaQualidadesModal = document.getElementById('listaQualidadesModal')
+    const listaQualidades = listaQualidadesModal.querySelectorAll('.titulo-busca')
+    listaQualidades.forEach(function (titulo){
         const texto = titulo.innerHTML.toLowerCase()
         const found = texto.indexOf(busca)
         if(busca == ""){
@@ -1097,6 +1682,7 @@ function buscaVantagem(){
 
 function buscaDesvantagem(){
     const busca = document.querySelector('[data-busca-desvantagem]').value.toLowerCase()
+    
     const listaDesvantagensModal = document.getElementById('listaDesvantagensModal')
     const lista = listaDesvantagensModal.querySelectorAll('.titulo-busca')
     lista.forEach(function(titulo){
@@ -1110,51 +1696,253 @@ function buscaDesvantagem(){
             titulo.parentElement.parentElement.style.display = "block"      
         }
     })
+
+    const listaLimitacoesModal = document.getElementById('listaLimitacoesModal')
+    const listaLimitacoes = listaLimitacoesModal.querySelectorAll('.titulo-busca')
+    listaLimitacoes.forEach(function(titulo){
+        const texto = titulo.innerHTML.toLowerCase()
+        const found = texto.indexOf(busca)
+        if(busca == ""){
+            titulo.parentElement.parentElement.style.display = "block"
+        } else if(found == -1){
+            titulo.parentElement.parentElement.style.display = "none"
+        } else {
+            titulo.parentElement.parentElement.style.display = "block"      
+        }
+    })
 }
 
-function adicionaVantagens(){
-    const modal = document.querySelector('#modalVantagens')
-    const mensagemErro = document.querySelector('#mensagemErroVantagens')
-    const vantagensSelecionadas = modal.querySelectorAll('.showAnswer')
-    if(vantagensSelecionadas.length !== 0){
-        const lista = document.querySelector('#listaVantagens')
-        lista.innerHTML = ""
+function adicionaVantagens() {
+    const modal = document.querySelector('#modalVantagens');
+    const mensagemErro = document.querySelector('#mensagemErroVantagens');
 
-        let vantagens = []
-        vantagensSelecionadas.forEach((vantagem) => {
-            const nome = vantagem.querySelector('.titulo-busca')
-            vantagens.push(nome.textContent)
-            lista.appendChild(vantagem)
-            vantagem.classList.remove('showAnswer')
-        })
+    const modalVantagens = document.getElementById('listaVantagensModal');
+    const modalQualidades = document.getElementById('listaQualidadesModal');
+    const vantagensSelecionadas = modalVantagens.querySelectorAll('li.showAnswer');
+    const qualidadesSelecionadas = modalQualidades.querySelectorAll('li.showAnswer');
 
-        registraVantagem(vantagens)
-        modal.style.display = "none"
-        const container = document.querySelector('.modal__container')
-        container.style.display = "none"
-        document.body.classList.remove('modal-active')
-    } else{
-        mensagemErro.innerHTML = "Nenhum item selecionado."
+    const listaDesvantagens = document.getElementById('listaDesvantagens')
+    const desvantagensAdquiridas = listaDesvantagens.querySelectorAll('.vantagem__titulo')
+
+    let desvantagens = [];
+
+    desvantagensAdquiridas.forEach((desvantagem) => {
+        desvantagens.push(desvantagem.textContent)
+    })
+
+    let qualidades = [];
+    let vantagens = [];
+
+    qualidadesSelecionadas.forEach((qualidade) => {
+        const nome = qualidade.querySelector('.titulo-busca');
+        qualidades.push(nome.textContent);
+    });
+
+    vantagensSelecionadas.forEach((vantagem) => {
+        const nome = vantagem.querySelector('.titulo-busca');
+        vantagens.push(nome.textContent);
+    });
+
+    if (
+        (qualidades.includes("Adepto em Magia") && !qualidades.includes("Praticante em Magia")) ||
+        (qualidades.includes("Praticante em Magia") && !qualidades.includes("Iniciado em Magia")) ||
+        (qualidades.includes("Mestre em Magia") && !qualidades.includes("Adepto em Magia")) ||
+        ((vantagens.includes("Sacrifício Pessoal") || vantagens.includes("Destino Selado")) && !desvantagens.includes("Condenado"))
+    ) {
+        mensagemErro.innerHTML = "Seleção não atende aos requisitos.";
+        return;
     }
+
+    const lista = document.querySelector('#listaVantagens');
+    lista.innerHTML = "";
+
+    const listaQualidades = document.querySelector('#listaQualidades');
+    listaQualidades.innerHTML = "";
+
+    vantagensSelecionadas.forEach((vantagem) => {
+        const nome = vantagem.querySelector('.titulo-busca');
+        const vantagemElemento = document.createElement('li');
+
+        vantagemElemento.innerHTML = `
+            <div class="vantagem__accordion">
+            <span class="vantagem__titulo">${nome.textContent}</span>
+            <i class="bx bxs-chevron-down arrow"></i>
+            </div>
+            <div class="vantagem__conteudo">
+                ${vantagensDetalhadas[nome.textContent]}
+                ${vantagensLista[nome.textContent]["atributo"] === "-" ? "" : (vantagensNaoRolaveis.includes(nome.textContent) ? "" : `
+                    <div class="vantagem__rolagem">
+                        <button onclick="rolarDado(event, 'vantagem', '${vantagensLista[nome.textContent]["atributo"]}')">Rolar</button>
+                    </div>
+                `)}
+                ${vantagensAtivaveis.includes(nome.textContent) ? `
+                    <div class="vantagem__rolagem">
+                        <button onclick="ativarVantagem(event)">Ativar</button>
+                        ${nome.textContent === "Guerreiro Divino" ? `
+                        <button class="failure" onclick="ativarFracasso(event)">Fracasso</button>
+                        ` : ""}
+                    </div>
+                ` : ""
+                }
+                ${vantagensUsaveis.includes(nome.textContent) ? `
+                    <div class="vantagem__rolagem">
+                        <button onclick="usarVantagem(event)">Usar</button>
+                    </div>
+                ` : ""
+                }
+            </div>
+            <span class="vantagem__linha"></span>
+        `;
+        vantagemElemento.addEventListener('click', (e) => mostraDetalhes(e));
+        lista.appendChild(vantagemElemento);
+    });
+
+    qualidadesSelecionadas.forEach((qualidade) => {
+        const nome = qualidade.querySelector('.titulo-busca');
+        const qualidadeElemento = document.createElement('li');
+
+        qualidadeElemento.innerHTML = `
+            <div class="vantagem__accordion">
+            <span class="vantagem__titulo">${nome.textContent}</span>
+            <i class="bx bxs-chevron-down arrow"></i>
+            </div>
+            <div class="vantagem__conteudo">
+                ${qualidadesDetalhadas[nome.textContent]}
+                ${qualidadesLista[nome.textContent]["atributo"] === "-" ? "" : `
+                    <div class="vantagem__rolagem">
+                        <button onclick="rolarDado(event, 'vantagem', '${qualidadesLista[nome.textContent]["atributo"]}')">Rolar</button>
+                    </div>
+                `}
+            </div>
+            <span class="vantagem__linha"></span>
+        `;
+        qualidadeElemento.addEventListener('click', (e) => mostraDetalhes(e));
+        listaQualidades.appendChild(qualidadeElemento);
+    });
+
+    const requisitos = document.querySelectorAll('.vantagem__requisito')
+    requisitos.forEach((requisito) => requisito.remove())
+
+    registraVantagem(vantagens);
+    registraQualidade(qualidades);
+
+    vantagensAtivas = [];
+    vantagemFracasso = false;
+
+    modal.style.display = "none";
+    const container = document.querySelector('.modal__container');
+    container.style.display = "none";
+    document.body.classList.remove('modal-active');
 }
 
 function adicionaDesvantagens(){
     const modal = document.querySelector('#modalDesvantagens')
     const mensagemErro = document.querySelector('#mensagemErroDesvantagens')
-    const desvantagensSelecionadas = modal.querySelectorAll('.showAnswer')
+
+    const modalDesvantagens = document.getElementById('listaDesvantagensModal')
+    const modalLimitacoes = document.getElementById('listaLimitacoesModal')
+
+    const desvantagensSelecionadas = modalDesvantagens.querySelectorAll('li.showAnswer')
+    const limitacoesSelecionadas = modalLimitacoes.querySelectorAll('li.showAnswer')
+
     if(desvantagensSelecionadas.length !== 0){
         const lista = document.querySelector('#listaDesvantagens')
         lista.innerHTML = ""
+
+        const listaLimitacoes = document.querySelector('#listaLimitacoes')
+        listaLimitacoes.innerHTML = ""
         
         let desvantagens = []
+        let limitacoes = []
+
         desvantagensSelecionadas.forEach((desvantagem) => {
             const nome = desvantagem.querySelector('.titulo-busca')
             desvantagens.push(nome.textContent)
-            lista.appendChild(desvantagem)
-            desvantagem.classList.remove('showAnswer')
+            const desvantagemElemento = document.createElement('li')
+            desvantagemElemento.innerHTML = `
+                <div class="vantagem__accordion">
+                <span class="vantagem__titulo">${nome.textContent}</span>
+                <i class="bx bxs-chevron-down arrow"></i>
+                </div>
+                <div class="vantagem__conteudo">
+                    ${desvantagensDetalhadas[nome.textContent]}
+                    ${nome.textContent === "Arruinado" || nome.textContent === "Racionalista" || nome.textContent === "Fobia" ? "" : `
+                        <div class="vantagem__rolagem">
+                            <button onclick="rolarDado(event, 'desvantagem')">Rolar</button>
+                        </div>
+                    `}
+                </div>
+                <span class="vantagem__linha"></span>
+            `
+
+            desvantagemElemento.addEventListener('click', (e) => mostraDetalhes(e))
+            lista.appendChild(desvantagemElemento)
         })
 
+        const dropdown = modalLimitacoes.querySelector('.vantagem__selectbox')
+
+        limitacoesSelecionadas.forEach((limitacao) => {
+            const nome = limitacao.querySelector('.titulo-busca')
+            limitacoes.push(nome.textContent)
+            const limitacaoElemento = document.createElement('li')
+    
+            limitacaoElemento.innerHTML = `
+            <div class="vantagem__accordion">
+            <span class="vantagem__titulo">${nome.textContent}</span>
+            <i class="bx bxs-chevron-down arrow"></i>
+            </div>
+            <div class="vantagem__conteudo">
+                ${limitacoesDetalhadas[nome.textContent]}
+                ${nome.textContent === "Vinculado a um Poder Superior" ? listaPoderSuperior[dropdown.value] : ""}
+                ${limitacoesLista[nome.textContent]["tipo"] === "-" ? "" : `
+                    <div class="vantagem__rolagem">
+                        <button onclick="rolarDado(event, '${limitacoesLista[nome.textContent]["tipo"]}', '${limitacoesLista[nome.textContent]["atributo"]}')">Rolar</button>
+                    </div>
+                `}
+            </div>
+            <span class="vantagem__linha"></span>
+            `
+
+            if(nome.textContent === "Vinculado a um Poder Superior"){
+                const dropdown = limitacaoElemento.querySelector(".vantagem__dropdown")
+                dropdown.remove()
+            }
+
+            limitacaoElemento.addEventListener('click', (e) => mostraDetalhes(e))
+            listaLimitacoes.appendChild(limitacaoElemento)
+        })
+
+        const estabilidadeCalmo = document.getElementById('estabilidadeCalmo')
+        const estabilidadeApreensivo = document.getElementById('estabilidadeApreensivo')
+        const estabilidadeDisperso = document.getElementById('estabilidadeDisperso')
+        const estabilidadeAbalado = document.getElementById('estabilidadeAbalado')
+        const estabilidadeAngustiado = document.getElementById('estabilidadeAngustiado')
+
+        const inputs = [estabilidadeCalmo, estabilidadeApreensivo, estabilidadeDisperso, estabilidadeAbalado]
+        inputs.forEach((input) => {
+            if(desvantagens.includes('Arruinado')){
+                input.disabled = true
+                input.parentElement.classList.add('disabled')
+
+                pegaEstabilidade()
+                if(estabilidadeAtual === "Calmo" || estabilidadeAtual === "Apreensivo" || estabilidadeAtual === "Disperso" || estabilidadeAtual === "Abalado"){
+                    estabilidadeAngustiado.checked = true
+                    mudaEstabilidade('Angustiado')
+                }
+            } else{
+                input.disabled = false
+                input.parentElement.classList.remove('disabled')
+            }
+        })
+
+        if(limitacoes.includes('Vinculado a um Poder Superior')){
+            registraPoderSuperior(dropdown.value)
+        } else{
+            removerPoderSuperior()   
+        }
+
         registraDesvantagem(desvantagens)
+        registraLimitacao(limitacoes)
         modal.style.display = "none"
         const container = document.querySelector('.modal__container')
         container.style.display = "none"
@@ -1223,8 +2011,34 @@ function selecionaProgressao(){
 
     for (let i = 0; i < inputsChecados.length; i++) {
         let numero = parseInt(inputsChecados[i].replace('progressao', ''));
-        
-        if (numero >= 13 && numero < 19) {
+
+        if (numero >= 31 && numero < 38) {
+          let contadorEntre20e30 = 0;
+          for (let j = 0; j < inputsChecados.length; j++) {
+            let numeroMenor = parseInt(inputsChecados[j].replace('progressao', ''));
+            if (numeroMenor >= 20 && numeroMenor <= 30) {
+              contadorEntre20e30++;
+            }
+          }
+          if (contadorEntre20e30 < 5) {
+            mensagemErro.innerHTML = "Obtenha cinco progressões anteriores."
+            return;
+          }
+        } 
+        else if (numero === 38) {
+            let contadorEntre20e37 = 0;
+            for (let j = 0; j < inputsChecados.length; j++) {
+                let numeroMenor = parseInt(inputsChecados[j].replace('progressao', ''));
+                if (numeroMenor >= 20 && numeroMenor <= 37) {
+                    contadorEntre20e37++;
+                }
+            }
+            if (contadorEntre20e37 < 10) {
+                mensagemErro.innerHTML = "Obtenha dez progressões anteriores."
+                return;
+            }
+        } 
+        else if (numero >= 13 && numero < 19) {
           for (let j = 0; j < inputsChecados.length; j++) {
             let numeroMenor = parseInt(inputsChecados[j].replace('progressao', ''));
             if (numeroMenor < 13) {
@@ -1236,20 +2050,21 @@ function selecionaProgressao(){
             mensagemErro.innerHTML = "Obtenha cinco progressões anteriores."
             return;
           }
-        } else if(numero == 19){
+        } 
+        else if(numero == 19){
+            let contadorEntre1e18 = 0;
             for (let j = 0; j < inputsChecados.length; j++) {
                 let numeroMenor = parseInt(inputsChecados[j].replace('progressao', ''));
-                if (numeroMenor < 19) {
-                  contador++;
+                if (numeroMenor >= 1 && numeroMenor <= 18) {
+                    contadorEntre1e18++;
                 }
-              }
-              
-            if (contador < 5) {
+            }
+            if (contadorEntre1e18 < 10) {
                 mensagemErro.innerHTML = "Obtenha dez progressões anteriores."
                 return;
             }
         }
-    }    
+    }  
 
     if(xp < (inputsChecados.length - progressoesMarcadas.length) * 5){
         mensagemErro.innerHTML = "Não há experiência suficiente."
@@ -1273,6 +2088,7 @@ function selecionaProgressao(){
         container.style.display = "none"
     }
 }
+
 
 function changeModal(){
     const mainModal = document.querySelector('.modalMain')
@@ -1343,3 +2159,76 @@ function marcaInputs(e){
     }
 }
 
+function ativarVantagem(event){
+    const botao = event.target
+    botao.classList.toggle('active')
+
+    if(botao.classList.contains('active')){
+        botao.textContent = "Desativar"
+ 
+        const vantagem = botao.parentElement.parentElement.parentElement
+        const vantagemNome = vantagem.querySelector('.vantagem__titulo').textContent
+        if(vantagemNome === "Guerreiro Divino"){
+            const failureBtn = vantagem.querySelector(".vantagem__rolagem .failure")
+            failureBtn.classList.remove('active')
+            vantagemFracasso = false
+        }
+    } else{
+        botao.textContent = "Ativar"
+    }
+
+    vantagensAtivas = []
+    const listaVantagens = document.getElementById('listaVantagens')
+    const vantagensAtivasBtns = listaVantagens.querySelectorAll('.vantagem__rolagem button.active')
+    vantagensAtivasBtns.forEach((btn) => {
+        const nome = btn.parentElement.parentElement.parentElement.querySelector('.vantagem__titulo').textContent
+        vantagensAtivas.push(nome)
+    })
+}
+
+function ativarFracasso(event){
+    const botao = event.target
+    botao.classList.toggle('active')
+
+    if(botao.classList.contains('active')){
+        vantagemFracasso = true
+
+        const btn = botao.parentElement.parentElement.querySelector('button')
+        btn.classList.remove('active')
+        btn.textContent = "Ativar"
+
+        let index = vantagensAtivas.indexOf("Guerreiro Divino")
+        if(index !== -1){
+            vantagensAtivas.splice(index, 1)
+        }
+    } else{
+        vantagemFracasso = false
+    }
+}
+
+function usarVantagem(event){
+    const nome = event.target.parentElement.parentElement.parentElement.querySelector('.vantagem__titulo').textContent
+    if(nome === "Bom Samaritano" || nome === "Oportunista" || nome === "Sede de Conhecimento" || nome === "Workaholic" || nome === "Código de Honra"){
+        verificaEstabilidade(1)
+    } else if(nome === "Manipulador"){
+        abreModal("popup")
+    }
+}
+
+function verificaEstabilidade(modificador){
+    pegaEstabilidade()
+
+    if(vantagensPersonagem.includes('Inabalável') && modificador < 0){
+        modificador++
+    }
+    
+    const estabilidades = ["Calmo", "Apreensivo", "Disperso", "Abalado", "Angustiado", "Neurótico", "Agoniado", "Irracional", "Transtornado", "Arruinado"]
+
+    const index = estabilidades.indexOf(estabilidadeAtual)
+    if((modificador < 0 && index < estabilidades.length) || (modificador > 0 && index > 0)){
+        const estabilidadeAlterada = estabilidades[index - modificador]
+        mudaEstabilidade(estabilidadeAlterada)
+        const estabilidadeInput = document.getElementById(`estabilidade${estabilidadeAlterada}`)
+        estabilidadeInput.click()
+    }
+}

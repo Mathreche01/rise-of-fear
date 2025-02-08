@@ -219,6 +219,14 @@ registraDesvantagem = function desvantagensDatabase(desvantagens){
     set(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + "/desvantagens/"), desvantagens)
 }
 
+registraQualidade = function qualidadesDatabase(qualidades){
+    set(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + "/qualidades/"), qualidades)
+}
+
+registraLimitacao = function limitacoesDatabase(limitacoes){
+    set(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + "/limitacoes/"), limitacoes)
+}
+
 registraDadoFicha = function dadosDatabase(rolagem, nome, tipo, id){
     set(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + "/dados/" + id), {
         rolagem: rolagem,
@@ -348,6 +356,12 @@ removerGancho = function deletaGancho(numero){
     })
 }
 
+removerPoderSuperior = function deletaPoderSuperior(){
+    remove(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + '/poderSuperior')).then(() => {
+        return
+    })
+}
+
 removerRelacao = function deletaRelacao(id, event){
     const listaRelacoes = document.querySelector('.ficha__relacoes--lista')
     const relacao = event.target.parentElement.parentElement
@@ -414,5 +428,60 @@ pegaProgressoes = function acessaProgressoes(){
 pegaEstabilidade = function acessaEstabilidade(){
     (onValue(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado), (snapshot) => {
         estabilidadeAtual = (snapshot.val() && snapshot.val().estabilidade)
+    }))
+}
+
+pegaQualidades = function acessaQualidades(numero){
+    (onValue(ref(database, '/users/' + userId + '/personagens/' + numero), (snapshot) => {
+        const qualidades = (snapshot.val() && snapshot.val().qualidades)
+        if(qualidades !== null && qualidades !== undefined){
+            qualidadesPersonagem = qualidades
+        } else{
+            qualidadesPersonagem = null
+        }
+    }))
+}
+
+pegaDesvantagens = function acessaDesvantagens(numero){
+    (onValue(ref(database, '/users/' + userId + '/personagens/' + numero), (snapshot) => {
+        const desvantagens = (snapshot.val() && snapshot.val().desvantagens)
+        if(desvantagens !== null && desvantagens !== undefined){
+            desvantagensPersonagem = desvantagens
+        } else{
+            desvantagensPersonagem = null
+        }
+    }))
+}
+
+pegaVantagens = function acessaVantagens(numero){
+    (onValue(ref(database, '/users/' + userId + '/personagens/' + numero), (snapshot) => {
+        const vantagens = (snapshot.val() && snapshot.val().vantagens)
+        if(vantagens !== null && vantagens !== undefined){
+            vantagensPersonagem = vantagens
+        } else{
+            vantagensPersonagem = null
+        }
+    }))
+}
+
+
+pegaLimitacoes = function acessaLimitacoes(numero){
+    (onValue(ref(database, '/users/' + userId + '/personagens/' + numero), (snapshot) => {
+        const limitacoes = (snapshot.val() && snapshot.val().limitacoes)
+        if(limitacoes !== null && limitacoes !== undefined){
+            limitacoesPersonagem = limitacoes
+        } else{
+            limitacoesPersonagem = null
+        }
+    }))
+}
+
+registraPoderSuperior = function poderSuperiorDatabase(poder){
+    set(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + "/poderSuperior"), poder)
+}
+
+pegaPoderSuperior = function acessaPoderSuperior(numero){
+    (onValue(ref(database, '/users/' + userId + '/personagens/' + numero), (snapshot) => {
+        poderSuperior = (snapshot.val() && snapshot.val().poderSuperior)
     }))
 }

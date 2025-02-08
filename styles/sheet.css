@@ -83,23 +83,23 @@
 
 #modalProgressao input::before{
     content: '';
-    background-image: url('../img/square-outline.svg');
+    background-image: url('../img/square-regular.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
     filter: brightness(0) invert(1);
 }
 
 #modalProgressao input:checked ~ input::before, #modalProgressao input:checked::before{
     content: '';
-    background-image: url('../img/checkbox-outline.svg');
+    background-image: url('../img/square-check-regular.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
     filter: brightness(0) invert(1);
 }
 
@@ -116,6 +116,14 @@
 
 .relacoes__topo h3{
     position: relative;
+}
+
+.relacao__grau{
+    cursor: pointer;
+}
+
+.relacao__grau:hover{
+    text-decoration: underline;
 }
 
 .relacao__grau, .relacao__nome{
@@ -326,7 +334,7 @@
     align-items: center;
 }
 
-.ferimentos__graves--topo, .ferimentos__criticos--topo, .ficha__itens h4{
+.ferimentos__graves--topo, .ferimentos__criticos--topo, .ficha__itens h4, .ficha__vantagens--topo{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -336,6 +344,14 @@
     font-weight: 600;
     margin: 8px 0 4px 0;
     border-bottom: 2px solid rgb(60,60,60);
+}
+
+.ficha__vantagens--topo{
+    margin-bottom: 10px;
+}
+
+.lista__ferimentos .ficha__vantagens--topo:last-child{
+    margin-top: 10px;
 }
 
 #listaEquipamentoEspecial td:nth-child(2), #listaEquipamentoCorpo td:nth-child(4), #listaEquipamentoDistancia td:nth-child(4){
@@ -494,6 +510,12 @@
     font-size: 16px;
     white-space: nowrap;
     user-select: none;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.ficha__atributos span:hover{
+    text-decoration: underline;
 }
 
 .intuicao-titulo{
@@ -527,6 +549,8 @@
     white-space: nowrap;
 }
 
+
+
 .modal-atributo .atributo-descricao{
     position: static;
     transform: none;
@@ -555,6 +579,7 @@
 #modalAtributos h2{
     margin-bottom: 30px;
 }
+
 #mensagemErroAtributos{
     position: absolute;
     top: 91%;
@@ -886,6 +911,114 @@
     display: none;
 }
 
+.vantagem__dropdown{
+    position: relative;
+    width: 100%;
+    max-width: 12em;
+    margin: 1em auto;
+}
+
+.vantagem__dropdown.active .vantagem__selectbox{
+    border: 2px #c8102E solid;
+    box-shadow: 0 0 0.8em #c8102E;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.vantagem__dropdown .vantagem__selectbox{
+    width: 100%;
+    background: #333;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-items: center;
+    border: 2px #333 solid;
+    border-radius: 0.5em;
+    padding: .5em 1.8em .5em .8em;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.vantagem__dropdown .vantagem__selectbox:hover{
+    background: #383838;
+    border-color: #383838;
+}
+
+.vantagem__dropdown .caret{
+    position: absolute;
+    right: .8em;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #fff;
+    transition: 0.3s;
+}
+
+.vantagem__dropdown.active .caret{
+    transform: rotate(180deg) translateY(3px)
+}
+
+.vantagem__dropdown .vantagem__options::-webkit-scrollbar{
+    width: 4px;
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+.vantagem__dropdown .vantagem__options::-webkit-scrollbar-thumb{
+    background-color: #555;
+    border-radius: 8px;
+}
+
+.vantagem__dropdown .vantagem__options div strong{
+    pointer-events: none;
+}
+
+.vantagem__dropdown .vantagem__options{
+    padding: 0.2em 0.5em;
+    box-sizing: border-box;
+    max-height: 142px;
+    overflow-y: scroll;
+    background: #383838;
+    border: 1px #404040 solid;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
+    color: #9fa5b5;
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%) translateY(-100%);
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+    z-index: 1;
+}
+
+.vantagem__requisito p, .modal-tip p span{
+    font-style: italic;
+}
+
+.vantagem__dropdown .vantagem__options div{
+    padding: 0.7em 0.5em;
+    margin: 0.3em 0;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.vantagem__dropdown .vantagem__options div:hover{
+    background: #303030;
+}
+
+.vantagem__dropdown.active .vantagem__options{
+    display: block;
+    opacity: 1;
+}
+
 .lista__vantagens li.showAnswer .vantagem__conteudo{
     display: block;
 }
@@ -1172,9 +1305,99 @@
     padding-top: 10px;
 }
 
+.modal-tip-section{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.modal-tip-btns{
+    width: 100%;
+    display: flex;
+    background: rgb(60,60,60);
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-tip-btns button{
+    width: 50%;
+    background: transparent;
+    color: #FF033E;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: .3s ease;
+}
+
+.modal-tip-btns button.active, .modal-tip-btns button:hover{
+    background: #FF033E;
+    color: rgb(52, 52, 52);
+}
+
 #modalAtributos{
     max-width: 380px;
     box-sizing: border-box;
+}
+
+#modalTips{
+    max-width: 560px;
+    width: calc(100% - 2rem);
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+#modalTips h2{
+    margin-bottom: 30px;
+}
+
+.modal-tip{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+
+.modal-tip .vantagem__dropdown{
+    margin: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.modal-tip .vantagem__dropdown .vantagem__selectbox{
+    background: rgb(60,60,60);
+}
+
+.modal-tip p b{
+    color: #E32636;
+}
+
+.modal-tip strong{
+    font-weight: 600;
+}
+
+.modal-tip .vantagem__opcoes{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0;
+}
+
+.modal-tip .vantagem__resultados{
+    padding: 10px 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.modal-tip p{
+    color: white;
+    transform: none;
+    font-size: 16px;
+    line-height: 1.1;
 }
 
 #modalProgressao p{
@@ -1183,6 +1406,17 @@
     font-size: 15px;
     font-weight: 300;
     line-height: 1.2;
+}
+
+.inputSegredos.locked{
+    pointer-events: none;
+    background: #9c9c9c;
+    border-radius: 4px;
+}
+
+.inputSegredos.locked .dropdown .select-box, .inputSegredos.locked .dropdown ion-icon{
+    color: rgb(52, 52, 52);
+    border: none;
 }
 
 .progressao__grupo .grupo-descricao{
@@ -1246,8 +1480,21 @@
 .vantagem__rolagem{
     width: 100%;
     display: flex;
+    gap: 5px;
     justify-content: center;
     margin-bottom: 10px;
+}
+
+.vantagem__rolagem .failure{
+    background: #00000075 !important;
+    border: 1px solid #000 !important;
+    color: #fff;
+    transition: .3s ease;
+}
+
+
+.vantagem__rolagem .failure.active{
+    background: #000 !important;
 }
 
 .grau-estabilidade.disabled{
@@ -1291,7 +1538,7 @@
 
 #modalVantagens .erro--segredo, #modalDesvantagens .erro--segredo{
     position: absolute;
-    transform: translateY(14em);
+    bottom: 10px;
 }
 
 .boxVantagens{
@@ -1302,8 +1549,29 @@
     overflow-y: scroll;
 }
 
-#modalVantagens .inputSegredos input, #modalDesvantagens .inputSegredos input{
+#modalVantagens .inputSegredos, #modalDesvantagens .inputSegredos, #modalTips .inputSegredos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+#modalVantagens .inputSegredos, #modalDesvantagens .inputSegredos{
     margin: 1em 0 2em 0;
+}
+
+#modalVantagens .btnDetails, #modalDesvantagens .btnDetails{
+    max-width: 300px;
+    min-width: calc(50% - 5px);
+    box-sizing: border-box;
+}
+
+#modalVantagens .inputSegredos input, #modalDesvantagens .inputSegredos input, #modalTips .inputSegredos input{
+    position: static;
+    max-width: 300px;
+    min-width: calc(50% - 5px);
+    box-sizing: border-box;
 }
 
 .modal-content{
@@ -1322,14 +1590,14 @@
     left: var(--titulo-largura)
 }
 
-#mensagemErroRelacao, #mensagemErroSegredos, #mensagemErroEquipamento, #mensagemErroFerimentos, #mensagemErroDadosNome, #mensagemErroInfoIdade{
-    transform: translateY(55px);
-}
-
+#mensagemErroRelacao, #mensagemErroSegredos, #mensagemErroEquipamento, #mensagemErroFerimentos, #mensagemErroDadosNome, #mensagemErroInfoIdade,
 #mensagemErroDadosRolagem, #mensagemErroInfoNome, #mensagemErroInfoOcupacao, #mensagemErroInfoNacionalidade, #mensagemErroInfoImagem{
     transform: translateY(50px);
 }
 
+#modalDados #nomeDado{
+    margin-bottom: 30px;
+}
 #infoImagem{
     width: 86%;
     border-top-right-radius: 0;
@@ -1356,7 +1624,7 @@
     margin-bottom: 2em;
 }
 
-.modalMain .btnDetails:hover, .progressao__conteudo .btnDetails:hover{
+.modalMain .btnDetails:hover, .progressao__conteudo .btnDetails:hover, .inputSegredos .btnDetails:hover, #modalTips .inputSegredos .btnDetails.active{
     background: rgba(245, 245, 245, 0.055);
 }
 
@@ -1364,7 +1632,7 @@
     display: none;
 }
 
-.modalMain .btnDetails, .progressao__conteudo .btnDetails{
+.modalMain .btnDetails, .progressao__conteudo .btnDetails, .inputSegredos .btnDetails{
     width: 100%;
     transition: .3s ease;
     border: 1px solid whitesmoke;
@@ -1448,11 +1716,6 @@
     }
 }
 
-.popup{
-    position: fixed;
-    left: 50%;
-}
-
 .view-modal{
     top: 50%;
     color: #7d2ae8;
@@ -1464,11 +1727,13 @@
 
 .popup{
     background: #302f2f;
+    position: fixed;
+    left: 50%;
     padding: 25px;
     border-radius: 15px;
     top: -150%;
     box-sizing: border-box;
-    max-width: 380px;
+    max-width: 400px;
     width: 100%;
     opacity: 0;
     pointer-events: none;
@@ -1629,6 +1894,16 @@
     }
 }
 
+.modal-content.iluminado #listaVantagensModal, .modal-content.iluminado #listaDesvantagensModal,
+.modal-content #listaQualidadesModal, .modal-content #listaLimitacoesModal{
+    display: none;
+}
+
+.modal-content.iluminado #listaQualidadesModal, .modal-content.iluminado #listaLimitacoesModal,
+.modal-content #listaVantagensModal, .modal-content #listaDesvantagensModal{
+    display: block;
+}
+
 @media (max-width: 590px){
     .progressao__item{
         flex-direction: column;
@@ -1656,6 +1931,12 @@
     .progressao__item{
         padding: 10px 0 !important;
         border-bottom: 1px #c8102E dashed;
+    }
+}
+
+@media (max-width: 550px){
+    .modal-tip p, .modal-tip .vantagem__dropdown{
+        font-size: 14px;
     }
 }
 
@@ -1764,7 +2045,26 @@
     }
 }
 
+
+@media (max-width: 470px){
+    #modalTips{
+        padding: 25px;
+    }
+}
+
 @media (max-width: 420px){
+    #modalVantagens .inputSegredos, #modalDesvantagens .inputSegredos{
+        margin: .5rem 0 0 0;
+    }
+
+    #modalVantagens .erro--segredo, #modalDesvantagens .erro--segredo{
+        bottom: 8px;
+    }
+
+    #modalVantagens, #modalDesvantagens{
+        padding: 30px;
+    }
+
     .atributo{
         font-size: 18px;
     }
@@ -1945,6 +2245,26 @@
     .popup header span{
         font-size: 18px;
     }
+
+    .modal-tip p, .modal-tip .vantagem__dropdown{
+        font-size: 13px;
+    }
+
+    #modalTips h2{
+        margin-bottom: 15px;
+    }
+
+    .modal-tip .titulo__opcoes{
+        font-size: 14px;
+    }
+
+    .modal-tip-btns{
+        margin-bottom: 0;
+    }
+
+    .modal-tip-btns button{
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 400px){
@@ -1964,6 +2284,10 @@
 @media (max-width: 380px){
     #modalVantagens .lista__vantagens, #modalDesvantagens .lista__vantagens{
         margin: 10px;
+    }
+
+    #modalTips{
+        padding: 20px;
     }
 
     .estabilidade__secao{
@@ -2102,6 +2426,11 @@
         top: 58.3%;
         left: 41.2%;
     }
+
+    #modalDesvantagens .btnDetails, #modalVantagens .btnDetails, #modalDesvantagens .inputSegredos input, #modalVantagens .inputSegredos input{
+        font-size: 14px;
+        text-overflow: ellipsis;
+    }
     
     .percepcao-descricao{
         top: 60.7%;
@@ -2130,7 +2459,7 @@
 }
 
 @media (max-width: 370px){
-    .ferimentos__graves--topo, .ferimentos__criticos--topo, .ficha__itens h4{
+    .ferimentos__graves--topo, .ferimentos__criticos--topo, .ficha__itens h4, .ficha__vantagens--topo{
         font-size: 14px;
     }
 
@@ -2141,6 +2470,15 @@
     .ferimento__item{
         padding: 2px 0px 2px 5px;
     }
+
+    #modalTips .inputSegredos{
+        flex-direction: column;
+        height: auto;
+    }
+    
+    #modalTips .inputSegredos input, #modalTips .inputSegredos button{
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 360px){
@@ -2150,6 +2488,11 @@
 }
 
 @media (max-width: 350px){
+    #modalVantagens .inputSegredos, #modalDesvantagens .inputSegredos{
+        flex-direction: column;
+        margin: 1.5em 0 1em 0;
+    }
+
     #modalVantagens .search-box, #modalDesvantagens .search-box{
         margin: 1em 0 .5em;
     }
@@ -2262,7 +2605,11 @@
         top: 98.5%;
         left: 43.8%;
     }
-    
+
+    #modalVantagens .erro--segredo, #modalDesvantagens .erro--segredo{
+        bottom: 5px;
+    }
+
     .alma-descricao{
         top: 101%;
         left: 33%;
@@ -2335,9 +2682,30 @@
     .popup{
         padding: 20px;
     }
+    
+    .modal-tip-btns{
+        gap: 5px;
+        padding: 5px;
+    }
+
+    .modal-tip-btns button{
+        padding: 5px;
+    }
+    
+    .modal-tip p, .modal-tip .vantagem__dropdown{
+        font-size: 12px;
+    }
+
+    .modal-tip .titulo__opcoes{
+        font-size: 13px;
+    }
 }
 
 @media (max-width: 330px){
+    #modalDesvantagens, #modalVantagens{
+        padding: 25px;
+    }
+
     #modalProgressao .erro--segredo{
         position: absolute;
         font-size: 12px;
@@ -2345,6 +2713,11 @@
         bottom: -10px;
         transform: translateY(100%);
         font-weight: 300;
+    }
+
+    #modalVantagens .erro--segredo, #modalDesvantagens .erro--segredo{
+        bottom: 3px;
+        font-size: 11px;
     }
 
     .modal h2{
@@ -2376,7 +2749,7 @@
 }
 
 @media (max-width: 320px){
-    .ferimentos__graves--topo, .ferimentos__criticos--topo, .ficha__itens h4{
+    .ferimentos__graves--topo, .ferimentos__criticos--topo, .ficha__itens h4, .ficha__vantagens--topo{
         font-size: 12px;
     }
 
@@ -2387,4 +2760,19 @@
     .ferimento__item input{
         width: 58.75px;
     }
+
+    #modalTips .inputSegredos input, #modalTips .inputSegredos button{
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    #modalTips .inputSegredos{
+        gap: 5px;
+    }
+
+    #modalTips .modal-content{
+        gap: .5rem;
+    }
+
+
 }

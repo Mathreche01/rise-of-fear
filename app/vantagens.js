@@ -779,3 +779,7 @@ const vantagensLista = {
         descricao: "Ganhe Estabilidade quando você cria coisas ou realiza experimentos.",
     }
 }
+
+const vantagensNaoRolaveis = ["Atento", "Extorsionista", "Interrogador", "Intuitivo", "Observador", "Olho Clínico", "Analista", "Cientista", "Instinto"]
+const vantagensAtivaveis = ["Desesperado", "Guerreiro Divino", "Rancor", "Olho por Olho", "Ambicioso"]
+const vantagensUsaveis = ["Manipulador", "Workaholic", "Sede de Conhecimento", "Oportunista", "Bom Samaritano", "Código de Honra"]

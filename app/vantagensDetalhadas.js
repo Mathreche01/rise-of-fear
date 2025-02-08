@@ -10,7 +10,7 @@ const vantagensDetalhadas = {
     <p><b>10 - 14 ∘ </b> Escolha uma opção (a MJ determina o que acontece). 
     No entanto, o artefato também exige um preço adicional 
     (a MJ determina o que é necessário).</p>
-    <p><b>- 9 ∘ </b> O artefato faz algo inesperado, possivelmente perigoso. A 
+    <p><b>- 9 ∘ </b>O artefato faz algo inesperado, possivelmente perigoso. A 
     MJ faz um Movimento.</p>
     </div>
     <span class="titulo__opcoes">Opções Sugeridas:</span>
@@ -30,7 +30,7 @@ const vantagensDetalhadas = {
     <p><b>15 + ∘ </b>Escolha até três opções. Até duas podem ser guardadas 
     para mais tarde nesta cena.</p>
     <p><b>10 - 14 ∘ </b>Escolha uma opção.</p>
-    <p><b>- 9 ∘ </b>F) Escolha uma opção, mas alguém presente fica obcecado, te desejando, querendo te prender e possuir para ele 
+    <p><b>- 9 ∘ </b>Escolha uma opção, mas alguém presente fica obcecado, te desejando, querendo te prender e possuir para ele 
     mesmo. A MJ faz um Movimento</p>
     </div>
     <span class="titulo__opcoes">Opções:</span>
@@ -60,7 +60,7 @@ const vantagensDetalhadas = {
     não agir contra eles.</p>
     </div>
     `,
-        "Coleta de Dados": `
+    "Coleta de Dados": `
     <p>Sempre que você procurar informações sobre um assunto em uma biblioteca, em um arquivo de pesquisas, ou na Internet, <strong>role +Razão</strong>.
     Em resposta às suas pesquisas, a MJ dirá o que você descobriu 
     com o detalhamento esperado da fonte que você utilizou:</p>
@@ -1612,10 +1612,13 @@ const vantagensDetalhadas = {
     dele. Sempre que você se arriscar ou fizer sacrifícios pelo seu código 
     de honra, ganhe <strong>+1 de Estabilidade</strong>.</p>
     `,
-    "Desespero": `
+    "Desesperado": `
     <p>Sempre que você tentar avançar frente grandes desafios, receba +1 em todas as rolagens até que você esteja longe da ameaça.</p>
     `,
     "Destino Selado": `
+    <div class="vantagem__requisito">
+    <p><strong>Pré-requisito:</strong> Condenado (Desvantagem).</p>
+    </div>
     <p>Sempre que você receber um <strong>Ferimento Crítico</strong>, você pode marcar 1 de Tempo de Condenado para estabilizar imediatamente o 
     <strong>Ferimento</strong>.</p>
     <p>Sempre que você morrer, marque 2 de Tempo de Condenado e desperte, ferido e fraco, mas vivo. Todos os seus <strong>Ferimentos</strong>
@@ -1670,9 +1673,12 @@ const vantagensDetalhadas = {
     dimensão ou criatura. Pergunte para a MJ o que você aprendeu com seus estudos anteriores.</p>
     `,
     "Rancor": `
-    <p>Quando alguém, direta ou indiretamente, estraga seus planos, você recebe +1 constante contra ele até ter se vingado ou receber restituição de equivalente ao que você perdeu.</p>
+    <p>Quando alguém, direta ou indiretamente, estraga seus planos, você recebe +1 constante contra ele até ter se vingado ou receber restituição equivalente ao que você perdeu.</p>
     `,
     "Sacrifício Pessoal": `
+    <div class="vantagem__requisito">
+    <p><strong>Pré-requisito:</strong> Condenado (Desvantagem).</p>
+    </div>
     <p>Quando você se recusar a desistir mesmo que as chances estejam contra você, marque 1 de Tempo e role novamente os dados.</p>
     `,
     "Sede de Conhecimento": `

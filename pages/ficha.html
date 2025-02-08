@@ -46,7 +46,7 @@
                     <div class="ficha__relacoes--lista">
                         <div class="relacao__categoria">
                             <h4 class="relacao__nome">Nome</h4>
-                            <h4 class="relacao__grau">Grau</h4>
+                            <h4 class="relacao__grau" onclick="abreModal('tips', 'relacoes')">Grau</h4>
                             <div class="modificadores">
                                 <p>0</p>
                                 <p>+1</p>
@@ -102,52 +102,52 @@
                     <div>
                         <p class="atributo" id="vontade" onclick="rolarDado(event, 'atributo')">1</p>
                         <label class="vontade-titulo">Vontade<i onclick="abreModal('atributos', 'vontade')" class="fa-solid fa-pencil"></i></label>
-                        <span class="vontade-descricao" >Manter o Controle</span>
+                        <span class="vontade-descricao" onclick="abreModal('tips', 'vontade')">Manter o Controle</span>
                     </div>
                     <div>
                         <p class="atributo" id="percepcao" onclick="rolarDado(event, 'atributo')">1</p>
                         <label class="percepcao-titulo">Percepção<i onclick="abreModal('atributos', 'percepcao')" class="fa-solid fa-pencil"></i></label>
-                        <span class="percepcao-descricao">Observar Situação</span>
+                        <span class="percepcao-descricao" onclick="abreModal('tips', 'percepcao')">Observar Situação</span>
                     </div>
                     <div>
                         <p class="atributo" id="fortitude" onclick="rolarDado(event, 'atributo')">1</p>
                         <label class="fortitude-titulo">Fortitude<i onclick="abreModal('atributos', 'fortitude')" class="fa-solid fa-pencil"></i></label>
-                        <span class="fortitude-descricao">Suportar Lesão</span>
+                        <span class="fortitude-descricao" onclick="abreModal('tips', 'fortitude')">Suportar Lesão</span>
                     </div>
                     <div>
                         <p class="atributo" id="reflexos" onclick="rolarDado(event, 'atributo')">1</p>
                         <label class="reflexos-titulo">Reflexos<i onclick="abreModal('atributos', 'reflexos')" class="fa-solid fa-pencil"></i></label>
-                        <span class="reflexos-descricao">Evitar Dano</span>
+                        <span class="reflexos-descricao" onclick="abreModal('tips', 'reflexos')">Evitar Dano</span>
                     </div>
                     <div>
                         <p class="atributo" id="alma" onclick="rolarDado(event, 'atributo')">1</p>
                         <label class="alma-titulo">Alma<i onclick="abreModal('atributos', 'alma')" class="fa-solid fa-pencil"></i></label>
-                        <span class="alma-descricao">Ver Através da Ilusão</span>
+                        <span class="alma-descricao" onclick="abreModal('tips', 'alma')">Ver Através da Ilusão</span>
                     </div>
                     <div>
                         <p class="atributo" id="violencia" onclick="rolarDado(event, 'atributo')">1</p>
                         <label class="violencia-titulo">Violência<i onclick="abreModal('atributos', 'violencia')" class="fa-solid fa-pencil"></i></label>
-                        <span class="violencia-descricao">Engajar em Combate</span>
+                        <span class="violencia-descricao" onclick="abreModal('tips', 'violencia')">Engajar em Combate</span>
                     </div>
                     <div>
                         <p class="atributo" id="razao" onclick="rolarDado(event, 'atributo')">1</p>
                         <label class="razao-titulo">Razão<i onclick="abreModal('atributos', 'razao')" class="fa-solid fa-pencil"></i></label>
-                        <span class="razao-descricao">Investigar</span>
+                        <span class="razao-descricao" onclick="abreModal('tips', 'razao')">Investigar</span>
                     </div>
                     <div>
                         <p class="atributo" id="firmeza" onclick="rolarDado(event, 'atributo')">1</p>
                         <label class="firmeza-titulo">Firmeza<i onclick="abreModal('atributos', 'firmeza')" class="fa-solid fa-pencil"></i></label>
-                        <span class="firmeza-descricao">Agir sob Pressão</span>
+                        <span class="firmeza-descricao" onclick="abreModal('tips', 'firmeza')">Agir sob Pressão</span>
                     </div>
                     <div>
                         <p class="atributo" id="carisma" onclick="rolarDado(event, 'atributo')">1</p>
                         <label class="carisma-titulo">Carisma<i onclick="abreModal('atributos', 'carisma')" class="fa-solid fa-pencil"></i></label>
-                        <span class="carisma-descricao">Inflenciar Alguém</span>
+                        <span class="carisma-descricao" onclick="abreModal('tips', 'carisma')">Inflenciar Alguém</span>
                     </div>
                     <div>
                         <p class="atributo" id="intuicao" onclick="rolarDado(event, 'atributo')">1</p>
                         <label class="intuicao-titulo">Intuição<i onclick="abreModal('atributos', 'intuicao')" class="fa-solid fa-pencil"></i></label>
-                        <span class="intuicao-descricao">Ler uma Pessoa</span>
+                        <span class="intuicao-descricao" onclick="abreModal('tips', 'intuicao')">Ler uma Pessoa</span>
                     </div>
                 </div>
                 <div class="ficha__info ficha__equipamento">
@@ -227,20 +227,26 @@
                 </div>
         </div>
         <div class="ficha__coluna">
-                <div class="ficha__info desvantagens">
-                    <div class="relacoes__topo">
-                    <h3>Vantagens <button><i onclick="abreModal('vantagens')" class="fa-solid fa-pen-to-square"></i></button></h3>
-                    </div>
-                    <div class="lista__ferimentos">
-                        <ul class="lista__vantagens" id="listaVantagens"></ul>
-                    </div>
-                </div>
                 <div class="ficha__info vantagens">
                     <div class="relacoes__topo">
-                    <h3>Desvantagens <button><i onclick="abreModal('desvantagens')" class="fa-solid fa-pen-to-square"></i></button></h3>
+                    <h3>Vantagens / Qualidades<button><i onclick="abreModal('vantagens')" class="fa-solid fa-pen-to-square"></i></button></h3>
                     </div>
                     <div class="lista__ferimentos">
+                        <h4 class="ficha__vantagens--topo">Vantagens</h4>
+                        <ul class="lista__vantagens" id="listaVantagens"></ul>
+                        <h4 class="ficha__vantagens--topo">Qualidades</h4>
+                        <ul class="lista__vantagens" id="listaQualidades"></ul>
+                    </div>
+                </div>
+                <div class="ficha__info desvantagens">
+                    <div class="relacoes__topo">
+                    <h3>Desvantagens / Limitações<button><i onclick="abreModal('desvantagens')" class="fa-solid fa-pen-to-square"></i></button></h3>
+                    </div>
+                    <div class="lista__ferimentos">
+                        <h4 class="ficha__vantagens--topo">Desvantagens</h4>
                         <ul class="lista__vantagens" id="listaDesvantagens"></ul>
+                        <h4 class="ficha__vantagens--topo">Limitações</h4>
+                        <ul class="lista__vantagens" id="listaLimitacoes"></ul>
                     </div>
                 </div>
                 <div class="ficha__info estabilidade">
@@ -406,7 +412,7 @@
                 <span>Segredo Sombrio</span>
             </div>
             <div class="inputSegredos">
-                <input type="text" id="motivoSegredo" onfocus="limpaErro()" placeholder="placeholder">
+                <input type="text" id="motivoSegredo" autocomplete="off" onfocus="limpaErro()" placeholder="placeholder">
                 <span>Motivação Pessoal</span>
                 <p class="erro--segredo" id="mensagemErroSegredos"></p>
             </div>
@@ -423,10 +429,10 @@
                 <div class="dropdown">
                     <input type="text" class="select-box" value="Armas corpo-a-corpo" readonly id="categoriaEquipamento">
                     <div class="options">
-                        <div onclick="show(event), mostraInputs()">Armas corpo-a-corpo</div>
-                        <div onclick="show(event), mostraInputs()">Armas à distância</div>
-                        <div onclick="show(event), mostraInputs()">Armaduras</div>
-                        <div onclick="show(event), mostraInputs()">Equipamento Especial</div>
+                        <div onclick="show(event), mostraInputs('equipamento')">Armas corpo-a-corpo</div>
+                        <div onclick="show(event), mostraInputs('equipamento')">Armas à distância</div>
+                        <div onclick="show(event), mostraInputs('equipamento')">Armaduras</div>
+                        <div onclick="show(event), mostraInputs('equipamento')">Equipamento Especial</div>
                     </div>
                     <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
@@ -493,7 +499,7 @@
                 <span>Tipo</span>
             </div>
             <div class="inputSegredos" id="divNomeEquipamento">
-                <input type="text" id="nomeEquipamento" onfocus="limpaErro()" placeholder="placeholder">
+                <input type="text" id="nomeEquipamento" autocomplete="off" onfocus="limpaErro()" placeholder="placeholder">
                 <span>Nome</span>
                 <p class="erro--segredo" id="mensagemErroEquipamento"></p>
             </div>
@@ -507,7 +513,7 @@
         </span>
         <h2>Editar Narrativa</h2>
             <div class="inputSegredos">
-                <textarea id="narrativaPersonagem" onfocus="limpaErro()"></textarea>
+                <textarea id="narrativaPersonagem" autocomplete="off" onfocus="limpaErro()"></textarea>
                 <span>Narrativa</span>
                 <p class="erro--segredo" id="mensagemErroNarrativa"></p>
             </div>
@@ -521,7 +527,7 @@
         </span>
         <h2>Editar Anotações</h2>
             <div class="inputSegredos">
-                <textarea id="anotacoesPersonagem" onfocus="limpaErro()"></textarea>
+                <textarea id="anotacoesPersonagem" autocomplete="off" onfocus="limpaErro()"></textarea>
                 <span>Anotações</span>
                 <p class="erro--segredo" id="mensagemErroAnotacoes"></p>
             </div>
@@ -535,12 +541,12 @@
         </span>
         <h2>Personalizar Dados</h2>
             <div class="inputSegredos">
-                <input type="text" id="rolagemDado" onfocus="limpaErro()" placeholder="placeholder" value="1d20+5">
+                <input type="text" id="rolagemDado" autocomplete="off" onfocus="limpaErro()" value="1d20+0" placeholder="placeholder">
                 <span>Rolagem</span>
                 <p class="erro--segredo" id="mensagemErroDadosRolagem"></p>
             </div>
             <div class="inputSegredos">
-                <input type="text" id="nomeDado" onfocus="limpaErro()" placeholder="placeholder">
+                <input type="text" id="nomeDado" autocomplete="off" onfocus="limpaErro()" placeholder="placeholder">
                 <span>Nome</span>
                 <p class="erro--segredo" id="mensagemErroDadosNome"></p>
             </div>
@@ -566,7 +572,7 @@
         </span>
         <h2>Adicionar Gancho</h2>
             <div class="inputSegredos">
-                <textarea id="ganchosPersonagem" onfocus="limpaErro()"></textarea>
+                <textarea id="ganchosPersonagem" autocomplete="off" onfocus="limpaErro()"></textarea>
                 <span>Gancho Dramático</span>
                 <p class="erro--segredo" id="mensagemErroGanchos"></p>
             </div>
@@ -591,7 +597,7 @@
                 <span>Tipo</span>
             </div>
             <div class="inputSegredos">
-                <input type="text" id="descricaoFerimento" onfocus="limpaErro()" placeholder="placeholder">
+                <input type="text" id="descricaoFerimento" autocomplete="off" onfocus="limpaErro()" placeholder="placeholder">
                 <span>Descrição</span>
                 <p class="erro--segredo" id="mensagemErroFerimentos"></p>
             </div>
@@ -606,7 +612,7 @@
         <h2>Editar Informações</h2>
         <div class="modalMain">
             <div class="inputSegredos">
-                <input type="text" id="infoImagem" onfocus="limpaErro()" placeholder="placeholder">
+                <input type="text" id="infoImagem" onfocus="limpaErro()" placeholder="placeholder" autocomplete="off">
                 <span>Imagem</span>
                 <p class="erro--segredo" id="mensagemErroInfoImagem"></p>
                 <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file-ficha" onchange="mudaImagem()">
@@ -616,6 +622,7 @@
                 <div class="dropdown">
                     <input type="text" class="select-box" value="O Acadêmico" id="infoArquetipo" readonly>
                     <div class="options">
+                        <div class="iluminado" onclick="show(event)">O Abominável</div>
                         <div onclick="show(event)">O Acadêmico</div>
                         <div onclick="show(event)">A Agente</div>
                         <div onclick="show(event)">O Amaldiçoado</div>
@@ -628,18 +635,17 @@
                         <div onclick="show(event)">O Criminoso</div>
                         <div onclick="show(event)">A Descendente</div>
                         <div onclick="show(event)">O Detetive</div>
+                        <div class="iluminado" onclick="show(event)">A Discípula</div>
                         <div onclick="show(event)">A Enganadora</div>
                         <div onclick="show(event)">A Indagadora</div>
+                        <div class="iluminado" onclick="show(event)">O Mago da Morte</div>
                         <div onclick="show(event)">O Nômade</div>
                         <div onclick="show(event)">A Ocultista</div>
                         <div onclick="show(event)">A Profetisa</div>
+                        <div class="iluminado" onclick="show(event)">A Revivida</div>
                         <div onclick="show(event)">A Ronin</div>
                         <div onclick="show(event)">O Veterano</div>
                         <div onclick="show(event)">A Vingadora</div>
-                        <div class="iluminado" onclick="show(event)">O Abominável</div>
-                        <div class="iluminado" onclick="show(event)">A Discípula</div>
-                        <div class="iluminado" onclick="show(event)">O Mago da Morte</div>
-                        <div class="iluminado" onclick="show(event)">A Revivida</div>
                     </div>
                     <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
@@ -649,22 +655,22 @@
         </div>
         <div class="modalDetails">
             <div class="inputSegredos">
-                <input type="text" id="infoNome" onfocus="limpaErro()" placeholder="placeholder">
+                <input type="text" id="infoNome" onfocus="limpaErro()" autocomplete="off" placeholder="placeholder">
                 <span>Nome</span>
                 <p class="erro--segredo" id="mensagemErroInfoNome"></p>
             </div>
             <div class="inputSegredos">
-                <input type="text" id="infoOcupacao" onfocus="limpaErro()" placeholder="placeholder">
+                <input type="text" id="infoOcupacao" onfocus="limpaErro()" autocomplete="off" placeholder="placeholder">
                 <span>Ocupação</span>
                 <p class="erro--segredo" id="mensagemErroInfoOcupacao"></p>
             </div>
             <div class="inputSegredos">
-                <input type="text" id="infoNacionalidade" onfocus="limpaErro()" placeholder="placeholder">
+                <input type="text" id="infoNacionalidade" onfocus="limpaErro()" autocomplete="off" placeholder="placeholder">
                 <span>Nacionalidade</span>
                 <p class="erro--segredo" id="mensagemErroInfoNacionalidade"></p>
             </div>
             <div class="inputSegredos">
-                <input type="number" id="infoIdade" onfocus="limpaErro()" value="0" placeholder="placeholder">
+                <input type="number" id="infoIdade" onfocus="limpaErro()" autocomplete="off" value="0" placeholder="placeholder">
                 <span>Idade</span>
                 <p class="erro--segredo" id="mensagemErroInfoIdade"></p>
             </div>
@@ -685,11 +691,13 @@
                 <input type="search" placeholder="Buscar" oninput="buscaVantagem()" data-busca-vantagem>
             </div>
             <div class="boxVantagens">
-                <ul class="lista__vantagens" id="listaVantagensModal">
-                </ul>
+                <ul class="lista__vantagens" id="listaVantagensModal"></ul>
+                <ul class="lista__vantagens" id="listaQualidadesModal"></ul>
             </div>
             <p class="erro--segredo" id="mensagemErroVantagens"></p>
             <div class="inputSegredos">
+                <button class="btnDetails btnIluminado" onclick="mudaModal(event)">Qualidades</button>
+                <button class="btnDetails btnConsciente" onclick="mudaModal(event)">Vantagens</button>
                 <input type="submit" value="Editar" onclick="adicionaVantagens()">
             </div>
         </div>
@@ -705,11 +713,13 @@
                 <input type="search" placeholder="Buscar" oninput="buscaDesvantagem()" data-busca-desvantagem>
             </div>
             <div class="boxVantagens">
-                <ul class="lista__vantagens" id="listaDesvantagensModal">
-                </ul>
+                <ul class="lista__vantagens" id="listaDesvantagensModal"></ul>
+                <ul class="lista__vantagens" id="listaLimitacoesModal"></ul>
             </div>
             <p class="erro--segredo" id="mensagemErroDesvantagens"></p>
             <div class="inputSegredos">
+                <button class="btnDetails btnIluminado" onclick="mudaModal(event)">Limitações</button>
+                <button class="btnDetails btnConsciente" onclick="mudaModal(event)">Desvantagens</button>
                 <input type="submit" value="Editar" onclick="adicionaDesvantagens()">
             </div>
         </div>
@@ -721,7 +731,7 @@
         <h2>Progressão de Personagem</h2>
         <div class="progressao__conteudo">
             <h6>Ao acumular <strong>5 de Experiência</strong>, o jogador pode escolher uma progressão disponível em sua ficha de personagem, conforme a lista abaixo.</h6>
-            <h6>Quando um Arquétipo Consciente progride, ele deve escolher um dos seguintes aprimoramentos:</h6>
+            <h6>Quando um Arquétipo <b id="progressaoTipo"></b> progride, ele deve escolher um dos seguintes aprimoramentos:</h6>
             <div class="progressao__grupo progressao__inicial">
                 <h5>Progressão Inicial:</h5>
                 <div class="progressao__lista consciente">
@@ -908,7 +918,7 @@
             <div class="modal-atributo" data-atributo="vontade">
                 <p class="atributo-descricao"><b>Vontade</b> mede a resiliência mental do personagem, a compostura, paz de espírito e capacidade para lidar com o trauma.</p>
                 <div class="inputSegredos">
-                    <input class="atributos" type="text" id="inputVontade" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <input class="atributos" autocomplete="off" type="text" id="inputVontade" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
                     <span>Vontade</span>
                 </div>
                 <p class="atributo-descricao"> Uma PJ com <b>Vontade</b> elevada pode resistir à influência aterrorizante de poderes mundanos e sobrenaturais e permanecer são.</p>
@@ -916,7 +926,7 @@
             <div class="modal-atributo" data-atributo="fortitude">
                 <p class="atributo-descricao"><b>Fortitude</b> mede a resistência física do personagem, o limiar de dor e a resposta a estresse quando sofrer lesões físicas.</p>
                 <div class="inputSegredos">
-                    <input class="atributos" type="text" id="inputFortitude" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <input class="atributos" autocomplete="off" type="text" id="inputFortitude" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
                     <span>Fortitude</span>
                 </div>
                 <p class="atributo-descricao"> Uma PJ com <b>Fortitude</b> elevada é capaz de suportar lesões que derrubariam um personagem com <b>Fortitude</b> mais baixa.</p>
@@ -924,7 +934,7 @@
             <div class="modal-atributo" data-atributo="reflexos">
                 <p class="atributo-descricao"><b>Reflexos</b> medem a rapidez, reação e instinto físico quando é agredido ou quando sofre risco de lesão.</p>
                 <div class="inputSegredos">
-                    <input class="atributos" type="text" id="inputReflexos" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <input class="atributos" autocomplete="off" type="text" id="inputReflexos" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
                     <span>Reflexos</span>
                 </div>
                 <p class="atributo-descricao"> Uma PJ com <b>Reflexos</b> elevados é melhor ao tentar evitar sofrer dano.</p>
@@ -932,7 +942,7 @@
             <div class="modal-atributo" data-atributo="razao">
                 <p class="atributo-descricao"><b>Razão</b> mede a capacidade analítica de um personagem.</p>
                 <div class="inputSegredos">
-                    <input class="atributos" type="text" id="inputRazao" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <input class="atributos" autocomplete="off" type="text" id="inputRazao" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
                     <span>Razão</span>
                 </div>
                 <p class="atributo-descricao"> Uma PJ com <b>Razão</b> elevada é boa em coleta de informações e investigação.</p>
@@ -940,7 +950,7 @@
             <div class="modal-atributo" data-atributo="intuicao">
                 <p class="atributo-descricao"><b>Intuição</b> mede a empatia e o instinto do personagem.</p>
                 <div class="inputSegredos">
-                    <input class="atributos" type="text" id="inputIntuicao" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <input class="atributos" autocomplete="off" type="text" id="inputIntuicao" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
                     <span>Intuição</span>
                 </div>
                 <p class="atributo-descricao"> Uma PJ com <b>Intuição</b> elevada é boa em perceber as intenções e motivos ocultos de outras criaturas inteligentes.</p>
@@ -948,7 +958,7 @@
             <div class="modal-atributo" data-atributo="percepcao">
                 <p class="atributo-descricao"><b>Percepção</b> mede o estado de alerta do personagem.</p>
                 <div class="inputSegredos">
-                    <input class="atributos" type="text" id="inputPercepcao" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <input class="atributos" autocomplete="off" type="text" id="inputPercepcao" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
                     <span>Percepção</span>
                 </div>
                 <p class="atributo-descricao"> Uma PJ com <b>Percepção</b> elevada é boa em avaliar o ambiente e perceber o que os outros ignoram.</p>
@@ -956,7 +966,7 @@
             <div class="modal-atributo" data-atributo="firmeza">
                 <p class="atributo-descricao"><b>Firmeza</b> mede o controle do personagem sobre pressão.</p>
                 <div class="inputSegredos">
-                    <input class="atributos" type="text" id="inputFirmeza" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <input class="atributos" autocomplete="off" type="text" id="inputFirmeza" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
                     <span>Firmeza</span>
                 </div>
                 <p class="atributo-descricao"> Uma PJ com <b>Firmeza</b> elevada é boa em furtividade, furto e outras situações que exigem decisões rápidas em situações de estresse.</p>
@@ -964,7 +974,7 @@
             <div class="modal-atributo" data-atributo="violencia">
                 <p class="atributo-descricao"><b>Violência</b> mede a força bruta, habilidade de combate e ferocidade do personagem.</p>
                 <div class="inputSegredos">
-                    <input class="atributos" type="text" id="inputViolencia" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <input class="atributos" autocomplete="off" type="text" id="inputViolencia" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
                     <span>Violência</span>
                 </div>
                 <p class="atributo-descricao"> Um PJ com <b>Violência</b> elevada se sobressai em infligir dano aos outros.</p>
@@ -972,7 +982,7 @@
             <div class="modal-atributo" data-atributo="carisma">
                 <p class="atributo-descricao"><b>Carisma</b> mede o charme, a liderança e o talento retórico do personagem.</p>
                 <div class="inputSegredos">
-                    <input class="atributos" type="text" id="inputCarisma" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <input class="atributos" autocomplete="off" type="text" id="inputCarisma" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
                     <span>Carisma</span>
                 </div>
                 <p class="atributo-descricao"> Uma PJ com <b>Carisma</b> elevado facilmente persuade e manipula os outros.</p>
@@ -980,7 +990,7 @@
             <div class="modal-atributo" data-atributo="alma">
                 <p class="atributo-descricao"><b>Alma</b> mede a sensibilidade do personagem às forças sobrenaturais.</p>
                 <div class="inputSegredos">
-                    <input class="atributos" type="text" id="inputAlma" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
+                    <input class="atributos" autocomplete="off" type="text" id="inputAlma" onfocus="limpaErro()" oninput="formataInput(event)" value="0" placeholder="placeholder">
                     <span>Alma</span>
                 </div>
                 <p class="atributo-descricao"> Uma PJ com <b>Alma</b> elevada tem mais facilidade em perceber a Realidade e está mais sintonizado com seus poderes intrínsecos.</p>
@@ -988,6 +998,245 @@
             <div class="inputSegredos">
                 <input type="submit" value="Editar" onclick="modificaAtributos()">
                 <p class="erro--segredo" id="mensagemErroAtributos"></p>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modalPopup">
+        <span class="icone-fechar">
+            <ion-icon name="close" onclick="fechaModal('popup')"></ion-icon>
+        </span>
+        <h2>Manipulador</h2>
+            <div class="inputSegredos">
+                <div class="dropdown">
+                    <input type="text" class="select-box" value="Influenciar Alguém" id="acaoSelecionada" readonly>
+                    <div class="options">
+                        <div onclick="show(event), mostraInputs('popup')">Influenciar Alguém</div>
+                        <div onclick="show(event), mostraInputs('popup')">Atrapalhar</div>
+                    </div>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+                </div>
+                <span>Ação</span>
+            </div>
+            <div class="inputSegredos" id="divAtributoSelecionado">
+                <div class="dropdown">
+                    <input type="text" class="select-box" value="Alma" id="atributoSelecionado" readonly>
+                    <div class="options">
+                        <div onclick="show(event)">Alma</div>
+                        <div onclick="show(event)">Carisma</div>
+                        <div onclick="show(event)">Firmeza</div>
+                        <div onclick="show(event)">Fortitude</div>
+                        <div onclick="show(event)">Intuição</div>
+                        <div onclick="show(event)">Carisma</div>
+                        <div onclick="show(event)">Percepção</div>
+                        <div onclick="show(event)">Razão</div>
+                        <div onclick="show(event)">Violência</div>
+                        <div onclick="show(event)">Vontade</div>
+                    </div>
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                </div>
+                <span>Atributo</span>
+            </div>
+            <div class="inputSegredos">
+                <input type="submit" value="Rolar" onclick="ativarRolagem(event)">
+            </div>
+    </div>
+    <div class="modal" id="modalTips">
+        <span class="icone-fechar">
+            <ion-icon name="close" onclick="fechaModal('tips')"></ion-icon>
+        </span>
+        <h2></h2>
+        <div class="modal-content">
+            <div class="modal-tip" data-atributo="vontade">
+                <p>Quando você usar autocontrole para evitar a sucumbir ao estresse, experiências traumáticas, influência psíquica ou forças sobrenaturais,
+                <strong>role +Vontade</strong>.
+                </p>
+                <div class="vantagem__resultados">
+                    <p><b>15 + ∘ </b>Você cerra os dentes e segue em frente.</p>
+                    <p><b>10 - 14 ∘ </b>O esforço para resistir causa uma condição, que permanece com você até que tenha um tempo para se recuperar. Você recebe -1 em situações que esta situação seria um obstáculo para você.</p>
+                </div>
+                <div class="vantagem__opcoes">
+                    <p>Escolha uma:</p>
+                    <div class="vantagem__dropdown">
+                        <input type="text" class="vantagem__selectbox" value="Você fica irritada (-1 de Estabilidade)." readonly>
+                        <div class="vantagem__options">
+                                        <div onclick="show(event)">Você fica irritada (<strong>-1 de Estabilidade</strong>).</div>
+                                        <div onclick="show(event)">Você fica triste (<strong>-1 de Estabilidade</strong>).</div>
+                                        <div onclick="show(event)">Você fica assustada (<strong>-1 de Estabilidade</strong>).</div>
+                                        <div onclick="show(event)">Você fica cheia de culpa (<strong>-1 de Estabilidade</strong>).</div>
+                                        <div onclick="show(event)">Você fica obcecada (<strong>+1 de Relação</strong> para o que causou esta condição).</div>
+                                        <div onclick="show(event)">Você fica distraída (-2 em situações em que essa condição te limitar).</div>
+                                        <div onclick="show(event)">Você será assombrada por essa experiência mais tarde.</div>
+                        </div>
+                        <div class="caret"></div>
+                    </div>
+                </div>
+                <div class="vantagem__resultados">
+                    <p><b>- 9 ∘ </b>A tensão é demais para a sua mente suportar. A MJ escolhe a sua reação: encolher-se impotente na presença da ameaça, entrar em pânico sem controle de suas ações, sofrer trauma emocional (<strong>-2 de Estabilidade</strong>), ou sofrer um trauma que muda sua vida (<strong>-4 de Estabilidade</strong>).</strong></p>
+                </div>
+            </div>
+            <div class="modal-tip" data-atributo="fortitude">
+                <p>Quando você suportar uma lesão, <strong>role +Fortitude -Dano</strong>. Se você estiver vestindo armadura, adicione o valor dela à rolagem.</p>
+                    <div class="vantagem__resultados">
+                        <p><b>15 + ∘ </b>Você engole a dor e segue em frente.</p>
+                        <p><b>10 - 14 ∘ </b>Você ainda está de pé, mas a MJ escolhe uma opção:</p>
+                    </div>
+                    <div class="vantagem__opcoes">
+                        <p>◇ A lesão te deixa desnorteada.</p>
+                        <p>◇ Você perde alguma coisa.</p>
+                        <p>◇ Você recebe um <strong>Ferimento Grave</strong>.</p>
+                    </div>
+                    <div class="vantagem__resultados">
+                        <p><b>- 9 ∘ </b>A lesão é grande demais. Você escolhe se você:</p>
+                    </div>
+                    <div class="vantagem__opcoes">
+                        <p>◇ É nocauteada (a MJ também pode escolher infligir um <strong>Ferimento Grave</strong>).</p>
+                        <p>◇ Recebe um <strong>Ferimento Crítico</strong>, mas ainda continua agindo (se você já possuir um <strong>Ferimento Crítico</strong> você não pode escolher essa opção novamente).</p>
+                        <p>◇ Morre.</p>
+                    </div>
+            </div>
+            <div class="modal-tip" data-atributo="reflexos">
+                <p>Quando você esquivar, aparar ou bloquear Dano, <strong>role +Reflexos:</strong></p>
+                <div class="vantagem__resultados">
+                    <p><b>15 + ∘ </b>Você sai completamente ileso.</p>
+                    <p><b>10 - 14 ∘ </b>Você evita o pior, mas a MJ decide se você acaba em uma situação ruim, perde algo ou sofre <strong>Dano</strong> parcial.</p>
+                    <p><b>- 9 ∘ </b>Você foi muito lento para reagir ou você tomou uma decisão errada. Talvez você não tenha evitado nenhum <strong>Dano</strong>, ou acabou em uma posição ainda pior do que antes. A MJ faz um Movimento.</p>
+                </div>
+            </div>
+            <div class="modal-tip" data-atributo="firmeza">
+                <p>Quando você fizer algo arriscado, sob pressão do tempo, ou tentando evitar o perigo, a MJ vai explicar a consequência se falhar, e então <strong>role +Firmeza:</strong></p>
+                <div class="vantagem__resultados">
+                    <p><b>15 + ∘ </b>Você faz o que pretendia.</p>
+                    <p><b>10 - 14 ∘ </b>Você consegue fazer, mas hesita, fica atrasado ou precisa lidar com uma complicação - a MJ revela uma consequência inesperada, um preço alto, ou uma escolha difícil.</p>
+                    <p><b>- 9 ∘ </b>Há graves consequências, você comete um erro, ou fica exposto ao perigo. A MJ faz um Movimento.</p>
+                </div>
+            </div>
+            <div class="modal-tip" data-atributo="violencia">
+                <p>Quando você engajar em combate um oponente preparado, explique como e <strong>role +Violência:</strong></p>
+                <div class="vantagem__resultados">
+                    <p><b>15 + ∘ </b>Você inflige dano em seu oponente e evita contra-ataques.</p>
+                    <p><b>10 - 14 ∘ </b>Você inflige dano, mas com um custo. A MJ escolhe um destes:</p>
+                </div>  
+                <div class="vantagem__opcoes">
+                    <p>◇ Você está sujeito a um contra-ataque.</p>
+                    <p>◇ Você causa menos dano do que o pretendido.</p>
+                    <p>◇ Você perde algo importante.</p>
+                    <p>◇ Você gasta toda a sua munição.</p>
+                    <p>◇ Você é confrontado por uma nova ameaça.</p>
+                    <p>◇ Você estará em apuros mais tarde.</p>
+                </div>
+                <div class="vantagem__resultados">
+                    <p><b>- 9 ∘ </b>Seu ataque não ocorre como planejado. Você pode ter ficado sujeito ao azar, errado seu alvo ou pago um preço alto pelo seu ataque. A MJ faz um Movimento.</p>
+                </div>
+            </div>
+            <div class="modal-tip" data-atributo="carisma">
+                <div class="modal-tip-btns">
+                    <button class="active">PNJ</button>
+                    <button>PJ</button>
+                </div>
+                <div class="modal-tip-section" data-section="PNJ">
+                    <p>Quando você influenciar um PNJ através de negociação, argumentação ou de uma posição de poder, <strong>role +Carisma:</strong></p>
+                    <div class="vantagem__resultados">
+                        <p><b>15 + ∘ </b>Ele faz o que você pede.</p>
+                        <p><b>10 - 14 ∘ </b>Ele faz o que você pede, mas a MJ escolhe uma:</p>
+                    </div>
+                    <div class="vantagem__opcoes">
+                        <p>◇ Ele exige uma compensação melhor.</p>
+                        <p>◇ Complicações vão surgir no futuro.</p>
+                        <p>◇ Ele cede neste momento, mas vai mudar de ideia e se arrepender disso depois.</p>
+                    </div>
+                    <div class="vantagem__resultados">
+                        <p><b>- 9 ∘ </b>Sua tentativa tem repercussões não planejadas. A MJ faz um Movimento.</p>
+                    </div>
+                </div>
+                <div class="modal-tip-section" data-section="PJ">
+                <p>Quando você influenciar outro PJ, <strong>role +Carisma:</strong></p>
+                    <div class="vantagem__resultados">
+                        <p><b>15 + ∘ </b>Ambas as opções abaixo.</p>
+                        <p><b>10 - 14 ∘ </b>Somente uma opção abaixo.</p>
+                        <p><b>- 9 ∘ </b>O personagem recebe +1 em sua próxima rolagem contra você. A MJ faz um Movimento.</p>
+                    </div>
+                    <span class="titulo__opcoes">Opções:</span>
+                    <div class="vantagem__opcoes">
+                        <p>◇ Ele está motivado a fazer o que você pediu, e recebe +1 em sua próxima jogada, se ele fizer isto.</p>
+                        <p>◇ Ele se preocupa com as consequências de não fazer o que você pediu, e recebe <strong>-1 de Estabilidade</strong> se ele não fizer isto.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-tip" data-atributo="alma">
+                <p>Quando você sofrer um choque, lesões ou distorcer sua percepção através de drogas ou rituais, <strong>role +Alma</strong> para Ver Através da Ilusão:</p>
+                <div class="vantagem__resultados">
+                    <p><b>15 + ∘ </b>Você vê as coisas como elas realmente são.</p>
+                    <p><b>10 - 14 ∘ </b>Você vê a Realidade, mas você também afeta a Ilusão. A MJ escolhe um:</p>
+                </div>
+                <div class="vantagem__opcoes">
+                    <p>◇ Alguma coisa percebe você.</p>
+                    <p>◇ A Ilusão é rasgada ao seu redor.</p>
+                </div>
+                <div class="vantagem__resultados">
+                    <p><b>- 9 ∘ </b>A MJ explica o que você vê e faz um Movimento.</p>
+                </div>
+            </div>
+            <div class="modal-tip" data-atributo="percepcao">
+                <p>Quando você observar uma situação, <strong>role +Percepção</strong>. Em um sucesso, você pode fazer perguntas à MJ sobre a situação atual. Quando você agir de acordo com essas respostas, receba +1 em suas jogadas:</p>
+                <div class="vantagem__resultados">
+                    <p><b>15 + ∘ </b>Faça duas perguntas.</p>
+                    <p><b>10 - 14 ∘ </b>Faça uma pergunta.</p>
+                    <p><b>- 9 ∘ </b>Você pode fazer uma pergunta mesmo assim, mas você não ganha nenhum bônus por isso, e perde alguma coisa, atrai atenção indesejada ou se expõe ao perigo. A MJ faz um Movimento.</p>
+                </div>
+                <span class="titulo__opcoes">Perguntas:</span>
+                <div class="vantagem__opcoes">
+                    <p>◇ Qual é a melhor forma de lidar com isso?</p>
+                    <p>◇ Qual é a maior ameaça no momento?</p>
+                    <p>◇ O que eu posso usar a meu favor?</p>
+                    <p>◇ Em que eu preciso prestar atenção?</p>
+                    <p>◇ O que está sendo escondido de mim?</p>
+                    <p>◇ O que parece ser estranho sobre isso?</p>
+                </div>
+            </div>
+            <div class="modal-tip" data-atributo="razao">
+                <p>Quando você investigar alguma coisa, <strong>role +Razão</strong>. Em um sucesso, você encontra todas as pistas essenciais e pode fazer perguntas para obter informações adicionais:</p>
+                <div class="vantagem__resultados">
+                    <p><b>15 + ∘ </b>Faça duas perguntas.</p>
+                    <p><b>10 - 14 ∘ </b>Você pode fazer uma pergunta. A informação tem um custo, determinado pela MJ, como precisar de alguém ou alguma coisa para obter respostas, expor-se ao perigo, ou precisar gastar tempo ou recursos extras. Você fará o que for necessário?</p>
+                    <p><b>- 9 ∘ </b>Você pode obter alguma informação mesmo assim, mas você vai pagar um preço por isso. Você pode ficar exposto a perigos ou custos. A MJ faz um Movimento.</p>
+                </div>
+                <span class="titulo__opcoes">Perguntas:</span>
+                <div class="vantagem__opcoes">
+                    <p>◇ Como posso saber mais sobre o que estou investigando?</p>
+                    <p>◇ O que meu instinto diz sobre o que estou investigando?</p>
+                    <p>◇ Há algo estranho sobre o que estou investigando?</p>
+                </div>
+            </div>
+            <div class="modal-tip" data-atributo="intuicao">
+                <p>Quando você ler uma pessoa, <strong>role +Intuição</strong>. Em um sucesso, você pode fazer perguntas à MJ/jogador sobre a sua personagem a qualquer momento durante esta cena, enquanto estiver conversando com o personagem dela:</p>
+                <div class="vantagem__resultados">
+                    <p><b>15 + ∘ </b>Você pode fazer duas perguntas.</p>
+                    <p><b>10 - 14 ∘ </b>Você pode fazer uma pergunta.</p>
+                    <p><b>- 9 ∘ </b>Você acidentalmente revela suas intenções reais para a pessoa que você está tentando ler. Diga à MJ/jogador quais são essas intenções. A MJ faz um Movimento.</p>
+                </div>
+                <span class="titulo__opcoes">Perguntas:</span>
+                <div class="vantagem__opcoes">
+                    <p>◇ Você está mentindo?</p>
+                    <p>◇ Como você se sente agora?</p>
+                    <p>◇ O que você pretende fazer?</p>
+                    <p>◇ O que você gostaria que eu fizesse?</p>
+                    <p>◇ Como eu poderia fazer você [...]?</p>
+                </div>
+            </div>
+            <div class="modal-tip" data-atributo="relacoes">
+                <p>Esses movimentos são aplicáveis às <strong>Relações</strong> com grau 1 ou 2.</p>
+                <div class="vantagem__resultados">
+                <p><b>◇ Não desejar mal:</b> Se você pretende <span>machucar ou matar sua Relação</span> - direta ou indiretamente - você precisa
+                <strong>Manter o Controle</strong> com a influência sendo uma relutância em causar ferimentos. No caso de sucesso com Complicações
+                <b>(10-14)</b>, além da consequência normal, você também recebe um modificador de <strong>-Relação</strong> no seu Movimento de infligir dano.
+                Em caso de falha <b>(-9)</b>, além da consequência normal por falhar na rolagem, você não consegue ter coragem de ferir sua <strong>Relação</strong>.</p>
+                <p><b>◇ Recuperar Estabilidade:</b> Em uma cena em que você <span>vivenciar proximidade, segurança, e afirmação de uma Relação</span>, sua <strong>Estabilidade</strong> é aumentada um número de passos igual ao valor do grau da <strong>Relação</strong>.</p>
+                <p><b>◇ Perder Estabilidade:</b> <span>Se uma Relação sua for gravemente ferida</span>, sua <strong>Estabilidade</strong> é diminuída um número de passos igual ao valor do grau da <strong>Relação</strong>. Dobre esse valor se a <strong>Relação</strong> morrer.</p>
+                </div>
+            </div>
+            <div class="inputSegredos">
+                <button class="btnDetails">Agir de Acordo</button>
+                <input type="submit" value="Confirmar" onclick="fechaModal('tips')">
             </div>
         </div>
     </div>

@@ -273,8 +273,8 @@ async function criaFicha(){
         validacao.push(inputStatus !== "")
     }) 
 
-    if(listaSegredos.length < 2){
-        erroFormulario.innerHTML = "A lista deve conter, ao menos, dois segredos sombrios."
+    if(listaSegredos.length === 0){
+        erroFormulario.innerHTML = "A lista deve conter um ou mais segredos sombrios."
         return  
     }
 

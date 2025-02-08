@@ -4,7 +4,11 @@ let pegaRelacoes;
 let pegaEquipamento;
 let pegaAnotacoes;
 let pegaGanchos;
+let pegaQualidades;
+let qualidadesPersonagem;
 let relacoesPersonagem;
+let limitacoesPersonagem;
+let pegaLimitacoes;
 let equipamentoPersonagem;
 let notasPersonagem;
 let ferimentosPersonagem;
@@ -16,6 +20,7 @@ let pegaExperiencia;
 let experienciaPersonagem;
 let pegaHistoria;
 let pegaNome;
+let poderSuperior;
 let historiaPersonagemSelecionado;
 let nomePersonagemSelecionado;
 
@@ -91,6 +96,7 @@ async function abreFicha(vantagens, atributos, desvantagens, arquetipo, ocupacao
             listaSegredos.appendChild(novoSegredo)
         })
     }
+
     arrayVantagens.forEach((vantagem) => {
         const vantagemElemento = document.createElement('li')
         const listaVantagensFicha = document.querySelector('#listaVantagens')
@@ -102,11 +108,26 @@ async function abreFicha(vantagens, atributos, desvantagens, arquetipo, ocupacao
         </div>
         <div class="vantagem__conteudo">
             ${vantagensDetalhadas[vantagem]}
-            ${vantagensLista[vantagem]["atributo"] === "-" ? "" : `
+            ${vantagensLista[vantagem]["atributo"] === "-" ? "" : (vantagensNaoRolaveis.includes(vantagem) ? "" : `
                 <div class="vantagem__rolagem">
                     <button onclick="rolarDado(event, 'vantagem', '${vantagensLista[vantagem]["atributo"]}')">Rolar</button>
                 </div>
-            `}
+            `)}
+            ${vantagensAtivaveis.includes(vantagem) ? `
+                <div class="vantagem__rolagem">
+                    <button onclick="ativarVantagem(event)">Ativar</button>
+                    ${vantagem === "Guerreiro Divino" ? `
+                    <button class="failure" onclick="ativarFracasso(event)">Fracasso</button>
+                ` : ""}
+                </div>
+            ` : ""
+            }
+            ${vantagensUsaveis.includes(vantagem) ? `
+                <div class="vantagem__rolagem">
+                    <button onclick="usarVantagem(event)">Usar</button>
+                </div>
+            ` : ""
+            }
         </div>
         <span class="vantagem__linha"></span>
         `
@@ -156,6 +177,70 @@ async function abreFicha(vantagens, atributos, desvantagens, arquetipo, ocupacao
 
     pegaNome(numero)
     nomeDoPersonagem.textContent = nomePersonagemSelecionado
+
+    pegaQualidades(numero)
+    if(qualidadesPersonagem !== null && qualidadesPersonagem !== undefined){     
+        qualidadesPersonagem.forEach((qualidade) => {
+            const qualidadeElemento = document.createElement('li')
+            const listaQualidadesFicha = document.querySelector('#listaQualidades')
+    
+            qualidadeElemento.innerHTML = `
+            <div class="vantagem__accordion">
+            <span class="vantagem__titulo">${qualidade}</span>
+            <i class="bx bxs-chevron-down arrow"></i>
+            </div>
+            <div class="vantagem__conteudo">
+                ${qualidadesDetalhadas[qualidade]}
+                ${qualidadesLista[qualidade]["atributo"] === "-" ? "" : `
+                    <div class="vantagem__rolagem">
+                        <button onclick="rolarDado(event, 'vantagem', '${qualidadesLista[qualidade]["atributo"]}')">Rolar</button>
+                    </div>
+                `}
+            </div>
+            <span class="vantagem__linha"></span>
+            `
+            qualidadeElemento.addEventListener('click', (e) => mostraDetalhes(e))
+            listaQualidadesFicha.appendChild(qualidadeElemento)
+        })
+    }
+
+    const requisitos = document.querySelectorAll('.vantagem__requisito')
+    requisitos.forEach((requisito) => requisito.remove())
+
+    pegaLimitacoes(numero)
+    pegaPoderSuperior(numero)
+    if(limitacoesPersonagem !== null && limitacoesPersonagem !== undefined){     
+        limitacoesPersonagem.forEach((limitacao) => {
+            const limitacaoElemento = document.createElement('li')
+            const listaLimitacoesFicha = document.querySelector('#listaLimitacoes')
+    
+            limitacaoElemento.innerHTML = `
+            <div class="vantagem__accordion">
+            <span class="vantagem__titulo">${limitacao}</span>
+            <i class="bx bxs-chevron-down arrow"></i>
+            </div>
+            <div class="vantagem__conteudo">
+                ${limitacoesDetalhadas[limitacao]}
+                ${limitacao === "Vinculado a um Poder Superior" ? (poderSuperior === undefined ? "" : listaPoderSuperior[poderSuperior]) : ""}
+                ${limitacoesLista[limitacao]["tipo"] === "-" ? "" : `
+                    <div class="vantagem__rolagem">
+                        <button onclick="rolarDado(event, '${limitacoesLista[limitacao]["tipo"]}', '${limitacoesLista[limitacao]["atributo"]}')">Rolar</button>
+                    </div>
+                `}
+            </div>
+            <span class="vantagem__linha"></span>
+            `
+
+            if(limitacao === "Vinculado a um Poder Superior"){
+                const dropdown = limitacaoElemento.querySelector(".vantagem__dropdown")
+                dropdown.remove()
+            }
+
+
+            limitacaoElemento.addEventListener('click', (e) => mostraDetalhes(e))
+            listaLimitacoesFicha.appendChild(limitacaoElemento)
+        })
+    }
 
     pegaHistoria(numero)
     if(historiaPersonagemSelecionado !== null && historiaPersonagemSelecionado !== undefined){
@@ -235,6 +320,28 @@ async function abreFicha(vantagens, atributos, desvantagens, arquetipo, ocupacao
         progresso.style = `--i: ${experienciaPersonagem}`
     }
 
+    vantagensAtivas = [];
+    desvantagensPersonagem = [];
+    vantagensPersonagem = [];
+    vantagemFracasso = false;
+    agirDeAcordo = false;
+
+    const modal = document.getElementById('modalTips')
+    const dropdown = modal.querySelector('.vantagem__dropdown')
+    dropdown.addEventListener('click', () => {
+        dropdown.classList.toggle('active')
+    })
+    const agirDeAcordoBtn = modal.querySelector('.inputSegredos button')
+    agirDeAcordoBtn.addEventListener("click", () => {
+        if(agirDeAcordoBtn.classList.contains("active")){
+            agirDeAcordoBtn.classList.remove("active")
+            agirDeAcordo = false;
+        } else{
+            agirDeAcordoBtn.classList.add("active")
+            agirDeAcordo = true;
+        }
+        
+    })
 }
 
 function formatarAtributo(valor){

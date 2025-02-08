@@ -50,7 +50,7 @@ const desvantagensLista = [
         descricao: "Você desperta desejos doentios nos outros.",
     },
     {
-        nome: "Devoto",
+        nome: "Devotado",
         icon: "fa-dove",
         descricao: "Você é um fervoroso adepto de uma ideologia.",
     },
@@ -176,3 +176,9 @@ const desvantagensLista = [
     }
 ]
 
+const desvantagensObrigatorias = {
+    "O Amaldiçoado": "Condenado",
+    "A Arruinada": "Arruinado",
+    "O Brinquedo": "Desejado",
+    "A Vingadora": "Juramento de Vingança",
+}

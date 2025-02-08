@@ -85,8 +85,7 @@ const desvantagensDetalhadas = {
         </div>
     </div>
     <p>Seu destino foi selado. Talvez você esteja morrendo de uma doença, foi prometido como sacrifício a um deus esquecido, ou vendeu 
-    sua alma para alguma entidade, que aguarda para arrastar você para o inferno quando seu tempo acabar. No início de cada jogo 
-    sessão, <strong>role +0</strong>:</p>
+    sua alma para alguma entidade, que aguarda para arrastar você para o inferno quando seu tempo acabar. No início de cada sessão de jogo, <strong>role +0</strong>:</p>
     <div class="vantagem__resultados">
     <p><b>15 + ∘ </b>Você ainda tem algum tempo sobrando.</p>
     <p><b>10 - 14 ∘ </b>Seus inimigos estão perto você. A MJ recebe 1 Reserva.</p>
@@ -100,6 +99,17 @@ const desvantagensDetalhadas = {
     <p><b>- 9 ∘ </b>Seu fim se aproxima. A MJ usa duas opções da lista acima oumarca 2 de Tempo.</p>
     </div>
     <p>Quando você finalmente acabar seu Tempo, você encontra seu destino final.</p>
+    `,
+    "Criador": `
+    <p>Você é o resultado de um terrível experimento ou de um ritual desumano do seu criador. Você conseguiu escapar, mas ele ainda está procurando por você. Na primeira sessão
+    e sempre que você mostrar seu verdadeiro eu para alguém, <strong>role +0:</strong></p>
+    <div class="vantagem__resultados">
+    <p><b>15 + ∘ </b>Você está a salvo do seu criador.</p>
+    <p><b>10 - 14 ∘ </b>Seu criador percebe seu rastro. A MJ recebe 1 Reserva.</p>
+    <p><b>- 9 ∘ </b>Você se revelou ao seu criador. A MJ recebe 3 Reservas.</p>
+    </div>
+    <p>A MJ pode gastar uma Reserva para fazer um Movimento para seu criador. Por exemplo, seu criador pode enviar capangas ou outros experimentos para trazê-lo de volta, tentar atacarem
+    alguém que você se importa, dar uma ordem e esperar que você a obedeça, ou te fornecer revelações inesperadas sobre sua origem ou finalidade.</p>
     `,
     "Culpa": `
     <p>Você carrega um grande fardo devido aos seus pecados passados, tendo ferido uma ou várias pessoas através das suas ações ou falta 
@@ -213,7 +223,7 @@ const desvantagensDetalhadas = {
     <p><b>- 9 ∘ </b>Sua inveja toma conta de você. Você deve <strong>Manter o Controle</strong> para se segurar e não prejudicar, destruir ou roubar o alvo da sua inveja.</p>
     </div>
     `,
-    "Juramento da Vingança": `
+    "Juramento de Vingança": `
     <p>Você jurou vingar uma injustiça imperdoável. Decida quem é o alvo da sua vingança e o que fizeram com você. Pode ser um único indivíduo, pessoas que compartilham uma 
     determinado característica ou membros de uma organização. Sempre que o alvo da vingança (ou alguém/alguma coisa associada a ele) aparecer, <strong>role +0:</strong></p>
         <div class="vantagem__resultados">
@@ -222,6 +232,17 @@ const desvantagensDetalhadas = {
         <p><b>- 9 ∘ </b>) Você fica obcecado e só consegue agir para promover sua vingança. Fazer qualquer outra coisa exige rolar para 
         <strong>Manter o Controle</strong>. Sua obsessão não pode ser aliviada enquanto o alvo permanecer na mesma cena com você.</p>
         </div>
+    `,
+    "Maculado": `
+    <p>Magia da Morte te maculou, e agora os mortos são atraídos para você como mariposas são atraídas pela chama. Na primeira sessão e sempre que você usar magia, <strong>role +0:</strong></p>
+    <div class="vantagem__resultados">
+    <p><b>15 + ∘ </b>Você evita as entidades que o perseguem.</p>
+    <p><b>10 - 14 ∘ </b>Uma entidade se apegou a você. A MJ recebe 1 Reserva.</p>
+    <p><b>- 9 ∘ </b>Várias entidades, ou um ser da morte muito poderoso, estão no seu encalço. A MJ recebe 3 Reservas.</p>
+    </div>
+    <p>A MJ pode gastar uma Reserva para fazer um Movimento para as entidades. Uma entidade pode possuir alguém próximo ao personagem, revelar-se para ele, desafiá-lo ou persegui-lo. Um portal pode se abrir para o 
+    reino da Morte. Uma ou várias entidades podem tentar enganá-lo ou atraí-lo para o reino da Morte, ou um ser malévolo pode possuí-lo.
+    </p>
     `,
     "Má Reputação": `
     <p>Por algum motivo, você atraiu a reprovação do público — talvez até antipatia. Talvez você tenha sido notícia nos tabloides como 
@@ -331,6 +352,17 @@ const desvantagensDetalhadas = {
     ocupações importantes e tarefas, faltar reuniões, ou negligenciar suas relações interpessoais para se concentrar exclusivamente em sua obsessão. Sua obsessão pode até influenciar 
     seus sonhos, te dando visões e revelações. Por sua vez, o objeto de sua obsessão também pode perceber você e tente parar suas investigações.</p>
     `,
+    "Perseguidores": `
+    <p>Você é caçado por um grupo ou organização de pessoas que juraram erradicar sua espécie. Na primeira sessão e sempre que você revelar sua verdadeira natureza para testemunhas humanas, <strong>role +0:</strong></p>
+    <div class="vantagem__resultados">
+    <p><b>15 + ∘ </b>Você está a salvo de seus perseguidores, por enquanto.</p>
+    <p><b>10 - 14 ∘ </b>Você deixou um rastro para seus perseguidores seguirem. A MJ recebe 1 Reserva.</p>
+    <p><b>- 9 ∘ </b>Seus perseguidores te rastrearam. A MJ recebe 3 Reservas.</p>
+    </div>
+    <p>A MJ pode gastar uma Reserva para fazer um Movimento para seus perseguidores. Eles podem montar uma armadilha, rastrear seu esconderijo, infiltrar-se no seu ambiente, capturar um dos seus aliados, roubar ou destruir algo que você
+    possui, aparecer inesperadamente ou fazer um pacto comum com um dos seus outros inimigos.
+    </p>
+    `,
     "Pertencido": `
     <p>Você costumava ser propriedade pessoal de alguém perigoso, voluntariamente ou não. Desde sua fuga, seu antigo dono tem procurado por você. Decida quem é seu antigo dono. Na primeira 
     sessão do jogo e sempre que você chamar atenção para si mesmo em público, <strong>role +0:</strong></p>
@@ -364,6 +396,17 @@ const desvantagensDetalhadas = {
     </div>
     <p>A MJ pode gastar Reserva para fazer um Movimento pelas autoridades. Para exemplo, o seu retrato aparece no noticiário da TV e nos jornais, oficiais da lei tentam te apanhar e te 
     prender, ou as autoridades prendem e interrogam alguém importante para você, confiscam seus bens ou deixam seus amigos/familiares contra você.</p>
+    `,
+    "Pupilo": `
+    <p>Você já teve um discípulo, que você instruiu na Verdade antes que ele desaparecesse. Ele pode ter sido abduzido por um Poder Superior, ou talvez tenha se voltado contra você e te deixado por conta própria. Seu pupilo continua sendo um ponto fraco para você e tem potencial de causar grandes danos, direta ou indiretamente.
+    Considere o pupilo como uma <strong>Relação</strong> de <strong>+1</strong> ou <strong>+2</strong> (a sua escolha). Na primeira sessão e sempre que você cumprir os Princípios do seu mestre, <strong>role +0:</strong></p>
+    <div class="vantagem__resultados">
+    <p><b>15 + ∘ </b>Nada acontece.</p>
+    <p><b>10 - 14 ∘ </b>Seu pupilo faz uma aparição. A MJ recebe 1 Reserva.</p>
+    <p><b>- 9 ∘ </b>Seu pupilo te coloca numa situação difícil. A MJ recebe 3 Reservas.</p>
+    </div>
+    <p>A MJ pode gastar uma Reserva para fazer um Movimento para o seu pupilo. Por exemplo, alguém o persegue ameaçando prejudicar sua pupila, ou sua pupila pode retornar para pedir sua ajuda, sabotar um de seus planos, (ameaçar) revelar um de seus segredos, roubar algo seu ou difamar você.
+    </p>
     `,
     "Racionalista": `
     <p>Você se recusa a acreditar em qualquer coisa não confirmada como fato pela ciência moderna, mesmo estando bem na sua 
