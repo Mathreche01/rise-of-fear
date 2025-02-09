@@ -7,6 +7,7 @@ let registraNotas;
 let mudaEstabilidade;
 let registraGancho;
 let removerGancho;
+let mudaEquipamento;
 let registraFerimento;
 let pegaEstabilidade;
 let estabilidadeAtual;
@@ -761,7 +762,7 @@ function criaEquipamentoFicha(){
                 constroiEquipamento(tipoDistancia, nome, categoria, -1, id)
                 registraItem(tipoDistancia, nome, categoria, id)
             } else if(categoria === "Armaduras"){
-                constroiEquipamento(tipoArmadura, nome, categoria, -1, id)
+                constroiEquipamento(tipoArmadura, nome, categoria, -1, id, false)
                 registraItem(tipoArmadura, nome, categoria, id)
             }
             modal.style.display = "none"
@@ -1109,7 +1110,7 @@ function mostraInputs(tipo){
     }
 }
 
-function constroiEquipamento(tipo, nome, categoria, indice, id){
+function constroiEquipamento(tipo, nome, categoria, indice, id, equipado){
     const item = document.createElement('tr')
     item.id = id
     if(categoria === "Armas corpo-a-corpo"){
@@ -1146,6 +1147,12 @@ function constroiEquipamento(tipo, nome, categoria, indice, id){
         <td>${nome}</td>
         <td>${tipo}</td>
         <td>${armaduras[tipo]}</td>
+        <td>
+            <div class="equip-armor">
+                <input type="checkbox" class="toggle" ${equipado === true ? "checked" : ""} id="input${id}" onchange="equiparArmadura('${id}')">
+                <label for="input${id}">
+            </div>
+        </td>
         <td><ion-icon name="trash-outline" onclick="removerEquipamento('${id}', event)"></ion-icon></td>
         `
         lista.appendChild(item)
@@ -1159,6 +1166,21 @@ function constroiEquipamento(tipo, nome, categoria, indice, id){
         lista.append(item)
     }
 
+}
+
+function equiparArmadura(id){
+    const tabela = document.querySelector('#listaArmadura')
+    const switches = tabela.querySelectorAll('.equip-armor input')
+
+    switches.forEach((input) => {
+        if(input.id !== ('input' + id)){
+            input.checked = false
+            const inputId = input.parentElement.parentElement.parentElement.id
+            mudaEquipamento(inputId, false)
+        } else{
+            mudaEquipamento(id, true)
+        }
+    })
 }
 
 function rolaDadoFicha(nome, lancamento, tipo) {
@@ -1319,12 +1341,26 @@ function rolarDado(event, tipo, atributo) {
             bonus = '+ 1'
         }
 
+        let armadura = "";
+        const listaArmadura = document.getElementById('listaArmadura')
+        const armaduraEquipada = listaArmadura.querySelector(".equip-armor input[type='checkbox']:checked")
+        if(titulo === "Fortitude" && armaduraEquipada){
+            const tipo = armaduraEquipada.parentElement.parentElement.parentElement.querySelector('td:nth-child(2)').textContent
+            if(tipo === "Pesada"){
+                armadura = "+ 2"
+                resultado += 2
+            }else{
+                armadura = "+ 1"
+                resultado += 1
+            }
+        }
+
         resultado = resultado + modificadorFerimento + modificadorVantagem + modificadorPercepcao + modificadorFracasso + (modificadorManipulador === true ? 2 : 0)
 
         const modificadorTexto = modificadorAbsoluto === 0 ? '' : `${modificador < 0 ? '-' : '+'} ${modificadorAbsoluto}`;
 
         rolagemResultado.innerHTML = `
-        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificadorTexto} ${ajuste} ${ferimentos} ${vantagem} ${bonus} ${fracasso} ${percepcao} ${modificadorManipulador === true ? "+ 2" : ""} = ${resultado}</p>
+        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificadorTexto} ${armadura} ${ajuste} ${ferimentos} ${vantagem} ${bonus} ${fracasso} ${percepcao} ${modificadorManipulador === true ? "+ 2" : ""} = ${resultado}</p>
         <p>D10: ${primeiraRolagem}, ${segundaRolagem}</p>
         `;
     } else if(tipo === "desvantagem"){

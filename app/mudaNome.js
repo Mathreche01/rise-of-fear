@@ -181,7 +181,14 @@ registraItem = function equipamentoDatabase(tipo, nome, categoria, id){
             categoria: categoria,
             municao: -1,
         })
-    }else{
+    } else if(categoria === "Armaduras"){
+        set(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + "/equipamento/" + id), {
+            nome: nome,
+            tipo: tipo,
+            categoria: categoria,
+            equipado: false
+        })
+    } else{
         set(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + "/equipamento/" + id), {
             nome: nome,
             tipo: tipo,
@@ -484,4 +491,8 @@ pegaPoderSuperior = function acessaPoderSuperior(numero){
     (onValue(ref(database, '/users/' + userId + '/personagens/' + numero), (snapshot) => {
         poderSuperior = (snapshot.val() && snapshot.val().poderSuperior)
     }))
+}
+
+mudaEquipamento = function acessaArmadura(id, status){
+    set(ref(database, '/users/' + userId + '/personagens/' + numeroPersonagemSelecionado + '/equipamento/' + id + '/equipado/'), status)
 }

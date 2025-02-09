@@ -259,7 +259,7 @@ async function abreFicha(vantagens, atributos, desvantagens, arquetipo, ocupacao
         equipamentoPersonagem.forEach((equipamento) => {
             const item = equipamento[1]
             pegaMunicao(equipamento[0])
-            constroiEquipamento(item.tipo, item.nome, item.categoria, indiceMunicao, equipamento[0])
+            constroiEquipamento(item.tipo, item.nome, item.categoria, indiceMunicao, equipamento[0], item.equipado)
         })
     }
     pegaAnotacoes(numero)

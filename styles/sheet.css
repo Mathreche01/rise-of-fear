@@ -423,6 +423,8 @@
     gap: 0;
 }
 
+
+
 .ficha__info h3, .ficha__imagem h3{
     background-color: black;
     width: fit-content;
@@ -735,6 +737,52 @@
     overflow: hidden;
 }
 
+.ficha__itens--tabela #listaArmadura .equip-armor{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ficha__itens--tabela #listaArmadura .toggle{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.ficha__itens--tabela #listaArmadura label{
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 20px;
+    background-color: #444;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.ficha__itens--tabela #listaArmadura label::after{
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    height: 16px;
+    width: 16px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: .4s;
+}
+
+.ficha__itens--tabela #listaArmadura .toggle:checked + label{
+    background-color: #BA0021;
+}
+
+.ficha__itens--tabela #listaArmadura .toggle:checked + label::after{
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+}
+
 .ficha__itens--tabela{
     width: 100%;
     height: 100%;
@@ -764,6 +812,7 @@
     font-size: 15px;
     width: 100%;
     max-height: 100px;
+    vertical-align: middle;
     border-right: 1px dashed rgb(60,60,60);
     border-top: 1px dashed rgb(60,60,60);
 }
@@ -1842,6 +1891,10 @@
 
 .ficha__itens table tbody td:last-child{
     vertical-align: middle;
+}
+
+.ficha__itens:nth-child(3) tbody tr td:nth-child(3), .ficha__itens:nth-child(3) tbody tr td:nth-child(4){
+    min-width: 50px;
 }
 
 .ficha__itens:nth-child(1) tbody tr td:nth-child(4), .ficha__itens:nth-child(2) tbody tr td:nth-child(4),
