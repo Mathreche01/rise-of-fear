@@ -1007,38 +1007,58 @@
             <ion-icon name="close" onclick="fechaModal('popup')"></ion-icon>
         </span>
         <h2>Manipulador</h2>
-            <div class="inputSegredos">
-                <div class="dropdown">
-                    <input type="text" class="select-box" value="Influenciar Alguém" id="acaoSelecionada" readonly>
-                    <div class="options">
-                        <div onclick="show(event), mostraInputs('popup')">Influenciar Alguém</div>
-                        <div onclick="show(event), mostraInputs('popup')">Atrapalhar</div>
+            <div class="modal-popup" data-vantagem="Manipulador">
+                <div class="inputSegredos" id="divAcaoSelecionada">
+                    <div class="dropdown">
+                        <input type="text" class="select-box" value="Influenciar Alguém" id="acaoSelecionada" readonly>
+                        <div class="options">
+                            <div onclick="show(event), mostraInputs('popup')">Influenciar Alguém</div>
+                            <div onclick="show(event), mostraInputs('popup')">Atrapalhar</div>
+                        </div>
+                        <ion-icon name="chevron-down-outline"></ion-icon>
                     </div>
-                    <ion-icon name="chevron-down-outline"></ion-icon>
+                    <span>Ação</span>
                 </div>
-                <span>Ação</span>
-            </div>
-            <div class="inputSegredos" id="divAtributoSelecionado">
-                <div class="dropdown">
-                    <input type="text" class="select-box" value="Alma" id="atributoSelecionado" readonly>
-                    <div class="options">
-                        <div onclick="show(event)">Alma</div>
-                        <div onclick="show(event)">Carisma</div>
-                        <div onclick="show(event)">Firmeza</div>
-                        <div onclick="show(event)">Fortitude</div>
-                        <div onclick="show(event)">Intuição</div>
-                        <div onclick="show(event)">Carisma</div>
-                        <div onclick="show(event)">Percepção</div>
-                        <div onclick="show(event)">Razão</div>
-                        <div onclick="show(event)">Violência</div>
-                        <div onclick="show(event)">Vontade</div>
+                <div class="inputSegredos" id="divAtributoSelecionado">
+                    <div class="dropdown">
+                        <input type="text" class="select-box" value="Alma" id="atributoSelecionado" readonly>
+                        <div class="options">
+                            <div onclick="show(event)">Alma</div>
+                            <div onclick="show(event)">Carisma</div>
+                            <div onclick="show(event)">Firmeza</div>
+                            <div onclick="show(event)">Fortitude</div>
+                            <div onclick="show(event)">Intuição</div>
+                            <div onclick="show(event)">Carisma</div>
+                            <div onclick="show(event)">Percepção</div>
+                            <div onclick="show(event)">Razão</div>
+                            <div onclick="show(event)">Violência</div>
+                            <div onclick="show(event)">Vontade</div>
+                        </div>
+                        <ion-icon name="lock-closed-outline"></ion-icon>
                     </div>
-                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <span>Atributo</span>
                 </div>
-                <span>Atributo</span>
+                <div class="inputSegredos">
+                    <input type="submit" value="Rolar" onclick="ativarRolagem(event)">
+                </div>
             </div>
-            <div class="inputSegredos">
-                <input type="submit" value="Rolar" onclick="ativarRolagem(event)">
+            <div class="modal-popup" data-vantagem="Fúria">
+                <div class="inputSegredos">
+                    <div class="dropdown" onclick="limpaErro()">
+                        <input type="text" class="select-box" value="Ataque Brutal" id="trunfoSelecionado" readonly>
+                        <div class="options">
+                            <div onclick="show(event)">Ataque Brutal</div>
+                            <div onclick="show(event)">Ignorando a Dor</div>
+                            <div onclick="show(event)">Perdido no Frenesi</div>
+                        </div>
+                        <ion-icon name="chevron-down-outline"></ion-icon>
+                    </div>
+                    <span>Trunfo</span>
+                </div>
+                <div class="inputSegredos">
+                    <input type="submit" value="Usar" onclick="ativarRolagem(event)">
+                    <p class="erro--segredo" id="mensagemErroFuria"></p>
+                </div>
             </div>
     </div>
     <div class="modal" id="modalTips">

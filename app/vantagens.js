@@ -781,5 +781,5 @@ const vantagensLista = {
 }
 
 const vantagensNaoRolaveis = ["Atento", "Extorsionista", "Interrogador", "Intuitivo", "Observador", "Olho Clínico", "Analista", "Cientista", "Instinto"]
-const vantagensAtivaveis = ["Desesperado", "Guerreiro Divino", "Rancor", "Olho por Olho", "Ambicioso"]
+const vantagensAtivaveis = ["Desesperado", "Guerreiro Divino", "Rancor", "Olho por Olho", "Ambicioso", "Fúria"]
 const vantagensUsaveis = ["Manipulador", "Workaholic", "Sede de Conhecimento", "Oportunista", "Bom Samaritano", "Código de Honra"]

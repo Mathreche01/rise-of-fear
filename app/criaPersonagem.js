@@ -262,6 +262,7 @@ async function abreFicha(vantagens, atributos, desvantagens, arquetipo, ocupacao
             constroiEquipamento(item.tipo, item.nome, item.categoria, indiceMunicao, equipamento[0], item.equipado)
         })
     }
+    
     pegaAnotacoes(numero)
     if(notasPersonagem !== null && notasPersonagem !== undefined){
         const anotacoes = document.querySelector('#personagemNotas')

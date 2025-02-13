@@ -98,7 +98,7 @@ const limitacoesDetalhadas = {
     <p>O Poder Superior determina qual princípio você deve seguir e o que é considerado uma violação.</p>
     </div>
     <div class="vantagem__dropdown">
-        <input type="text" class="vantagem__selectbox" value="Kether" id="infoArquetipo" readonly>
+        <input type="text" class="vantagem__selectbox" value="Kether" readonly>
         <div class="vantagem__options">
                         <div onclick="show(event)">Kether</div>
                         <div onclick="show(event)">Chokmah</div>

@@ -1628,14 +1628,19 @@ const vantagensDetalhadas = {
     <p>Você recebe +1 constante para <strong>Suportar Lesão</strong>.</p>
     `,
     "Fúria": `
+    <p class="vantagem__habilidade"><strong>Pontos de Fúria:</strong> <span id="pontosFuria">0</span>.</p>
     <p>Quando estiver em combate, você pode despertar sua fúria interior. Perca <strong>-1 de Estabilidade</strong> e marque 1 de Fúria. Cada vez 
     que você receber um ferimento e cada vez que você derrotar um inimigo, aumente +1 de Fúria. A Fúria dura até o fim do 
     combate.</p>
+    <div class="vantagem__acoes">
+            <button onclick="usarVantagem(event)">Usar</button>
+            <button id="aumentarFuria">Aumentar</button>
+    </div>
     <div class="vantagem__resultados">
-    <p>Durante o combate, você pode gastar 1 de Fúria para escolher 1 Trunfo:</p>
-    <p><strong>Ataque brutal:</strong> Receba <strong>+1 de Dano</strong> no seu ataque.</p>
-    <p><strong>Ignorando a dor:</strong> Receba +2 para <strong>Suportar Lesão</strong>.</p>
-    <p><strong>Perdido no frenesi:</strong> Desconsidere e ignore influências psicológicas ou sobrenaturais.</p>
+        <p>Durante o combate, você pode gastar 1 de Fúria para escolher 1 Trunfo:</p>
+        <p><strong>Ataque brutal:</strong> Receba <strong>+1 de Dano</strong> no seu ataque.</p>
+        <p><strong>Ignorando a dor:</strong> Receba +2 para <strong>Suportar Lesão</strong>.</p>
+        <p><strong>Perdido no frenesi:</strong> Desconsidere e ignore influências psicológicas ou sobrenaturais.</p>
     </div>
     `,
     "Guerreiro Divino": `

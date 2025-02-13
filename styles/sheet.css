@@ -812,6 +812,7 @@
     font-size: 15px;
     width: 100%;
     max-height: 100px;
+    box-sizing: border-box;
     vertical-align: middle;
     border-right: 1px dashed rgb(60,60,60);
     border-top: 1px dashed rgb(60,60,60);
@@ -858,7 +859,8 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap-reverse;
-    border: none !important;
+    border-right: none !important;
+    height: 100%;
 }
 
 .ficha__itens thead td:last-child, .ficha__itens tbody td:last-child{
@@ -1048,8 +1050,16 @@
     z-index: 1;
 }
 
-.vantagem__requisito p, .modal-tip p span{
+.vantagem__requisito p, .modal-tip p span, .vantagem__habilidade{
     font-style: italic;
+}
+
+.vantagem__habilidade{
+    display: none;
+}
+
+.vantagem__habilidade span{
+    font-weight: 400 !important;
 }
 
 .vantagem__dropdown .vantagem__options div{
@@ -1419,11 +1429,11 @@
     background: rgb(60,60,60);
 }
 
-.modal-tip p b{
+.modal-tip p b, .bonus-damage{
     color: #E32636;
 }
 
-.modal-tip strong{
+.modal-tip strong, .bonus-damage{
     font-weight: 600;
 }
 
@@ -1559,7 +1569,7 @@
     transform: translateY(2px)
 }
 
-.vantagem__rolagem button{
+.vantagem__rolagem button, .vantagem__acoes button{
     cursor: pointer;
     font-size: 14px;
     padding: 5px 15px;
@@ -1567,9 +1577,41 @@
     border-radius: 6px;
     font-weight: 300;
     color: white;
+    outline: none;
 }
 
-.vantagem__rolagem button:hover{
+#modalPopup .erro--segredo{
+    position: absolute;
+    transform: translateY(100%);
+    bottom: -5px;
+    text-align: center;
+    width: 100%;
+}
+
+.vantagem__acoes{
+    display: none;
+    border-bottom: 1px #c8102E dashed;
+    border-top: 1px #c8102E dashed;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.vantagem__habilidade.active{
+    display: block;
+}
+
+.vantagem__acoes.active{
+    display: flex;
+}
+
+.vantagem__acoes button{
+    width: 50%;
+    border-radius: 2px;
+}
+
+.vantagem__rolagem button:hover, .vantagem__acoes button:hover{
     opacity: .9;
 }
 

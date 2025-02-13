@@ -459,6 +459,7 @@ function abreModal(modal, submodal){
             })
         })
     } else if(modal === "atributos"){
+
         const modal = document.querySelector('#modalAtributos')
         modal.style.display = "block"
         document.body.classList.add('modal-active')
@@ -512,7 +513,21 @@ function abreModal(modal, submodal){
         
         const acao = document.getElementById("acaoSelecionada")
         acao.value = "Influenciar Alguém"
-        const atributo = document.getElementById("atributoSelecionado").value
+    
+        const titulo = modal.querySelector('h2')
+        titulo.textContent = submodal
+
+        const submodais = modal.querySelectorAll('.modal-popup')
+        submodais.forEach(sub => {
+            if(sub.getAttribute('data-vantagem') === submodal){
+                sub.style.display = "block"
+            } else{
+                sub.style.display = "none"
+            }
+        })
+
+        const erro = document.getElementById('mensagemErroFuria')
+        erro.innerHTML = ""
 
         mostraInputs('popup')
     } else if(modal === "tips"){
@@ -566,27 +581,7 @@ function abreModal(modal, submodal){
     }
 }
 
-let modificadorManipulador = false;
-
-function ativarRolagem(e){
-    const modal = document.querySelector('#modalPopup')
-    modal.style.display = "none"
-    document.body.classList.remove('modal-active')
-    const container = document.querySelector('.modal__container')
-    container.style.display = "none"
-
-    const acao = document.getElementById("acaoSelecionada")
-    const atributo = document.getElementById("atributoSelecionado").value
-
-    modificadorManipulador = true;
-
-    if(acao.value === "Influenciar Alguém"){
-        const carisma = document.getElementById('carisma')
-        carisma.click()
-    } else{
-        rolarDado(e, 'atrapalhar', atributo)
-    }
-}
+let modificadorAtivavel = false;
 
 function fechaModal(modal){
     const container = document.querySelector('.modal__container')
@@ -1003,6 +998,7 @@ function limpaErro(){
     const erroNacionalidade = document.querySelector('#mensagemErroInfoNacionalidade')
     const erroAtributos = document.querySelector('#mensagemErroAtributos')
     const erroProgressao = document.querySelector('#mensagemErroProgressao')
+    const erroFuria = document.querySelector('#mensagemErroFuria')
     if(erroRelacao.innerHTML !== ""){
         erroRelacao.innerHTML = ""
     }
@@ -1056,6 +1052,9 @@ function limpaErro(){
     }
     if(erroProgressao.innerHTML !== ""){
         erroProgressao.innerHTML = ""
+    }
+    if(erroFuria.innerHTML !== ""){
+        erroFuria.innerHTML = ""
     }
 }
 
@@ -1131,14 +1130,22 @@ function constroiEquipamento(tipo, nome, categoria, indice, id, equipado){
         <td>${tipo}</td>
         <td>${armasDistancia[tipo]["distancia"]}</td>
         <td>${armasDistancia[tipo]["ataques"]}</td>
-        <td class="itens-municao">
+        <td>
+            <div class="itens-municao">
             ${armasDistancia[tipo]["municao"]}
+            </div>
         </td>
         <td><ion-icon name="trash-outline" onclick="removerEquipamento('${id}', event)"></ion-icon></td>
         `
         const inputs = item.querySelectorAll('input')
         if(indice !== -1 && indice !== null && indice !== undefined){
             inputs[indice].checked = true
+        }
+
+        pegaVantagens(numeroPersonagemSelecionado)
+        if(vantagensPersonagem.includes("Tiro Certeiro")){
+            const dano = item.querySelectorAll('.bonus-damage')
+            dano.forEach(span => span.textContent = " + 1")
         }
         lista.appendChild(item)
     } else if(categoria === "Armaduras"){
@@ -1355,12 +1362,12 @@ function rolarDado(event, tipo, atributo) {
             }
         }
 
-        resultado = resultado + modificadorFerimento + modificadorVantagem + modificadorPercepcao + modificadorFracasso + (modificadorManipulador === true ? 2 : 0)
+        resultado = resultado + modificadorFerimento + modificadorVantagem + modificadorPercepcao + modificadorFracasso + (modificadorAtivavel === true ? 2 : 0)
 
         const modificadorTexto = modificadorAbsoluto === 0 ? '' : `${modificador < 0 ? '-' : '+'} ${modificadorAbsoluto}`;
 
         rolagemResultado.innerHTML = `
-        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificadorTexto} ${armadura} ${ajuste} ${ferimentos} ${vantagem} ${bonus} ${fracasso} ${percepcao} ${modificadorManipulador === true ? "+ 2" : ""} = ${resultado}</p>
+        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificadorTexto} ${armadura} ${ajuste} ${ferimentos} ${vantagem} ${bonus} ${fracasso} ${percepcao} ${modificadorAtivavel === true ? "+ 2" : ""} = ${resultado}</p>
         <p>D10: ${primeiraRolagem}, ${segundaRolagem}</p>
         `;
     } else if(tipo === "desvantagem"){
@@ -1423,10 +1430,10 @@ function rolarDado(event, tipo, atributo) {
         
         const modificadorTexto = modificadorAbsoluto === 0 ? '' : `${modificador < 0 ? '-' : '+'} ${modificadorAbsoluto}`;
 
-        resultado = primeiraRolagem + segundaRolagem + parseInt(modificador) + modificadorFerimento + modificadorVantagem + modificadorFracasso + modificadorPercepcao + (modificadorManipulador === true ? 2 : 0);
+        resultado = primeiraRolagem + segundaRolagem + parseInt(modificador) + modificadorFerimento + modificadorVantagem + modificadorFracasso + modificadorPercepcao + (modificadorAtivavel === true ? 2 : 0);
 
         rolagemResultado.innerHTML = `
-        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificadorTexto} ${ferimentos} ${vantagem} ${fracasso} ${percepcao} ${modificadorManipulador === true ? "+ 2" : ""} = ${resultado}</p>
+        <p><b>Resultado: </b>${primeiraRolagem} + ${segundaRolagem} ${modificadorTexto} ${ferimentos} ${vantagem} ${fracasso} ${percepcao} ${modificadorAtivavel === true ? "+ 2" : ""} = ${resultado}</p>
         <p>D10: ${primeiraRolagem}, ${segundaRolagem}</p>
         `;
     }
@@ -1442,7 +1449,7 @@ function rolarDado(event, tipo, atributo) {
         popup.classList.toggle("show");
     };
 
-    modificadorManipulador = false;
+    modificadorAtivavel = false;
 }
 
 
@@ -1461,7 +1468,7 @@ function mudaMunicao(event){
     if(menorIndice === Infinity){
         menorIndice = -1
     }
-    const elementoItem = elementoPai.parentElement
+    const elementoItem = elementoPai.parentElement.parentElement
     cadastraMunicao(elementoItem.id, menorIndice)
 }
 
@@ -1865,6 +1872,17 @@ function adicionaVantagens() {
     vantagensAtivas = [];
     vantagemFracasso = false;
 
+    const danos = document.querySelectorAll('.bonus-damage')
+    danos.forEach(span => span.textContent = "")
+
+    const listaEquipamentoDistancia = document.getElementById('listaEquipamentoDistancia')
+    const dano = listaEquipamentoDistancia.querySelectorAll('.bonus-damage')
+    if(vantagens.includes("Tiro Certeiro")){
+        dano.forEach((span) => span.textContent = " + 1")
+    } else{
+        dano.forEach((span) => span.textContent = "")
+    }
+
     modal.style.display = "none";
     const container = document.querySelector('.modal__container');
     container.style.display = "none";
@@ -2195,6 +2213,8 @@ function marcaInputs(e){
     }
 }
 
+let contadorFuria = 0;
+
 function ativarVantagem(event){
     const botao = event.target
     botao.classList.toggle('active')
@@ -2220,6 +2240,50 @@ function ativarVantagem(event){
         const nome = btn.parentElement.parentElement.parentElement.querySelector('.vantagem__titulo').textContent
         vantagensAtivas.push(nome)
     })
+
+    pegaVantagens(numeroPersonagemSelecionado)
+    const danos = document.querySelectorAll('.bonus-damage')
+    const listaEquipamentoDistancia = document.getElementById('listaEquipamentoDistancia')
+    const danosDistancia = listaEquipamentoDistancia.querySelectorAll('.bonus-damage')
+
+    if(vantagensAtivas.includes('Guerreiro Divino')){
+        danos.forEach((span) => span.textContent = " + 1")
+
+        if(vantagensPersonagem.includes("Tiro Certeiro")){
+            danosDistancia.forEach((span) => span.textContent = " + 2")
+        }
+    } else{
+        danos.forEach((span) => span.textContent = "")
+
+        if(vantagensPersonagem.includes("Tiro Certeiro")){
+            danosDistancia.forEach((span) => span.textContent = " + 1")
+        }
+    }
+
+    const nomeVantagem = botao.parentElement.parentElement.parentElement.querySelector('.vantagem__titulo').textContent
+    if(nomeVantagem === "Fúria"){
+
+        if(vantagensAtivas.includes("Fúria")){
+            verificaEstabilidade(-1)
+        }
+
+        const vantagemDiv = botao.parentElement.parentElement.parentElement
+        const habilidade = vantagemDiv.querySelector('.vantagem__habilidade')
+        const pontos = habilidade.querySelector('#pontosFuria')
+        contadorFuria = 1;
+
+        const acoes = vantagemDiv.querySelector('.vantagem__acoes')
+
+        const btnAumentar = vantagemDiv.querySelector('#aumentarFuria')
+        btnAumentar.addEventListener("click", () => {
+            contadorFuria++;
+            pontos.textContent = contadorFuria
+        })
+
+        habilidade.classList.toggle('active')
+        acoes.classList.toggle('active')
+        pontos.textContent = contadorFuria
+    }
 }
 
 function ativarFracasso(event){
@@ -2237,6 +2301,16 @@ function ativarFracasso(event){
         if(index !== -1){
             vantagensAtivas.splice(index, 1)
         }
+
+        pegaVantagens(numeroPersonagemSelecionado)
+        const danos = document.querySelectorAll('.bonus-damage')
+        const listaEquipamentoDistancia = document.getElementById('listaEquipamentoDistancia')
+        const danosDistancia = listaEquipamentoDistancia.querySelectorAll('.bonus-damage')
+        danos.forEach((span) => span.textContent = "")
+        if(vantagensPersonagem.includes("Tiro Certeiro")){
+            danosDistancia.forEach((span) => span.textContent = " + 1")
+        }
+
     } else{
         vantagemFracasso = false
     }
@@ -2246,8 +2320,8 @@ function usarVantagem(event){
     const nome = event.target.parentElement.parentElement.parentElement.querySelector('.vantagem__titulo').textContent
     if(nome === "Bom Samaritano" || nome === "Oportunista" || nome === "Sede de Conhecimento" || nome === "Workaholic" || nome === "Código de Honra"){
         verificaEstabilidade(1)
-    } else if(nome === "Manipulador"){
-        abreModal("popup")
+    } else if(nome === "Manipulador" || nome === "Fúria"){
+        abreModal("popup", nome)
     }
 }
 
@@ -2261,10 +2335,52 @@ function verificaEstabilidade(modificador){
     const estabilidades = ["Calmo", "Apreensivo", "Disperso", "Abalado", "Angustiado", "Neurótico", "Agoniado", "Irracional", "Transtornado", "Arruinado"]
 
     const index = estabilidades.indexOf(estabilidadeAtual)
-    if((modificador < 0 && index < estabilidades.length) || (modificador > 0 && index > 0)){
+    if((modificador < 0 && index < estabilidades.length - 1) || (modificador > 0 && index > 0)){
         const estabilidadeAlterada = estabilidades[index - modificador]
         mudaEstabilidade(estabilidadeAlterada)
         const estabilidadeInput = document.getElementById(`estabilidade${estabilidadeAlterada}`)
         estabilidadeInput.click()
     }
+}
+
+function ativarRolagem(e){
+    const modal = document.querySelector('#modalPopup')
+    const titulo = modal.querySelector('h2').textContent
+
+    if(titulo === "Manipulador"){
+        const acao = document.getElementById("acaoSelecionada")
+        const atributo = document.getElementById("atributoSelecionado").value
+
+        modificadorAtivavel = true;
+
+        if(acao.value === "Influenciar Alguém"){
+            const carisma = document.getElementById('carisma')
+            carisma.click()
+        } else{
+            rolarDado(e, 'atrapalhar', atributo)
+        }
+    } else{
+        if(contadorFuria === 0){
+            const erro = document.getElementById('mensagemErroFuria')
+            erro.innerHTML = "Fúria insuficiente."
+            return
+        } else{
+            const pontos = document.getElementById('pontosFuria')
+            contadorFuria--
+            pontos.textContent = contadorFuria
+
+            const trunfo = document.getElementById("trunfoSelecionado")
+
+            if(trunfo.value === "Ignorando a Dor"){
+                modificadorAtivavel = true;
+                const fortitude = document.getElementById('fortitude')
+                fortitude.click()
+            }
+        }
+    }
+
+    modal.style.display = "none"
+    document.body.classList.remove('modal-active')
+    const container = document.querySelector('.modal__container')
+    container.style.display = "none"
 }
